@@ -1,0 +1,47 @@
+<form name="body_head" action="/" method="POST">
+	<div> <%= scrhead %></div>
+	<%= comment %>
+	<hr class="head_under">
+
+</form>
+<div id="container" style="min-width: 400px; height: 400px; margin: 0 auto"></div>
+
+<script type="text/javascript">
+
+    $(document).ready(function() {
+        chart = new Highcharts.Chart(
+{
+            chart: {
+                renderTo: 'container',
+                type: 'area'
+            },
+            title: {
+                text: '部材別入出庫頻度'
+            },
+            xAxis: {
+                categories: ['部材A', '部材B', '副資材X', '副資材Y', '外注']
+            },
+            tooltip: {
+                formatter: function() {
+                    return ''+
+                        this.series.name +': '+ this.y +'';
+                }
+            },
+            credits: {
+                enabled: false
+            },
+            series: [{
+                name: '製造A',
+                data: [5, 3, 4, 7, 2]
+            }, {
+                name: '製造B',
+                data: [2, -2, -3, 2, 1]
+            }, {
+                name: '物流',
+                data: [3, 4, 4, -2, 5]
+            }]
+        });
+    });
+
+
+</script>

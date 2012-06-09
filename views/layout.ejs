@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <link rel='stylesheet' href='/stylesheets/html5reset.css' />
+    <link rel='stylesheet' href='/stylesheets/jqtransform.css' />
+    <meta http-equiv="content-script-type" content="text/javascript"> 
+<!--    <script src="http://code.jquery.com/jquery-1.5.2.min.js"></script>
+-->
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script type="text/javascript" src="/javascripts/highcharts.js"></script>
+    <script type="text/javascript" src="/javascripts/modules/exporting.js"></script>
+    <script type="text/javascript" src="/javascripts/jqtransformplugin/jquery.jqtransform.js"></script>
+    <script language="javascript">
+      $(function(){
+      $('form.regist').jqTransform({imgPath:'/javascripts/jqtransformplugin/img/'});
+      });
+      </script>
+
+  </head>
+  <body>
+  <header id="header">
+	<h1 id="siteID"><a href="/">LocoS</a></h1>
+<!--
+	<div id="search">
+		<form action="#" method="post">
+			<input class="textbox" type="search">
+			<input class="submit" type="submit" value="検索">
+		</form>
+	</div>
+-->
+	<ul id="userInfo">
+		<li><b><%= userid %></b> (<a href="/logout">ログアウト</a>)</li>
+		<li><a class="setting" href="#">設定</a></li>
+	</ul>
+    <nav id="topNav">  
+	  <ul id="subMenu">
+		<li><a href="/scr/201">搬入</a></li>
+		<li><a href="/scr/301">供給</a></li>
+		<li><a href="/scr/701">帳票</a></li>
+		<li><a href="/scr/800">メール</a></li>
+		<li><a href="/scr/102">見える化</a></li>
+	</ul>
+	</nav>
+  </header>
+    <%- body %>
+  </body>
+</html>

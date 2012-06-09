@@ -1,0 +1,154 @@
+<!--タイトル部分-->
+<div id="contents">
+	<div id="mainx">
+		<FORM name="main_form" method="post" action="/scr/201" class="regist3">
+		<section id="mailTray">
+
+			<h1>製造指示</h1>
+			<div id="operationPanel">
+			<%= mesg %>
+			</div>  <!-- operationPanel -->
+
+		</section> <!-- mailTray -->
+
+		<div id="partList">
+
+		<fieldset style="width:975" name="noname">
+		<legend>搬入情報</legend>
+		<TABLE width="" align="" border="0">
+
+		       <COL width="110" align="center">
+		       <COL width="385" align="left">
+			<COL width="90" align="center">
+			<COL width="" align="left">
+
+		<TR>
+		<TH>部材コード</th>
+		<TD>
+			<INPUT type="text" id="pcod" class="STYLE_PCOD" size="8" 
+			       maxlength="8" name="pcode" id="pcod" value="PCOD-1" tabindex = "11">
+		</TD>
+		</TR>
+		<TR>
+		<TH>部材名</th>
+		<TD colspan="3">
+			<INPUT type="text" id="pnam" class="STYLE_PNAM" size="10" 
+			       maxlength="10" name="pnam" id="pnam" value="BUname" tabindex = "12">
+		</TD>
+		</TR>
+		<TR>
+		<TH>搬入数量</TH>
+		<TD>
+			<INPUT type="text" id="qnty" class="STYLE_QNTY" size="4" 
+			       maxlength="4" name="sqty" id="pqty" value="99" tabindex = "13">
+		</TD>
+		<TH>特記</TH>
+		<TD>
+			<INPUT type="text" id="smm2" class="STYLE_SMM" size="20" 
+			       maxlength="20" name="mem2" value="MEM-2" tabindex = "16">
+		</TD>
+		</TR>
+		<TR>
+		<TH>ロットNo</TH>
+		<TD>
+			<INPUT  type="text" id="lotn" class="STYLE_LOTN" 
+				size="6" maxlength="6" name="lotn" value="LOTN-#1" tabindex = "14">
+		</TD>
+		<TH>メモ</TH>
+		<TD>
+			<INPUT type="text" id="smm3" class="STYLE_SMM" size="20" 
+			       maxlength="20" name="mem3" value="MEM-3" tabindex = "17">
+		</TD>
+		</TR>
+		<TR>
+		<TH>搬入コード</TH>
+		<TD>
+			<INPUT type="text" id="smm1" class="STYLE_SMM" size="6" 
+			       maxlength="6" name="mem1" value="MEM-1" tabindex = "15">
+		</TD>
+<!--
+		<TD colspan="2" valign="bottom" align="right" >
+			<INPUT type="submit" name="ADD" value="登録" > 
+
+		</TD>
+		<TD colspan="2" valign="bottom" align="right" >
+			<INPUT type="submit" name="DEL" value="削除"> 
+
+		</TD>
+-->
+		</TR>
+		</TABLE>
+
+		</fieldset>
+		</TD>
+		</TR>
+		<br><br>
+	</div> <!-- maillist -->
+<!--
+		<div class="body">
+-->
+	<div id=inqList>
+ 		<table>
+		    	<thead>
+			  <tr>
+			    <th></th>
+			    <th>部材コード</th>
+			    <th>搬入数量</th>
+	    		    <th>ロットNo</th>
+	    		    <th>部材名</th>
+	    		    <th>搬入コード</th>
+	    		    <th>特記事項</th>
+	    		    <th>業者メモ</th>
+	    		    </tr>
+			    </thead>
+			    <tbody>
+			    <% for (var i = 0; i < tab.length; i++) { %>
+			    <TR>
+			    <TD>
+			    <% if (tab[i].sqty >1000) { %>
+			       <input type='radio' name='rdo01' checked > 
+			    <% } else { %>
+			       <input type='radio' name='rdo01'> 
+			    <% } %>	  
+			    </TD>
+			    <TD><%= tab[i].pcode %></TD>
+			    <TD><%= tab[i].sqty %></TD>
+			    <TD><%= tab[i].lotn %></TD>
+			    <TD><%= tab[i].mem1 %></TD>
+			    <TD><%= tab[i].mem2 %></TD>
+			    <TD><%= tab[i].mem3 %></TD>
+			    <TD><%= tab[i].pnam %></TD>
+			    </TR>   
+			    <% } %>
+			    </tbody>
+			    </table>
+
+	
+			</TABLE>
+	</div> <!-- inqList -->
+
+
+</div> <!-- main -->
+<div id="sub">
+     <section id="createMail">
+	<h1>サブメニュー一覧</h1>
+	<p><a href="#">資材受入</a></p>
+      </section>
+      <section id="folderList" class='regist'>
+	  	<h1>フォルダ一覧</h1>
+		<ul>
+		<li class="current"><a href="#">副資材</a></li>
+		<li><a href="#">外注品</a></li>
+	        <li><a href="#">欠品発注</a></li>
+		<li><a href="#">例外受入</a></li>
+		</ul>
+		<ul>
+		<li><INPUT type="submit" name="ADD" value="登録"   class="regist"> </li>
+		<li><INPUT type="submit" name="DEL" value="削除"  class="regist"> </li>
+		<li><INPUT type="submit" name="QRY" value="最新表示"> </li>
+		<li><a href="/scr/701">入荷予定印刷</a></li>
+		</ul>
+	</section>
+</div> <!-- sub -->
+</div> <!-- contents -->
+</FORM>
