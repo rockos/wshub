@@ -1,4 +1,6 @@
-libap = require('../../lib/ap/libap');
+var LCSAP = require('../../lib/ap/lcsap');
+var lcsAp = LCSAP.create('IQY');
+
 
 /*
  * main routine
@@ -6,7 +8,7 @@ libap = require('../../lib/ap/libap');
  */
 exports.main = function(req, res){
 
-    if (!libap.isSession(req.session)) {
+    if (!lcsAp.isSession(req.session)) {
 	res.redirect('/');
     }
 

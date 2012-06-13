@@ -1,8 +1,9 @@
 'use strict';
-libap = require('../../lib/ap/libap');
+//var libap = require('../../lib/ap/libap');
+var LCSAP = require('../../lib/ap/lcsap');
+var lcsAp = LCSAP.create('STR');
 
 /* for screen */
-
 var fs = require('fs');
 
 
@@ -10,8 +11,8 @@ var fs = require('fs');
  * Mar-25-2012
  */
 function showPart(req, res) {
-    var sql2 ='select * from part order by pcode';
-    client.query(sql2, function(err, results, fields) {
+    var sql ='select * from part order by pcode';
+    client.query(sql, function(err, results, fields) {
 	    if (err){
 		console.log('err: ' + err);
 	    }
@@ -27,7 +28,7 @@ function showPart(req, res) {
 
 	    posts.userid = (req.session.userid)?req.session.userid:'undefined';
 		posts.mesg = 'ここは警告表示行';
-					 console.log('posts: ',posts);
+
 
 	    res.render('scr/scr201', posts);
 	});
@@ -93,7 +94,8 @@ exports.main = function(req, res){
     var file = './controller/data/str.json';
     var deffile = './controller/data/def201.json';
 
-    if (!libap.isSession(req.session)) {
+//    if (!libap.isSession(req.session)) {
+    if (!lcsAp.isSession(req.session)) {
 		res.redirect('/');
     }
 

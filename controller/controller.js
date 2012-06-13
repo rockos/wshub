@@ -10,6 +10,9 @@ var inf  = require("./inf/inf");
 
 /* function Definition */
 var handle = {};
+handle['/'] = login;
+handle['/logout'] = logout;
+handle['/check'] = checkUser;
 handle['/scr/101'] = iqy.main;
 handle['/scr/102'] = iqy.main;
 handle['/scr/201'] = str.main;
@@ -17,33 +20,94 @@ handle['/scr/301'] = mop.main; /* オーダープロセス*/
 handle['/scr/701'] = rpt.main; /* 帳票作成*/
 handle['/scr/800'] = inf.main;
 
-exports.scrget = function(req, res){
+/* export function */
+exports.login = login;
+exports.logout = logout;
+exports.getAction = getAction;
+exports.getScr = getScr;
+exports.postScr = postScr;
+exports.checkUser = checkUser;
+
+function getAction(req, res){
+	 /* 最終的に全てprivate varにする
+	  */
     var pathname = url.parse(req.url).pathname;
     console.log('get action ' + req.params.id);
     if (typeof handle[pathname] === 'function') {
-	handle[pathname](req, res);
+		handle[pathname](req, res);
     } else {
-	res.redirect('/');
+		res.redirect('/');
+    }
+
+
+
+};
+
+function login(req, res){
+    auth.get(req.session.id, function(err, sess) {
+				 console.log('userid: ',req.session.userid);
+				 if(sess && sess.views) {
+					 res.render('scr/scr800', {
+									title:'locos',userid:req.session.userid}); /* 初期はmail画面 */
+				 } else {
+					 res.render('login', {
+									layout:'mylayout.ejs',
+									title: 'LocoS',userid:'not login' });
+				 }
+			 });
+	
+};
+
+function logout(req, res) {
+    auth.destroy(req.session.id, function(err) {
+	    req.session.destroy();
+	    console.log('deleted sesstion');
+	    res.redirect('/');
+	});
+    /*
+    delete req.session.userid;
+    delete req.session.password;
+    console.log('session.userid: ', req.session.userid);
+    res.redirect('/');
+    */
+}
+
+function notfound(req, res){
+  res.render('404', { layout:'mylayout.ejs',title: 'LocoS' });
+};
+
+/*
+ * GET処理
+ */
+function getScr(req, res){
+    var pathname = url.parse(req.url).pathname;
+    /* console.log('get action ' + req.params.id);
+	 */
+    if (typeof handle[pathname] === 'function') {
+		handle[pathname](req, res);
+    } else {
+		res.redirect('/');
     }
 
 };
 
-
-exports.scrpost = function(req, res) {
+/*
+ * POST処理
+ */
+function postScr(req, res) {
     var pathname = url.parse(req.url).pathname;
-
     /* dispatch */
     if (typeof handle[pathname] === 'function') {
-	handle[pathname](req, res);
+		handle[pathname](req, res);
     } else {
-	res.redirect('/');
+		res.redirect('/');
     }
 
 };
 /*
- *
+ * ログイン処理
  */
-exports.check = function(req, res) {
+function checkUser(req, res) {
 
     var sql ='select userid,password from user where userid=?';
     client.query(sql, [req.body.userid],function(err, results, fields) {
@@ -74,16 +138,3 @@ exports.check = function(req, res) {
 	});
 };
 
-exports.logout = function(req, res) {
-    auth.destroy(req.session.id, function(err) {
-	    req.session.destroy();
-	    console.log('deleted sesstion');
-	    res.redirect('/');
-	});
-    /*
-    delete req.session.userid;
-    delete req.session.password;
-    console.log('session.userid: ', req.session.userid);
-    res.redirect('/');
-    */
-}

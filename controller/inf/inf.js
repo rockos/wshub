@@ -2,7 +2,9 @@
  * main routine
  * date 22.mar.2012
  */
-libap = require('../../lib/ap/libap');
+//libap = require('../../lib/ap/libap');
+var LCSAP = require('../../lib/ap/lcsap');
+var lcsAp = new LCSAP('MOP');
 
 exports.main = function(req, res){
     var deffile = './controller/data/def.json';
@@ -15,11 +17,11 @@ exports.main = function(req, res){
 	res.redirect('/');
     }
     */
-    if (libap.isSession(req.session)) {
-	posts.userid = req.session.userid;
-	res.render('scr/scr800', posts);
+    if (lcsAp.isSession(req.session)) {
+		posts.userid = req.session.userid;
+		res.render('scr/scr800', posts);
     } else {
-	res.redirect('/');
+		res.redirect('/');
     }
 
 };

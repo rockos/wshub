@@ -4,7 +4,7 @@
  */
 
 exports.index = function(req, res){
-    res.render('index', {title: 'Locos', userid:'not LOGIN'})
+    res.render('index', {title: 'Locos', userid:'not LOGIN'});
 };
 
 exports.login = function(req, res){
@@ -16,12 +16,12 @@ exports.login = function(req, res){
 	    } else {
 		res.render('login', {
 			layout:'mylayout.ejs',
-			title: 'LocoS',userid:'not login' })
+			title: 'LocoS',userid:'not login' });
 	    }
-	})
+	});
 
 };
 
 exports.notFound = function(req, res){
-  res.render('404', { layout:'mylayout.ejs',title: 'LocoS' })
+  res.render('404', { layout:'mylayout.ejs',title: 'LocoS' });
 };
