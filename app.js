@@ -1,33 +1,24 @@
-/*
+/**
  * first commit 2012.6.8 aono
  */
 /**
  * Module dependencies.
  */
 'use strict';
-var express = require('express'), routes = require('./routes'),
-controller = require('./controller/controller'),
-RedisStore = require('connect-redis')(express),
-mapRouter = require('./mapRouter'),
-routesDir = __dirname + '/controller';
+var express = require('express'),
+    routes = require('./routes'),
+    RedisStore = require('connect-redis')(express),
+    mapRouter = require('./mapRouter'),
+    routesDir = __dirname + '/controller';
 
-// 'GET  /' : 'root:index' はこれと同じ
-// var root = require('./routes/root');
-// app.get('/', root.index);
-// オリジナル https://gist.github.com/1354601
-var routesMap = {
-    'GET  /'      : 'controller:index'
-  , 'GET  /str' : 'controller:getScr'
-  , 'GET  /logout' : 'controller:logout'
-  , 'POST /scr' : 'controller:postScr'
-  , 'POST /check' : 'controller:checkUser'
-};
 
 
 var app = module.exports = express.createServer();
 var auth;
-// Configuration
 
+var lcsUI = require('./lib/ap/lcsui').create('lcsUI');
+
+// Configuration
 app.configure(function () {
   app.set('views', __dirname + '/views');
   app.set('view engine', 'ejs');
@@ -51,22 +42,18 @@ app.configure('production', function(){
   app.use(express.errorHandler());
 });
 
+/* 画面プログラムの登録 */
+lcsUI.config('./controller/map.json');
+
 // Routing
-app.get('/', controller.login);
-app.get('/logout', controller.logout);
-app.get('/scr/:id', controller.getScr);
-/* app.get('/menu', routes.index);
-*/
-app.get('/404', routes.notFound);
+app.get('/', lcsUI.login);
+app.get('/logout', lcsUI.logout);
+app.get('/scr/:id', lcsUI.doAction);
+app.get('/404', lcsUI.notFound);
+app.post('/scr/:id', lcsUI.doAction);
+app.post('/check', lcsUI.checkUser);
 
 
-app.post('/scr/:id', controller.postScr);
-app.post('/check', controller.checkUser);
-
-
-/*
-app.mapRouter(routesMap, routesDir);
-*/
 app.listen(3001, function(){
   console.log("Express server listening on port %d in %s mode", app.address().port, app.settings.env);
 });
@@ -75,6 +62,9 @@ app.listen(3001, function(){
 var mysql = require('mysql');
 var mysqlConfig = {'host':'localhost', 'user':'locos', 'password':'land0522', 'database':'pigmo'};
 var mysqlClient = mysql.createClient(mysqlConfig);
-global['client'] = mysqlClient;
 
+/*
+ * lcsUIで管理する。
+ */
+global['client'] = mysqlClient;
 global['auth'] = auth;
