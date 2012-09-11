@@ -3,8 +3,8 @@
  * date 22.mar.2012
  */
 //libap = require('../../lib/ap/libap');
-var LCSAP = require('../../lib/ap/lcsap');
-var lcsAp = new LCSAP('MOP');
+//var LCSAP = require('../../lib/ap/lcsap');
+//var lcsAp = new LCSAP('MOP');
 
 exports.main = function(req, res){
     var deffile = './controller/data/def.json';

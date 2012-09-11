@@ -1,0 +1,11 @@
+for (var i = 1; i<= 10000 ; i++) {
+
+    var jisslog = {
+        id : i,
+        name : "nanashi_" + i ,
+        created_on : new Date()
+    };
+
+    db.collection.save(user);
+}
+

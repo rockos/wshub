@@ -1,0 +1,37 @@
+{"frameNavi":{
+"customer":"武蔵小金井倉庫"
+,"comment":"powerd by somali"
+,"name":"WEBトランクルーム"
+,"topMenu":[
+ {"name":"入庫",
+        "subMenu":[
+        {"href":"/scr/201","name":"入荷"}
+        ,{"href":"/scr/202","name":"入庫"}
+        ,{"href":"/scr/203","name":"検品"}
+        ]
+ }
+,
+ {"name":"出庫",
+        "subMenu":[
+        {"href":"/scr/301","name":"出庫(全量)"}
+        ,{"href":"/scr/302","name":"出庫(ピッキング)"}
+        ,{"href":"/scr/302","name":"出庫(積増)"}
+        ]
+ }
+, {"name":"検索",
+        "subMenu":[
+        {"href":"/scr/110","name":"在庫検索"}
+        ,{"href":"/scr/119","name":"ロケ検索"}
+        ,{"href":"/scr/701","name":"利用明細"}
+        ]
+ }
+, {"name":"環境モニタ",
+        "subMenu":[
+        {"href":"/scr/104","name":"グラフ(Dynamic)"}
+        ,{"href":"/scr/105","name":"グラフ(static)"}
+        ,{"href":"/scr/103","name":"マップ"}
+        ]
+ }
+]
+}
+}

@@ -1,0 +1,79 @@
+<div id="contents">
+
+	<div id="mainx">
+		<section id="mailTray">
+			<h1>受信トレイ</h1>
+			<div id="operationPanel">
+			</div>
+			<div id="mailList">
+
+                	<FORM name="main_form" method="post" action="/scr/800" class="regist3">
+																		
+                    <INPUT type="hidden" id="funcPB" name="send_xxx" value="FUNC">
+					<table>
+						<thead>
+							<tr>
+								<th></th>
+								<th>差出人</th>
+								<th>件名</th>
+								<th>日付</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr onclick="document.getElementById('funcPB').name='Demo';document.main_form.submit();">
+								<td></td>
+								<td>ヘルプデスク</td>
+								<td>このデモについて</td>
+								<td>2012/05/08 10:00</td>
+							</tr>
+							<tr class="current" onclick="document.getElementById('funcPB').name='I18N';document.main_form.submit();">
+								<td></td>
+								<td>ヘルプデスク</td>
+								<td>言語の切換え</td>
+								<td>2012/05/06 16:32</td>
+							</tr>
+							<tr onclick="document.getElementById('funcPB').name='Graph';document.main_form.submit();">
+								<td></td>
+								<td>ヘルプデスク</td>
+								<td>見える化</td>
+								<td>2012/01/05 14:22</td>
+							</tr>
+						</tbody>
+					</table>
+				</form>
+			</div>
+		</section>
+<!--
+        <iframe src="http://docs.google.com/gview?
+        url=http://www.sample.com/sample.pdf&embedded=true" style="width:600px; height:500px;" frameborder="0"></iframe>
+-->
+
+		<section id="mailDetail">
+			<header>
+
+				<ul>
+					<li><span>件名:</span>見える化</li>
+					<li><span>From:</span>ヘルプデスク</li>
+					<li><span>To:</span>foo&ltat&gtvar.co.jp</li>
+				</ul>
+
+			</header>
+			<div class="body">
+				クラウド側アプリケーションは外部機器とリアルタイムで通信することができます。<br>
+                <IMG SRC="/images/sensor_graph.png" WIDTH=640 HEIGHT=480>
+                <div style="float:right;display:inline;width:300px;text-align:left">
+                この文章は図の右に描きたい。
+                </div>
+                
+				<br>
+			</div>
+
+		</section>
+	</div>
+<!--
+	<div id="sub">
+    </div>
+-->
+</div>
+
+

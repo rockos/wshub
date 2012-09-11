@@ -1,0 +1,154 @@
+<header id="header">
+	<h1 id="siteID"><a href="scr/101">LocoS</a></h1>
+	<div id="search">
+		<form action="#" method="post">
+			<input class="textbox" type="search">
+			<input class="submit" type="submit" value="検索">
+		</form>
+	</div>
+	<ul id="userInfo">
+		<li><b>tacamy@mdn-mail.com</b> (<a href="#">ログアウト</a>)</li>
+		<li><a class="setting" href="#">設定</a></li>
+	</ul>
+</header>
+
+<div id="contents">
+	<div id="main">
+		<section id="mailTray">
+			<h1>受信トレイ</h1>
+			<div id="operationPanel">
+				<ul>
+					<li><a href="#">返信</a></li>
+					<li><a href="#">全員に返信</a></li>
+					<li><a href="#">転送</a></li>
+				</ul>
+				<ul>
+					<li><a href="#">迷惑メール報告</a></li>
+					<li><a href="#">削除</a></li>
+				</ul>
+				<ul>
+					<li><a href="#">印刷</a></li>
+				</ul>
+			</div>
+			<div id="mailList">
+				<form action="#" method="post">
+					<table>
+						<thead>
+							<tr>
+								<th><input type="checkbox"></th>
+								<th>差出人</th>
+								<th>件名</th>
+								<th>日付</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td><input type="checkbox"></td>
+								<td>MdN Bookmark</td>
+								<td>マイホットエントリー</td>
+								<td>2012/01/08 10:00</td>
+							</tr>
+							<tr class="current">
+								<td><input type="checkbox"></td>
+								<td>MdN Books</td>
+								<td>MdN Booksギフト券</td>
+								<td>2012/01/06 16:32</td>
+							</tr>
+							<tr>
+								<td><input type="checkbox"></td>
+								<td>MdN Books</td>
+								<td>商品を発送いたしました</td>
+								<td>2012/01/05 14:22</td>
+							</tr>
+						</tbody>
+					</table>
+				</form>
+			</div>
+		</section>
+		<section id="mailDetail">
+			<header>
+				<h1>MdN Booksギフト券</h1>
+				<ul>
+					<li><span>From:</span>MdN Books</li>
+					<li><span>To:</span>tacamy@mdn-mail.com</li>
+				</ul>
+				<p><time datetime="2012-01-06T16:32:30+0900">2012/01/06 16:32</time></p>
+			</header>
+			<div class="body">
+				MdN Booksが発行するMdN Booksギフト券をご注文いただきありがとうございます。<br>
+				ご注文内容は以下のとおりです。<br>
+				<br>
+				注文内容：<br>
+				------------------------------------------------------------<br>
+				MdN Booksギフト券の注文 (注文番号: #000-000000-000000)<br>
+				------------------------------------------------------------<br>
+				送信先: hamashun@mdn-mail.com<br>
+				金額： ￥ 10,000<br>
+				数量： 1<br>
+				------------------------------------------------------------<br>
+				小計： ￥ 10,000<br>
+				送料： 無料<br>
+				消費税： ￥ 0<br>
+				-------<br>
+				合計： ￥ 10,000<br>
+				<br>
+				注文の最新状況は以下のURLをクリックしてご確認ください。<br>
+				<a href="#">http://www.mdn-books.com/account</a><br>
+				<br>
+				MdN Booksギフト券の送信先の変更（Eメール形式のMdN Booksギフト券のみ）について：<br>
+				MdN Booksギフト券の送信先Eメールアドレスは、未使用で有効期限内であれば、<br>
+				修正し再送することができます。<br>
+				<br>
+				詳しくは下記のURLをクリックしてご確認ください。<br>
+				<a href="#">http://www.mdn-books.com/help/customer?hoge</a><br>
+				<br>
+				------------------------------------------------------------<br>
+				MdN Books<br>
+				<a href="#">http://www.mdn-books.com</a><br>
+				------------------------------------------------------------<br>
+			</div>
+		</section>
+	</div>
+	<div id="sub">
+		<section id="createMail">
+			<h1>メール作成</h1>
+			<p><a href="#">新規作成</a></p>
+		</section>
+		<section id="folderList">
+			<h1>フォルダ一覧</h1>
+			<ul>
+				<li class="current"><a href="#">受信トレイ</a></li>
+				<li><a href="#">送信済みメール</a></li>
+				<li><a href="#">下書き</a></li>
+				<li><a href="#">迷惑メール</a></li>
+				<li><a href="#">ゴミ箱</a></li>
+			</ul>
+		</section>
+	</div>
+	<div id="extra">
+		<aside id="ad">
+			<dl>
+				<dt><a href="#">MdN SOHO 公式サイト</a></dt>
+				<dd class="txt">宇宙最大級SOHOオフィスが期間限定キャンペーン開催中！仲介料不要</dd>
+				<dd class="url"><a href="#">www.mdn-soho.com</a></dd>
+				<dt><a href="#">EPUB変換ブックスキャナ</a></dt>
+				<dd class="txt">世界初！書籍を読み取るだけで自動でEPUBに変換できる驚きのブックスキャナが登場</dd>
+				<dd class="url"><a href="#">www.epub-scanner.com</a></dd>
+				<dt><a href="#">ニッチな電子書籍サイト</a></dt>
+				<dd class="txt">偏ったジャンルから本やコミックを探せる 他では見つからない掘り出し物を探そう</dd>
+				<dd class="url"><a href="#">niche-book.jp</a></dd>
+			</dl>
+		</aside>
+	</div>
+</div>
+
+<footer id="footer">
+	<ul id="rulesNav">
+		<li><a href="#">プライバシーポリシー</a></li>
+		<li><a href="#">利用規約</a></li>
+		<li><a href="#">ヘルプ</a></li>
+		<li><a href="#">お問い合わせ</a></li>
+	</ul>
+	<p id="copyright"><small>© MdN Mail</small></p>
+</footer>
+

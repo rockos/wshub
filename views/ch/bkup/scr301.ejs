@@ -1,0 +1,168 @@
+<% if (socket_io_start == "1") { %>
+<script type="text/javascript" src="/socket.io/socket.io.js"></script>
+<script type="text/javascript">
+var socket = io.connect();
+socket.on("scr301_info", function (html) { 
+    document.getElementById("step_info").innerHTML += html;
+});
+</script>
+<% } %>
+
+<div id="contents">
+
+    <div id="mainx">
+    <form name="main_form" method="post" action="/scr/301" class="regist3">
+        <section id="mailTray">
+            <h1>退房</h1>
+            <div id="operationPanel">
+            <span class="<%= mesg_level_color %>"><%= mesg %></span>
+            </div><!-- operationPanel -->
+        </section> <!-- mailTray -->
+
+        <div id="ordrList">
+            <table border="0">
+              <col width="110" align="center">
+              <col width="285" align="left">
+              <col width="110" align="center">
+              <col width="" align="left">
+              <tr>
+                <th>订购号码</th>
+                <td>
+                  <INPUT type="text" id="ordr" class="STYLE_ORDR" size="20" maxlength="20" 
+                   placeholder="前方一致" name="ordr" 
+                   value="<%= text.ordr %>" tabindex = "-1">
+                </td>
+                <th>状态</th>
+                <td>
+                  <INPUT type="checkbox" id="c1" class="" name="chk1" value="1" 
+                   <%= checkbox.chk1['1'] %>>未
+                  <INPUT type="checkbox" id="c1" class="" name="chk1" value="2" 
+                   <%= checkbox.chk1['2'] %>>开始
+                  <INPUT type="checkbox" id="c1" class="" name="chk1" value="3" 
+                   <%= checkbox.chk1['3'] %>>完成
+                </td>
+              </tr>
+              <tr>
+                <th>会员号码</th>
+                <td>
+                  <INPUT type="text" id="lotn" class="STYLE_LOTN" size="8" maxlength="8" 
+                   placeholder="前方一致" name="lotn" 
+                   value="<%= text.lotn %>" tabindex = "-1">
+                </td>
+                <th></th>
+                <td></td>
+              </tr>
+              <tr>
+                <th>保管地方</th>
+                <td>
+                  <select name="area">
+                    <option value=""></option><!--dmy-->
+                    <% for (var i=0,max=options.length; i < max; i++ ) { %>
+                      <option value="<%= options[i].area %>" <%= options[i].selected %>>
+                        <%= options[i].area_name %>
+                      </option>
+                    <% } %>
+                  </select>
+                </td>
+                <th></th>
+                <td></td>
+              </tr>
+            </table>
+        </div> <!-- ordrList -->
+
+        <br/>
+
+        <div id="inqList2">
+            <table>
+                <col width="50">
+                <col width="180">
+                <col width="100">
+                <col width="100">
+                <col width="80">
+                <col width="">
+                <tr>
+                    <th></th>
+                    <th>订购号码</th>
+                    <th>会员号码</th>
+                    <th>数量</th>
+                    <th>状态</th>
+                    <th>备考</th>
+                </tr>
+
+                <% for (var i = 0, max=tables.length  ; i < max ; i++ ) { %>
+                <tr>
+                    <td>
+                    <% if (tables[i].radio == "1") { %>
+                      <input type='radio' name='rad01' value="<%= tables[i].ordr %>"
+                         <%= tables[i].radio_checked %>>
+                    <% } %>
+                    </td>
+                    <td><%= tables[i].ordr %></td>
+                    <td><%= tables[i].lotn %></td>
+                    <td><%= tables[i].sqty %></td>
+                    <td><%= tables[i].stat_str %></td>
+                    <td><%= tables[i].mem1 %></td>
+                </tr>
+                <% } %>
+
+            </table>
+        </div><!--inqList-->
+
+        <br/>
+
+		<h2>订购号码:<%= tables2_head.ordr %></h2>
+		<h2>开始时间:<%= tables2_head.start %></h2>
+
+        <div id="inqList2">
+            <table>
+                <col width="180">
+                <col width="100">
+                <col width="100">
+                <col width="100">
+                <col width="">
+                <tr>
+                    <th>橱柜号码</th>
+                    <th>标签号码</th>
+                    <th>收存入日</th>
+                    <th>期间</th>
+                    <th>备考</th>
+                </tr>
+
+                <% for (var i = 0, max=tables2.length  ; i < max ; i++ ) { %>
+                <tr>
+                    <td><%= tables2[i].locn_name %></td>
+                    <td><%= tables2[i].part %></td>
+                    <td><%= tables2[i].part_name %></td>
+                    <td><%= tables2[i].sqty %></td>
+                    <td><%= tables2[i].mem1 %></td>
+                </tr>
+                <% } %>
+
+            </table>
+        </div><!--inqList-->
+
+        <div id="step_info"></div>
+
+
+    </div> <!--mainx-->
+
+    <div id="sub">
+        <section id="createMail">
+            <p><a href="#">退房</a></p>
+        </section>
+        <section id="folderList" class='regist'>
+            <ul>
+            <li><INPUT type="hidden" id="funcPB" name="send_xxx" value="FUNC"></li>
+            <li class="current"><a href="#" onclick="document.getElementById('funcPB').name='send_add';
+                                     document.main_form.submit();">开始</a></li>
+            <!--li><a href="#" onclick="document.getElementById('funcPB').name='send_del';
+                                     document.main_form.submit();">中断</a></li-->
+            <li><a href="#" onclick="document.getElementById('funcPB').name='send_iqy';
+                                     document.main_form.submit();">最新表示</a></li>
+            <!--li><a href="#">指示书印刷</a></li-->
+            </ul>
+        </section>
+    </div> <!-- sub -->
+
+    </form>
+</div> <!--contents-->

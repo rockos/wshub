@@ -1,0 +1,12 @@
+tab[
+{pcode:'pcode1',sqty:'987',lotn:'lotn01'}
+,{pcode:'pcode2',sqty:'123',lotn:'lotn02'}
+,{pcode:'pcode1',sqty:'5555',lotn:'lotn99'} 
+]
+
+
+"tab":[
+ {"pcode":'pcode1',"sqty":'sqty',"lotn":'lotn01'}]
+,{"pcode":'pcode2',"sqty":'sqty',"lotn":'lotn02'}]
+,{"pcode":'pcode1',"sqty":'sqty',"lotn":'lotn99'}
+]

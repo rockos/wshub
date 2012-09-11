@@ -1,0 +1,126 @@
+/**
+ * mongodbインターフェース
+ *
+ * @modlue lcsMo
+ */
+var lcsAp = require('../ap/lcsap').create('LCSMO');
+
+var mongoose = require('mongoose');
+
+/*
+ * Constructor
+ *
+ */
+function lcsMo(nm, cf) {
+
+    var _name = nm || "rockos";
+    var instancs = this;
+
+    /* 設定ファイル読み込み */
+    var conf  = JSON.parse(require('fs').readFileSync(cf));
+
+    /*
+     * mongodbに接続
+     */
+    var conStr = 'mongodb://' + conf.host + '/' + conf.database;
+    //  mongoose.connect('mongodb://localhost/test');
+    mongoose.connect(conStr);
+
+    /**
+     *
+     * Schemaの定義
+     * Default Schemaから新しいSchemaを定義
+     */
+    var GndLogSchema = new mongoose.Schema({
+            mc_bigin: String,
+            mc_name: String,
+            mc_state: String,
+            mc_date: Date
+        });
+
+    /* 
+     * モデル化  model('モデル名', '定義したスキーマクラス')
+     */
+    var gndlog = mongoose.model('gndlog', GndLogSchema);
+    
+    /* 定義したときの登録名で呼び出し */
+    //    var gndLog = mongoose.model('gndlog');
+
+
+
+    /**
+     *
+     * @method findAll
+     *
+     */
+    lcsMo.prototype.findAll = function(callback) {
+        var db = new gndlog();
+        db.find({}, function(err) {
+                callback()
+            });
+    };
+
+    /**
+     *
+     * @method findById
+     */
+    lcsMo.prototype.findById = function(id, callback) {
+        var db = new gndlog();
+        db.findById(id, function(err) {
+                callback()
+            });
+    };
+    
+    /**
+     * @method save document to specified collection.
+     * @param {String} schema name
+     * @params {[Array] 
+     * @params {function} callback
+     */
+    lcsMo.prototype.save = function(scm, params, callback) {
+        if (scm == "gndlog") {
+            var db = new gndlog();
+        } else {
+            return callback("","");
+        }
+        for (var k in params) {
+            db[k] = params[k];
+        }
+
+       db.save(function(err) {
+                callback(err);
+            });
+    };
+
+    /*
+     * クエリ発行
+     *
+     * @method query
+     * @params {[String]}funcs, {[Array]}ary
+     *
+     */
+    lcsMo.prototype.query = function () {
+        
+    }
+    /*
+     * 2回目以降はインスタンスだけ返す
+     */
+    lcsMo = function () {
+        return instancs;
+    };
+
+
+}; /* END of constructor */
+
+/**
+ * 
+ * creates an instance
+ */
+lcsMo.create = function(nm, file) {
+    return new lcsMo(nm, file);
+};
+
+/**
+ * default comparison function
+ */
+if (typeof exports == 'object' && exports === this) module.exports = lcsMo;

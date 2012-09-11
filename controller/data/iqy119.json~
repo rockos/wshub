@@ -1,0 +1,43 @@
+{"customer": "武蔵倉庫"
+,"title": "在庫検索"
+,"scrhead": "This screen is for form test."
+,"comment":"WEBトランクルーム"
+,"topNavi":[
+ {"name":"入庫",
+        "subMenu":[
+        {"href":"/scr/201","name":"入荷"}
+        ,{"href":"/scr/202","name":"入庫"}
+        ,{"href":"/scr/203","name":"検品"}
+        ]
+ }
+,
+ {"name":"出庫",
+        "subMenu":[
+        {"href":"/scr/301","name":"出庫(全量)"}
+        ,{"href":"/scr/302","name":"出庫(ピッキング)"}
+        ,{"href":"/scr/302","name":"出庫(積増)"}
+        ]
+ }
+]
+,"tana":[
+ {"name": "u1001"}
+ ,{"name": "u2001"}
+ ,{"name": "u3001"}
+ ,{"name": "u4001"}
+ ,{"name": "u5001"}
+]
+,"tab":[
+ {"userid": "Moutain railway", "sqty":"001","pnam": "there are smoking area."
+  ,"lotn":"001","mem1":"mem1","mem2":"mem2","mem3":"mem3"}
+,{"userid": "Korea Air line", "sqty":"001","pnam": "this is no smoking area."
+  ,"lotn":"001","mem1":"mem1","mem2":"mem2","mem3":"mem3"}
+,{"userid": "Central Sea transport", "sqty":"001","pnam": "office & utilities."
+  ,"lotn":"001","mem1":"mem1","mem2":"mem2","mem3":"mem3"}
+,{"userid": "sky walker", "sqty":"001","pnam": "Not ready"
+  ,"lotn":"001","mem1":"mem1","mem2":"mem2","mem3":"mem3"}
+,{"userid": "message in the bottle", "sqty":"001","pnam": "out of order"
+  ,"lotn":"001","mem1":"mem1","mem2":"mem2","mem3":"mem3"}
+,{"userid": "BooBoo", "sqty":"001","pnam": "BAD weather"
+  ,"lotn":"001","mem1":"mem1","mem2":"mem2","mem3":"mem3"}
+]
+}

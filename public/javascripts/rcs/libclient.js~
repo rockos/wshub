@@ -1,0 +1,4 @@
+function rcsSetAttr(id, nm){
+    $(".id").name=nm;
+    $.main_form.submit();
+}

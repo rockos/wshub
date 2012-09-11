@@ -1,0 +1,118 @@
+<form name="main_form" method="post" action="/scr/110">
+<input type="hidden" name="dspcstm" value="<%= dspcstm_val %>">
+
+  <div id="sub_body">
+    <p class="<%= dspcstm['corp'] %>"><a href="#">法人会員様</a></p>
+    <p class="<%= dspcstm['priv'] %>"><a href="#">個人会員様</a></p>
+    <p class="<%= dspcstm['vist'] %>"><a href="#">ビジター様</a></p>
+    <ul>
+      <li><input type="submit" class="send" name="QRY" value="検索"><li>
+      <li class="hidden"><a href="#">レポート</a><li>
+    </ul>
+  </div>
+
+  <div id="main_body">
+    <div class="mesg_bar">
+      <span class="= mesg_level_color "><%= mesg %></span>
+    </div>
+
+    <table class="cond201">
+      <colgroup>
+        <col span="1" class="c1">
+        <col span="1" class="c2">
+        <col span="1" class="c3">
+        <col span="1" class="c4">
+        <tr>
+        <tr>
+          <th>会員番号</th>
+          <td>
+            <select name="pcode">
+              <option value=""></option><!--dmy-->
+              <% for (var i=0,max = pageNavi.options2.length; i < max; i++ ) { %>
+                <option value="<%= pageNavi.options2[i].userid %>" <%= pageNavi.options2[i].selected %>>
+                  <%= pageNavi.options2[i].userid %>
+                </option>
+              <% } %>
+            </select>
+          </td>
+          <th></th>
+          <td></td>
+        </tr>
+        <tr>
+
+          <th>ロッカーNo</th>
+          <td>
+            <select name="address">
+              <option value=""></option><!--dmy-->
+              <% for (var i=0,max = pageNavi.options2.length; i < max; i++ ) { %>
+                <option value="<%= pageNavi.options2[i].address %>" <%= pageNavi.options2[i].selected %>>
+                  <%= pageNavi.options2[i].address_name %>
+                </option>
+              <% } %>
+            </select>
+          </td>
+          <th></th>
+          <td></td>
+    </table>
+
+    <br/>
+
+    <table class="list201">
+      <colgroup>
+        <col span="1" class="c1">
+        <col span="1" class="c2">
+        <col span="1" class="c3">
+        <col span="1" class="c4">
+        <col span="1" class="c5">
+        <col span="1" class="c6">
+        <col span="1" class="c7">
+        <col span="1" class="c8">
+        <thead>
+        <tr>
+          <th></th>
+          <th>会員番号</th>
+          <th>搬入数量</th>
+          <th>ロッカーNo</th>
+          <th>タグNo</th>
+          <th>預け入れ期間</th>
+          <th>特記事項</th>
+          <th>お客様メモ</th>
+        </tr>
+        </thead>
+
+<script>
+var dataSet = function(x) {
+    var ary = x.value.split(',');
+    main_form.pcode.value = ary[0];
+    main_form.sqty.value = ary[1];
+    main_form.pnam.value = ary[2];
+    main_form.lotn.value = ary[3];
+    main_form.mem1.value = ary[4];
+    main_form.mem2.value = ary[5];
+    main_form.mem3.value = ary[6];
+}
+</script>
+
+        <tbody>
+        <% for (var i = 0, max = pageNavi.tab.length; i < max; i++) { %>
+        <tr>
+          <td>
+            <% if (pageNavi.tab[i].sqty >1000) { %>
+              <input type='radio' name='rdo01' value='<%= pageNavi.tab[i].radiodata %>' onclick='dataSet(this);' checked > 
+            <% } else { %>
+              <input type='radio' name='rdo01' value='<%= pageNavi.tab[i].radiodata %>' onclick='dataSet(this);'> 
+            <% } %>
+          </td>
+<TD><%= pageNavi.tab[i].userid %></TD>
+<TD><%= pageNavi.tab[i].sqty %></TD>
+<TD><%= pageNavi.tab[i].pnam %></TD>
+<TD><%= pageNavi.tab[i].lotn %></TD>
+<TD><%= pageNavi.tab[i].mem1 %></TD>
+<TD><%= pageNavi.tab[i].mem2 %></TD>
+<TD><%= pageNavi.tab[i].mem3 %></TD>
+        </tr>
+        <% } %>
+        </tbody>
+    </table>
+  </div>
+</form>

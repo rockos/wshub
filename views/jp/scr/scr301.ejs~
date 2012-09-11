@@ -1,0 +1,158 @@
+<form name="main_form" method="post" action="/scr/301">
+
+  <div id="sub_body">
+    <p><a href="#">法人会員様</a></p>
+    <p><a href="#">個人会員様</a></p>
+    <p><a href="#">ビジター様</a></p>
+    <ul>
+      <li><input type="submit" class="send" name="send_add" value="開始"><li>
+      <li><input type="submit" class="send" name="send_del" value="中断"><li>
+      <li><input type="submit" class="send" name="send_iqy" value="最新表示"><li>
+      <li><input type="submit" class="send" name="send_prn" value="出庫指示書印刷"><li>
+    </ul>
+  </div>
+
+  <div id="main_body">
+    <div class="mesg_bar">
+      <span class="<%= mesg_level_color %>"><%= mesg %></span>
+    </div>
+
+    <table class="cond301">
+      <colgroup>
+        <col span="1" class="c1">
+        <col span="1" class="c2">
+        <col span="1" class="c3">
+        <col span="1" class="c4">
+        <col span="1" class="c5">
+        <tr>
+          <th>会員番号</th>
+          <td>
+            <select name="pcode">
+              <option value=""></option><!--dmy-->
+              <% for (var i=0,max=options2.length; i < max; i++ ) { %>
+                <option value="<%= options2[i].pcode %>" <%= options2[i].selected %>>
+                  <%= options2[i].pcode_name %>
+                </option>
+              <% } %>
+            </select>
+          </td>
+          <th></th>
+          <td></td>
+        </tr>
+
+
+
+
+
+
+
+        <tr>
+          <th>オーダ番号</th>
+          <td>
+            <INPUT type="text" id="ordr" class="" size="20" maxlength="20" 
+              placeholder="前方一致" name="ordr" 
+              value="<%= text.ordr %>" tabindex = "-1">
+          </td>
+          <th>状態</th>
+          <td>
+            <INPUT type="checkbox" id="c1" class="" name="chk1" value="1" 
+              <%= checkbox.chk1['1'] %>>未
+            <INPUT type="checkbox" id="c1" class="" name="chk1" value="2" 
+              <%= checkbox.chk1['2'] %>>開始
+            <INPUT type="checkbox" id="c1" class="" name="chk1" value="3" 
+              <%= checkbox.chk1['3'] %>>完了
+          </td>
+        </tr>
+        <tr>
+          <th>会員番号</th>
+          <td>
+            <INPUT type="text" id="lotn" class="STYLE_LOTN" size="8" maxlength="8" 
+             placeholder="前方一致" name="lotn" 
+             value="<%= text.lotn %>" tabindex = "-1">
+          </td>
+          <th></th>
+          <td></td>
+        </tr>
+        <tr>
+          <th>保管エリア</th>
+          <td>
+            <select name="area">
+              <option value=""></option><!--dmy-->
+              <% for (var i=0,max=options.length; i < max; i++ ) { %>
+                <option value="<%= options[i].area %>" <%= options[i].selected %>>
+                  <%= options[i].area_name %>
+                </option>
+              <% } %>
+            </select>
+          </td>
+          <th></th>
+          <td></td>
+        </tr>
+    </table>
+
+    <table class="list301">
+      <colgroup>
+        <col span="1" class="c1">
+        <col span="1" class="c2">
+        <col span="1" class="c3">
+        <col span="1" class="c4">
+        <col span="1" class="c5">
+        <col span="1" class="c6">
+        <tr>
+          <th></th>
+          <th>オーダ番号</th>
+          <th>会員番号</th>
+          <th>搬出数</th>
+          <th>状態</th>
+          <th>備考</th>
+        </tr>
+
+        <% for (var i = 0, max=tables.length  ; i < max ; i++ ) { %>
+        <tr>
+          <td>
+          <% if (tables[i].radio == "1") { %>
+            <input type='radio' name='rad01' value="<%= tables[i].ordr %>"
+              <%= tables[i].radio_checked %>>
+          <% } %>
+          </td>
+          <td><%= tables[i].ordr %></td>
+          <td><%= tables[i].lotn %></td>
+          <td><%= tables[i].sqty %></td>
+          <td><%= tables[i].stat_str %></td>
+          <td><%= tables[i].mem1 %></td>
+        </tr>
+        <% } %>
+    </table>
+
+    <br/>
+
+    <h2 class="list301">オーダ番号:<%= tables2_head.ordr %></h2>
+    <h2 class="list301">開始時間:<%= tables2_head.start %></h2>
+
+    <table class="list301">
+      <colgroup>
+        <col span="1" class="c11">
+        <col span="1" class="c12">
+        <col span="1" class="c13">
+        <col span="1" class="c14">
+        <col span="1" class="c15">
+        <tr>
+          <th>ロッカーNo</th>
+          <th>タグNo</th>
+          <th>預入日</th>
+          <th>期間</th>
+          <th>備考</th>
+        </tr>
+
+        <% for (var i = 0, max=tables2.length  ; i < max ; i++ ) { %>
+          <tr>
+            <td><%= tables2[i].locn_name %></td>
+            <td><%= tables2[i].part %></td>
+            <td><%= tables2[i].part_name %></td>
+            <td><%= tables2[i].sqty %></td>
+            <td><%= tables2[i].mem1 %></td>
+          </tr>
+        <% } %>
+    </table>
+  </div>
+</form>

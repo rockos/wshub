@@ -1,0 +1,133 @@
+<!--タイトル部分-->
+<div id="contents">
+  <div id="mainx">
+	<FORM name="main_form" method="post" action="/scr/201" class="regist3">
+	  <section id="mailTray">
+		<h1>체크인</h1>
+		<div id="operationPanel">
+		  <%= mesg %>
+		</div>  <!-- operationPanel -->
+	  </section> <!-- mailTray -->
+
+	  <div id="partList">
+		<fieldset style="width:975" name="noname">
+		  <legend>Check in</legend>
+		  <TABLE width="" align="" border="0">
+		    <COL width="110" align="center">
+		    <COL width="385" align="left">
+			<COL width="90" align="center">
+			<COL width="" align="left">
+		    <TR>
+		      <TH>회원번호</th>
+		      <TD>
+			    <INPUT type="text" id="pcod" class="STYLE_PCOD" size="8" placeholder="Necessity"
+			           maxlength="8" name="pcode" id="pcod" value="" tabindex = "11">
+		      </TD>
+		    </TR>
+		    <TR>
+		      <TH>로커 번호</th>
+		      <TD colspan="3">
+			    <INPUT type="text" id="pnam" class="STYLE_PNAM" size="10" placeholder="Necessity"
+			           maxlength="10" name="pnam" id="pnam" value="" tabindex = "12">
+		      </TD>
+		    </TR>
+		    <TR>
+		      <TH>수량</TH>
+		      <TD>
+			    <INPUT type="text" id="qnty" class="STYLE_QNTY" size="4" placeholder="Number"
+			           maxlength="4" name="sqty" id="pqty" value="" tabindex = "13">
+		      </TD>
+		      <TH>비고</TH>
+		      <TD>
+			<INPUT type="text" id="smm2" class="STYLE_SMM" size="20" placeholder="option"
+			       maxlength="20" name="mem2" value="" tabindex = "16">
+		      </TD>
+		    </TR>
+		    <TR>
+		      <TH>태그 번호</TH>
+		      <TD>
+			    <INPUT  type="text" id="lotn" class="STYLE_LOTN" placeholder="option"
+				        size="6" maxlength="6" name="lotn" value="" tabindex = "14">
+		      </TD>
+		      <TH>메모</TH>
+		      <TD>
+			    <INPUT type="text" id="smm3" class="STYLE_SMM" size="20" placeholder="option"
+			           maxlength="20" name="mem3" value="" tabindex = "17">
+		      </TD>
+		    </TR>
+		    <TR>
+		      <TH>기간</TH>
+		      <TD>
+			    <INPUT type="text" id="smm1" class="STYLE_SMM" size="6" placeholder="option"
+			           maxlength="6" name="mem1" value="" tabindex = "15">
+		      </TD>
+		    </TR>
+		  </TABLE>
+          
+		</fieldset>
+</TD>
+</TR>
+<br><br>
+</div> <!-- maillist -->
+<!--
+   <div class="body">
+-->
+<div id=inqList>
+  <table>
+	<thead>
+	  <tr>
+		<th></th>
+		<th>회원번호</th>
+		<th>수량</th>
+	    <th>로커 번호</th>
+	    <th>태그 번호</th>
+	    <th>기간</th>
+	    <th>비고</th>
+	    <th>메모</th>
+	  </tr>
+	</thead>
+	<tbody>
+	  <% for (var i = 0; i < tab.length; i++) { %>
+		 <TR>
+		   <TD>
+			 <% if (tab[i].sqty >1000) { %>
+	  <input type='radio' name='rdo01' checked > 
+	  <% } else { %>
+	  <input type='radio' name='rdo01'> 
+	  <% } %>	  
+</TD>
+<TD><%= tab[i].pcode %></TD>
+<TD><%= tab[i].sqty %></TD>
+<TD><%= tab[i].lotn %></TD>
+<TD><%= tab[i].mem1 %></TD>
+<TD><%= tab[i].mem2 %></TD>
+<TD><%= tab[i].mem3 %></TD>
+<TD><%= tab[i].pnam %></TD>
+</TR>   
+<% } %>
+</tbody>
+</table>
+
+	
+</TABLE>
+</div> <!-- inqList -->
+
+
+</div> <!-- main -->
+<div id="sub">
+  <section id="createMail">
+    
+    <p><a href="#">개인회원 (Check-in)</a></p>
+  </section>
+
+  <section id="folderList">
+	<ul>
+      <li><INPUT type="hidden" id="funcPB" name="send_xxx" value="FUNC"></li>
+      <li class="current"><a href="#"  onclick="document.getElementById('funcPB').name='ADD';document.main_form.submit();">등록</a></li>
+      <li><a href="#" onclick="document.getElementById('funcPB').name='DEL';document.main_form.submit();">삭제</a></li>
+      <li><a href="#" onclick="document.getElementById('funcPB').name='QRY';document.main_form.submit();">최신표시</a></li>
+	</ul>
+  </section>
+</div> <!-- sub -->
+</div> <!-- contents -->
+</FORM>

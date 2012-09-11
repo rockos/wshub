@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <link rel='stylesheet' href='/stylesheets/html5reset.css' />
+    <link rel='stylesheet' href='/stylesheets/jqtransform.css' />
+    <meta http-equiv="content-script-type" content="text/javascript"> 
+<!--    <script src="http://code.jquery.com/jquery-1.5.2.min.js"></script>
+-->
+
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script type="text/javascript" src="/javascripts/highcharts.js"></script>
+    <script type="text/javascript" src="/javascripts/modules/exporting.js"></script>
+    <script type="text/javascript" src="/javascripts/jqtransformplugin/jquery.jqtransform.js"></script>
+    <script language="javascript">
+      $(function(){
+      $('form.regist').jqTransform({imgPath:'/javascripts/jqtransformplugin/img/'});
+      });
+      </script>
+
+  </head>
+  <body>
+
+  <div id="body">
+    <%- body %>
+  </div>
+
+  <div id="header">
+	<div class="company"><a href="/">Rockos</a></div>
+    <div class="comment">会员专用的出租仓库</div>
+
+    <ul class="topNavi">
+      <li><a href="/scr/201">登记</a>
+        <ul>
+          <li><a href="#">法人会员</a></li>
+          <li><a href="#">个人会员</a></li>
+          <li><a href="#">来客</a></li>
+		</ul>
+      </li>
+      <li><a href="/scr/301">退房</a>
+        <ul>
+          <li><a href="#">法人会员</a></li>
+          <li><a href="#">个人会员</a></li>
+          <li><a href="#">来客</a></li>
+		</ul>
+      </li>
+      <li><a href="/scr/701">帐子票</a>
+        <ul>
+          <li><a href="#">登记</a></li>
+          <li><a href="#">退房</a></li>
+		</ul>
+      </li>
+      <li><a href="#">图表</a>
+        <ul>
+<!--
+          <li><a href="/scr/102">グラフ</a></li>
+          <li><a href="/scr/103">作業モニタ</a></li>
+-->
+          <li><a href="/scr/104">图表(Dynamic)</a></li>
+         <li><a href="/scr/105">图表(static)</a></li>
+        </ul>
+      </li>
+    </ul>
+
+    <ul class="userInfo">
+      <li><span><%= userid %></span></li>
+      <li><a class="setting" href="/logout">退出</a> <a class="setting" href="#">設定</a></li>
+	</ul>
+
+  </div>
+
+  <div id="footer">
+    <h3>Copyright (C) Rockos co.,Ltd. All Rights Reserved.</h3>
+  </div>
+
+  </body>
+</html>

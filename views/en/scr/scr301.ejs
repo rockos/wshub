@@ -1,0 +1,200 @@
+<form name="main_form" method="post" action="/scr/301">
+<input type="hidden" name="dspcstm" value="<%= dspcstm_val %>">
+
+  <div id="sub_body">
+    <p class="<%= dspcstm['corp'] %>"><a href="#">Corporate</a></p>
+    <p class="<%= dspcstm['priv'] %>"><a href="#">Private</a></p>
+    <p class="<%= dspcstm['vist'] %>"><a href="#">Visitor</a></p>
+    <ul>
+      <li><input type="submit" class="send" name="send_iqy" value="Re-Display"><li>
+      <li><input type="submit" class="send" name="send_add" value="Check Out"><li>
+      <li class="hidden"><input type="submit" class="send" name="send_del" value="Discontinuation"><li>
+      <li class="hidden"><input type="submit" class="send" name="send_prn" value="出庫指示書印刷"><li>
+    </ul>
+  </div>
+
+  <div id="main_body">
+    <div class="mesg_bar">
+      <span class="<%= mesg_level_color %>"><%= mesg %></span>
+    </div>
+
+    <table class="cond301">
+      <colgroup>
+        <col span="1" class="c1">
+        <col span="1" class="c2">
+        <col span="1" class="c3">
+        <col span="1" class="c4">
+        <col span="1" class="c5">
+        <tr>
+          <th>Membership No</th>
+          <td>
+            <select name="pcode">
+              <option value=""></option><!--dmy-->
+              <% for (var i=0,max=options2.length; i < max; i++ ) { %>
+                <option value="<%= options2[i].pcode %>" <%= options2[i].selected %>>
+                  <%= options2[i].pcode_name %>
+                </option>
+              <% } %>
+            </select>
+          </td>
+        </tr>
+    </table>
+
+    <table class="list301">
+      <colgroup>
+        <col span="1" class="c21">
+        <col span="1" class="c22">
+        <col span="1" class="c23">
+        <col span="1" class="c24">
+        <col span="1" class="c25">
+        <col span="1" class="c26">
+        <col span="1" class="c27">
+        <col span="1" class="c28">
+        <thead>
+        <tr>
+          <th></th>
+          <th>Membership No</th>
+          <th>Quantity</th>
+          <th>Locker No</th>
+          <th>Tag No</th>
+          <th>Period</th>
+          <th>Special affairs</th>
+          <th>Memo</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        <% for (var i = 0, max = tabpart.length; i < max; i++) { %>
+        <tr>
+          <td>
+          <% if (tabpart[i].checkbox == "1") { %>
+            <input type='checkbox' name='partchk' 
+              value='<%= tabpart[i].partkeys %>' <%= tabpart[i].chk_checked %>> 
+          <% } %>
+          </td>
+          <TD><%= tabpart[i].pcode %></TD>
+          <TD><%= tabpart[i].sqty %></TD>
+          <TD><%= tabpart[i].pnam %></TD>
+          <TD><%= tabpart[i].lotn %></TD>
+          <TD><%= tabpart[i].mem1 %></TD>
+          <TD><%= tabpart[i].mem2 %></TD>
+          <TD><%= tabpart[i].mem3 %></TD>
+        </tr>
+        <% } %>
+        </tbody>
+    </table>
+
+<!----------------------------
+ -- ここは不採用となりました
+ ----------------------------->
+    <table class="cond301 hidden">
+      <colgroup>
+        <col span="1" class="c1">
+        <col span="1" class="c2">
+        <col span="1" class="c3">
+        <col span="1" class="c4">
+        <col span="1" class="c5">
+        <tr>
+          <th>オーダ番号</th>
+          <td>
+            <INPUT type="text" id="ordr" class="" size="20" maxlength="20" 
+              placeholder="前方一致" name="ordr" 
+              value="<%= text.ordr %>" tabindex = "-1">
+          </td>
+          <th>状態</th>
+          <td>
+            <INPUT type="checkbox" id="c1" class="" name="chk1" value="1" 
+              <%= checkbox.chk1['1'] %>>未
+            <INPUT type="checkbox" id="c1" class="" name="chk1" value="2" 
+              <%= checkbox.chk1['2'] %>>開始
+            <INPUT type="checkbox" id="c1" class="" name="chk1" value="3" 
+              <%= checkbox.chk1['3'] %>>完了
+          </td>
+        </tr>
+        <tr>
+          <th>会員番号</th>
+          <td>
+            <INPUT type="text" id="lotn" class="STYLE_LOTN" size="8" maxlength="8" 
+             placeholder="前方一致" name="lotn" 
+             value="<%= text.lotn %>" tabindex = "-1">
+          </td>
+          <th></th>
+          <td></td>
+        </tr>
+        <tr>
+          <th>保管エリア</th>
+          <td>
+            <select name="area">
+              <option value=""></option><!--dmy-->
+              <% for (var i=0,max=options.length; i < max; i++ ) { %>
+                <option value="<%= options[i].area %>" <%= options[i].selected %>>
+                  <%= options[i].area_name %>
+                </option>
+              <% } %>
+            </select>
+          </td>
+          <th></th>
+          <td></td>
+        </tr>
+    </table>
+
+    <table class="list301 mgnL">
+      <caption>Check out information</caption>
+      <colgroup>
+        <col span="1" class="c1">
+        <col span="1" class="c2">
+        <col span="1" class="c3">
+        <col span="1" class="c4">
+        <tr>
+          <th></th>
+          <th>Order No</th>
+          <th>Membership No</th>
+          <th>Quantity</th>
+        </tr>
+
+        <% for (var i = 0, max=tables.length  ; i < max ; i++ ) { %>
+        <tr>
+          <td>
+          <% if (tables[i].radio == "1") { %>
+            <input type='radio' name='rad01' value="<%= tables[i].ordr %>"
+              <%= tables[i].radio_checked %>>
+          <% } %>
+          </td>
+          <td><%= tables[i].ordr %></td>
+          <td><%= tables[i].lotn %></td>
+          <td><%= tables[i].sqty %></td>
+        </tr>
+        <% } %>
+    </table>
+
+    <table class="list301 mgnS">
+      <caption>Order No:<%= tables2_head.ordr %><br>Start time:<%= tables2_head.start %></caption>
+      <colgroup>
+        <col span="1" class="c11">
+        <col span="1" class="c12">
+        <col span="1" class="c13">
+        <col span="1" class="c14">
+        <col span="1" class="c15">
+        <col span="1" class="c16">
+        <tr>
+          <th>Locker No</th>
+          <th>Tag No</th>
+          <th>Period</th>
+          <th>Special affairs</th>
+          <th>Memo</th>
+          <th>Charge</th>
+        </tr>
+
+        <% for (var i = 0, max=tables2.length  ; i < max ; i++ ) { %>
+          <tr>
+            <td><%= tables2[i].locn_name %></td>
+            <td><%= tables2[i].part %></td>
+            <td><%= tables2[i].mem1 %></td>
+            <td><%= tables2[i].mem2 %></td>
+            <td><%= tables2[i].mem3 %></td>
+            <td><%= tables2[i].mem4 %></td>
+          </tr>
+        <% } %>
+    </table>
+  </div>
+</form>

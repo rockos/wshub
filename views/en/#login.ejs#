@@ -1,0 +1,22 @@
+<div id="content_login">
+     <h1></h1>
+
+     <div id="form_login">
+     	  <form method="post" action="check" >
+		<p class="userid"><label for="userid">User ID</label><input name="userid" type="text" /></p>
+		<p class="password"><label for="password">Password</label><input name="password" type="password" id="password" /></p>
+		<p class="login"><input type="image" name="login" id="login" src="/images/arrow.png" /></p>
+	  </form>
+	</div>
+     <div id="regist_login">
+     <a href="/"><img src="/images/register.png" width="195" height="150" alt="クラウド型在庫管理システム" />
+     </a></div>
+
+     <div id="footer_login">
+         <ul>
+	<li><a href="http://mirokunokokoro.com/wordpress/locos/">運営会社</a></li>
+       <li><a href="privacypolicy.html">プライバシーポリシー</a></li>
+     </ul>
+																		    <p class="credit">Copyright (C) Locos co., Ltd. All Rights Reserved.</p>
+																		    </div>
+</div>

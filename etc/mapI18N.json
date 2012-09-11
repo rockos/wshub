@@ -1,0 +1,80 @@
+{
+"iqy101":{
+  "path" : "../../controller/iqy/iqy",
+   "msg":{
+          "/scr/101" : "main",
+         },
+   "ejs":"mylayout.ejs"
+   "title":{"jp" : "設備照会", "en" : "Facirities Monitor"}
+   },
+"iqy102":{
+  "path" : "../../controller/iqy/iqy",
+   "msg":{
+          "/scr/102" : "main",
+         },
+   "ejs":"mylayout.ejs"
+   "title":{"jp" : "グラフ", "en" : "Graph"}
+   },
+"iqy103":{
+  "path" : "../../controller/iqy/iqy103",
+   "msg":{
+          "/scr/103" : "main"
+         },
+   "ejs":"mylayout.ejs"
+   },
+"iqy104":{
+  "path" : "../../controller/iqy/iqy104",
+   "msg":{
+          "/scr/104" : "main"
+         },
+   "ejs":"layout.ejs"
+   },
+"iqy105":{
+  "path" : "../../controller/iqy/iqy105",
+   "msg":{
+          "/scr/105" : "main"
+         },
+   "ejs":"layout.ejs"
+   },
+"mop":{
+  "path" : "../../controller/mop/mop", 
+  "msg":{
+        "/scr/301" : "main"
+        }
+},
+"str":{
+  "path" : "../../controller/str/str", 
+  "msg":{
+        "/scr/202" : "main"
+        }
+},
+"tst":{
+  "path" : "../../controller/str/tst", 
+  "msg":{
+        "/scr/201" : "main"
+        },
+   "title":{"jp" : "チェックイン", "en" : "Check in"}
+},
+"rpt": {
+  "path":"../../controller/rpt/rpt", 
+  "msg":{
+        "/scr/701" : "main"
+        }
+},
+"inf":{
+       "path":"../../controller/inf/inf",
+       "msg":
+       {
+        "/scr/800" : "main"
+       }
+},
+"sys":{
+       "path":"../../controller/sys/sys",
+       "msg":
+       {
+        "/check" : "main",
+        "/login" : "main"
+       }
+}
+
+}

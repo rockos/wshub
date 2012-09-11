@@ -1,0 +1,160 @@
+<form name="main_form" method="post" action="/scr/105">
+
+  <div id="sub_body">
+    <p><a href="#">グラフ</a></p>
+    <ul>
+      <li><input type="submit" class="send" name="send_iqy" value="最新表示"><li>
+    </ul>
+  </div>
+
+  <div id="main_body">
+    <div class="mesg_bar">
+      <span class="<%= mesg_level_color %>"><%= mesg %></span>
+    </div>
+
+    <table class="cond">
+      <colgroup>
+      <col span="1" class="c1">
+      <col span="1" class="c2">
+      <col span="1" class="c3">
+      <col span="1" class="c4">
+      <col span="1" class="c5">
+      <tr>
+          <th>期間</th>
+          <td colspan="3">
+            <select name="fyear">
+              <% for (var i=0,max=options.fyear.length; i < max; i++ ) { %>
+              <option value="<%= options.fyear[i].key %>" <%= options.fyear[i].selected %>>
+                <%= options.fyear[i].value %>
+              </option>
+              <% } %>
+            </select>
+            <select name="fmonth">
+              <% for (var i=0,max=options.fmonth.length; i < max; i++ ) { %>
+              <option value="<%= options.fmonth[i].key %>" <%= options.fmonth[i].selected %>>
+                <%= options.fmonth[i].value %>
+              </option>
+              <% } %>
+            </select>
+            <span>～</span>
+            <select name="tyear">
+              <% for (var i=0,max=options.tyear.length; i < max; i++ ) { %>
+              <option value="<%= options.tyear[i].key %>" <%= options.tyear[i].selected %>>
+                <%= options.tyear[i].value %>
+              </option>
+              <% } %>
+            </select>
+            <select name="tmonth">
+              <% for (var i=0,max=options.tmonth.length; i < max; i++ ) { %>
+              <option value="<%= options.tmonth[i].key %>" <%= options.tmonth[i].selected %>>
+                <%= options.tmonth[i].value %>
+              </option>
+              <% } %>
+            </select>
+          </td>
+          <td></td>
+        </tr>
+        <tr>
+          <th>グラフ種類</th>
+          <td>
+            <INPUT type="radio" id="c1" class="" name="chk1" value="line"
+              <%= checkbox.chk1['line'] %>>折れ線　
+            <INPUT type="radio" id="c1" class="" name="chk1" value="column"
+              <%= checkbox.chk1['column'] %>>棒　
+            <INPUT type="radio" id="c1" class="" name="chk1" value="spline"
+              <%= checkbox.chk1['spline'] %>>くねくね　
+            <INPUT type="radio" id="c1" class="" name="chk1" value="area"
+              <%= checkbox.chk1['area'] %>>塗潰　
+          </td>
+        </tr>
+      </table>
+    </div>
+
+    <br/>
+
+    <!--グラフ描画エリア-->
+    <div id="container"></div> 
+
+  </div>
+
+</form>
+
+<script type="text/javascript">
+
+$(document).ready(function() {
+    chart = new Highcharts.Chart( {
+        chart: {
+            renderTo: 'container',
+            type: '<%= graph_type %>'
+        },
+        title: {
+            text: '月別ロッカー利用実績'
+        },
+        xAxis: {
+            categories: [
+                <% for(var i=0,max=categories.length; i<max; i++) { %>
+                    '<%= categories[i] %>'
+                    <% if( i != max-1) { %>
+                        ,
+                    <% } %>
+                <% } %>
+                //'部材A', '部材B', '副資材X', '副資材Y', '外注'
+            ]
+        },
+        yAxis: { // y軸の軸名を指定
+            title: {
+                text: '利用頻度'
+            },
+        },
+        tooltip: {
+            formatter: function() {
+                return ''+
+                    this.series.name +': '+ this.y +'';
+            }
+        },
+        credits: {
+            enabled: false
+        },
+        series: [
+            {
+            name: '法人会員',
+            data: [
+                <% for(var i=0,max=jisscount1.length; i<max; i++) { %>
+                    <%= jisscount1[i] %>
+                    <% if( i != max-1) { %>
+                        ,
+                    <% } %>
+                <% } %>
+                //3, 4, 4, -2, 5
+                ]
+            },
+            {
+            name: '個人会員',
+            data: [
+                <% for(var i=0,max=jisscount2.length; i<max; i++) { %>
+                    <%= jisscount2[i] %>
+                    <% if( i != max-1) { %>
+                        ,
+                    <% } %>
+                <% } %>
+                ]
+            },
+            {
+            name: 'ビジター',
+            data: [
+                <% for(var i=0,max=jisscount3.length; i<max; i++) { %>
+                    <%= jisscount3[i] %>
+                    <% if( i != max-1) { %>
+                        ,
+                    <% } %>
+                <% } %>
+                ]
+            }
+        ]
+    });
+});
+
+
+</script>
+
+

@@ -1,0 +1,31 @@
+{"customer": "武蔵倉庫"
+,"title": "在庫検索"
+,"scrhead": "This screen is for form test."
+,"comment":"WEBトランクルーム"
+,"topNavi":[
+ {"name":"入庫",
+        "subMenu":[
+        {"href":"/scr/201","name":"入荷"}
+        ,{"href":"/scr/202","name":"入庫"}
+        ,{"href":"/scr/203","name":"検品"}
+        ]
+ }
+,
+ {"name":"出庫",
+        "subMenu":[
+        {"href":"/scr/301","name":"出庫(全量)"}
+        ,{"href":"/scr/302","name":"出庫(ピッキング)"}
+        ,{"href":"/scr/302","name":"出庫(積増)"}
+        ]
+ }
+]
+,"tana":[
+ {"name": "u1001"}
+ ,{"name": "u2001"}
+ ,{"name": "u3001"}
+ ,{"name": "u4001"}
+ ,{"name": "u5001"}
+]
+,"tab":[
+]
+}

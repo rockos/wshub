@@ -1,0 +1,48 @@
+<section id="contents_rpt">
+	<div class="lead">
+		<h1>회원번호 C20120001</h1>
+		<p>확정완료의 명세를 확인 줄 수 있습니다</p>
+	</div>
+<section class="detailList">
+		<h2>2012년7월12일  재고의 상세</h2>
+		<table>
+			<thead>
+				<tr>
+					<th>도착일</th>
+					<th>로커 번호</th>
+					<th>태그 번호</th>
+					<th>오더 번호</th>
+					<th>메모</th>
+					<th>수량</th>
+
+				</tr>
+			</thead>
+			<tbody>
+			  <tr>
+			    <% var sum=0 %>
+			  <% for (var i = 0; i < tab.length; i++) { %>
+			     <TD><%= tab[i].date %></TD>
+			     <TD><%= tab[i].pname %></TD>
+			     <TD><%= tab[i].pcode %></TD>
+			     <TD align=center><%= tab[i].odno %></TD>
+			     <TD><%= tab[i].mem1 %></TD>
+			     <TD align=right><%= tab[i].sqty %></TD>
+			     <% sum += parseInt(tab[i].sqty) %>
+			  </TR>   
+			  <% } %>
+
+			</tbody>
+			<tfoot>
+				<tr>
+					<td colspan="5">합계</td>
+					<td><%= sum %></td>
+
+				</tr>
+			</tfoot>
+		</table>
+	</section>
+</section>
+
+
+</body>
+</html>

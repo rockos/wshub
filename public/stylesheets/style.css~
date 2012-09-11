@@ -1,0 +1,1699 @@
+@charse "UTF-8";
+
+/* //////////////////////////////////////////////////
+[Base] 
+////////////////////////////////////////////////// */
+
+/* for IE7: page zoom bug fix */
+*:first-child+html body,
+*:first-child+html br { letter-spacing: 0; }
+
+/* for IE6-7: hasLayout bug fix */
+h1, h2, h3, h4, h5, h6,
+p, dl, dt, dd, ul, ol, li, table, th, td,
+div, blockquote, pre,
+form, fieldset, legend,
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+    *zoom: 1;
+}
+
+/* for IE6-7: line-height bug fix */
+body {
+    *line-height: 1.2;
+}
+
+/* override html5reset.css */
+input, select, button {
+    font-size: 100%;
+}
+li {
+    list-style: none;
+}
+
+/**
+ *  全般的なスタイル
+ */
+* {
+    margin:0;
+    padding:0;
+    /*background-color:#999999;*/
+    color: #403B33;
+    font-size: 13px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-family: "MS PGothic", Arial, Helvetica, sans-serif\0/;
+    font-style:normal;    
+}
+body {
+    /*background-color:#999999;*/
+}
+table {
+    table-layout:fixed;
+}
+a {
+	color: #15C;
+}
+a:link,
+a:visited {
+	text-decoration: none;
+}
+a:focus,
+a:hover,
+a:active {
+	text-decoration: underline;
+}
+
+/*
+ *  hidden the object
+ */
+.hidden {
+    visibility: hidden;
+    display: none;
+}
+/*
+ *  submit Button
+ */
+button.send, input.send {
+    display: block;
+    position: relative;
+    margin: 0 0 5px;
+    padding: 5px 7px;
+    background: #fff;
+    border-radius: 3px;
+    color: #403B33;
+    text-decoration: none;
+
+    width: 100%;
+    border: 1px solid #FFF;
+    text-align: left;
+}
+
+button.send:hover, input.send:hover {
+    cursor: pointer;
+}
+
+/*
+ *  magin
+ */
+.mgnSS{
+    margin: 2px 0 0 0;
+}
+.mgnS{
+    margin: 10px 0 0 0;
+}
+.mgnM{
+    margin: 20px 0 0 0;
+}
+.mgnL{
+    margin: 30px 0 0 0;
+}
+.mgnXL{
+    margin: 50px 0 0 0;
+}
+
+/* for IE7: page zoom bug fix */
+*:first-child+html body,
+*:first-child+html br { letter-spacing: 0; }
+
+/* for IE6-7: hasLayout bug fix */
+h1, h2, h3, h4, h5, h6,
+p, dl, dt, dd, ul, ol, li, table, th, td,
+div, blockquote, pre,
+form, fieldset, legend,
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+	*zoom: 1;
+}
+
+/* for IE6-7: line-height bug fix */
+body {
+	*line-height: 1.2;
+}
+
+/* override html5reset.css */
+input, select, button {
+	font-size: 100%;
+}
+li {
+	list-style: none;
+}
+
+/********************************************** 
+ *  Header
+ **********************************************/
+div#header {
+	/*overflow: hidden;*/
+	padding: 0px 10px 0px;
+	/*background:#fff; */
+    background:#CCCCCC;
+    height:70px;
+    width:1024px;
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    z-index: 30;
+}
+
+div#header h1 {
+	float: left;
+	margin: 0 10px 0 0;
+	line-height: 1;
+	font-size: 36px;
+	font-family: 'Questrial', sans-serif;
+}
+div#header h2 {
+	float: left;
+	margin: 0 10px 0 0;
+    padding: 5px 0 0;
+	line-height: 1;
+	font-size: 36px;
+	font-family: 'Questrial', sans-serif;
+}
+div#header h2 a {
+	text-decoration: none;
+    color: #403B33;
+    text-shadow: 2px 2px 1px rgba(0, 0, 0, .8);
+}
+div#header div.company {
+	float: left;
+	margin: 0 10px 0 0;
+    padding: 15px 0 0;
+	line-height: 1;
+	font-size: 36px;
+	font-family: 'Questrial', sans-serif;
+}
+div#header div.company a {
+	text-decoration: none;
+    color: #403B33;
+    text-shadow: 2px 2px 1px rgba(0, 0, 0, .8);
+}
+div#header div.comment {
+	float: left;
+	margin: 0;
+    padding: 0;
+	line-height: 1;
+    font-size: 12px;
+	font-family: 'Questrial', sans-serif;
+	text-decoration: none;
+    color: #403B33;
+    clear:both;
+}
+
+/**
+ *   userInfo 
+ *   (右上のユーザ情報)
+ */
+div#header ul.userInfo {
+    padding: 5px 5px 0;
+	float: right;
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+div#header ul.userInfo li {
+#	display: inline;
+#	*display: inline;
+#	*zoom: 1;
+	margin: 0 0 0 5px;
+    padding: 8px 0 0;
+	vertical-align: middle;
+    text-align: right;
+	line-height: 1
+
+}
+div#header ul.userInfo li.login {
+    padding-top:15px;
+}
+div#header ul.userInfo li span {
+    font-weight: bold;
+    font-size: 18px;
+	font-family: 'Questrial', sans-serif;
+    color: #000000;
+    text-shadow: 1px 1px 0px #aaa;
+}
+div#header ul.userInfo .setting {
+	padding: 5px;
+	background: #403B33;
+	border-radius: 3px;
+	color: #fff;
+	text-decoration: none;
+    border: none;
+}
+
+/** 
+ * topLogin
+ * (ログインフィールド)
+ */
+div#header table.topLogin{
+    display: block;
+#    border: solid 1px;
+    border none;
+    margin: 22px 0 0;
+}
+div#header table.topLogin tr{
+    border: none;
+}
+div#header table.topLogin td{
+    border: none;
+#    border: solid 1px;
+    text-align: right;
+}
+div#header .topLogin p,
+div#header .topLogin div {
+    font-family: Helvetica, Arial, sans-serif;
+    font-size: 16px;
+    color: #fff;
+    text-shadow: 1px 1px #aaa;
+}
+/*テキストフィールド、パスワードフィールド*/
+div#header .topLogin input[type="text"], 
+div#header .topLogin input[type="password"] {
+    width: 140px;
+    height: 25px;
+    padding: 1px 1px;
+    margin-top: -5px;
+    -webkit-box-shadow: inset 1px 2px 1px rgba(0, 0, 0, 1);
+    -moz-box-shadow: inset 1px 2px 1px rgba(0, 0, 0, 1);
+    box-shadow: inset 1px 2px 1px rgba(0, 0, 0 ,1);
+
+    border: 3px solid #caeff2;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+}
+div#header .topLogin input[type="text"]:hover, 
+div#header .topLogin input[type="password"]:hover {
+    border-color: #d3da21;
+}
+div#header .topLogin input[type="text"]:focus, 
+div#header .topLogin input[type="password"]:focus {
+    border-color: #0c93c6;
+}
+/*言語フィールド*/
+div#header .topLogin select { 
+    width: 100px;
+    height: 25px;
+    padding: 1px 1px;
+    margin-top: -2px;
+    -webkit-box-shadow: inset 1px 2px 1px rgba(0, 0, 0, 1);
+    -moz-box-shadow: inset 1px 2px 1px rgba(0, 0, 0, 1);
+    box-shadow: inset 1px 2px 1px rgba(0, 0, 0 ,1);
+
+    border: 3px solid #caeff2;
+
+    font-size: 16px;
+    color: #000;
+    text-shadow: 1px 1px #aaa;
+}
+div#header .topLogin select:hover {
+    border-color: #d3da21;
+}
+div#header .topLogin select:focus {
+    border-color: #0c93c6;
+}
+
+
+
+/** 
+ * topNavi 
+ * (メニューバー)
+ */
+div#header ul.topNavi{
+    height: 40px;
+    border-radius: 20px;        /*角をまるめる*/
+    margin: 5px 0 0 50px;
+    padding: 0px 5px 0px;
+    display: inline-block;
+    position: relative;
+    z-index: 40;
+
+    -webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, .4);
+    -moz-box-shadow: 0 1px 3px rgba(0, 0, 0, .4);
+
+    background: #8b8b8b; /* for non-css3 browsers */
+    background: -webkit-gradient(linear, left top, left bottom, from(#a9a9a9), to(#7a7a7a)); /* for webkit browsers */
+    background: -moz-linear-gradient(top,  #a9a9a9,  #7a7a7a); /* for firefox 3.6+ */
+
+    border: solid 1px #6d6d6d;
+}
+div#header ul.topNavi:after {
+    content: ".";
+    clear: both;
+    visibility: hidden;
+    line-height: 0;
+    height: 0;
+}
+div#header ul.topNavi li {
+    width: 150px;
+    margin: 0px 0px 0px;
+    padding: 5px 5px 0px;
+    float: left;
+    list-style: none;
+}
+div#header ul.topNavi li a {
+    font-weight: bold;
+    color: #e7e5e5;
+    text-decoration: none;
+    display: block;
+    padding: 0 10px;
+    margin: 0;
+    line-height: 28px;
+    border-radius: 16px;
+
+    text-shadow: 0 1px 1px rgba(0, 0, 0, .3);
+}
+div#header ul.topNavi li.current a, div#header ul.topNavi li:hover > a {
+    padding:  0px 10px;
+    margin: 0;
+    color: #111;
+    border-top: solid 1px #f8f8f8;
+    border-radius: 10px;
+    line-height: 28px;
+
+    background: #d1d1d1; /* for non-css3 browsers */
+    background: -webkit-gradient(linear, left top, left bottom, from(#ebebeb), to(#a1a1a1)); /* for webkit browsers */
+    background: -moz-linear-gradient(top,  #ebebeb,  #a1a1a1); /* for firefox 3.6+ */
+
+    -webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, .2);
+    -moz-box-shadow: 0 1px 1px rgba(0, 0, 0, .2);
+    box-shadow: 0 1px 1px rgba(0, 0, 0, .2);
+    text-shadow: 0 1px 0 rgba(255, 255, 255, .8);
+}
+div#header ul.topNavi li ul {
+    display: none;
+    width: auto !important;
+    left: 0;
+    margin: 5px 0 0;
+    padding: 0;
+    clear: left;
+    color: #111;
+    border: none;
+    border-radius: 10px;
+
+    background: #ddd; /* for non-css3 browsers */
+    background: -webkit-gradient(linear, left top, left bottom, from(#fff), to(#cfcfcf)); /* for webkit browsers */
+    background: -moz-linear-gradient(top,  #fff,  #cfcfcf); /* for firefox 3.6+ */
+
+    -webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, .3);
+    -moz-box-shadow: 0 1px 3px rgba(0, 0, 0, .3);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, .3);
+
+
+}
+div#header ul.topNavi li:hover > ul {
+    display: block;
+    position: relative;
+    z-index: 40;
+}
+div#header ul.topNavi li ul li {
+    float: none;
+    margin: 0;
+    padding: 0;
+}
+div#header ul.topNavi li ul li a {
+    float: none;
+    border-radius: 0;
+
+    color: #333 !important;
+    text-shadow: 0 1px 0 rgba(255, 255, 255, .8);
+}
+div#header ul.topNavi li ul li:hover li a {
+    background: none;
+    border: none;
+    border-radius: 0;
+}
+div#header ul.topNavi li ul li a:hover {
+    background: #0399d4 !important;
+    border-radius: 0;
+
+    color: #fff !important;
+    text-shadow: 0 1px 1px rgba(0, 0, 0, .8);
+}
+div#header ul.topNavi li ul li:first-child > a {
+    border-top-left-radius: 9px;
+    border-top-right-radius: 9px;
+}
+div#header ul.topNavi li ul li:last-child > a {
+    border-bottom-left-radius: 9px;
+    border-bottom-right-radius: 9px;
+}
+
+/******************************************************
+ *   BODY
+ *   (メインコンテンツ)
+ ******************************************************/
+div#body {
+    width:1024px;
+    position: absolute;
+    top: 70px;
+    left: 0px;
+    z-index: 10;
+    padding: 0 0 30px 0;
+}
+
+/**
+ *   scr104
+ *   parent>div#body
+ */
+div#main_body {
+    border-bottom: 2px solid #D6E1C7;
+    width: 100%;
+}
+div#main_body div.mesg_bar {
+#	overflow: hidden;
+    width: 100%;
+    padding: 5px 0 0;
+    background: #D6E1C7;
+}
+div#main_body div.mesg_bar span.operationPanel_fatal {
+    background: #CC0033;
+}
+div#main_body div.mesg_bar span.operationPanel_warning {
+    background: #CC0033;
+}
+/**
+ *  SCR104
+ */
+div#main_body table.mon {
+    border:2px solid #000;
+    margin: 0 0 20px 0;
+}
+div#main_body table.mon .c1 {
+    width: 200px;
+    text-align: center;
+}
+div#main_body table.mon tr {
+    border:2px solid #000;
+}
+div#main_body table.mon th {
+    color:#403B33;
+    background-color:#55BBAA;
+    padding:5px 0;
+    border:2px solid #000;
+}
+div#main_body table.mon th span {
+    font-weigth:bold;
+    font-size:18px;
+    font-style:'Questrial', sans-serif;
+}
+div#main_body table.mon td {
+    color:#403B33;
+    background-color:#f0f0f0;
+    text-align:center;
+    padding:5px 0;
+    border:2px;
+    border-style:solid;
+}
+div#main_body table.mon td span {
+    font-weigth:normal;
+    font-size:72px;
+    font-style:'Questrial', sans-serif;
+}
+div#main_body canvas {
+    border:solid 1px;
+    display:block;
+}
+/**
+ *  SCR105
+ */
+div#main_body table.cond {
+    margin: 10px 0 10px 0;
+}
+div#main_body table.cond col.c1 {
+    width: 100px;
+    text-align: center;
+}
+div#main_body table.cond col.c2 {
+    width: 300px;
+    text-align: left;
+}
+div#main_body table.cond col.c3 {
+    width: 100px;
+    text-align: center;
+}
+div#main_body table.cond col.c4 {
+    width: 300px;
+    text-align: left;
+}
+div#main_body table.cond col.c5 {
+    width: 50px;
+    text-align: center;
+}
+div#main_body table.cond th,
+div#main_body table.cond td {
+	padding: 1px 1px;
+}
+div#main_body table.cond th {
+	background: #f8f8f8;
+	font-weight: bold;
+}
+div#main_body table.cond td {
+
+}
+/**
+ *  SCR301
+ */
+div#main_body table.cond301 {
+    margin: 10px 0 10px 0;
+}
+div#main_body table.cond301 col.c1 {
+    width: 110px;
+    text-align: center;
+}
+div#main_body table.cond301 col.c2 {
+    width: 285px;
+    text-align: left;
+}
+div#main_body table.cond301 col.c3 {
+    width: 110px;
+    text-align: center;
+}
+div#main_body table.cond301 col.c4 {
+    width: 285px;
+    text-align: left;
+}
+div#main_body table.cond301 col.c5 {
+    width: 50px;
+    text-align: center;
+}
+div#main_body table.cond301 th,
+div#main_body table.cond301 td {
+	padding: 1px 1px;
+}
+div#main_body table.cond301 th {
+	background: #f8f8f8;
+	font-weight: bold;
+}
+div#main_body table.cond301 td {
+
+}
+
+/**
+ *  SCR301 main list
+ */
+div#main_body table.list301 {
+#    border-bottom: 2px solid #D6E1C7;
+    border-collapse: collapse;
+    border: solid 1px #999;
+}
+div#main_body table.list301 col.c1 {
+    width: 30px;
+    text-align: center;
+}
+div#main_body table.list301 col.c2 {
+    width: 180px;
+    text-align: center;
+}
+div#main_body table.list301 col.c3 {
+    width: 100px;
+    text-align: center;
+}
+div#main_body table.list301 col.c4 {
+    width: 100px;
+    text-align: center;
+}
+div#main_body table.list301 col.c5 {
+    width: 80px;
+    text-align: center;
+}
+div#main_body table.list301 col.c6 {
+    width: 200px;
+    text-align: center;
+}
+div#main_body table.list301 col.c11 {
+    width: 80px;
+    text-align: center;
+}
+div#main_body table.list301 col.c12 {
+    width: 80px;
+    text-align: center;
+}
+div#main_body table.list301 col.c13 {
+    width: 100px;
+    text-align: center;
+}
+div#main_body table.list301 col.c14 {
+    width: 200px;
+    text-align: center;
+}
+div#main_body table.list301 col.c15 {
+    width: 200px;
+    text-align: center;
+}
+div#main_body table.list301 col.c16 {
+    width: 100px;
+    text-align: right;
+}
+div#main_body table.list301 col.c21 {
+    width: 30px;
+    text-align: center;
+}
+div#main_body table.list301 col.c22 {
+    width: 100px;
+    text-align: center;
+}
+div#main_body table.list301 col.c23 {
+    width: 80px;
+    text-align: center;
+}
+div#main_body table.list301 col.c24 {
+    width: 80px;
+    text-align: center;
+}
+div#main_body table.list301 col.c25 {
+    width: 80px;
+    text-align: center;
+}
+div#main_body table.list301 col.c26 {
+    width: 80px;
+    text-align: center;
+}
+div#main_body table.list301 col.c27 {
+    width: 200px;
+    text-align: center;
+}
+div#main_body table.list301 col.c28 {
+    width: 200px;
+    text-align: center;
+}
+div#main_body table.list301 th,
+div#main_body table.list301 td {
+    border: solid 1px #999;
+    padding: 4px 6px;
+}
+div#main_body table.list301 th {
+    background: #E6E6E6;
+    white-space: nowrap;
+    color: #666;
+    font-weight: bold;
+}
+div#main_body table.list301 td {
+    white-space: nowrap;
+}
+div#main_body table.list301 caption {
+    text-align: left;
+    margin: 5px 3px;
+    padding: 0 3px 0 0;
+    font-weight: bold;
+    font-size: 18px;
+    white-space: nowrap;
+}
+div#main_body h2.list301 {
+    margin: 5px 3px;
+    padding: 0 3px 0;
+    font: bold 18px;
+}
+
+/**
+ *  SCR201
+ */
+div#main_body table.cond201 {
+    margin: 10px 0 10px 0;
+}
+div#main_body table.cond201 col.c1 {
+    width: 130px;
+    text-align: center;
+}
+div#main_body table.cond201 col.c2 {
+    width: 385px;
+    text-align: left;
+}
+div#main_body table.cond201 col.c3 {
+    width: 110px;
+    text-align: center;
+}
+div#main_body table.cond201 col.c4 {
+    width: 385px;
+    text-align: left;
+}
+div#main_body table.cond201 th,
+div#main_body table.cond201 td {
+	padding: 1px 1px;
+}
+div#main_body table.cond201 th {
+	background: #f8f8f8;
+	font-weight: bold;
+}
+div#main_body table.cond201 td {
+
+}
+
+/**
+ *  SCR201 main list
+ */
+div#main_body table.list201 {
+    border-bottom: 2px solid #D6E1C7;
+}
+div#main_body table.list201 col.c1 {
+    width: 30px;
+    text-align: center;
+}
+div#main_body table.list201 col.c2 {
+    width: 100px;
+    text-align: center;
+}
+div#main_body table.list201 col.c3 {
+    width: 80px;
+    text-align: center;
+}
+div#main_body table.list201 col.c4 {
+    width: 80px;
+    text-align: center;
+}
+div#main_body table.list201 col.c5 {
+    width: 80px;
+    text-align: center;
+}
+div#main_body table.list201 col.c6 {
+    width: 80px;
+    text-align: center;
+}
+div#main_body table.list201 col.c7 {
+    width: 200px;
+    text-align: center;
+}
+div#main_body table.list201 col.c8 {
+    width: 200px;
+    text-align: center;
+}
+div#main_body table.list201 th,
+div#main_body table.list201 td {
+    padding: 3px 5px;
+}
+div#main_body table.list201 th {
+    background: #f8f8f8;
+    font-weight: normal;
+    text-align: left;
+}
+div#main_body table.list201 td {
+    border-top: 1px solid #eee;
+}
+
+
+/**
+ *  height chart
+ */
+div#container {
+    width: 800px; 
+    height: 400px; 
+    margin: 0;
+    display: inline;
+    float: left;
+}
+
+/**
+ *   scr104
+ *   parent>div#body
+ */
+div#sub_body {
+    display: inline;
+    float: left;
+
+    width: 150px;
+    min-height:700px;
+    padding: 10px;
+    background: #edebe6;
+}
+div#sub_body p a {
+	margin: 0 0 10px;
+	display: block;
+	padding: 10px;
+	background: #D3643B;
+	border-radius: 3px;
+	color: #fff;
+	font-weight: bold;
+	text-align: center;
+	text-decoration: none;
+}
+div#sub_body ul li a {
+	display: block;
+	position: relative;
+	margin: 0 0 5px;
+	padding: 7px;
+	background: #fff;
+	border-radius: 3px;
+	color: #403B33;
+	text-decoration: none;
+}
+
+/**
+ *   scr800,801,802,803
+ *   parent>div#body
+ */
+div#main_body_800 {
+    border-bottom: 2px solid #D6E1C7;
+    width: 100%;
+}
+div#main_body_800 table {
+	width: 100%;
+}
+div#main_body_800 table col.c1 {
+	width: 50px;
+    text-align: center;
+}
+div#main_body_800 table col.c2 {
+	width: 150px;
+    text-align: center;
+}
+div#main_body_800 table col.c3 {
+	width: ;
+    text-align: left;
+}
+div#main_body_800 table col.c4 {
+	width: 150px;
+    text-align: center;
+}
+div#main_body_800 table th,
+div#main_body_800 td {
+	padding: 3px 5px;
+}
+div#main_body_800 th {
+	background: #f8f8f8;
+	font-weight: normal;
+	text-align: left;
+}
+div#main_body_800 th:first-child {
+    width: 1px;
+}
+div#main_body_800 td {
+	border-top: 1px solid #eee;
+	cursor: pointer;
+}
+div#main_body_800 .current td {
+	background: #f4f9ed;
+	font-weight: bold;
+}
+
+/**
+ *   scr801,802,803
+ *   詳細表示
+ *   parent>div#body
+ */
+div#main_dtil_800 {
+    padding: 10px;
+}
+div#main_dtil_800 ul {
+    position: relative;
+    margin: 0 0 10px;
+    padding: 0 0 10px;
+    border-bottom: 1px solid #eee;
+}
+div#main_dtil_800 ul li {
+    margin: 0 0 3px;
+}
+div#main_dtil_800 ul li span {
+    margin: 0 5px 0 0;
+    color: #999;
+}
+div#main_dtil_800 p {
+    position: relative;
+    top: 0;
+    right: 0;
+    margin: 5px 0 10px 0;
+}
+div#main_dtil_800 img.img1 {
+    position: relative;
+    top: 0;
+    right: 0;
+    width: 480px;
+    height: 400px;
+}
+div#main_dtil_800 img.img2 {
+    position: relative;
+    top: 0;
+    right: 0;
+    width: 640px;
+    height: 480px;
+}
+div#main_dtil_800 div {
+    float:right;
+    display:inline;
+    width:400px;
+    text-align:left;
+}
+div#main_dtil_800 div.img2 {
+    float:right;
+    display:inline;
+    width:300px;
+    text-align:left;
+}
+div#main_dtil_800 div p {
+    margin: 5px 0 15px 0;
+	font-size: 18px;
+	font-weight: normal;
+}
+div#main_dtil_800 div.img2 p {
+    margin: 5px 0 15px 0;
+	font-size: 14px;
+	font-weight: normal;
+    line-height: 1.3em;
+}
+div#main_dtil_800 div h2 {
+    margin: 5px 0 5px 0;
+	font-size: 18px;
+	font-weight: bold;
+}
+div#main_dtil_800 ul.hallo {
+    position: relative;
+    margin: 30px 0 0 0;
+    padding: 10px 0 10px 0;
+    font-size: 20px;
+    font-weight: bold;
+    border-top: 1px dotted #000;
+    border-bottom: 1px dotted #000;
+}
+div#main_dtil_800 ul.hallo li {
+    margin: 3px 0 5px 5px;
+}
+
+
+
+
+
+/*@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@*/
+
+/****************************************************
+ *
+ * メイン画面
+ *
+ *****************************************************/
+/* createMail */
+#createMail {
+	margin: 0 0 10px;
+}
+#createMail h1 {
+	display: none;
+}
+#createMail a {
+	display: block;
+	padding: 10px;
+	background: #D3643B;
+	border-radius: 3px;
+	color: #fff;
+	font-weight: bold;
+	text-align: center;
+	text-decoration: none;
+}
+
+/* folderList */
+#folderList h1 {
+	display: none;
+}
+#folderList a {
+	display: block;
+	position: relative;
+	margin: 0 0 5px;
+	padding: 7px;
+	background: #fff;
+	border-radius: 3px;
+	color: #403B33;
+	text-decoration: none;
+}
+#folderList .current a {
+	font-weight: bold;
+}
+#folderList .current a:after {
+	content: "►";
+	position: absolute;
+	top: 50%;
+	right: 7px;
+	margin: -.4em 0 0;
+	color: #D3643B;
+	font-size: 10px;
+}
+
+/* ad */
+#ad {
+	line-height: 1.2;
+}
+#ad dt {
+	margin: 0 0 5px;
+	font-size: 14px;
+	font-weight: bold;
+}
+#ad dt a {
+	color: #15C;
+	text-decoration: none;
+}
+#ad .txt {
+	margin: 0 0 5px;
+}
+#ad .url {
+	margin-bottom: 20px;
+	font-size: 12px;
+	font-weight: bold;
+}
+#ad .url a {
+	color: #093;
+	text-decoration: none;
+}
+
+/* mailTraymailList */
+#mailTray h1 {
+	display: none;
+}
+
+/* operationPanel */
+#operationPanel {
+	overflow: hidden;
+	padding: 5px 5px 0;
+	background: #D6E1C7;
+}
+#operationPanel ul {
+	float: left;
+	margin: 0 10px 0 0;
+}
+#operationPanel li {
+	float: left;
+	margin: 0 5px 0 0;
+	padding: 0 0 5px 0;
+}
+#operationPanel a {
+	display: block;
+	padding: 5px;
+	background: #fff;
+	border-radius: 3px;
+	color: #403B33;
+	text-decoration: none;
+}
+
+/* mailList */
+#mailList {
+	border-bottom: 2px solid #D6E1C7;
+}
+#mailList table {
+	width: 100%;
+}
+#mailList th,
+#mailList td {
+	padding: 3px 5px;
+}
+#mailList th {
+	background: #f8f8f8;
+	font-weight: normal;
+	text-align: left;
+}
+#mailList th:first-child {
+	width: 1%;
+}
+#mailList td {
+	border-top: 1px solid #eee;
+	cursor: pointer;
+}
+#mailList .current td {
+	background: #f4f9ed;
+	font-weight: bold;
+}
+
+/* mailDetail */
+#mailDetail {
+	padding: 10px;
+}
+#mailDetail header {
+	position: relative;
+	margin: 0 0 10px;
+	padding: 0 0 10px;
+	border-bottom: 1px solid #eee;
+}
+#mailDetail header h1 {
+	margin: 0 150px 7px 0;
+	font-size: 15px;
+}
+#mailDetail header li {
+	margin: 0 0 3px;
+}
+#mailDetail header li span {
+	margin: 0 5px 0 0;
+	color: #999;
+}
+#mailDetail header p {
+	position: absolute;
+	top: 0;
+	right: 0;
+}
+#mailDetail .body {
+	line-height: 1.3;
+}
+
+/* --------------------------------------------------
+	以下、サンプルコード
+-------------------------------------------------- */
+
+#contents {
+	/* Old */
+	display: -webkit-box;
+	display: -moz-box;
+	display: -ms-box;
+	display: box;
+	/* New */
+	display: -webkit-flexbox;
+	display: -moz-flexbox;
+	display: -ms-flexbox;
+	display: flexbox;
+	
+	width: 100%;
+}
+#mainx {
+	/* Old */
+	-webkit-box-ordinal-group: 2;
+	-moz-box-ordinal-group: 2;
+	-ms-box-ordinal-group: 2;
+	box-ordinal-group: 2;
+	/* New */
+	-webkit-flex-order: 2;
+	-moz-flex-order: 2;
+	-ms-flex-order: 2;
+	flex-order: 2;
+	
+	/* Old */
+	-webkit-box-flex: 1;
+	-moz-box-flex: 1;
+	-ms-box-flex: 1;
+	box-flex: 1;
+	/* New */
+	width: -webkit-flex(1);
+	width: -moz-flex(1);
+	width: -ms-flex(1);
+	width: flex(1);
+	
+	background: #fff;
+	word-wrap: break-word;
+}
+#sub {
+	/* Old */
+	-webkit-box-ordinal-group: 1;
+	-moz-box-ordinal-group: 1;
+	-ms-box-ordinal-group: 1;
+	box-ordinal-group: 1;
+	/* New */
+	-webkit-flex-order: 1;
+	-moz-flex-order: 1;
+	-ms-flex-order: 1;
+	flex-order: 1;
+	
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	-ms-box-sizing: border-box;
+	box-sizing: border-box;
+	
+	width: 150px;
+	padding: 10px;
+	background: #edebe6;
+}
+#subMenu {
+	float: left;
+}
+
+/* operationPanel */
+#subMenu {
+	overflow: hidden;
+	padding: 5px 5px 0;
+#	background: #D6E1C7;
+#	background: #45C;
+}
+#subMenu ul {
+	float: left;
+	margin: 0 10px 0 0;
+}
+#subMenu li {
+	float: left;
+	margin: 0 5px 0 0;
+	padding: 0 0 5px 0;
+}
+#subMenu a {
+	display: block;
+	padding: 5px;
+	background: #fff;
+	border-radius: 3px;
+	color: #403B33;
+	text-decoration: none;
+}
+#extra {
+	/* Old */
+	-webkit-box-ordinal-group: 3;
+	-moz-box-ordinal-group: 3;
+	-ms-box-ordinal-group: 3;
+	box-ordinal-group: 3;
+	/* New */
+	-webkit-flex-order: 3;
+	-moz-flex-order: 3;
+	-ms-flex-order: 3;
+	flex-order: 3;
+	
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	-ms-box-sizing: border-box;
+	box-sizing: border-box;
+	
+	width: 200px;
+	padding: 10px;
+	background: #eee;
+}
+@media screen and (max-width: 800px) {
+	#extra {
+		display: none;
+	}
+}
+
+/* inqList */
+#inqList {
+	border-bottom: 2px solid #D6E1C7;
+}
+#inqList table {
+	width: 100%;
+}
+#inqList th,
+#inqList td {
+	padding: 3px 5px;
+}
+#inqList th {
+	background: #f8f8f8;
+	font-weight: normal;
+	text-align: left;
+}
+#inqList th:first-child {
+	width: 1%;
+}
+#inqList td {
+	border-top: 1px solid #eee;
+	cursor: pointer;
+}
+#inqList .current td {
+	background: #f4f9ed;
+	font-weight: bold;
+}
+
+
+/*
+ 帳票
+*/
+/* --------------------------------------------------
+   Contents
+-------------------------------------------------- */
+#contentsl_rpt {
+    padding: 20px;
+}
+
+/* --------------------------------------------------
+   Footer
+-------------------------------------------------- */
+#footer_rpt {
+    overflow: hidden;
+    padding: 15px 20px;
+    border-top: 2px solid #0371A8;
+}
+
+/* rulesNav */
+#rulesNav {
+    float: left;
+}
+#rulesNav li {
+    margin: 0 10px 0 0;
+    display: inline-block;
+    *display: inline;
+    *zoom: 1;
+}
+#rulesNav a {
+    color: #515151;
+}
+
+/* copyright */
+#copyright {
+    float: right;
+}
+
+/* //////////////////////////////////////////////////
+[Module] 
+////////////////////////////////////////////////// */
+
+/* lead */
+.lead {
+    margin-bottom: 20px;
+}
+.lead h1 {
+    margin: 0 0 10px;
+    padding: 0 0 7px 0;
+    border-bottom: 1px solid #eee;
+    font-size: 16px;
+}
+
+/* detailList */
+.detailList {
+    padding: 15px 20px 20px;
+    background: #E7ECF0;
+    border-radius: 5px;
+}
+.detailList h2 {
+    margin-bottom: 10px;
+    color: #666;
+}
+.detailList table {
+    width: 100%;
+    line-height: 1.2;
+    background: #fff;
+}
+.detailList th,
+.detailList td {
+    padding: 5px 10px;
+    border: 1px solid #ccc;
+}
+.detailList thead th { /* IEでセルのborderが消えるのでfilterは指定しない */
+    padding: 10px;
+    background: #f6f6f6; /* Old browsers */
+    background: -moz-linear-gradient(top,  #ffffff 0%, #f1f1f1 50%, #e1e1e1 51%, #f6f6f6 100%); /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ffffff), color-stop(50%,#f1f1f1), color-stop(51%,#e1e1e1), color-stop(100%,#f6f6f6)); /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(top,  #ffffff 0%,#f1f1f1 50%,#e1e1e1 51%,#f6f6f6 100%); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(top,  #ffffff 0%,#f1f1f1 50%,#e1e1e1 51%,#f6f6f6 100%); /* Opera 11.10+ */
+    background: -ms-linear-gradient(top,  #ffffff 0%,#f1f1f1 50%,#e1e1e1 51%,#f6f6f6 100%); /* IE10+ */
+    background: linear-gradient(top,  #ffffff 0%,#f1f1f1 50%,#e1e1e1 51%,#f6f6f6 100%); /* W3C */
+    color: #666;
+    white-space: nowrap;
+}
+.detailList tfoot td {
+    border-top: 3px double #ccc;
+    font-size: 14px;
+    font-weight: bold;
+    text-align: right;
+}
+/*@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@*/
+
+
+
+
+
+
+
+
+
+
+
+/******************************************************
+ *   FOOTER
+ *   (フッター)
+ ******************************************************/
+div#footer {
+	overflow: hidden;
+	padding: 10px 10px 0px;
+	background:#CCCCCC;
+    height: 20px;
+    width:1024px;
+    position: fixed;
+    bottom: 0;
+    left: 0px;
+    z-index: 20;
+}
+div#footer h3 {
+	float: right;
+	margin: 0 10px 0 0;
+	line-height: 1;
+	font-size: 12px;
+	font-family: 'Questrial', sans-serif;
+	color: #333300;
+    display: inline;
+}
+div#footer h4 {
+	float: left;
+	margin: 0 10px 0 0;
+	line-height: 1;
+	font-size: 12px;
+	font-family: 'Questrial', sans-serif;
+	color: #333300;
+    display: inline;
+}
+
+/********************************************************
+ *  ログイン
+ ********************************************************/
+#contents {}
+#content_login {
+    width: 930px;
+    height: 520px;
+    margin: -200px 0 0 -475px;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    background:
+/*    url(/images/cloud.png) no-repeat 560px 220px,
+*/
+    url(/images/cloud.png) no-repeat 600px 140px,
+    url(/images/cloud.png) no-repeat -160px -120px,
+    url(/images/bg.png) repeat left top;
+    -webkit-box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.15);
+    -moz-box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.15);
+    -o-box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.15);
+    -ms-box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.15);
+    box-shadow: 10px 10px 20px rgba(0, 0, 0 ,0.15);
+    border: 10px solid #fff;
+    -webkit-border-radius: 15px;
+    -moz-border-radius: 15px;
+    -o-border-radius: 15px;
+    border-radius: 15px;
+    *background: #2badd0 url(/images/bg.png) repeat left top;/*IE6,7に適用*/
+    background: #2badd0 url(/images/bg.png) repeat left top\9;/*IE8に適用*/
+    behavior: url(../css/PIE.htc);/*動作させるには絶対パスに修正する*/
+}
+/*タイトル*/
+#content_login h1 {
+    padding: 70px 70px 70px 0;
+    margin: 0 20px 0 0;
+    position: absolute;
+    right: 50%;
+    top: 50px;
+    background: url(/images/shadow.png) no-repeat right center;
+}
+
+/*フォーム全体を内包するdiv要素*/
+#form_login {
+    margin: 0 0 0 -20px;
+    position: absolute;
+    left: 50%;
+    top: 185px;
+}
+
+/*フォーム要素の配置*/
+#form_login p {
+    float: left;
+    margin: 0 10px 0 0;
+}
+
+/*テキストフィールドのラベル*/
+#form_login label {
+    display: block;
+    margin: 0 0 7px 3px;
+    font-family: Helvetica, Arial, sans-serif;
+    font-size: 26px;
+    color: #fff;
+}
+#content_login h1 {
+    padding: 70px 70px 70px 0;
+    margin: 0 20px 0 0;
+    position: absolute;
+    right: 50%;
+    top: 115px;
+#    background: url(/images/shadow.png) no-repeat right center;
+}
+/*テキストフィールド、パスワードフィールド*/
+#form_login input[type="text"], #form_login input[type="password"] {
+    position:relative;
+    width: 140px;
+    height: 25px;
+    padding: 5px 10px;
+    -webkit-box-shadow: inset 1px 2px 1px rgba(0, 0, 0, 0.2);
+    -moz-box-shadow: inset 1px 2px 1px rgba(0, 0, 0, 0.2);
+    -o-box-shadow: inset 1px 2px 1px rgba(0, 0, 0, 0.2);
+    -ms-box-shadow: inset 1px 2px 1px rgba(0, 0, 0, 0.2);
+    box-shadow: inset 1px 2px 1px rgba(0, 0, 0 ,0.2);
+    border: 3px solid #caeff2;
+    -webkit-border-radius: 20px;
+    -moz-border-radius: 20px;
+    -o-border-radius: 20px;
+    -ms-border-radius: 20px;
+    border-radius: 20px;
+    behavior: url(../css/PIE.htc);/*動作させるには絶対パスに修正する*/
+}
+#form_login input[type="text"]:hover, #form_login input[type="password"]:hover {
+    border-color: #d3da21;
+}
+#form_login input[type="text"]:focus, #form_login input[type="password"]:focus {
+    border-color: #0c93c6;
+}
+
+/*イメージボタン*/
+#form_login input[type="image"] {
+    padding: 8px;
+    position: absolute;
+    bottom: 0;
+
+    background: -webkit-linear-gradient(#e7ee2a, #c7cd1b);
+    background: -moz-linear-gradient(#e7ee2a, #c7cd1b);
+    background: -o-linear-gradient(#e7ee2a, #c7cd1b);
+    background: -ms-linear-gradient(#e7ee2a, #c7cd1b);
+    background: linear-gradient(#e7ee2a, #c7cd1b);
+    -pie-background: linear-gradient(#e7ee2a, #c7cd1b);
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    -o-border-radius: 50%;
+    -ms-border-radius: 50%;
+    border-radius: 50%;
+    -webkit-box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.15);
+    -moz-box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.15);
+    -o-box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.15);
+    -ms-box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.15);
+    box-shadow: 3px 3px 5px rgba(0, 0, 0 ,0.15);
+    behavior: url(../css/PIE.htc);/*動作させるには絶対パスに修正する*/
+
+}
+#form_login input[type="image"]:hover {
+
+    background: -webkit-linear-gradient(#f9ff60, #ca9d00);
+    background: -moz-linear-gradient(#f9ff60, #ca9d00);
+    background: -o-linear-gradient(#f9ff60, #ca9d00);
+    background: -ms-linear-gradient(#f9ff60, #ca9d00);
+    background: linear-gradient(#f9ff60, #ca9d00);
+    -pie-background: linear-gradient(#f9ff60, #ca9d00);
+    behavior: url(../css/PIE.htc);/*動作させるには絶対パスに修正する*/
+
+}
+
+/*新規利用登録の吹き出し*/
+#regist_login {
+    position: absolute;
+    right: -50px;
+    top: -50px;
+}
+#regist_login a:hover img {
+
+    -webkit-transform: scale(1.1, 1.1);
+    -moz-transform: scale(1.1, 1.1);
+    -o-transform: scale(1.1, 1.1);
+    -ms-transform: scale(1.1, 1.1);
+    transform: scale(1.1, 1.1);
+    *zoom: 1.1;/*IE6,7に適用*/
+    zoom: 1.1\9;/*IE8に適用*/
+}
+/*フッタ*/
+#footer_login {
+    width: 100%;
+    padding: 60px 0 10px;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    -webkit-border-image: url(/images/halftone.png) 50 0 0 0 / 50px 0 0 0 repeat;
+    -moz-border-image: url(/images/halftone.png) 50 0 0 0 / 50px 0 0 0 repeat;
+    -o-border-image: url(/images/halftone.png) 50 0 0 0 / 50px 0 0 0 repeat;
+    -ms-border-image: url(/images/halftone.png) 50 0 0 0 / 50px 0 0 0 repeat;
+    *background: #fff;/*IE6,7に適用*/
+    background: #fff\9;/*IE8に適用*/
+}
+
+/*フッタ（クレジット）*/
+#footer_login p.credit {
+    float: left;
+    margin: 5px 0 0 15px;
+    font-size: x-small;
+    color: #2da6d4;
+}
+
+/*フッタ（ナビゲーション）*/
+#footer_login ul {
+    float: right;
+    margin-right: 15px;
+}
+#footer_login ul li {
+    display: inline;
+    margin: 0 0 0 15px;
+}
+#footer_login ul li a {
+    font-size: small;
+    font-weight: bold;
+    color: #2da6d4;
+}
+#footer ul li a:hover {
+    color: #d3da21;
+}
+
+/*IE対策JavaScript用*/
+#content_login .cloudForIE {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+#content_login .cloud1 {
+    background: url(/images/cloud.png) no-repeat -160px -120px;
+}
+#content_login .cloud2 {
+    background: url(/images/cloud.png) no-repeat 560px 220px;
+}
+#footer_login .borderForIE {
+    width: 100%;
+    height: 50px;
+    position: absolute;
+    left: 0;
+    top: -50px;
+    background: url(/images/halftone.png) repeat-x left top;
+}
+
+
+
+
+
+/* add 2012.06.22 for SCR301 */
+#ordrList {
+    width:100%;
+}
+#ordrList table {
+	width: 1024px;
+    table-layout:fixed;
+}
+#ordrList th,
+#ordrList td {
+	padding: 1px 1px;
+}
+#ordrList th {
+	background: #f8f8f8;
+	font-weight: bold;
+}
+#ordrList th:first-child {
+	width: 10px;
+}
+#ordrList td {
+	border-top: 1px solid #eee;
+	cursor: pointer;
+}
+#ordrList .current td {
+	background: #f4f9ed;
+	font-weight: bold;
+}
+
+/* add 2012.06.22 for SCR301 */
+/* inqList2 */
+#inqList2 {
+    border-bottom: 2px solid #D6E1C7;
+}
+#inqList2 table {
+    width: 1024px;
+    table-layout:fixed;
+}
+#inqList2 th,
+#inqList2 td {
+    padding: 3px 5px;
+}
+#inqList2 th {
+    background: #f8f8f8;
+    font-weight: normal;
+    text-align: left;
+}
+#inqList2 th:first-child {
+    width: 1%;
+}
+#inqList2 td {
+    border-top: 1px solid #eee;
+    cursor: pointer;
+}
+#inqList2 .current td {
+    background: #f4f9ed;
+    font-weight: bold;
+}
+

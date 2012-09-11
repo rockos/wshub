@@ -6,15 +6,18 @@ var lcsAp = LCSAP.create('IQY');
  * main routine
  * date 1.jun.2012
  */
-exports.main = function(req, res){
+exports.main = function(req, res, frame){
+
+    var posts = {};
+    var deffile = './controller/data/def701.json';
+    posts.pageNavi = JSON.parse(require('fs').readFileSync(deffile));
 
     if (!lcsAp.isSession(req.session)) {
 		res.redirect('/');
     }
-
-    var deffile = './controller/data/def701.json';
-    var posts = JSON.parse(require('fs').readFileSync(deffile));
-    posts.userid = (req.session.userid)?req.session.userid:'undefined';
+    /* page情報設定 */
+    posts.frameNavi = frame.frameNavi;
+    posts.pageNavi.userid = (req.session.userid)?req.session.userid:'undefined';
 
     posts.title ='帳票画面';
     res.render('scr/scr701', posts);
