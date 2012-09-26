@@ -1,106 +1,28 @@
 var fs = require('fs');
 
+var fin = function(err){
+    if (err) {
+        return;
+    }
+}
+
 
 /**
  * 画面表示
  * @module dspwin
- * @param  {number}err, {Object}req, {Object}res, {Object}posts, {function}callback
- * @date   24/jun/2012
+ * @param  {Object}args, {function}nextDo
+ * @date   21/sep/2012
  */
-function dspWin(err, args) {
+function dspWin(args, nextDo) {
     var req = args.req, res = args.res, posts = args.posts;
 
     //Login user用
     posts.userid = (req.session.userid)?req.session.userid:'undefined';
 
-    if( err ){
-        lcsAp.log('winDsp error : '+err);
-        switch(err){
-        case 2:
-            /*規定外のメソッドタイプです*/
-            posts.mesg = '規定外のメソッドタイプです';
-            posts.mesg_level_color = 'operationPanel_fatal';
-            break;
-        case 3:
-            /*規定外のボタンです*/
-            posts.mesg = '規定外のボタンです';
-            posts.mesg_level_color = 'operationPanel_fatal';
-            break;
-        case 4:
-            /*DB Error*/
-            posts.mesg = 'データベースエラー';
-            posts.mesg_level_color = 'operationPanel_fatal';
-            break;
-        default:
-            posts.mesg = 'その他エラー';
-            posts.mesg_level_color = 'operationPanel_warning';
-        }
-
-        var msg = lcsAp.getMsgI18N("0");
-        posts.mesg = msg.text;
-        posts.mesg_lavel_color = msg.warn;
-
-        res.render(posts.scrNo, posts);
-        return;
-    }
-
     var msg = lcsAp.getMsgI18N("0");
     posts.mesg = msg.text;
     posts.mesg_lavel_color = msg.warn;
     res.render(posts.scrNo, posts);
-}
-
-/**
- * Ground へ "CARY" データ送信
- * @module sendGroundcary
- * @param  {Object}req, {Object}res, {Object}posts, {function}callback
- * @date   26/jun/2012
- */
-function sendGroundcary(args, callback) {
-    callback( null, args );
-    return;
-
-    /*
-    var req = args.req, res = args.res, posts = args.posts;
-
-    var sql = "",
-        ary = [],
-        key_ordr = "",
-        cary_data = {},
-        _dir = "/home/locos/demo/birman/var/log/",
-        file = "cary",
-        fd,
-        d,
-        line = "";
-
-    key_ordr = req.body.rad01;
-
-    sql = "select * from cary where ordr=? order by ordr,cary_seqn ";
-    ary = [key_ordr];
-    lcsDb.query(sql, ary, function(err, results, fields) {
-        if (err){
-            lcsAp.log( err );
-            callback( 4, args );
-            return;
-        }
-        d = new Date;
-        file += d.getFullYear()+d.getMonth()+d.getDate()+
-                d.getHours()+d.getMinutes()+d.getSeconds()+d.getMilliseconds()+
-            ".csv";
-        fd = fs.openSync(_dir+file, 'a');
-        for( var i=0,max=results.length; i<max; i++ ) {
-            line = results[i].ordr + "," +
-                   results[i].cary_seqn + "," +
-                   results[i].part + "," +
-                   results[i].locn + "," +
-                   results[i].sqty + "," +
-                   "\n";
-            fs.writeSync(fd, line, line.length, 'utf-8');
-        }
-        fs.closeSync(fd);
-        callback( null, args );
-    });
-    */
 }
 
 /**
@@ -202,11 +124,6 @@ function delPart( adt, callback ) {
         ary = [],
         str = [];
 
-    ///*本当はPART消すのですがデモのため消さないようにする*/
-    //callback(null,adt);
-    //return;
-
-    //debugger;
     if( !adt.part_grp[adt.part_seq] ) {
         callback(null,adt);
         return;
@@ -339,244 +256,36 @@ function checkStartordr(args, callback) {
 }
 
 /**
- * 出庫開始 実行
- * (´д｀)＜不採用になりました
- * @module execStartordr
- * @param  {Object}req, {Object}res, {Object}posts, {function}callback
- * @date   26/jun/2012
+ * 画面表示
+ * @module setEcho
+ * @param  {Object}args, {function}nextDo
+ * @date   21/sep/2012
  */
-function execStartordr_ng(args, callback) {
-    var req = args.req, res = args.res, posts = args.posts;
+function setEcho(args, nextDo) {
+    var req = args.req, res = args.res;
 
-    var key_ordr = "",
-        updata = {},
-        upfuncs = [],
-        d = new Date,
-        month;
+    // information bar へ出力
+    args.posts.mesg = 'ここは警告表示行';
 
-    month = d.getMonth()+1;
-    key_ordr = req.body.rad01;
-
-    if( posts.err_code ) {
-        args.posts.mesg = '出庫開始エラー';
-        args.posts.mesg_level_color = 'operationPanel_warning';
-        callback( null, args );
-        return ;
-    }
-
-    /* set audit data */
-    updata.usrid = (req.session.userid)?req.session.userid:'undefined';
-    updata.oper = 'START';
-    updata.udat = d.getFullYear()+'/'+month+'/'+d.getDate()+ ' '+
-                  d.getHours()+':'+d.getMinutes()+':'+d.getSeconds();
-    updata.key_ordr = key_ordr;
-    upfuncs[0] = modOrdr;
-
-    /* update */
-    lcsDb.update(upfuncs, updata, function(err){
-            if( err ) {
-                callback( err, args );
-                return;
-            }else{
-                callback( null, args );
-                return;
-            }
-        });
-}
-
-/**
- * 出庫開始チェック
- * (´д｀)＜不採用になりました
- * @module checkStartordr
- * @param  {Object}req, {Object}res, {Object}posts, {function}callback
- * @date   26/jun/2012
- */
-function checkStartordr_ng(args, callback) {
-    var req = args.req, res = args.res, posts = args.posts;
-
-    var sql = "",
-        ary = [],
-        key_ordr = "";
-
-    // 開始済み確認
-    if( !req.body.rad01 ) {
-        // ラジオ選択無し
-        args.posts.err_code = 101;
-        callback( null, args );
-        return;
-    }
-    key_ordr = req.body.rad01;
-    if( !key_ordr.length ) {
-        // ラジオ選択無し
-        args.posts.err_code = 101;
-        callback( null, args );
-        return;
-    }
-
-    sql = "select ordr, stat from ordr where ordr=? ";
-    ary = [key_ordr];
-    lcsDb.query(sql, ary, function(err, results, fields) {
-        if (err){
-            lcsAp.log( err );
-            callback( 4, args );
-            return;
-        }
-        if( !results.length ) {
-            // Ordr データ無し
-            args.posts.err_code = 102;
-            callback( null, args );
-            return;
-        } else {
-            if( results[0].stat !== "0" ) {
-                // 既に開始済み
-                args.posts.err_code = 103;
-                callback( null, args );
-                return;
-            } 
-        }
-        callback( null, args );
-    });
-}
-
-/**
- * "CARY"テーブルリストを取得する
- * @module dataCary
- * @param  {Object}req, {Object}res, {Object}posts, {function}callback
- * @date   25/jun/2012
- */
-function dataCary(args, callback) {
-    var req = args.req, res = args.res, posts = args.posts;
-
-    var sql = "",
-        cary_rows = [],
-        ordr_key = posts.tables2_head.ordr;
-
-    if( !ordr_key || !ordr_key.length ) {
-        callback( null, args );
-        return;
-    }
-
-    sql += "" +
-        "select " +
-        "    ordr, cary_seqn, part, part_name, locn, locn_name, sqty, " +
-        "    IFNULL(mem1,'') as mem1, IFNULL(mem2,'') as mem2, IFNULL(mem3,'') as mem3, " +
-        "    IFNULL(mem4,'') as mem4, IFNULL(mem5,'') as mem5 " +
-        "from cary " +
-        "where 1=1 ";
-    sql += " and ordr = '" + ordr_key + "' ";
-    sql += "order by ordr,cary_seqn ";
-
-    lcsDb.query(sql, function(err, results, fields) {
-        if (err){
-            console.log('Query Error : ');
-            console.log( err );
-            callback( 4, args );
-            return;
-        }
-        cary_rows = results;
-        args.posts.tables2 = cary_rows;
-        callback( null, args );
-    });
-}
-
-/**
- * "ORDR"テーブルリストを取得する
- * @module dataOrdr
- * @param  {Object}req, {Object}res, {Object}posts, {function}callback
- * @date   24/jun/2012
- */
-function dataOrdr(args, callback) {
-    var req = args.req, res = args.res, posts = args.posts;
-
-    var sql = "",
-        ordr_rows = [],
-        d = new Date,
-        month,
-        key_ordr;
-
-    month = d.getMonth()+1;
-
-    key_ordr =
-        lcsAp.zpadNum(d.getFullYear(),4) +"/" +
-        lcsAp.zpadNum(month,2) +"/"+
-        lcsAp.zpadNum(d.getDate(),2) +" ";
-
-    sql += "" +
-        "select " +
-        "    ordr, lotn, area, area_name, sqty, " +
-        "    IFNULL(mem1,'') as mem1, IFNULL(mem2,'') as mem2, IFNULL(mem3,'') as mem3, " +
-        "    IFNULL(mem4,'') as mem4, IFNULL(mem5,'') as mem5, " +
-        "    stat, " +
-        "    case when stat='0' then '未' when stat='9' then '完了' else '開始' end as stat_str " +
-        "from ordr " +
-        "where 1=1 ";
-
-    sql += " and ordr like '" + key_ordr + "%' ";
-
-    if( req.body.ordr && req.body.ordr.length ) {
-        sql += " and ordr like '" + req.body.ordr + "%' ";
-    }
-    if( req.body.lotn && req.body.lotn.length ) {
-        sql += " and lotn like '" + req.body.lotn + "%' ";
-    }
-    if( req.body.area && req.body.area.length ) {
-        sql += " and area like '" + req.body.area + "' ";
-    }
-    if( req.body.chk1 ) {
-        for( var i=0, max=req.body.chk1.length; i<max ; i++ ){
-            if( i===0 ) sql += " and ( ";
-            else        sql += " or ";
-            switch( req.body.chk1[i] ){
-            case '1':
-                sql += " stat='0' ";
-                break;
-            case '2':
-                sql += " (stat>='1' and stat<='8') ";
-                break;
-            case '3':
-                sql += " stat='9' ";
-                break;
-            }
-        }
-        sql += " ) ";
+    // text object へ出力
+    if( req.body.txt1 ) {
+        args.posts.text.txt1 = req.body.txt1;
     } else {
-        sql += " and 1=2 ";
+        args.posts.text.txt1 = '';
     }
-    sql += "order by ordr ";
 
-    lcsDb.query(sql, function(err, results, fields) {
-        if (err){
-            console.log('Query Error : ');
-            console.log( err );
-            callback( 4, args );
-            return;
-        }
-        ordr_rows = results;
-        for( var i=0, max=ordr_rows.length; i<max; i++ ){
-            ordr_rows[i].radio = "1";
-            if( posts.new_ordr ) {
-                if( ordr_rows[i].ordr==posts.new_ordr ) {
-                    ordr_rows[i].radio_checked = "checked";
-                    args.posts.tables2_head.ordr = ordr_rows[i].ordr;
-                    args.posts.tables2_head.start = ordr_rows[i].mem5;
-                }
-            }else if( req.body.rad01 ) {
-                if( ordr_rows[i].ordr==req.body.rad01 ) {
-                    ordr_rows[i].radio_checked = "checked";
-                    args.posts.tables2_head.ordr = ordr_rows[i].ordr;
-                    args.posts.tables2_head.start = ordr_rows[i].mem5;
-                }
-            }else{
-                if( i==0 ) {
-                    ordr_rows[i].radio_checked = "checked";
-                    args.posts.tables2_head.ordr = ordr_rows[i].ordr;
-                    args.posts.tables2_head.start = ordr_rows[i].mem5;
-                }
+    //check box へ出力
+    args.req.body.chk1 = ['c1','c2'];
+    if( req.body.chk1 ) {
+        for( var i=0 ; i<req.body.chk1.length ; i++ ) {
+            if(req.body.chk1[i]){
+                args.posts.checkbox.chk1[req.body.chk1[i]] = "checked";
             }
         }
-        args.posts.tables = ordr_rows;
-        callback( null, args );
-    });
+    }
+
+    nextDo( null, args );
+    return;
 }
 
 /**
@@ -585,7 +294,7 @@ function dataOrdr(args, callback) {
  * @param  {Object}req, {Object}res, {Object}posts, {function}callback
  * @date   24/jul/2012
  */
-function dataPart(args, callback) {
+function postData(args, nextDo) {
     var req = args.req, res = args.res, posts = args.posts;
 
     var sql = "",
@@ -593,12 +302,12 @@ function dataPart(args, callback) {
 
     sql += "" +
         "select " +
-        "    pcode, sqty, pnam, lotn, " +
-        "    IFNULL(mem1,'') as mem1, IFNULL(mem2,'') as mem2, IFNULL(mem3,'') as mem3 " +
+        "    pcode as col1, sqty as col2, pnam as col3, lotn col4, " +
+        "    IFNULL(mem1,'') as col5, IFNULL(mem2,'') as col6, IFNULL(mem3,'') as col7 " +
         "from part " +
         "where 1=1 ";
-    if( req.body.pcode ) {
-        sql += " and pcode = '" + req.body.pcode +"' ";
+    if( req.body.txt1 ) {
+        sql += " and pcode = '" + req.body.txt1 +"' ";
     }else{
         sql += " and pcode = '" + "' ";
     }
@@ -606,65 +315,27 @@ function dataPart(args, callback) {
 
     lcsDb.query(sql, function(err, results, fields) {
         if (err){
-            callback( 4, args );
+            nextDo( 4, args );
             return;
         }
         part_rows = results;
         for( var i=0, max=part_rows.length; i<max; i++ ){
-            part_rows[i].partkeys = part_rows[i].pcode + "," + part_rows[i].pnam + "," + part_rows[i].lotn;
-            part_rows[i].checkbox = "1";
-            part_rows[i].chk_checked = "checked";
+            part_rows[i].chk1.value = part_rows[i].col1;
+            part_rows[i].chk1.exist = "1";
+            part_rows[i].chk1.on = "checked";
         }
-        args.posts.tabpart = part_rows;
-        callback( null, args );
-    });
-}
-
-/**
- * "AREA"optionリストを取得する
- * @module optionsArea
- * @param  {Object}req, {Object}res, {Object}posts, {function}callback
- * @date   24/jun/2012
- */
-//function optionsArea(req, res, posts, callback) {
-function optionsArea(args, callback) {
-    var req = args.req, res = args.res;
-
-    var sql = "",
-        ary = [];
-
-    sql = 
-        "select " +
-        "  area, area_name, if(area=?,'selected','xxx') as selected " +
-        "from ordr " +
-        "where 1=1 " +
-        "group by area, area_name " +
-        "order by area, area_name ";
-    if(req.body.area) {
-        ary = [req.body.area];
-    }else{
-        ary = ['XXX'];
-    }
-
-    lcsDb.query(sql, ary, function(err, results, fields) {
-        if (err){
-            lcsAp.log( err );
-            callback( 4, args );
-            return;
-        }
-        args.posts.options = results;
-        callback( null, args );
+        args.posts.table.tab1 = part_rows;
+        nextDo( null, args );
     });
 }
 
 /**
  * "PART"optionリストを取得する
  * @module optionsPArt
- * @param  {Object}req, {Object}res, {Object}posts, {function}callback
+ * @param  {Object}args, {function}nextDo
  * @date   23/jul/2012
  */
-//function optionsPart(req, res, posts, callback) {
-function optionsPart(args, callback) {
+function optionsDsp(args, nextDo) {
     var req = args.req, res = args.res;
 
     var sql = "",
@@ -672,198 +343,76 @@ function optionsPart(args, callback) {
 
     sql = 
         "select " +
-        "  pcode, pcode as pcode_name, if(pcode=?,'selected','xxx') as selected " +
+        "  pcode as value, pcode as disp, if(pcode=?,'selected','xxx') as selected " +
         "from part " +
         "where 1=1 " +
         "group by pcode " +
         "order by pcode ";
-    if(req.body.pcode) {
-        ary = [req.body.pcode];
+    if(req.body.txt1) {
+        ary = [req.body.txt1];
     }else{
         ary = ['XXX'];
     }
 
     lcsDb.query(sql, ary, function(err, results, fields) {
         if (err){
-            lcsAp.log( err );
-            callback( 4, args );
+            nextDo( 4, args );
             return;
         }
-        args.posts.options2 = results;
-        callback( null, args );
+        args.posts.select.opt1 = results;
+        nextDo( null, args );
     });
 }
 
 /**
  * 出庫開始押下時の処理
- * @module startOrdr
+ * @module addPB
  * @param  {Object}req, {Object}res, {Object}posts
  * @date   26/jun/2012
  */
-function startOrdr(req, res, posts) {
+function addPB(req, res, posts) {
 
     var args = {"req": req, "res": res, "posts": posts};
 
-    // information bar へ出力
-    posts.mesg = 'ここは警告表示行';
-
-    // text object へ出力
-    posts.text.ordr = req.body.ordr;
-    posts.text.lotn = req.body.lotn;
-
-    //check box へ出力
-    if( req.body.chk1 ) {
-        for( var i=0 ; i<req.body.chk1.length ; i++ ) {
-            if(req.body.chk1[i]){
-                posts.checkbox.chk1[req.body.chk1[i]] = "checked";
-            }
-        }
-    }
-
-    posts.dspcstm["corp"] = "hidden";
-    posts.dspcstm["priv"] = "hidden";
-    posts.dspcstm["vist"] = "hidden";
-    switch( req.body.dspcstm ) {
-    case "corp":
-        posts.dspcstm["corp"] = "";
-        posts.dspcstm_val = "corp";
-        break;
-    case "priv":
-        posts.dspcstm["priv"] = "";
-        posts.dspcstm_val = "priv";
-        break;
-    case "vist":
-        posts.dspcstm["vist"] = "";
-        posts.dspcstm_val = "vist";
-        break;
-    case "default":
-        posts.dspcstm["corp"] = "";
-        posts.dspcstm_val = "corp";
-        break;
-    }
-
-    lcsAp.sync( args,
-                [checkStartordr,
-                 execStartordr,
-                 sendGroundcary,
-                 optionsArea,
-                 optionsPart,
-                 dataPart,
-                 dataOrdr,
-                 dataCary], 
-                dspWin );
+    lcsAp.series(args,
+                 [setEcho,
+                  dspWin], /* 後処理 */
+                 fin);
 }
 
 /**
  * 最新表示押下時の処理
- * @module showoOrdr
+ * @module iqyPB
  * @param  {Object}req, {Object}res, {Object}posts
- * @date   24/jun/2012
+ * @date   21/sep/2012
  */
-function showOrdr(req, res, posts) {
+function iqyPB(req, res, posts) {
 
     var args = {"req": req, "res": res, "posts": posts};
 
-    // information bar へ出力
-    posts.mesg = 'ここは警告表示行';
-
-    // text object へ出力
-    posts.text.ordr = req.body.ordr;
-    posts.text.lotn = req.body.lotn;
-
-    //check box へ出力
-    if( req.body.chk1 ) {
-        for( var i=0 ; i<req.body.chk1.length ; i++ ) {
-            if(req.body.chk1[i]){
-                posts.checkbox.chk1[req.body.chk1[i]] = "checked";
-            }
-        }
-    }
-
-    posts.dspcstm["corp"] = "hidden";
-    posts.dspcstm["priv"] = "hidden";
-    posts.dspcstm["vist"] = "hidden";
-    switch( req.body.dspcstm ) {
-    case "corp":
-        posts.dspcstm["corp"] = "";
-        posts.dspcstm_val = "corp";
-        break;
-    case "priv":
-        posts.dspcstm["priv"] = "";
-        posts.dspcstm_val = "priv";
-        break;
-    case "vist":
-        posts.dspcstm["vist"] = "";
-        posts.dspcstm_val = "vist";
-        break;
-    case "default":
-        posts.dspcstm["corp"] = "";
-        posts.dspcstm_val = "corp";
-        break;
-    }
-
-    lcsAp.sync( args,
-                [optionsArea,
-                 optionsPart,
-                 dataPart,
-                 dataOrdr,
-                 dataCary], dspWin );
-
+    lcsAp.series(args,
+                 [setEcho,
+                  optionsDsp,
+                  postData,
+                  dspWin], /* 後処理 */
+                 fin);
 }
 
 /**
  * メニューからジャンプ時の処理
  * @module initSend
  * @param  {Object}req, {Object}res, {Object}posts
- * @date   24/jun/2012
+ * @date   21/sep/2012
  */
 function initSend(req, res, posts) {
 
     var args = {"req": req, "res": res, "posts": posts};
-    var str = req.url.replace(/\.+/,'').split('/');
 
-    // information bar へ出力
-    posts.mesg = 'ここは警告表示行';
-
-    // text object へ出力
-    posts.text.ordr = '';
-    posts.text.lotn = '';
-
-    //check box へ出力
-    posts.checkbox.chk1['1'] = 'checked';
-    posts.checkbox.chk1['2'] = 'checked';
-    posts.checkbox.chk1['3'] = '';
-
-    req.body.chk1 = ['1','2'];
-
-    posts.dspcstm["corp"] = "hidden";
-    posts.dspcstm["priv"] = "hidden";
-    posts.dspcstm["vist"] = "hidden";
-    switch( str[2] ) {
-    case "301":
-        posts.dspcstm["corp"] = "";
-        posts.dspcstm_val = "corp";
-        break;
-    case "302":
-        posts.dspcstm["priv"] = "";
-        posts.dspcstm_val = "priv";
-        break;
-    case "303":
-        posts.dspcstm["vist"] = "";
-        posts.dspcstm_val = "vist";
-        break;
-    case "default":
-        posts.dspcstm["corp"] = "";
-        posts.dspcstm_val = "corp";
-        break;
-    }
-
-    lcsAp.sync( args,
-                [optionsArea,
-                 optionsPart,
-                 dataOrdr,
-                 dataCary], dspWin );
-
+    lcsAp.series(args,
+                 [setEcho,
+                  optionsDsp,
+                  dspWin], /* 後処理 */
+                 fin);
 }
 
 /**
@@ -872,10 +421,12 @@ function initSend(req, res, posts) {
  * @param  {Object}req, {Object}res
  * @date   21/jun/2012
  */
-exports.main = function(req, res){
+exports.main = function(req, res, frame){
 
     var posts = {};
     posts = lcsAp.initialz_posts(req,posts,"301");
+    posts.frameNavi = frame.frameNavi;
+    posts.frameNavi.userid =  (req.session.userid)? req.session.userid:'undefined';
 
     if (!lcsAp.isSession(req.session)) {
         res.redirect('/');
@@ -883,23 +434,22 @@ exports.main = function(req, res){
 
     if( req.method=="GET" ) {
         /*GET メソッド*/
-        //initialz_posts(posts);
         initSend( req, res, posts );
     }else if( req.method=="POST" ){
         /*POST メソッド*/
         if ( req.body.send_iqy ) {
-            showOrdr(req, res, posts);
+            iqyPB(req, res, posts);
         } else if ( req.body.send_add ) {
-            startOrdr( req, res, posts);
-        //} else if ( req.body.send_del ) {
-            //deletePart(req, res, posts);
+            addPB( req, res, posts);
+        } else if ( req.body.send_del ) {
+            delPB(req, res, posts);
         } else {
             /*規定外のボタンです*/
-            dspWin( 3, req, res, posts );
+            //dspWin( 3, req, res, posts );
         }
     }else{
         /*規定外のメソッドタイプです*/
-        dspWin( 2, req, res, posts );
+        //dspWin( 2, req, res, posts );
     }
 
 };

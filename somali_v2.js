@@ -9,7 +9,7 @@
  */
 'use strict';
 var express = require('express')
-    , routes = require('./routes')
+    , expressValidator = require('express-validator')
     , rootDir = __dirname
     , RedisStore = require('connect-redis')(express)
     , opts = require('opts')
@@ -49,12 +49,15 @@ var lcsAp = require('./lib/ap/lcsap').create('appServer', rootDir, app);
 var lcsUI = require('./lib/ap/lcsui').create('appServer');
 var lcsDb = require('./lib/db/lcsdb').create('appServer', './etc/db.cf');
 var lcsMog = require('./lib/db/lcsmog').create('appServer', './etc/mongo.cf', _schema_gndlog, "jisslogs" );
+/* Gloval Object */
+global['lcsAp'] = lcsAp;
+global['lcsUI'] = lcsUI;
+global['lcsDb'] = lcsDb;
 
 
 /* define command line arguments */
 opts.parse([
-            {
-                'short': 'p',
+            {'short': 'p',
                     'long': 'port',
                     'description': 'HTTP port',
                     'value': true,
@@ -72,6 +75,7 @@ app.configure(function () {
         app.set('views', __dirname + '/views/jp');
         app.set('view engine', 'ejs');
         app.use(express.bodyParser());
+        app.use(expressValidator);
         app.use(express.methodOverride());
         //sessionを扱うときはrouterの前にこれを書かなければならない
         app.use(express.cookieParser());
@@ -92,9 +96,11 @@ app.configure('production', function(){
 });
 
 /* 画面プログラムの登録 */
-lcsUI.config({"map" : "./controller/map.json"});
-lcsUI.config({"frame" : "./views/jp/framenavi.json"});
-lcsUI.config({"tags" : "./views/jp/pagetags.json"});
+lcsUI.config([
+             {"map" : "./controller/map.json"}
+             ,{"frame" : "./views/jp/framenavi.json"}
+             ,{"tags" : "./views/jp/pagetags.json"}
+    ]);
 
 /* ルーティング処理 */
 app.get('/', lcsUI.login);
@@ -108,7 +114,7 @@ app.post('/check', lcsUI.checkUser);
 //console.log('__dirname =',__dirname);
 
 app.listen(PORT, function(){
-        console.log("Snowshoe server(node v0.6) listening on port %d in %s mode", app.address().port, app.settings.env);
+        console.log("Snowshoe server(node v0.8) listening on port %d in %s mode", app.address().port, app.settings.env);
 });
 
 /* this is for express@v3
@@ -142,10 +148,6 @@ global['auth'] = auth;
 // add 2012.06.30 takahashi
 global['sck_io'] = socketio;
 
-/* Gloval Object */
-global['lcsAp'] = lcsAp;
-global['lcsUI'] = lcsUI;
-global['lcsDb'] = lcsDb;
 
 
 /*

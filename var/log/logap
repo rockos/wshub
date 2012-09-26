@@ -2092,3 +2092,1869 @@
     at async.iterator.fn (/home/locos/.node/v0.8.7/lib/node_modules/async/lib/async.js:517:34)
     at async.waterfall.wrapIterator (/home/locos/.node/v0.8.7/lib/node_modules/async/lib/async.js:441:34)
     at process.startup.processNextTick.process._tickCallback (node.js:244:9);]
+2012/9/12 10:6:14:22 [0:--- MgrMon background process start;]
+2012/9/12 10:6:14:33 [0:--- MgrAgv background process start;]
+2012/9/12 10:7:8:441 [0:uncaughtException: ReferenceError: emsg is not defined;]
+2012/9/12 10:7:8:441 [0:uncaughtException trace: ReferenceError: emsg is not defined
+    at parseData (/home/locos/demo/somali/controller/str/str.js:214:19)
+    at async.apply (/home/locos/.node/v0.8.7/lib/node_modules/async/lib/async.js:532:23)
+    at async.iterator.fn (/home/locos/.node/v0.8.7/lib/node_modules/async/lib/async.js:517:34)
+    at async.waterfall.wrapIterator (/home/locos/.node/v0.8.7/lib/node_modules/async/lib/async.js:441:34)
+    at process.startup.processNextTick.process._tickCallback (node.js:244:9);]
+2012/9/12 10:7:33:391 [0:uncaughtException: ReferenceError: emsg is not defined;]
+2012/9/12 10:7:33:391 [0:uncaughtException trace: ReferenceError: emsg is not defined
+    at parseData (/home/locos/demo/somali/controller/str/str.js:214:19)
+    at async.apply (/home/locos/.node/v0.8.7/lib/node_modules/async/lib/async.js:532:23)
+    at async.iterator.fn (/home/locos/.node/v0.8.7/lib/node_modules/async/lib/async.js:517:34)
+    at async.waterfall.wrapIterator (/home/locos/.node/v0.8.7/lib/node_modules/async/lib/async.js:441:34)
+    at process.startup.processNextTick.process._tickCallback (node.js:244:9);]
+2012/9/12 10:11:4:65 [0:--- MgrMon background process start;]
+2012/9/12 10:11:4:74 [0:--- MgrAgv background process start;]
+2012/9/12 10:11:14:19 []
+2012/9/12 10:11:14:25 [0:ReferenceError: fs is not defined
+    at addStr_sync (/home/locos/demo/somali/controller/str/str.js:261:10)
+    at Object.exports.main (/home/locos/demo/somali/controller/str/str.js:332:9)
+    at _dispatch (/home/locos/demo/somali/lib/ap/lcsui.js:107:43)
+    at lcsUI.doAction (/home/locos/demo/somali/lib/ap/lcsui.js:145:14)
+    at callbacks (/home/locos/.node/v0.8.7/lib/node_modules/express/lib/router/index.js:272:11)
+    at param (/home/locos/.node/v0.8.7/lib/node_modules/express/lib/router/index.js:246:11)
+    at param (/home/locos/.node/v0.8.7/lib/node_modules/express/lib/router/index.js:243:11)
+    at pass (/home/locos/.node/v0.8.7/lib/node_modules/express/lib/router/index.js:253:5)
+    at Router._dispatch (/home/locos/.node/v0.8.7/lib/node_modules/express/lib/router/index.js:280:5)
+    at Object.middleware [as handle] (/home/locos/.node/v0.8.7/lib/node_modules/express/lib/router/index.js:45:10);]
+2012/9/12 10:11:27:625 []
+2012/9/12 10:11:27:625 [0:ReferenceError: fs is not defined
+    at addStr_sync (/home/locos/demo/somali/controller/str/str.js:261:10)
+    at Object.exports.main (/home/locos/demo/somali/controller/str/str.js:332:9)
+    at _dispatch (/home/locos/demo/somali/lib/ap/lcsui.js:107:43)
+    at lcsUI.doAction (/home/locos/demo/somali/lib/ap/lcsui.js:145:14)
+    at callbacks (/home/locos/.node/v0.8.7/lib/node_modules/express/lib/router/index.js:272:11)
+    at param (/home/locos/.node/v0.8.7/lib/node_modules/express/lib/router/index.js:246:11)
+    at param (/home/locos/.node/v0.8.7/lib/node_modules/express/lib/router/index.js:243:11)
+    at pass (/home/locos/.node/v0.8.7/lib/node_modules/express/lib/router/index.js:253:5)
+    at Router._dispatch (/home/locos/.node/v0.8.7/lib/node_modules/express/lib/router/index.js:280:5)
+    at Object.middleware [as handle] (/home/locos/.node/v0.8.7/lib/node_modules/express/lib/router/index.js:45:10);]
+2012/9/12 10:28:8:670 [0:--- MgrMon background process start;]
+2012/9/12 10:28:8:676 [0:--- MgrAgv background process start;]
+2012/9/12 10:40:59:181 [0:--- MgrMon background process start;]
+2012/9/12 10:40:59:187 [0:--- MgrAgv background process start;]
+2012/9/12 10:42:10:108 []
+2012/9/12 10:42:12:120 [0:Error: object doesn't have 'UPSTR._upAddStr' function!
+    at module.exports (/home/locos/.node/v0.8.7/lib/node_modules/synchronize/sync.js:17:21)
+    at addStr_sync (/home/locos/demo/somali/controller/str/str.js:263:5)
+    at Object.exports.main (/home/locos/demo/somali/controller/str/str.js:334:9)
+    at _dispatch (/home/locos/demo/somali/lib/ap/lcsui.js:107:43)
+    at lcsUI.doAction (/home/locos/demo/somali/lib/ap/lcsui.js:145:14)
+    at callbacks (/home/locos/.node/v0.8.7/lib/node_modules/express/lib/router/index.js:272:11)
+    at param (/home/locos/.node/v0.8.7/lib/node_modules/express/lib/router/index.js:246:11)
+    at param (/home/locos/.node/v0.8.7/lib/node_modules/express/lib/router/index.js:243:11)
+    at pass (/home/locos/.node/v0.8.7/lib/node_modules/express/lib/router/index.js:253:5)
+    at Router._dispatch (/home/locos/.node/v0.8.7/lib/node_modules/express/lib/router/index.js:280:5);]
+2012/9/12 10:43:4:111 [0:--- MgrMon background process start;]
+2012/9/12 10:43:4:119 [0:--- MgrAgv background process start;]
+2012/9/12 10:44:12:877 [0:--- MgrMon background process start;]
+2012/9/12 10:44:12:882 [0:--- MgrAgv background process start;]
+2012/9/12 10:45:17:84 [0:--- MgrMon background process start;]
+2012/9/12 10:45:17:89 [0:--- MgrAgv background process start;]
+2012/9/12 12:57:4:259 [0:--- MgrMon background process start;]
+2012/9/12 12:57:4:264 [0:--- MgrAgv background process start;]
+2012/9/12 12:58:38:827 [0:--- MgrMon background process start;]
+2012/9/12 12:58:38:833 [0:--- MgrAgv background process start;]
+2012/9/12 13:39:18:533 [0:--- MgrMon background process start;]
+2012/9/12 13:39:18:538 [0:--- MgrAgv background process start;]
+2012/9/12 13:41:42:787 [0:uncaughtException: TypeError: Cannot call method 'apply' of undefined;]
+2012/9/12 13:41:42:787 [0:uncaughtException trace: TypeError: Cannot call method 'apply' of undefined
+    at async.apply (/home/locos/.node/v0.8.7/lib/node_modules/async/lib/async.js:532:23)
+    at async.series.results (/home/locos/.node/v0.8.7/lib/node_modules/async/lib/async.js:486:21)
+    at _asyncMap (/home/locos/.node/v0.8.7/lib/node_modules/async/lib/async.js:185:13)
+    at async.forEachSeries.iterate (/home/locos/.node/v0.8.7/lib/node_modules/async/lib/async.js:108:13)
+    at async.forEachSeries (/home/locos/.node/v0.8.7/lib/node_modules/async/lib/async.js:124:9)
+    at _asyncMap (/home/locos/.node/v0.8.7/lib/node_modules/async/lib/async.js:184:9)
+    at Object.doSeries [as mapSeries] (/home/locos/.node/v0.8.7/lib/node_modules/async/lib/async.js:174:23)
+    at Object.async.series (/home/locos/.node/v0.8.7/lib/node_modules/async/lib/async.js:484:19)
+    at lcsAp.series (/home/locos/demo/somali/lib/ap/lcsap.js:177:15)
+    at parseData (/home/locos/demo/somali/controller/str/str.js:235:11);]
+2012/9/12 13:44:15:822 [0:--- MgrMon background process start;]
+2012/9/12 13:44:15:827 [0:--- MgrAgv background process start;]
+2012/9/12 13:44:56:325 [0:uncaughtException: TypeError: object is not a function;]
+2012/9/12 13:44:56:325 [0:uncaughtException trace: TypeError: object is not a function
+    at async.series (/home/locos/.node/v0.8.7/lib/node_modules/async/lib/async.js:508:17)
+    at Object.async.forEachSeries (/home/locos/.node/v0.8.7/lib/node_modules/async/lib/async.js:104:20)
+    at Object.async.series (/home/locos/.node/v0.8.7/lib/node_modules/async/lib/async.js:498:19)
+    at lcsAp.series (/home/locos/demo/somali/lib/ap/lcsap.js:179:15)
+    at parseData (/home/locos/demo/somali/controller/str/str.js:235:11)
+    at async.apply (/home/locos/.node/v0.8.7/lib/node_modules/async/lib/async.js:532:23)
+    at async.iterator.fn (/home/locos/.node/v0.8.7/lib/node_modules/async/lib/async.js:517:34)
+    at async.waterfall.wrapIterator (/home/locos/.node/v0.8.7/lib/node_modules/async/lib/async.js:441:34)
+    at process.startup.processNextTick.process._tickCallback (node.js:244:9);]
+2012/9/12 13:45:31:820 [0:--- MgrMon background process start;]
+2012/9/12 13:45:31:831 [0:--- MgrAgv background process start;]
+2012/9/12 13:47:30:182 [0:--- MgrMon background process start;]
+2012/9/12 13:47:30:192 [0:--- MgrAgv background process start;]
+2012/9/12 13:49:32:676 [0:--- MgrMon background process start;]
+2012/9/12 13:49:32:681 [0:--- MgrAgv background process start;]
+2012/9/12 13:51:16:591 [0:uncaughtException: TypeError: Property 'req' of object #<Object> is not a function;]
+2012/9/12 13:51:16:591 [0:uncaughtException trace: TypeError: Property 'req' of object #<Object> is not a function
+    at async.series (/home/locos/.node/v0.8.7/lib/node_modules/async/lib/async.js:499:25)
+    at async.forEachSeries.iterate (/home/locos/.node/v0.8.7/lib/node_modules/async/lib/async.js:108:13)
+    at Object.async.forEachSeries (/home/locos/.node/v0.8.7/lib/node_modules/async/lib/async.js:124:9)
+    at Object.async.series (/home/locos/.node/v0.8.7/lib/node_modules/async/lib/async.js:498:19)
+    at lcsAp.series (/home/locos/demo/somali/lib/ap/lcsap.js:179:15)
+    at parseData (/home/locos/demo/somali/controller/str/str.js:235:11)
+    at async.apply (/home/locos/.node/v0.8.7/lib/node_modules/async/lib/async.js:532:23)
+    at async.iterator.fn (/home/locos/.node/v0.8.7/lib/node_modules/async/lib/async.js:517:34)
+    at async.waterfall.wrapIterator (/home/locos/.node/v0.8.7/lib/node_modules/async/lib/async.js:441:34)
+    at process.startup.processNextTick.process._tickCallback (node.js:244:9);]
+2012/9/12 13:57:3:771 [0:--- MgrMon background process start;]
+2012/9/12 13:57:3:775 [0:--- MgrAgv background process start;]
+2012/9/12 13:57:21:975 [0:uncaughtException: TypeError: Cannot read property 'body' of undefined;]
+2012/9/12 13:57:21:975 [0:uncaughtException trace: TypeError: Cannot read property 'body' of undefined
+    at checkLotn (/home/locos/demo/somali/controller/str/str.js:224:30)
+    at async.series.results (/home/locos/.node/v0.8.7/lib/node_modules/async/lib/async.js:486:21)
+    at _asyncMap (/home/locos/.node/v0.8.7/lib/node_modules/async/lib/async.js:185:13)
+    at async.forEachSeries.iterate (/home/locos/.node/v0.8.7/lib/node_modules/async/lib/async.js:108:13)
+    at async.forEachSeries.iterate (/home/locos/.node/v0.8.7/lib/node_modules/async/lib/async.js:119:25)
+    at _asyncMap (/home/locos/.node/v0.8.7/lib/node_modules/async/lib/async.js:187:17)
+    at async.series.results (/home/locos/.node/v0.8.7/lib/node_modules/async/lib/async.js:491:34)
+    at checkPcode (/home/locos/demo/somali/controller/str/str.js:220:13)
+    at async.apply (/home/locos/.node/v0.8.7/lib/node_modules/async/lib/async.js:532:23)
+    at async.series.results (/home/locos/.node/v0.8.7/lib/node_modules/async/lib/async.js:486:21);]
+2012/9/12 14:1:26:316 [0:--- MgrMon background process start;]
+2012/9/12 14:1:26:320 [0:--- MgrAgv background process start;]
+2012/9/12 14:1:41:632 [0:uncaughtException: TypeError: Cannot read property 'body' of undefined;]
+2012/9/12 14:1:41:632 [0:uncaughtException trace: TypeError: Cannot read property 'body' of undefined
+    at checkLotn (/home/locos/demo/somali/controller/str/str.js:228:30)
+    at async.series.results (/home/locos/.node/v0.8.7/lib/node_modules/async/lib/async.js:486:21)
+    at _asyncMap (/home/locos/.node/v0.8.7/lib/node_modules/async/lib/async.js:185:13)
+    at async.forEachSeries.iterate (/home/locos/.node/v0.8.7/lib/node_modules/async/lib/async.js:108:13)
+    at async.forEachSeries.iterate (/home/locos/.node/v0.8.7/lib/node_modules/async/lib/async.js:119:25)
+    at _asyncMap (/home/locos/.node/v0.8.7/lib/node_modules/async/lib/async.js:187:17)
+    at async.series.results (/home/locos/.node/v0.8.7/lib/node_modules/async/lib/async.js:491:34)
+    at checkPcode (/home/locos/demo/somali/controller/str/str.js:223:13)
+    at async.apply (/home/locos/.node/v0.8.7/lib/node_modules/async/lib/async.js:532:23)
+    at async.series.results (/home/locos/.node/v0.8.7/lib/node_modules/async/lib/async.js:486:21);]
+2012/9/12 14:2:15:775 [0:--- MgrMon background process start;]
+2012/9/12 14:2:15:780 [0:--- MgrAgv background process start;]
+2012/9/12 14:4:59:366 [0:--- MgrMon background process start;]
+2012/9/12 14:4:59:371 [0:--- MgrAgv background process start;]
+2012/9/12 14:16:4:187 [0:--- MgrMon background process start;]
+2012/9/12 14:16:4:192 [0:--- MgrAgv background process start;]
+2012/9/12 14:16:52:153 [0:uncaughtException: ReferenceError: errtext is not defined;]
+2012/9/12 14:16:52:153 [0:uncaughtException trace: ReferenceError: errtext is not defined
+    at plist.checkPcode (/home/locos/demo/somali/controller/str/str.js:205:17)
+    at async.apply (/home/locos/.node/v0.8.7/lib/node_modules/async/lib/async.js:532:23)
+    at async.series.results (/home/locos/.node/v0.8.7/lib/node_modules/async/lib/async.js:486:21)
+    at _asyncMap (/home/locos/.node/v0.8.7/lib/node_modules/async/lib/async.js:185:13)
+    at async.forEachSeries.iterate (/home/locos/.node/v0.8.7/lib/node_modules/async/lib/async.js:108:13)
+    at async.forEachSeries (/home/locos/.node/v0.8.7/lib/node_modules/async/lib/async.js:124:9)
+    at _asyncMap (/home/locos/.node/v0.8.7/lib/node_modules/async/lib/async.js:184:9)
+    at Object.doSeries [as mapSeries] (/home/locos/.node/v0.8.7/lib/node_modules/async/lib/async.js:174:23)
+    at Object.async.series (/home/locos/.node/v0.8.7/lib/node_modules/async/lib/async.js:484:19)
+    at lcsAp.series (/home/locos/demo/somali/lib/ap/lcsap.js:177:15);]
+2012/9/12 14:17:42:930 [0:--- MgrMon background process start;]
+2012/9/12 14:17:42:936 [0:--- MgrAgv background process start;]
+2012/9/12 14:19:41:987 [0:--- MgrMon background process start;]
+2012/9/12 14:19:41:993 [0:--- MgrAgv background process start;]
+2012/9/12 14:34:42:732 [0:--- MgrMon background process start;]
+2012/9/12 14:34:42:738 [0:--- MgrAgv background process start;]
+2012/9/12 14:37:56:899 [0:--- MgrMon background process start;]
+2012/9/12 14:37:56:903 [0:--- MgrAgv background process start;]
+2012/9/12 14:41:41:252 [0:uncaughtException: TypeError: Cannot read property 'value' of undefined;]
+2012/9/12 14:41:41:252 [0:uncaughtException trace: TypeError: Cannot read property 'value' of undefined
+    at _asyncMap (/home/locos/.node/v0.8.7/lib/node_modules/async/lib/async.js:185:23)
+    at async.forEachSeries.iterate (/home/locos/.node/v0.8.7/lib/node_modules/async/lib/async.js:108:13)
+    at async.forEachSeries.iterate (/home/locos/.node/v0.8.7/lib/node_modules/async/lib/async.js:119:25)
+    at _asyncMap (/home/locos/.node/v0.8.7/lib/node_modules/async/lib/async.js:187:17)
+    at async.series.results (/home/locos/.node/v0.8.7/lib/node_modules/async/lib/async.js:491:34)
+    at plist.checkLotn (/home/locos/demo/somali/controller/str/str.js:230:9)
+    at async.apply (/home/locos/.node/v0.8.7/lib/node_modules/async/lib/async.js:532:23)
+    at async.series.results (/home/locos/.node/v0.8.7/lib/node_modules/async/lib/async.js:486:21)
+    at _asyncMap (/home/locos/.node/v0.8.7/lib/node_modules/async/lib/async.js:185:13)
+    at async.forEachSeries.iterate (/home/locos/.node/v0.8.7/lib/node_modules/async/lib/async.js:108:13);]
+2012/9/12 14:44:9:711 [0:--- MgrMon background process start;]
+2012/9/12 14:44:9:718 [0:--- MgrAgv background process start;]
+2012/9/12 15:5:22:106 [0:--- MgrMon background process start;]
+2012/9/12 15:5:22:111 [0:--- MgrAgv background process start;]
+2012/9/12 15:6:33:70 [0:uncaughtException: ReferenceError: shoError is not defined;]
+2012/9/12 15:6:33:70 [0:uncaughtException trace: ReferenceError: shoError is not defined
+    at plist.checkPcode (/home/locos/demo/somali/controller/str/str.js:225:21)
+    at lcsDb.query (/home/locos/demo/somali/lib/db/lcsdb.js:221:29)
+    at Query.Client.query (/home/locos/.node/v0.8.7/lib/node_modules/mysql/lib/client.js:108:11)
+    at Query.EventEmitter.emit (events.js:85:17)
+    at Query._handlePacket (/home/locos/.node/v0.8.7/lib/node_modules/mysql/lib/query.js:51:14)
+    at Client._handlePacket (/home/locos/.node/v0.8.7/lib/node_modules/mysql/lib/client.js:319:14)
+    at Parser.EventEmitter.emit (events.js:88:17)
+    at Parser.write.emitPacket (/home/locos/.node/v0.8.7/lib/node_modules/mysql/lib/parser.js:71:14)
+    at Parser.write (/home/locos/.node/v0.8.7/lib/node_modules/mysql/lib/parser.js:576:7)
+    at Socket.EventEmitter.emit (events.js:88:17);]
+2012/9/12 15:10:21:979 [0:--- MgrMon background process start;]
+2012/9/12 15:10:21:985 [0:--- MgrAgv background process start;]
+2012/9/12 15:10:31:448 [0:uncaughtException: ReferenceError: shoError is not defined;]
+2012/9/12 15:10:31:448 [0:uncaughtException trace: ReferenceError: shoError is not defined
+    at plist.checkPcode (/home/locos/demo/somali/controller/str/str.js:225:21)
+    at lcsDb.query (/home/locos/demo/somali/lib/db/lcsdb.js:221:29)
+    at Query.Client.query (/home/locos/.node/v0.8.7/lib/node_modules/mysql/lib/client.js:108:11)
+    at Query.EventEmitter.emit (events.js:85:17)
+    at Query._handlePacket (/home/locos/.node/v0.8.7/lib/node_modules/mysql/lib/query.js:51:14)
+    at Client._handlePacket (/home/locos/.node/v0.8.7/lib/node_modules/mysql/lib/client.js:319:14)
+    at Parser.EventEmitter.emit (events.js:88:17)
+    at Parser.write.emitPacket (/home/locos/.node/v0.8.7/lib/node_modules/mysql/lib/parser.js:71:14)
+    at Parser.write (/home/locos/.node/v0.8.7/lib/node_modules/mysql/lib/parser.js:576:7)
+    at Socket.EventEmitter.emit (events.js:88:17);]
+2012/9/12 15:10:46:903 [0:--- MgrMon background process start;]
+2012/9/12 15:10:46:909 [0:--- MgrAgv background process start;]
+2012/9/12 15:11:4:878 [0:uncaughtException: ReferenceError: shoError is not defined;]
+2012/9/12 15:11:4:878 [0:uncaughtException trace: ReferenceError: shoError is not defined
+    at plist.checkPcode (/home/locos/demo/somali/controller/str/str.js:225:21)
+    at lcsDb.query (/home/locos/demo/somali/lib/db/lcsdb.js:221:29)
+    at Query.Client.query (/home/locos/.node/v0.8.7/lib/node_modules/mysql/lib/client.js:108:11)
+    at Query.EventEmitter.emit (events.js:85:17)
+    at Query._handlePacket (/home/locos/.node/v0.8.7/lib/node_modules/mysql/lib/query.js:51:14)
+    at Client._handlePacket (/home/locos/.node/v0.8.7/lib/node_modules/mysql/lib/client.js:319:14)
+    at Parser.EventEmitter.emit (events.js:88:17)
+    at Parser.write.emitPacket (/home/locos/.node/v0.8.7/lib/node_modules/mysql/lib/parser.js:71:14)
+    at Parser.write (/home/locos/.node/v0.8.7/lib/node_modules/mysql/lib/parser.js:576:7)
+    at Socket.EventEmitter.emit (events.js:88:17);]
+2012/9/12 17:45:9:94 [0:--- MgrMon background process start;]
+2012/9/12 17:45:9:101 [0:--- MgrAgv background process start;]
+2012/9/12 17:46:11:112 [0:--- MgrMon background process start;]
+2012/9/12 17:46:11:119 [0:--- MgrAgv background process start;]
+2012/9/12 17:48:37:982 [0:--- MgrMon background process start;]
+2012/9/12 17:48:37:991 [0:--- MgrAgv background process start;]
+2012/9/12 18:15:47:887 [0:--- MgrMon background process start;]
+2012/9/12 18:15:47:894 [0:--- MgrAgv background process start;]
+2012/9/12 18:16:6:710 [0:uncaughtException: ReferenceError: lcsUi is not defined;]
+2012/9/12 18:16:6:710 [0:uncaughtException trace: ReferenceError: lcsUi is not defined
+    at shoError (/home/locos/demo/somali/controller/str/str.js:208:9)
+    at plist.checkPcode (/home/locos/demo/somali/controller/str/str.js:239:21)
+    at lcsDb.query (/home/locos/demo/somali/lib/db/lcsdb.js:221:29)
+    at Query.Client.query (/home/locos/.node/v0.8.7/lib/node_modules/mysql/lib/client.js:108:11)
+    at Query.EventEmitter.emit (events.js:85:17)
+    at Query._handlePacket (/home/locos/.node/v0.8.7/lib/node_modules/mysql/lib/query.js:51:14)
+    at Client._handlePacket (/home/locos/.node/v0.8.7/lib/node_modules/mysql/lib/client.js:319:14)
+    at Parser.EventEmitter.emit (events.js:88:17)
+    at Parser.write.emitPacket (/home/locos/.node/v0.8.7/lib/node_modules/mysql/lib/parser.js:71:14)
+    at Parser.write (/home/locos/.node/v0.8.7/lib/node_modules/mysql/lib/parser.js:576:7);]
+2012/9/12 18:16:26:62 [0:--- MgrMon background process start;]
+2012/9/12 18:16:26:68 [0:--- MgrAgv background process start;]
+2012/9/12 18:16:31:470 [0:uncaughtException: TypeError: Cannot call method 'getOs' of undefined;]
+2012/9/12 18:16:31:471 [0:uncaughtException trace: TypeError: Cannot call method 'getOs' of undefined
+    at shoError (/home/locos/demo/somali/controller/str/str.js:208:29)
+    at plist.checkPcode (/home/locos/demo/somali/controller/str/str.js:239:21)
+    at lcsDb.query (/home/locos/demo/somali/lib/db/lcsdb.js:221:29)
+    at Query.Client.query (/home/locos/.node/v0.8.7/lib/node_modules/mysql/lib/client.js:108:11)
+    at Query.EventEmitter.emit (events.js:85:17)
+    at Query._handlePacket (/home/locos/.node/v0.8.7/lib/node_modules/mysql/lib/query.js:51:14)
+    at Client._handlePacket (/home/locos/.node/v0.8.7/lib/node_modules/mysql/lib/client.js:319:14)
+    at Parser.EventEmitter.emit (events.js:88:17)
+    at Parser.write.emitPacket (/home/locos/.node/v0.8.7/lib/node_modules/mysql/lib/parser.js:71:14)
+    at Parser.write (/home/locos/.node/v0.8.7/lib/node_modules/mysql/lib/parser.js:576:7);]
+2012/9/12 18:17:7:555 [0:--- MgrMon background process start;]
+2012/9/12 18:17:7:563 [0:--- MgrAgv background process start;]
+2012/9/12 18:17:13:881 [0:uncaughtException: TypeError: Cannot call method 'isMobile' of undefined;]
+2012/9/12 18:17:13:881 [0:uncaughtException trace: TypeError: Cannot call method 'isMobile' of undefined
+    at shoError (/home/locos/demo/somali/controller/str/str.js:208:29)
+    at plist.checkPcode (/home/locos/demo/somali/controller/str/str.js:239:21)
+    at lcsDb.query (/home/locos/demo/somali/lib/db/lcsdb.js:221:29)
+    at Query.Client.query (/home/locos/.node/v0.8.7/lib/node_modules/mysql/lib/client.js:108:11)
+    at Query.EventEmitter.emit (events.js:85:17)
+    at Query._handlePacket (/home/locos/.node/v0.8.7/lib/node_modules/mysql/lib/query.js:51:14)
+    at Client._handlePacket (/home/locos/.node/v0.8.7/lib/node_modules/mysql/lib/client.js:319:14)
+    at Parser.EventEmitter.emit (events.js:88:17)
+    at Parser.write.emitPacket (/home/locos/.node/v0.8.7/lib/node_modules/mysql/lib/parser.js:71:14)
+    at Parser.write (/home/locos/.node/v0.8.7/lib/node_modules/mysql/lib/parser.js:576:7);]
+2012/9/12 18:17:29:790 [0:--- MgrMon background process start;]
+2012/9/12 18:17:29:797 [0:--- MgrAgv background process start;]
+2012/9/13 11:4:57:137 [0:--- MgrMon background process start;]
+2012/9/13 11:4:57:142 [0:--- MgrAgv background process start;]
+2012/9/13 11:6:54:752 [0:--- MgrMon background process start;]
+2012/9/13 11:6:54:757 [0:--- MgrAgv background process start;]
+2012/9/13 11:7:15:615 [0:uncaughtException: TypeError: Cannot call method 'check' of undefined;]
+2012/9/13 11:7:15:615 [0:uncaughtException trace: TypeError: Cannot call method 'check' of undefined
+    at plist.checkPcode (/home/locos/demo/somali/controller/str/str.js:235:30)
+    at lcsDb.query (/home/locos/demo/somali/lib/db/lcsdb.js:221:29)
+    at Query.Client.query (/home/locos/.node/v0.8.7/lib/node_modules/mysql/lib/client.js:108:11)
+    at Query.EventEmitter.emit (events.js:85:17)
+    at Query._handlePacket (/home/locos/.node/v0.8.7/lib/node_modules/mysql/lib/query.js:51:14)
+    at Client._handlePacket (/home/locos/.node/v0.8.7/lib/node_modules/mysql/lib/client.js:319:14)
+    at Parser.EventEmitter.emit (events.js:88:17)
+    at Parser.write.emitPacket (/home/locos/.node/v0.8.7/lib/node_modules/mysql/lib/parser.js:71:14)
+    at Parser.write (/home/locos/.node/v0.8.7/lib/node_modules/mysql/lib/parser.js:576:7)
+    at Socket.EventEmitter.emit (events.js:88:17);]
+2012/9/13 11:7:38:473 [0:--- MgrMon background process start;]
+2012/9/13 11:7:38:484 [0:--- MgrAgv background process start;]
+2012/9/13 11:7:51:959 [0:uncaughtException: TypeError: Cannot call method 'check' of undefined;]
+2012/9/13 11:7:51:959 [0:uncaughtException trace: TypeError: Cannot call method 'check' of undefined
+    at plist.checkPcode (/home/locos/demo/somali/controller/str/str.js:235:30)
+    at lcsDb.query (/home/locos/demo/somali/lib/db/lcsdb.js:221:29)
+    at Query.Client.query (/home/locos/.node/v0.8.7/lib/node_modules/mysql/lib/client.js:108:11)
+    at Query.EventEmitter.emit (events.js:85:17)
+    at Query._handlePacket (/home/locos/.node/v0.8.7/lib/node_modules/mysql/lib/query.js:51:14)
+    at Client._handlePacket (/home/locos/.node/v0.8.7/lib/node_modules/mysql/lib/client.js:319:14)
+    at Parser.EventEmitter.emit (events.js:88:17)
+    at Parser.write.emitPacket (/home/locos/.node/v0.8.7/lib/node_modules/mysql/lib/parser.js:71:14)
+    at Parser.write (/home/locos/.node/v0.8.7/lib/node_modules/mysql/lib/parser.js:576:7)
+    at Socket.EventEmitter.emit (events.js:88:17);]
+2012/9/13 11:10:51:718 [0:--- MgrMon background process start;]
+2012/9/13 11:10:51:723 [0:--- MgrAgv background process start;]
+2012/9/13 11:11:8:953 [0:uncaughtException: TypeError: Cannot call method 'check' of undefined;]
+2012/9/13 11:11:8:953 [0:uncaughtException trace: TypeError: Cannot call method 'check' of undefined
+    at plist.checkPcode (/home/locos/demo/somali/controller/str/str.js:235:30)
+    at lcsDb.query (/home/locos/demo/somali/lib/db/lcsdb.js:221:29)
+    at Query.Client.query (/home/locos/.node/v0.8.7/lib/node_modules/mysql/lib/client.js:108:11)
+    at Query.EventEmitter.emit (events.js:85:17)
+    at Query._handlePacket (/home/locos/.node/v0.8.7/lib/node_modules/mysql/lib/query.js:51:14)
+    at Client._handlePacket (/home/locos/.node/v0.8.7/lib/node_modules/mysql/lib/client.js:319:14)
+    at Parser.EventEmitter.emit (events.js:88:17)
+    at Parser.write.emitPacket (/home/locos/.node/v0.8.7/lib/node_modules/mysql/lib/parser.js:71:14)
+    at Parser.write (/home/locos/.node/v0.8.7/lib/node_modules/mysql/lib/parser.js:576:7)
+    at Socket.EventEmitter.emit (events.js:88:17);]
+2012/9/13 11:11:35:925 [0:--- MgrMon background process start;]
+2012/9/13 11:11:35:931 [0:--- MgrAgv background process start;]
+2012/9/13 11:14:30:81 [0:--- MgrMon background process start;]
+2012/9/13 11:14:30:86 [0:--- MgrAgv background process start;]
+2012/9/13 11:15:13:51 [0:uncaughtException: TypeError: Cannot call method 'check' of undefined;]
+2012/9/13 11:15:13:51 [0:uncaughtException trace: TypeError: Cannot call method 'check' of undefined
+    at plist.checkPcode (/home/locos/demo/somali/controller/str/str.js:235:30)
+    at lcsDb.query (/home/locos/demo/somali/lib/db/lcsdb.js:221:29)
+    at Query.Client.query (/home/locos/.node/v0.8.7/lib/node_modules/mysql/lib/client.js:108:11)
+    at Query.EventEmitter.emit (events.js:85:17)
+    at Query._handlePacket (/home/locos/.node/v0.8.7/lib/node_modules/mysql/lib/query.js:51:14)
+    at Client._handlePacket (/home/locos/.node/v0.8.7/lib/node_modules/mysql/lib/client.js:319:14)
+    at Parser.EventEmitter.emit (events.js:88:17)
+    at Parser.write.emitPacket (/home/locos/.node/v0.8.7/lib/node_modules/mysql/lib/parser.js:71:14)
+    at Parser.write (/home/locos/.node/v0.8.7/lib/node_modules/mysql/lib/parser.js:576:7)
+    at Socket.EventEmitter.emit (events.js:88:17);]
+2012/9/13 11:19:50:221 [0:--- MgrMon background process start;]
+2012/9/13 11:19:50:231 [0:--- MgrAgv background process start;]
+2012/9/13 11:20:36:971 [0:uncaughtException: TypeError: Cannot call method 'check' of undefined;]
+2012/9/13 11:20:36:971 [0:uncaughtException trace: TypeError: Cannot call method 'check' of undefined
+    at plist.checkPcode (/home/locos/demo/somali/controller/str/str.js:235:30)
+    at lcsDb.query (/home/locos/demo/somali/lib/db/lcsdb.js:221:29)
+    at Query.Client.query (/home/locos/.node/v0.8.7/lib/node_modules/mysql/lib/client.js:108:11)
+    at Query.EventEmitter.emit (events.js:85:17)
+    at Query._handlePacket (/home/locos/.node/v0.8.7/lib/node_modules/mysql/lib/query.js:51:14)
+    at Client._handlePacket (/home/locos/.node/v0.8.7/lib/node_modules/mysql/lib/client.js:319:14)
+    at Parser.EventEmitter.emit (events.js:88:17)
+    at Parser.write.emitPacket (/home/locos/.node/v0.8.7/lib/node_modules/mysql/lib/parser.js:71:14)
+    at Parser.write (/home/locos/.node/v0.8.7/lib/node_modules/mysql/lib/parser.js:576:7)
+    at Socket.EventEmitter.emit (events.js:88:17);]
+2012/9/13 11:26:7:277 [0:--- MgrMon background process start;]
+2012/9/13 11:26:7:281 [0:--- MgrAgv background process start;]
+2012/9/13 11:35:31:626 [0:--- MgrMon background process start;]
+2012/9/13 11:35:31:631 [0:--- MgrAgv background process start;]
+2012/9/13 11:35:52:5 [0:uncaughtException: TypeError: Object #<lcsUI> has no method 'checkLen';]
+2012/9/13 11:35:52:5 [0:uncaughtException trace: TypeError: Object #<lcsUI> has no method 'checkLen'
+    at plist.checkPcode (/home/locos/demo/somali/controller/str/str.js:235:32)
+    at lcsDb.query (/home/locos/demo/somali/lib/db/lcsdb.js:221:29)
+    at Query.Client.query (/home/locos/.node/v0.8.7/lib/node_modules/mysql/lib/client.js:108:11)
+    at Query.EventEmitter.emit (events.js:85:17)
+    at Query._handlePacket (/home/locos/.node/v0.8.7/lib/node_modules/mysql/lib/query.js:51:14)
+    at Client._handlePacket (/home/locos/.node/v0.8.7/lib/node_modules/mysql/lib/client.js:319:14)
+    at Parser.EventEmitter.emit (events.js:88:17)
+    at Parser.write.emitPacket (/home/locos/.node/v0.8.7/lib/node_modules/mysql/lib/parser.js:71:14)
+    at Parser.write (/home/locos/.node/v0.8.7/lib/node_modules/mysql/lib/parser.js:576:7)
+    at Socket.EventEmitter.emit (events.js:88:17);]
+2012/9/13 11:36:21:767 [0:--- MgrMon background process start;]
+2012/9/13 11:36:21:774 [0:--- MgrAgv background process start;]
+2012/9/13 11:38:24:257 [0:uncaughtException: TypeError: Object [object Object] has no method 'getError';]
+2012/9/13 11:38:24:257 [0:uncaughtException trace: TypeError: Object [object Object] has no method 'getError'
+    at lcsUI.checkLen (/home/locos/demo/somali/lib/ap/lcsui.js:289:24)
+    at plist.checkPcode (/home/locos/demo/somali/controller/str/str.js:235:32)
+    at lcsDb.query (/home/locos/demo/somali/lib/db/lcsdb.js:221:29)
+    at Query.Client.query (/home/locos/.node/v0.8.7/lib/node_modules/mysql/lib/client.js:108:11)
+    at Query.EventEmitter.emit (events.js:85:17)
+    at Query._handlePacket (/home/locos/.node/v0.8.7/lib/node_modules/mysql/lib/query.js:51:14)
+    at Client._handlePacket (/home/locos/.node/v0.8.7/lib/node_modules/mysql/lib/client.js:319:14)
+    at Parser.EventEmitter.emit (events.js:88:17)
+    at Parser.write.emitPacket (/home/locos/.node/v0.8.7/lib/node_modules/mysql/lib/parser.js:71:14)
+    at Parser.write (/home/locos/.node/v0.8.7/lib/node_modules/mysql/lib/parser.js:576:7);]
+2012/9/13 11:38:29:409 [0:--- MgrMon background process start;]
+2012/9/13 11:38:29:415 [0:--- MgrAgv background process start;]
+2012/9/13 11:39:36:885 [0:uncaughtException: ReferenceError: ertext is not defined;]
+2012/9/13 11:39:36:886 [0:uncaughtException trace: ReferenceError: ertext is not defined
+    at plist.checkPcode (/home/locos/demo/somali/controller/str/str.js:235:24)
+    at lcsDb.query (/home/locos/demo/somali/lib/db/lcsdb.js:221:29)
+    at Query.Client.query (/home/locos/.node/v0.8.7/lib/node_modules/mysql/lib/client.js:108:11)
+    at Query.EventEmitter.emit (events.js:85:17)
+    at Query._handlePacket (/home/locos/.node/v0.8.7/lib/node_modules/mysql/lib/query.js:51:14)
+    at Client._handlePacket (/home/locos/.node/v0.8.7/lib/node_modules/mysql/lib/client.js:319:14)
+    at Parser.EventEmitter.emit (events.js:88:17)
+    at Parser.write.emitPacket (/home/locos/.node/v0.8.7/lib/node_modules/mysql/lib/parser.js:71:14)
+    at Parser.write (/home/locos/.node/v0.8.7/lib/node_modules/mysql/lib/parser.js:576:7)
+    at Socket.EventEmitter.emit (events.js:88:17);]
+2012/9/13 11:40:25:544 [0:--- MgrMon background process start;]
+2012/9/13 11:40:25:550 [0:--- MgrAgv background process start;]
+2012/9/13 11:40:39:5 [0:uncaughtException: ReferenceError: eretext is not defined;]
+2012/9/13 11:40:39:5 [0:uncaughtException trace: ReferenceError: eretext is not defined
+    at plist.checkPcode (/home/locos/demo/somali/controller/str/str.js:235:25)
+    at lcsDb.query (/home/locos/demo/somali/lib/db/lcsdb.js:221:29)
+    at Query.Client.query (/home/locos/.node/v0.8.7/lib/node_modules/mysql/lib/client.js:108:11)
+    at Query.EventEmitter.emit (events.js:85:17)
+    at Query._handlePacket (/home/locos/.node/v0.8.7/lib/node_modules/mysql/lib/query.js:51:14)
+    at Client._handlePacket (/home/locos/.node/v0.8.7/lib/node_modules/mysql/lib/client.js:319:14)
+    at Parser.EventEmitter.emit (events.js:88:17)
+    at Parser.write.emitPacket (/home/locos/.node/v0.8.7/lib/node_modules/mysql/lib/parser.js:71:14)
+    at Parser.write (/home/locos/.node/v0.8.7/lib/node_modules/mysql/lib/parser.js:576:7)
+    at Socket.EventEmitter.emit (events.js:88:17);]
+2012/9/13 11:41:0:357 [0:--- MgrMon background process start;]
+2012/9/13 11:41:0:363 [0:--- MgrAgv background process start;]
+2012/9/13 11:46:53:144 [0:--- MgrMon background process start;]
+2012/9/13 11:46:53:151 [0:--- MgrAgv background process start;]
+2012/9/13 11:47:19:611 [0:uncaughtException: TypeError: Cannot call method 'len' of undefined;]
+2012/9/13 11:47:19:611 [0:uncaughtException trace: TypeError: Cannot call method 'len' of undefined
+    at plist.checkPcode (/home/locos/demo/somali/controller/str/str.js:235:39)
+    at lcsDb.query (/home/locos/demo/somali/lib/db/lcsdb.js:221:29)
+    at Query.Client.query (/home/locos/.node/v0.8.7/lib/node_modules/mysql/lib/client.js:108:11)
+    at Query.EventEmitter.emit (events.js:85:17)
+    at Query._handlePacket (/home/locos/.node/v0.8.7/lib/node_modules/mysql/lib/query.js:51:14)
+    at Client._handlePacket (/home/locos/.node/v0.8.7/lib/node_modules/mysql/lib/client.js:319:14)
+    at Parser.EventEmitter.emit (events.js:88:17)
+    at Parser.write.emitPacket (/home/locos/.node/v0.8.7/lib/node_modules/mysql/lib/parser.js:71:14)
+    at Parser.write (/home/locos/.node/v0.8.7/lib/node_modules/mysql/lib/parser.js:576:7)
+    at Socket.EventEmitter.emit (events.js:88:17);]
+2012/9/13 12:2:32:130 [0:--- MgrMon background process start;]
+2012/9/13 12:2:32:137 [0:--- MgrAgv background process start;]
+2012/9/13 12:3:21:360 [0:--- MgrMon background process start;]
+2012/9/13 12:3:21:366 [0:--- MgrAgv background process start;]
+2012/9/13 12:7:42:234 [0:--- MgrMon background process start;]
+2012/9/13 12:7:42:239 [0:--- MgrAgv background process start;]
+2012/9/13 12:7:58:40 [0:uncaughtException: TypeError: Cannot call method 'len' of undefined;]
+2012/9/13 12:7:58:40 [0:uncaughtException trace: TypeError: Cannot call method 'len' of undefined
+    at plist.checkPcode (/home/locos/demo/somali/controller/str/str.js:235:45)
+    at lcsDb.query (/home/locos/demo/somali/lib/db/lcsdb.js:221:29)
+    at Query.Client.query (/home/locos/.node/v0.8.7/lib/node_modules/mysql/lib/client.js:108:11)
+    at Query.EventEmitter.emit (events.js:85:17)
+    at Query._handlePacket (/home/locos/.node/v0.8.7/lib/node_modules/mysql/lib/query.js:51:14)
+    at Client._handlePacket (/home/locos/.node/v0.8.7/lib/node_modules/mysql/lib/client.js:319:14)
+    at Parser.EventEmitter.emit (events.js:88:17)
+    at Parser.write.emitPacket (/home/locos/.node/v0.8.7/lib/node_modules/mysql/lib/parser.js:71:14)
+    at Parser.write (/home/locos/.node/v0.8.7/lib/node_modules/mysql/lib/parser.js:576:7)
+    at Socket.EventEmitter.emit (events.js:88:17);]
+2012/9/13 12:13:5:214 [0:--- MgrMon background process start;]
+2012/9/13 12:13:5:224 [0:--- MgrAgv background process start;]
+2012/9/13 12:19:10:725 [0:--- MgrMon background process start;]
+2012/9/13 12:19:10:732 [0:--- MgrAgv background process start;]
+2012/9/13 12:19:40:222 [0:uncaughtException: TypeError: Cannot read property 'length' of undefined;]
+2012/9/13 12:19:40:222 [0:uncaughtException trace: TypeError: Cannot read property 'length' of undefined
+    at module.exports.len (/home/locos/.node/v0.8.7/lib/node_modules/validator/lib/validators.js:104:19)
+    at Validator.(anonymous function) [as len] (/home/locos/.node/v0.8.7/lib/node_modules/validator/lib/validator.js:26:37)
+    at plist.checkPcode (/home/locos/demo/somali/controller/str/str.js:235:33)
+    at lcsDb.query (/home/locos/demo/somali/lib/db/lcsdb.js:221:29)
+    at Query.Client.query (/home/locos/.node/v0.8.7/lib/node_modules/mysql/lib/client.js:108:11)
+    at Query.EventEmitter.emit (events.js:85:17)
+    at Query._handlePacket (/home/locos/.node/v0.8.7/lib/node_modules/mysql/lib/query.js:51:14)
+    at Client._handlePacket (/home/locos/.node/v0.8.7/lib/node_modules/mysql/lib/client.js:319:14)
+    at Parser.EventEmitter.emit (events.js:88:17)
+    at Parser.write.emitPacket (/home/locos/.node/v0.8.7/lib/node_modules/mysql/lib/parser.js:71:14);]
+2012/9/13 12:21:7:305 [0:--- MgrMon background process start;]
+2012/9/13 12:21:7:312 [0:--- MgrAgv background process start;]
+2012/9/13 12:21:30:88 [0:uncaughtException: TypeError: Cannot read property 'length' of undefined;]
+2012/9/13 12:21:30:88 [0:uncaughtException trace: TypeError: Cannot read property 'length' of undefined
+    at module.exports.len (/home/locos/.node/v0.8.7/lib/node_modules/validator/lib/validators.js:104:19)
+    at Validator.(anonymous function) [as len] (/home/locos/.node/v0.8.7/lib/node_modules/validator/lib/validator.js:26:37)
+    at plist.checkPcode (/home/locos/demo/somali/controller/str/str.js:235:33)
+    at lcsDb.query (/home/locos/demo/somali/lib/db/lcsdb.js:221:29)
+    at Query.Client.query (/home/locos/.node/v0.8.7/lib/node_modules/mysql/lib/client.js:108:11)
+    at Query.EventEmitter.emit (events.js:85:17)
+    at Query._handlePacket (/home/locos/.node/v0.8.7/lib/node_modules/mysql/lib/query.js:51:14)
+    at Client._handlePacket (/home/locos/.node/v0.8.7/lib/node_modules/mysql/lib/client.js:319:14)
+    at Parser.EventEmitter.emit (events.js:88:17)
+    at Parser.write.emitPacket (/home/locos/.node/v0.8.7/lib/node_modules/mysql/lib/parser.js:71:14);]
+2012/9/13 12:22:43:791 [0:--- MgrMon background process start;]
+2012/9/13 12:22:43:797 [0:--- MgrAgv background process start;]
+2012/9/13 12:54:14:708 [0:--- MgrMon background process start;]
+2012/9/13 12:54:14:715 [0:--- MgrAgv background process start;]
+2012/9/13 12:54:45:331 [0:--- MgrMon background process start;]
+2012/9/13 12:54:45:338 [0:--- MgrAgv background process start;]
+2012/9/13 12:55:0:339 [0:uncaughtException: TypeError: Object 1 has no method 'isNumeric';]
+2012/9/13 12:55:0:339 [0:uncaughtException trace: TypeError: Object 1 has no method 'isNumeric'
+    at plist.checkPcode (/home/locos/demo/somali/controller/str/str.js:235:77)
+    at lcsDb.query (/home/locos/demo/somali/lib/db/lcsdb.js:221:29)
+    at Query.Client.query (/home/locos/.node/v0.8.7/lib/node_modules/mysql/lib/client.js:108:11)
+    at Query.EventEmitter.emit (events.js:85:17)
+    at Query._handlePacket (/home/locos/.node/v0.8.7/lib/node_modules/mysql/lib/query.js:51:14)
+    at Client._handlePacket (/home/locos/.node/v0.8.7/lib/node_modules/mysql/lib/client.js:319:14)
+    at Parser.EventEmitter.emit (events.js:88:17)
+    at Parser.write.emitPacket (/home/locos/.node/v0.8.7/lib/node_modules/mysql/lib/parser.js:71:14)
+    at Parser.write (/home/locos/.node/v0.8.7/lib/node_modules/mysql/lib/parser.js:576:7)
+    at Socket.EventEmitter.emit (events.js:88:17);]
+2012/9/13 12:57:15:57 [0:--- MgrMon background process start;]
+2012/9/13 12:57:15:62 [0:--- MgrAgv background process start;]
+2012/9/13 13:4:57:275 [0:--- MgrMon background process start;]
+2012/9/13 13:4:57:280 [0:--- MgrAgv background process start;]
+2012/9/13 13:5:13:454 [0:uncaughtException: TypeError: Object 1 has no method 'isAlpha';]
+2012/9/13 13:5:13:454 [0:uncaughtException trace: TypeError: Object 1 has no method 'isAlpha'
+    at plist.checkPcode (/home/locos/demo/somali/controller/str/str.js:235:79)
+    at lcsDb.query (/home/locos/demo/somali/lib/db/lcsdb.js:221:29)
+    at Query.Client.query (/home/locos/.node/v0.8.7/lib/node_modules/mysql/lib/client.js:108:11)
+    at Query.EventEmitter.emit (events.js:85:17)
+    at Query._handlePacket (/home/locos/.node/v0.8.7/lib/node_modules/mysql/lib/query.js:51:14)
+    at Client._handlePacket (/home/locos/.node/v0.8.7/lib/node_modules/mysql/lib/client.js:319:14)
+    at Parser.EventEmitter.emit (events.js:88:17)
+    at Parser.write.emitPacket (/home/locos/.node/v0.8.7/lib/node_modules/mysql/lib/parser.js:71:14)
+    at Parser.write (/home/locos/.node/v0.8.7/lib/node_modules/mysql/lib/parser.js:576:7)
+    at Socket.EventEmitter.emit (events.js:88:17);]
+2012/9/13 13:5:44:778 [0:--- MgrMon background process start;]
+2012/9/13 13:5:44:784 [0:--- MgrAgv background process start;]
+2012/9/13 13:6:0:478 [0:uncaughtException: ReferenceError: _mParse is not defined;]
+2012/9/13 13:6:0:478 [0:uncaughtException trace: ReferenceError: _mParse is not defined
+    at lcsUI.getErrors (/home/locos/demo/somali/lib/ap/lcsui.js:294:16)
+    at plist.checkPcode (/home/locos/demo/somali/controller/str/str.js:236:33)
+    at lcsDb.query (/home/locos/demo/somali/lib/db/lcsdb.js:221:29)
+    at Query.Client.query (/home/locos/.node/v0.8.7/lib/node_modules/mysql/lib/client.js:108:11)
+    at Query.EventEmitter.emit (events.js:85:17)
+    at Query._handlePacket (/home/locos/.node/v0.8.7/lib/node_modules/mysql/lib/query.js:51:14)
+    at Client._handlePacket (/home/locos/.node/v0.8.7/lib/node_modules/mysql/lib/client.js:319:14)
+    at Parser.EventEmitter.emit (events.js:88:17)
+    at Parser.write.emitPacket (/home/locos/.node/v0.8.7/lib/node_modules/mysql/lib/parser.js:71:14)
+    at Parser.write (/home/locos/.node/v0.8.7/lib/node_modules/mysql/lib/parser.js:576:7);]
+2012/9/13 13:6:45:677 [0:--- MgrMon background process start;]
+2012/9/13 13:6:45:685 [0:--- MgrAgv background process start;]
+2012/9/13 13:9:7:572 [0:--- MgrMon background process start;]
+2012/9/13 13:9:7:576 [0:--- MgrAgv background process start;]
+2012/9/13 13:9:41:269 [0:uncaughtException: ReferenceError: lcsUi is not defined;]
+2012/9/13 13:9:41:269 [0:uncaughtException trace: ReferenceError: lcsUi is not defined
+    at plist.checkPcode (/home/locos/demo/somali/controller/str/str.js:238:26)
+    at lcsDb.query (/home/locos/demo/somali/lib/db/lcsdb.js:221:29)
+    at Query.Client.query (/home/locos/.node/v0.8.7/lib/node_modules/mysql/lib/client.js:108:11)
+    at Query.EventEmitter.emit (events.js:85:17)
+    at Query._handlePacket (/home/locos/.node/v0.8.7/lib/node_modules/mysql/lib/query.js:51:14)
+    at Client._handlePacket (/home/locos/.node/v0.8.7/lib/node_modules/mysql/lib/client.js:319:14)
+    at Parser.EventEmitter.emit (events.js:88:17)
+    at Parser.write.emitPacket (/home/locos/.node/v0.8.7/lib/node_modules/mysql/lib/parser.js:71:14)
+    at Parser.write (/home/locos/.node/v0.8.7/lib/node_modules/mysql/lib/parser.js:576:7)
+    at Socket.EventEmitter.emit (events.js:88:17);]
+2012/9/13 13:10:24:218 [0:--- MgrMon background process start;]
+2012/9/13 13:10:24:225 [0:--- MgrAgv background process start;]
+2012/9/13 13:11:14:212 [0:--- MgrMon background process start;]
+2012/9/13 13:11:14:216 [0:--- MgrAgv background process start;]
+2012/9/13 13:11:56:357 [0:uncaughtException: TypeError: Object [object Object] has no method 'sanitize';]
+2012/9/13 13:11:56:358 [0:uncaughtException trace: TypeError: Object [object Object] has no method 'sanitize'
+    at plist.checkPcode (/home/locos/demo/somali/controller/str/str.js:238:32)
+    at lcsDb.query (/home/locos/demo/somali/lib/db/lcsdb.js:221:29)
+    at Query.Client.query (/home/locos/.node/v0.8.7/lib/node_modules/mysql/lib/client.js:108:11)
+    at Query.EventEmitter.emit (events.js:85:17)
+    at Query._handlePacket (/home/locos/.node/v0.8.7/lib/node_modules/mysql/lib/query.js:51:14)
+    at Client._handlePacket (/home/locos/.node/v0.8.7/lib/node_modules/mysql/lib/client.js:319:14)
+    at Parser.EventEmitter.emit (events.js:88:17)
+    at Parser.write.emitPacket (/home/locos/.node/v0.8.7/lib/node_modules/mysql/lib/parser.js:71:14)
+    at Parser.write (/home/locos/.node/v0.8.7/lib/node_modules/mysql/lib/parser.js:576:7)
+    at Socket.EventEmitter.emit (events.js:88:17);]
+2012/9/13 13:13:48:586 [0:--- MgrMon background process start;]
+2012/9/13 13:13:48:592 [0:--- MgrAgv background process start;]
+2012/9/13 13:24:26:154 [0:--- MgrMon background process start;]
+2012/9/13 13:24:26:159 [0:--- MgrAgv background process start;]
+2012/9/13 13:24:40:63 [0:uncaughtException: TypeError: Object [object Object] has no method 'check';]
+2012/9/13 13:24:40:63 [0:uncaughtException trace: TypeError: Object [object Object] has no method 'check'
+    at plist.checkPcode (/home/locos/demo/somali/controller/str/str.js:235:23)
+    at lcsDb.query (/home/locos/demo/somali/lib/db/lcsdb.js:221:29)
+    at Query.Client.query (/home/locos/.node/v0.8.7/lib/node_modules/mysql/lib/client.js:108:11)
+    at Query.EventEmitter.emit (events.js:85:17)
+    at Query._handlePacket (/home/locos/.node/v0.8.7/lib/node_modules/mysql/lib/query.js:51:14)
+    at Client._handlePacket (/home/locos/.node/v0.8.7/lib/node_modules/mysql/lib/client.js:319:14)
+    at Parser.EventEmitter.emit (events.js:88:17)
+    at Parser.write.emitPacket (/home/locos/.node/v0.8.7/lib/node_modules/mysql/lib/parser.js:71:14)
+    at Parser.write (/home/locos/.node/v0.8.7/lib/node_modules/mysql/lib/parser.js:576:7)
+    at Socket.EventEmitter.emit (events.js:88:17);]
+2012/9/13 13:24:56:724 [0:--- MgrMon background process start;]
+2012/9/13 13:24:56:732 [0:--- MgrAgv background process start;]
+2012/9/13 14:9:54:89 [0:--- MgrMon background process start;]
+2012/9/13 14:9:54:93 [0:--- MgrAgv background process start;]
+2012/9/13 14:44:51:895 [0:--- MgrMon background process start;]
+2012/9/13 14:44:51:901 [0:--- MgrAgv background process start;]
+2012/9/13 14:48:48:744 [0:--- MgrMon background process start;]
+2012/9/13 14:48:48:749 [0:--- MgrAgv background process start;]
+2012/9/13 14:50:18:76 [0:--- MgrMon background process start;]
+2012/9/13 14:50:18:82 [0:--- MgrAgv background process start;]
+2012/9/13 14:55:47:227 [0:--- MgrMon background process start;]
+2012/9/13 14:55:47:232 [0:--- MgrAgv background process start;]
+2012/9/13 14:56:11:150 [0:uncaughtException: TypeError: Object function (str) {
+    this.str = str;
+    return this;
+} has no method 'toInt';]
+2012/9/13 14:56:11:150 [0:uncaughtException trace: TypeError: Object function (str) {
+    this.str = str;
+    return this;
+} has no method 'toInt'
+    at plist.checkPcode (/home/locos/demo/somali/controller/str/str.js:239:46)
+    at lcsDb.query (/home/locos/demo/somali/lib/db/lcsdb.js:221:29)
+    at Query.Client.query (/home/locos/.node/v0.8.7/lib/node_modules/mysql/lib/client.js:108:11)
+    at Query.EventEmitter.emit (events.js:85:17)
+    at Query._handlePacket (/home/locos/.node/v0.8.7/lib/node_modules/mysql/lib/query.js:51:14)
+    at Client._handlePacket (/home/locos/.node/v0.8.7/lib/node_modules/mysql/lib/client.js:319:14)
+    at Parser.EventEmitter.emit (events.js:88:17)
+    at Parser.write.emitPacket (/home/locos/.node/v0.8.7/lib/node_modules/mysql/lib/parser.js:71:14)
+    at Parser.write (/home/locos/.node/v0.8.7/lib/node_modules/mysql/lib/parser.js:576:7)
+    at Socket.EventEmitter.emit (events.js:88:17);]
+2012/9/13 14:56:24:759 [0:--- MgrMon background process start;]
+2012/9/13 14:56:24:763 [0:--- MgrAgv background process start;]
+2012/9/13 15:17:34:35 [0:--- MgrMon background process start;]
+2012/9/13 15:17:34:42 [0:--- MgrAgv background process start;]
+2012/9/13 15:19:5:656 [0:uncaughtException: TypeError: Object #<lcsUI> has no method 'check';]
+2012/9/13 15:19:5:656 [0:uncaughtException trace: TypeError: Object #<lcsUI> has no method 'check'
+    at plist.checkPcode (/home/locos/demo/somali/controller/str/str.js:235:23)
+    at lcsDb.query (/home/locos/demo/somali/lib/db/lcsdb.js:221:29)
+    at Query.Client.query (/home/locos/.node/v0.8.7/lib/node_modules/mysql/lib/client.js:108:11)
+    at Query.EventEmitter.emit (events.js:85:17)
+    at Query._handlePacket (/home/locos/.node/v0.8.7/lib/node_modules/mysql/lib/query.js:51:14)
+    at Client._handlePacket (/home/locos/.node/v0.8.7/lib/node_modules/mysql/lib/client.js:319:14)
+    at Parser.EventEmitter.emit (events.js:88:17)
+    at Parser.write.emitPacket (/home/locos/.node/v0.8.7/lib/node_modules/mysql/lib/parser.js:71:14)
+    at Parser.write (/home/locos/.node/v0.8.7/lib/node_modules/mysql/lib/parser.js:576:7)
+    at Socket.EventEmitter.emit (events.js:88:17);]
+2012/9/13 15:20:43:756 [0:--- MgrMon background process start;]
+2012/9/13 15:20:43:764 [0:--- MgrAgv background process start;]
+2012/9/13 15:29:24:10 [0:--- MgrMon background process start;]
+2012/9/13 15:29:24:15 [0:--- MgrAgv background process start;]
+2012/9/13 15:59:30:932 [0:uncaughtException: TypeError: Cannot read property 'check' of undefined;]
+2012/9/13 15:59:30:932 [0:uncaughtException trace: TypeError: Cannot read property 'check' of undefined
+    at lcsUI.check (/home/locos/demo/somali/lib/ap/lcsui.js:305:29)
+    at plist.checkPcode (/home/locos/demo/somali/controller/str/str.js:235:23)
+    at lcsDb.query (/home/locos/demo/somali/lib/db/lcsdb.js:221:29)
+    at Query.Client.query (/home/locos/.node/v0.8.7/lib/node_modules/mysql/lib/client.js:108:11)
+    at Query.EventEmitter.emit (events.js:85:17)
+    at Query._handlePacket (/home/locos/.node/v0.8.7/lib/node_modules/mysql/lib/query.js:51:14)
+    at Client._handlePacket (/home/locos/.node/v0.8.7/lib/node_modules/mysql/lib/client.js:319:14)
+    at Parser.EventEmitter.emit (events.js:88:17)
+    at Parser.write.emitPacket (/home/locos/.node/v0.8.7/lib/node_modules/mysql/lib/parser.js:71:14)
+    at Parser.write (/home/locos/.node/v0.8.7/lib/node_modules/mysql/lib/parser.js:576:7);]
+2012/9/13 15:59:43:812 [0:--- MgrMon background process start;]
+2012/9/13 15:59:43:820 [0:--- MgrAgv background process start;]
+2012/9/13 16:1:38:211 [0:--- MgrMon background process start;]
+2012/9/13 16:1:38:220 [0:--- MgrAgv background process start;]
+2012/9/13 16:1:57:996 [0:uncaughtException: TypeError: Object #<lcsUI> has no method 'check';]
+2012/9/13 16:1:57:996 [0:uncaughtException trace: TypeError: Object #<lcsUI> has no method 'check'
+    at plist.checkPcode (/home/locos/demo/somali/controller/str/str.js:235:23)
+    at lcsDb.query (/home/locos/demo/somali/lib/db/lcsdb.js:221:29)
+    at Query.Client.query (/home/locos/.node/v0.8.7/lib/node_modules/mysql/lib/client.js:108:11)
+    at Query.EventEmitter.emit (events.js:85:17)
+    at Query._handlePacket (/home/locos/.node/v0.8.7/lib/node_modules/mysql/lib/query.js:51:14)
+    at Client._handlePacket (/home/locos/.node/v0.8.7/lib/node_modules/mysql/lib/client.js:319:14)
+    at Parser.EventEmitter.emit (events.js:88:17)
+    at Parser.write.emitPacket (/home/locos/.node/v0.8.7/lib/node_modules/mysql/lib/parser.js:71:14)
+    at Parser.write (/home/locos/.node/v0.8.7/lib/node_modules/mysql/lib/parser.js:576:7)
+    at Socket.EventEmitter.emit (events.js:88:17);]
+2012/9/13 16:2:14:231 [0:--- MgrMon background process start;]
+2012/9/13 16:2:14:237 [0:--- MgrAgv background process start;]
+2012/9/13 16:2:52:181 [0:uncaughtException: TypeError: Object #<lcsUI> has no method 'check';]
+2012/9/13 16:2:52:181 [0:uncaughtException trace: TypeError: Object #<lcsUI> has no method 'check'
+    at plist.checkPcode (/home/locos/demo/somali/controller/str/str.js:235:23)
+    at lcsDb.query (/home/locos/demo/somali/lib/db/lcsdb.js:221:29)
+    at Query.Client.query (/home/locos/.node/v0.8.7/lib/node_modules/mysql/lib/client.js:108:11)
+    at Query.EventEmitter.emit (events.js:85:17)
+    at Query._handlePacket (/home/locos/.node/v0.8.7/lib/node_modules/mysql/lib/query.js:51:14)
+    at Client._handlePacket (/home/locos/.node/v0.8.7/lib/node_modules/mysql/lib/client.js:319:14)
+    at Parser.EventEmitter.emit (events.js:88:17)
+    at Parser.write.emitPacket (/home/locos/.node/v0.8.7/lib/node_modules/mysql/lib/parser.js:71:14)
+    at Parser.write (/home/locos/.node/v0.8.7/lib/node_modules/mysql/lib/parser.js:576:7)
+    at Socket.EventEmitter.emit (events.js:88:17);]
+2012/9/13 16:3:20:213 [0:--- MgrMon background process start;]
+2012/9/13 16:3:20:218 [0:--- MgrAgv background process start;]
+2012/9/13 16:6:36:822 [0:--- MgrMon background process start;]
+2012/9/13 16:6:36:829 [0:--- MgrAgv background process start;]
+2012/9/13 16:7:26:919 [0:uncaughtException: TypeError: Object function (str) {
+    var filter = new exports.Filter();
+    return filter.sanitize(str);
+} has no method 'toInt';]
+2012/9/13 16:7:26:919 [0:uncaughtException trace: TypeError: Object function (str) {
+    var filter = new exports.Filter();
+    return filter.sanitize(str);
+} has no method 'toInt'
+    at plist.checkPcode (/home/locos/demo/somali/controller/str/str.js:236:46)
+    at lcsDb.query (/home/locos/demo/somali/lib/db/lcsdb.js:221:29)
+    at Query.Client.query (/home/locos/.node/v0.8.7/lib/node_modules/mysql/lib/client.js:108:11)
+    at Query.EventEmitter.emit (events.js:85:17)
+    at Query._handlePacket (/home/locos/.node/v0.8.7/lib/node_modules/mysql/lib/query.js:51:14)
+    at Client._handlePacket (/home/locos/.node/v0.8.7/lib/node_modules/mysql/lib/client.js:319:14)
+    at Parser.EventEmitter.emit (events.js:88:17)
+    at Parser.write.emitPacket (/home/locos/.node/v0.8.7/lib/node_modules/mysql/lib/parser.js:71:14)
+    at Parser.write (/home/locos/.node/v0.8.7/lib/node_modules/mysql/lib/parser.js:576:7)
+    at Socket.EventEmitter.emit (events.js:88:17);]
+2012/9/14 10:2:20:204 [0:--- MgrMon background process start;]
+2012/9/14 10:2:20:209 [0:--- MgrAgv background process start;]
+2012/9/14 10:2:34:984 [0:uncaughtException: TypeError: Object #<Object> has no method 'isMobile';]
+2012/9/14 10:2:34:985 [0:uncaughtException trace: TypeError: Object #<Object> has no method 'isMobile'
+    at lcsUI.login (/home/locos/demo/somali/lib/ap/lcsui.js:195:44)
+    at module.exports.RedisStore.get (/home/locos/.node/v0.8.7/lib/node_modules/connect-redis/lib/connect-redis.js:100:9)
+    at try_callback (/home/locos/.node/v0.8.7/lib/node_modules/connect-redis/node_modules/redis/index.js:484:9)
+    at RedisClient.return_reply (/home/locos/.node/v0.8.7/lib/node_modules/connect-redis/node_modules/redis/index.js:555:13)
+    at HiredisReplyParser.RedisClient.init_parser (/home/locos/.node/v0.8.7/lib/node_modules/connect-redis/node_modules/redis/index.js:256:14)
+    at HiredisReplyParser.EventEmitter.emit (events.js:88:17)
+    at HiredisReplyParser.execute (/home/locos/.node/v0.8.7/lib/node_modules/connect-redis/node_modules/redis/lib/parser/hiredis.js:43:18)
+    at RedisClient.on_data (/home/locos/.node/v0.8.7/lib/node_modules/connect-redis/node_modules/redis/index.js:440:27)
+    at Socket.<anonymous> (/home/locos/.node/v0.8.7/lib/node_modules/connect-redis/node_modules/redis/index.js:70:14)
+    at Socket.EventEmitter.emit (events.js:88:17);]
+2012/9/14 10:2:54:238 [0:uncaughtException: TypeError: Object #<Object> has no method 'isMobile';]
+2012/9/14 10:2:54:238 [0:uncaughtException trace: TypeError: Object #<Object> has no method 'isMobile'
+    at lcsUI.login (/home/locos/demo/somali/lib/ap/lcsui.js:195:44)
+    at module.exports.RedisStore.get (/home/locos/.node/v0.8.7/lib/node_modules/connect-redis/lib/connect-redis.js:100:9)
+    at try_callback (/home/locos/.node/v0.8.7/lib/node_modules/connect-redis/node_modules/redis/index.js:484:9)
+    at RedisClient.return_reply (/home/locos/.node/v0.8.7/lib/node_modules/connect-redis/node_modules/redis/index.js:555:13)
+    at HiredisReplyParser.RedisClient.init_parser (/home/locos/.node/v0.8.7/lib/node_modules/connect-redis/node_modules/redis/index.js:256:14)
+    at HiredisReplyParser.EventEmitter.emit (events.js:88:17)
+    at HiredisReplyParser.execute (/home/locos/.node/v0.8.7/lib/node_modules/connect-redis/node_modules/redis/lib/parser/hiredis.js:43:18)
+    at RedisClient.on_data (/home/locos/.node/v0.8.7/lib/node_modules/connect-redis/node_modules/redis/index.js:440:27)
+    at Socket.<anonymous> (/home/locos/.node/v0.8.7/lib/node_modules/connect-redis/node_modules/redis/index.js:70:14)
+    at Socket.EventEmitter.emit (events.js:88:17);]
+2012/9/14 10:5:30:198 [0:--- MgrMon background process start;]
+2012/9/14 10:5:30:203 [0:--- MgrAgv background process start;]
+2012/9/14 10:5:34:363 [0:uncaughtException: TypeError: Object #<Object> has no method 'isMobile';]
+2012/9/14 10:5:34:363 [0:uncaughtException trace: TypeError: Object #<Object> has no method 'isMobile'
+    at lcsUI.login (/home/locos/demo/somali/lib/ap/lcsui.js:193:44)
+    at module.exports.RedisStore.get (/home/locos/.node/v0.8.7/lib/node_modules/connect-redis/lib/connect-redis.js:100:9)
+    at try_callback (/home/locos/.node/v0.8.7/lib/node_modules/connect-redis/node_modules/redis/index.js:484:9)
+    at RedisClient.return_reply (/home/locos/.node/v0.8.7/lib/node_modules/connect-redis/node_modules/redis/index.js:555:13)
+    at HiredisReplyParser.RedisClient.init_parser (/home/locos/.node/v0.8.7/lib/node_modules/connect-redis/node_modules/redis/index.js:256:14)
+    at HiredisReplyParser.EventEmitter.emit (events.js:88:17)
+    at HiredisReplyParser.execute (/home/locos/.node/v0.8.7/lib/node_modules/connect-redis/node_modules/redis/lib/parser/hiredis.js:43:18)
+    at RedisClient.on_data (/home/locos/.node/v0.8.7/lib/node_modules/connect-redis/node_modules/redis/index.js:440:27)
+    at Socket.<anonymous> (/home/locos/.node/v0.8.7/lib/node_modules/connect-redis/node_modules/redis/index.js:70:14)
+    at Socket.EventEmitter.emit (events.js:88:17);]
+2012/9/14 10:7:34:473 [0:--- MgrMon background process start;]
+2012/9/14 10:7:34:479 [0:--- MgrAgv background process start;]
+2012/9/14 10:7:38:323 [0:uncaughtException: TypeError: Object #<Object> has no method 'isMobile';]
+2012/9/14 10:7:38:323 [0:uncaughtException trace: TypeError: Object #<Object> has no method 'isMobile'
+    at lcsUI.login (/home/locos/demo/somali/lib/ap/lcsui.js:193:44)
+    at module.exports.RedisStore.get (/home/locos/.node/v0.8.7/lib/node_modules/connect-redis/lib/connect-redis.js:100:9)
+    at try_callback (/home/locos/.node/v0.8.7/lib/node_modules/connect-redis/node_modules/redis/index.js:484:9)
+    at RedisClient.return_reply (/home/locos/.node/v0.8.7/lib/node_modules/connect-redis/node_modules/redis/index.js:555:13)
+    at HiredisReplyParser.RedisClient.init_parser (/home/locos/.node/v0.8.7/lib/node_modules/connect-redis/node_modules/redis/index.js:256:14)
+    at HiredisReplyParser.EventEmitter.emit (events.js:88:17)
+    at HiredisReplyParser.execute (/home/locos/.node/v0.8.7/lib/node_modules/connect-redis/node_modules/redis/lib/parser/hiredis.js:43:18)
+    at RedisClient.on_data (/home/locos/.node/v0.8.7/lib/node_modules/connect-redis/node_modules/redis/index.js:440:27)
+    at Socket.<anonymous> (/home/locos/.node/v0.8.7/lib/node_modules/connect-redis/node_modules/redis/index.js:70:14)
+    at Socket.EventEmitter.emit (events.js:88:17);]
+2012/9/14 10:7:57:320 [0:--- MgrMon background process start;]
+2012/9/14 10:7:57:325 [0:--- MgrAgv background process start;]
+2012/9/14 10:10:7:5 [0:uncaughtException: TypeError: Object #<Object> has no method 'isMobile';]
+2012/9/14 10:10:7:5 [0:uncaughtException trace: TypeError: Object #<Object> has no method 'isMobile'
+    at lcsUI.login (/home/locos/demo/somali/lib/ap/lcsui.js:193:44)
+    at module.exports.RedisStore.get (/home/locos/.node/v0.8.7/lib/node_modules/connect-redis/lib/connect-redis.js:100:9)
+    at try_callback (/home/locos/.node/v0.8.7/lib/node_modules/connect-redis/node_modules/redis/index.js:484:9)
+    at RedisClient.return_reply (/home/locos/.node/v0.8.7/lib/node_modules/connect-redis/node_modules/redis/index.js:555:13)
+    at HiredisReplyParser.RedisClient.init_parser (/home/locos/.node/v0.8.7/lib/node_modules/connect-redis/node_modules/redis/index.js:256:14)
+    at HiredisReplyParser.EventEmitter.emit (events.js:88:17)
+    at HiredisReplyParser.execute (/home/locos/.node/v0.8.7/lib/node_modules/connect-redis/node_modules/redis/lib/parser/hiredis.js:43:18)
+    at RedisClient.on_data (/home/locos/.node/v0.8.7/lib/node_modules/connect-redis/node_modules/redis/index.js:440:27)
+    at Socket.<anonymous> (/home/locos/.node/v0.8.7/lib/node_modules/connect-redis/node_modules/redis/index.js:70:14)
+    at Socket.EventEmitter.emit (events.js:88:17);]
+2012/9/14 10:10:44:448 [0:--- MgrMon background process start;]
+2012/9/14 10:10:44:455 [0:--- MgrAgv background process start;]
+2012/9/14 10:12:12:409 [0:--- MgrMon background process start;]
+2012/9/14 10:12:12:414 [0:--- MgrAgv background process start;]
+2012/9/14 10:15:11:914 [0:--- MgrMon background process start;]
+2012/9/14 10:15:11:921 [0:--- MgrAgv background process start;]
+2012/9/14 10:20:19:389 [0:--- MgrMon background process start;]
+2012/9/14 10:20:19:393 [0:--- MgrAgv background process start;]
+2012/9/14 11:2:20:305 [0:--- MgrMon background process start;]
+2012/9/14 11:2:20:312 [0:--- MgrAgv background process start;]
+2012/9/14 11:39:4:540 [0:--- MgrMon background process start;]
+2012/9/14 11:39:4:547 [0:--- MgrAgv background process start;]
+2012/9/14 11:41:47:379 [0:--- MgrMon background process start;]
+2012/9/14 11:41:47:385 [0:--- MgrAgv background process start;]
+2012/9/14 11:42:5:253 [0:uncaughtException: TypeError: Cannot call method 'replace' of undefined;]
+2012/9/14 11:42:5:253 [0:uncaughtException trace: TypeError: Cannot call method 'replace' of undefined
+    at Filter.ltrim (/home/locos/.node/v0.8.7/lib/node_modules/express-validator/node_modules/validator/lib/filter.js:48:26)
+    at plist.checkPcode (/home/locos/demo/somali/controller/str/str.js:230:55)
+    at lcsDb.query (/home/locos/demo/somali/lib/db/lcsdb.js:221:29)
+    at Query.Client.query (/home/locos/.node/v0.8.7/lib/node_modules/mysql/lib/client.js:108:11)
+    at Query.EventEmitter.emit (events.js:85:17)
+    at Query._handlePacket (/home/locos/.node/v0.8.7/lib/node_modules/mysql/lib/query.js:51:14)
+    at Client._handlePacket (/home/locos/.node/v0.8.7/lib/node_modules/mysql/lib/client.js:319:14)
+    at Parser.EventEmitter.emit (events.js:88:17)
+    at Parser.write.emitPacket (/home/locos/.node/v0.8.7/lib/node_modules/mysql/lib/parser.js:71:14)
+    at Parser.write (/home/locos/.node/v0.8.7/lib/node_modules/mysql/lib/parser.js:576:7);]
+2012/9/14 11:45:34:621 [0:--- MgrMon background process start;]
+2012/9/14 11:45:34:627 [0:--- MgrAgv background process start;]
+2012/9/14 11:47:18:455 [0:--- MgrMon background process start;]
+2012/9/14 11:47:18:462 [0:--- MgrAgv background process start;]
+2012/9/14 11:48:59:295 [0:--- MgrMon background process start;]
+2012/9/14 11:48:59:299 [0:--- MgrAgv background process start;]
+2012/9/14 11:59:12:838 [0:--- MgrMon background process start;]
+2012/9/14 11:59:12:843 [0:--- MgrAgv background process start;]
+2012/9/14 12:4:24:158 [0:--- MgrMon background process start;]
+2012/9/14 12:4:24:163 [0:--- MgrAgv background process start;]
+2012/9/14 12:7:1:947 [0:--- MgrMon background process start;]
+2012/9/14 12:7:1:952 [0:--- MgrAgv background process start;]
+2012/9/14 12:11:15:289 [0:--- MgrMon background process start;]
+2012/9/14 12:11:15:293 [0:--- MgrAgv background process start;]
+2012/9/14 12:24:30:195 [0:--- MgrMon background process start;]
+2012/9/14 12:24:30:199 [0:--- MgrAgv background process start;]
+2012/9/14 12:24:42:787 [0:uncaughtException: TypeError: Cannot read property 'post' of undefined;]
+2012/9/14 12:24:42:787 [0:uncaughtException trace: TypeError: Cannot read property 'post' of undefined
+    at dspWin (/home/locos/demo/somali/controller/str/str.js:121:9)
+    at async.waterfall.wrapIterator (/home/locos/.node/v0.8.7/lib/node_modules/async/lib/async.js:428:21)
+    at parseData (/home/locos/demo/somali/controller/str/str.js:273:9)
+    at async.apply (/home/locos/.node/v0.8.7/lib/node_modules/async/lib/async.js:532:23)
+    at async.iterator.fn (/home/locos/.node/v0.8.7/lib/node_modules/async/lib/async.js:517:34)
+    at async.waterfall.wrapIterator (/home/locos/.node/v0.8.7/lib/node_modules/async/lib/async.js:441:34)
+    at process.startup.processNextTick.process._tickCallback (node.js:244:9);]
+2012/9/14 12:27:23:328 [0:--- MgrMon background process start;]
+2012/9/14 12:27:23:335 [0:--- MgrAgv background process start;]
+2012/9/14 12:27:27:356 [0:uncaughtException: TypeError: Cannot read property 'session' of undefined;]
+2012/9/14 12:27:27:356 [0:uncaughtException trace: TypeError: Cannot read property 'session' of undefined
+    at dspWin (/home/locos/demo/somali/controller/str/str.js:121:33)
+    at async.iterator.fn (/home/locos/.node/v0.8.7/lib/node_modules/async/lib/async.js:517:34)
+    at async.waterfall.wrapIterator (/home/locos/.node/v0.8.7/lib/node_modules/async/lib/async.js:441:34)
+    at process.startup.processNextTick.process._tickCallback (node.js:244:9);]
+2012/9/14 12:31:51:350 [0:--- MgrMon background process start;]
+2012/9/14 12:31:51:355 [0:--- MgrAgv background process start;]
+2012/9/14 12:32:35:299 [0:--- MgrMon background process start;]
+2012/9/14 12:32:35:303 [0:--- MgrAgv background process start;]
+2012/9/14 12:33:23:795 [0:uncaughtException: TypeError: Cannot read property 'session' of undefined;]
+2012/9/14 12:33:23:795 [0:uncaughtException trace: TypeError: Cannot read property 'session' of undefined
+    at dspWin (/home/locos/demo/somali/controller/str/str.js:121:33)
+    at async.iterator.fn (/home/locos/.node/v0.8.7/lib/node_modules/async/lib/async.js:517:34)
+    at async.waterfall.wrapIterator (/home/locos/.node/v0.8.7/lib/node_modules/async/lib/async.js:441:34)
+    at process.startup.processNextTick.process._tickCallback (node.js:244:9);]
+2012/9/14 13:23:31:956 [0:--- MgrMon background process start;]
+2012/9/14 13:23:31:965 [0:--- MgrAgv background process start;]
+2012/9/14 13:23:48:271 [0:uncaughtException: TypeError: Cannot read property 'session' of undefined;]
+2012/9/14 13:23:48:271 [0:uncaughtException trace: TypeError: Cannot read property 'session' of undefined
+    at dspWin (/home/locos/demo/somali/controller/str/str.js:121:33)
+    at async.iterator.fn (/home/locos/.node/v0.8.7/lib/node_modules/async/lib/async.js:517:34)
+    at async.waterfall.wrapIterator (/home/locos/.node/v0.8.7/lib/node_modules/async/lib/async.js:441:34)
+    at process.startup.processNextTick.process._tickCallback (node.js:244:9);]
+2012/9/14 14:0:34:399 [0:--- MgrMon background process start;]
+2012/9/14 14:0:34:408 [0:--- MgrAgv background process start;]
+2012/9/14 14:0:52:219 [0:uncaughtException: TypeError: Cannot read property 'session' of undefined;]
+2012/9/14 14:0:52:220 [0:uncaughtException trace: TypeError: Cannot read property 'session' of undefined
+    at dspWin (/home/locos/demo/somali/controller/str/str.js:121:33)
+    at async.iterator.fn (/home/locos/.node/v0.8.7/lib/node_modules/async/lib/async.js:517:34)
+    at async.waterfall.wrapIterator (/home/locos/.node/v0.8.7/lib/node_modules/async/lib/async.js:441:34)
+    at process.startup.processNextTick.process._tickCallback (node.js:244:9);]
+2012/9/14 14:3:46:616 [0:--- MgrMon background process start;]
+2012/9/14 14:3:46:624 [0:--- MgrAgv background process start;]
+2012/9/14 14:4:35:344 [0:--- MgrMon background process start;]
+2012/9/14 14:4:35:352 [0:--- MgrAgv background process start;]
+2012/9/14 14:4:43:956 [0:uncaughtException: TypeError: Cannot read property 'session' of undefined;]
+2012/9/14 14:4:43:956 [0:uncaughtException trace: TypeError: Cannot read property 'session' of undefined
+    at dspWin (/home/locos/demo/somali/controller/str/str.js:121:33)
+    at async.apply (/home/locos/.node/v0.8.7/lib/node_modules/async/lib/async.js:532:23)
+    at async.series.results (/home/locos/.node/v0.8.7/lib/node_modules/async/lib/async.js:486:21)
+    at _asyncMap (/home/locos/.node/v0.8.7/lib/node_modules/async/lib/async.js:185:13)
+    at async.forEachSeries.iterate (/home/locos/.node/v0.8.7/lib/node_modules/async/lib/async.js:108:13)
+    at async.forEachSeries.iterate (/home/locos/.node/v0.8.7/lib/node_modules/async/lib/async.js:119:25)
+    at _asyncMap (/home/locos/.node/v0.8.7/lib/node_modules/async/lib/async.js:187:17)
+    at async.series.results (/home/locos/.node/v0.8.7/lib/node_modules/async/lib/async.js:491:34)
+    at /home/locos/demo/somali/controller/str/str.js:200:13
+    at lcsDb.query.sql (/home/locos/demo/somali/lib/db/lcsdb.js:207:37);]
+2012/9/14 14:9:54:133 [0:--- MgrMon background process start;]
+2012/9/14 14:9:54:141 [0:--- MgrAgv background process start;]
+2012/9/14 14:10:5:144 [0:uncaughtException: TypeError: Cannot read property 'session' of undefined;]
+2012/9/14 14:10:5:144 [0:uncaughtException trace: TypeError: Cannot read property 'session' of undefined
+    at dspWin (/home/locos/demo/somali/controller/str/str.js:121:33)
+    at async.apply (/home/locos/.node/v0.8.7/lib/node_modules/async/lib/async.js:532:23)
+    at async.series.results (/home/locos/.node/v0.8.7/lib/node_modules/async/lib/async.js:486:21)
+    at _asyncMap (/home/locos/.node/v0.8.7/lib/node_modules/async/lib/async.js:185:13)
+    at async.forEachSeries.iterate (/home/locos/.node/v0.8.7/lib/node_modules/async/lib/async.js:108:13)
+    at async.forEachSeries.iterate (/home/locos/.node/v0.8.7/lib/node_modules/async/lib/async.js:119:25)
+    at _asyncMap (/home/locos/.node/v0.8.7/lib/node_modules/async/lib/async.js:187:17)
+    at async.series.results (/home/locos/.node/v0.8.7/lib/node_modules/async/lib/async.js:491:34)
+    at /home/locos/demo/somali/controller/str/str.js:201:13
+    at lcsDb.query.sql (/home/locos/demo/somali/lib/db/lcsdb.js:207:37);]
+2012/9/14 14:10:47:391 [0:--- MgrMon background process start;]
+2012/9/14 14:10:47:400 [0:--- MgrAgv background process start;]
+2012/9/14 14:15:19:144 [0:--- MgrMon background process start;]
+2012/9/14 14:15:19:153 [0:--- MgrAgv background process start;]
+2012/9/14 14:15:24:671 [0:uncaughtException: TypeError: Cannot read property 'session' of undefined;]
+2012/9/14 14:15:24:671 [0:uncaughtException trace: TypeError: Cannot read property 'session' of undefined
+    at dspWin (/home/locos/demo/somali/controller/str/str.js:121:33)
+    at async.apply (/home/locos/.node/v0.8.7/lib/node_modules/async/lib/async.js:532:23)
+    at async.series.results (/home/locos/.node/v0.8.7/lib/node_modules/async/lib/async.js:486:21)
+    at _asyncMap (/home/locos/.node/v0.8.7/lib/node_modules/async/lib/async.js:185:13)
+    at async.forEachSeries.iterate (/home/locos/.node/v0.8.7/lib/node_modules/async/lib/async.js:108:13)
+    at async.forEachSeries.iterate (/home/locos/.node/v0.8.7/lib/node_modules/async/lib/async.js:119:25)
+    at _asyncMap (/home/locos/.node/v0.8.7/lib/node_modules/async/lib/async.js:187:17)
+    at async.series.results (/home/locos/.node/v0.8.7/lib/node_modules/async/lib/async.js:491:34)
+    at /home/locos/demo/somali/controller/str/str.js:201:13
+    at lcsDb.query.sql (/home/locos/demo/somali/lib/db/lcsdb.js:207:37);]
+2012/9/14 14:16:23:582 [0:--- MgrMon background process start;]
+2012/9/14 14:16:23:592 [0:--- MgrAgv background process start;]
+2012/9/14 14:16:58:949 [0:uncaughtException: TypeError: Cannot read property 'session' of undefined;]
+2012/9/14 14:16:58:949 [0:uncaughtException trace: TypeError: Cannot read property 'session' of undefined
+    at dspWin (/home/locos/demo/somali/controller/str/str.js:121:33)
+    at async.apply (/home/locos/.node/v0.8.7/lib/node_modules/async/lib/async.js:532:23)
+    at async.series.results (/home/locos/.node/v0.8.7/lib/node_modules/async/lib/async.js:486:21)
+    at _asyncMap (/home/locos/.node/v0.8.7/lib/node_modules/async/lib/async.js:185:13)
+    at async.forEachSeries.iterate (/home/locos/.node/v0.8.7/lib/node_modules/async/lib/async.js:108:13)
+    at async.forEachSeries.iterate (/home/locos/.node/v0.8.7/lib/node_modules/async/lib/async.js:119:25)
+    at _asyncMap (/home/locos/.node/v0.8.7/lib/node_modules/async/lib/async.js:187:17)
+    at async.series.results (/home/locos/.node/v0.8.7/lib/node_modules/async/lib/async.js:491:34)
+    at /home/locos/demo/somali/controller/str/str.js:201:13
+    at lcsDb.query.sql (/home/locos/demo/somali/lib/db/lcsdb.js:207:37);]
+2012/9/14 14:25:46:257 [0:--- MgrMon background process start;]
+2012/9/14 14:25:46:266 [0:--- MgrAgv background process start;]
+2012/9/14 14:26:15:966 [0:uncaughtException: TypeError: Cannot read property 'session' of undefined;]
+2012/9/14 14:26:15:966 [0:uncaughtException trace: TypeError: Cannot read property 'session' of undefined
+    at dspWin (/home/locos/demo/somali/controller/str/str.js:121:33)
+    at async.apply (/home/locos/.node/v0.8.7/lib/node_modules/async/lib/async.js:532:23)
+    at async.series.results (/home/locos/.node/v0.8.7/lib/node_modules/async/lib/async.js:486:21)
+    at _asyncMap (/home/locos/.node/v0.8.7/lib/node_modules/async/lib/async.js:185:13)
+    at async.forEachSeries.iterate (/home/locos/.node/v0.8.7/lib/node_modules/async/lib/async.js:108:13)
+    at async.forEachSeries.iterate (/home/locos/.node/v0.8.7/lib/node_modules/async/lib/async.js:119:25)
+    at _asyncMap (/home/locos/.node/v0.8.7/lib/node_modules/async/lib/async.js:187:17)
+    at async.series.results (/home/locos/.node/v0.8.7/lib/node_modules/async/lib/async.js:491:34)
+    at /home/locos/demo/somali/controller/str/str.js:201:13
+    at lcsDb.query.sql (/home/locos/demo/somali/lib/db/lcsdb.js:207:37);]
+2012/9/14 14:28:7:311 [0:--- MgrMon background process start;]
+2012/9/14 14:28:7:320 [0:--- MgrAgv background process start;]
+2012/9/14 14:28:16:385 [0:--- MgrMon background process start;]
+2012/9/14 14:28:16:389 [0:--- MgrAgv background process start;]
+2012/9/14 14:29:12:994 [0:uncaughtException: TypeError: Cannot read property 'session' of undefined;]
+2012/9/14 14:29:12:994 [0:uncaughtException trace: TypeError: Cannot read property 'session' of undefined
+    at dspWin (/home/locos/demo/somali/controller/str/str.js:121:33)
+    at async.apply (/home/locos/.node/v0.8.7/lib/node_modules/async/lib/async.js:532:23)
+    at async.series.results (/home/locos/.node/v0.8.7/lib/node_modules/async/lib/async.js:486:21)
+    at _asyncMap (/home/locos/.node/v0.8.7/lib/node_modules/async/lib/async.js:185:13)
+    at async.forEachSeries.iterate (/home/locos/.node/v0.8.7/lib/node_modules/async/lib/async.js:108:13)
+    at async.forEachSeries.iterate (/home/locos/.node/v0.8.7/lib/node_modules/async/lib/async.js:119:25)
+    at _asyncMap (/home/locos/.node/v0.8.7/lib/node_modules/async/lib/async.js:187:17)
+    at async.series.results (/home/locos/.node/v0.8.7/lib/node_modules/async/lib/async.js:491:34)
+    at /home/locos/demo/somali/controller/str/str.js:201:13
+    at lcsDb.query.sql (/home/locos/demo/somali/lib/db/lcsdb.js:207:37);]
+2012/9/14 14:29:43:489 [0:--- MgrMon background process start;]
+2012/9/14 14:29:43:494 [0:--- MgrAgv background process start;]
+2012/9/14 14:31:35:558 [0:--- MgrMon background process start;]
+2012/9/14 14:31:35:563 [0:--- MgrAgv background process start;]
+2012/9/14 14:33:38:648 [0:--- MgrMon background process start;]
+2012/9/14 14:33:38:652 [0:--- MgrAgv background process start;]
+2012/9/14 14:36:4:492 [0:--- MgrMon background process start;]
+2012/9/14 14:36:4:497 [0:--- MgrAgv background process start;]
+2012/9/14 14:40:31:641 [0:--- MgrMon background process start;]
+2012/9/14 14:40:31:646 [0:--- MgrAgv background process start;]
+2012/9/14 14:40:44:977 [0:uncaughtException: ReferenceError: err is not defined;]
+2012/9/14 14:40:44:977 [0:uncaughtException trace: ReferenceError: err is not defined
+    at dspWin (/home/locos/demo/somali/controller/str/str.js:125:39)
+    at async.apply (/home/locos/.node/v0.8.7/lib/node_modules/async/lib/async.js:532:23)
+    at async.series.results (/home/locos/.node/v0.8.7/lib/node_modules/async/lib/async.js:486:21)
+    at _asyncMap (/home/locos/.node/v0.8.7/lib/node_modules/async/lib/async.js:185:13)
+    at async.forEachSeries.iterate (/home/locos/.node/v0.8.7/lib/node_modules/async/lib/async.js:108:13)
+    at async.forEachSeries.iterate (/home/locos/.node/v0.8.7/lib/node_modules/async/lib/async.js:119:25)
+    at _asyncMap (/home/locos/.node/v0.8.7/lib/node_modules/async/lib/async.js:187:17)
+    at async.series.results (/home/locos/.node/v0.8.7/lib/node_modules/async/lib/async.js:491:34)
+    at postData (/home/locos/demo/somali/controller/str/str.js:208:13)
+    at async.apply (/home/locos/.node/v0.8.7/lib/node_modules/async/lib/async.js:532:23);]
+2012/9/14 14:41:40:612 [0:--- MgrMon background process start;]
+2012/9/14 14:41:40:617 [0:--- MgrAgv background process start;]
+2012/9/14 14:41:54:604 [0:uncaughtException: ReferenceError: next is not defined;]
+2012/9/14 14:41:54:605 [0:uncaughtException trace: ReferenceError: next is not defined
+    at dspWin (/home/locos/demo/somali/controller/str/str.js:159:24)
+    at async.apply (/home/locos/.node/v0.8.7/lib/node_modules/async/lib/async.js:532:23)
+    at async.series.results (/home/locos/.node/v0.8.7/lib/node_modules/async/lib/async.js:486:21)
+    at _asyncMap (/home/locos/.node/v0.8.7/lib/node_modules/async/lib/async.js:185:13)
+    at async.forEachSeries.iterate (/home/locos/.node/v0.8.7/lib/node_modules/async/lib/async.js:108:13)
+    at async.forEachSeries.iterate (/home/locos/.node/v0.8.7/lib/node_modules/async/lib/async.js:119:25)
+    at _asyncMap (/home/locos/.node/v0.8.7/lib/node_modules/async/lib/async.js:187:17)
+    at async.series.results (/home/locos/.node/v0.8.7/lib/node_modules/async/lib/async.js:491:34)
+    at postData (/home/locos/demo/somali/controller/str/str.js:209:13)
+    at async.apply (/home/locos/.node/v0.8.7/lib/node_modules/async/lib/async.js:532:23);]
+2012/9/14 14:42:55:429 [0:--- MgrMon background process start;]
+2012/9/14 14:42:55:433 [0:--- MgrAgv background process start;]
+2012/9/14 14:44:30:818 [0:--- MgrMon background process start;]
+2012/9/14 14:44:30:823 [0:--- MgrAgv background process start;]
+2012/9/14 14:44:58:797 [0:--- MgrMon background process start;]
+2012/9/14 14:44:58:806 [0:--- MgrAgv background process start;]
+2012/9/14 14:47:29:831 [0:--- MgrMon background process start;]
+2012/9/14 14:47:29:841 [0:--- MgrAgv background process start;]
+2012/9/14 15:24:51:998 [0:--- MgrMon background process start;]
+2012/9/14 15:24:52:6 [0:--- MgrAgv background process start;]
+2012/9/14 15:30:3:538 [0:--- MgrMon background process start;]
+2012/9/14 15:30:3:547 [0:--- MgrAgv background process start;]
+2012/9/14 15:35:41:434 [0:--- MgrMon background process start;]
+2012/9/14 15:35:41:439 [0:--- MgrAgv background process start;]
+2012/9/14 15:35:50:811 [0:uncaughtException: TypeError: Cannot read property 'session' of undefined;]
+2012/9/14 15:35:50:811 [0:uncaughtException trace: TypeError: Cannot read property 'session' of undefined
+    at dspWin (/home/locos/demo/somali/controller/str/str.js:122:33)
+    at async.waterfall.wrapIterator (/home/locos/.node/v0.8.7/lib/node_modules/async/lib/async.js:428:21)
+    at parseData (/home/locos/demo/somali/controller/str/str.js:293:9)
+    at async.apply (/home/locos/.node/v0.8.7/lib/node_modules/async/lib/async.js:532:23)
+    at async.iterator.fn (/home/locos/.node/v0.8.7/lib/node_modules/async/lib/async.js:517:34)
+    at async.waterfall.wrapIterator (/home/locos/.node/v0.8.7/lib/node_modules/async/lib/async.js:441:34)
+    at process.startup.processNextTick.process._tickCallback (node.js:244:9);]
+2012/9/14 15:36:42:492 [0:--- MgrMon background process start;]
+2012/9/14 15:36:42:501 [0:--- MgrAgv background process start;]
+2012/9/14 15:37:12:847 [0:uncaughtException: TypeError: Cannot read property 'session' of undefined;]
+2012/9/14 15:37:12:847 [0:uncaughtException trace: TypeError: Cannot read property 'session' of undefined
+    at dspWin (/home/locos/demo/somali/controller/str/str.js:123:33)
+    at async.waterfall.wrapIterator (/home/locos/.node/v0.8.7/lib/node_modules/async/lib/async.js:428:21)
+    at parseData (/home/locos/demo/somali/controller/str/str.js:322:9)
+    at async.apply (/home/locos/.node/v0.8.7/lib/node_modules/async/lib/async.js:532:23)
+    at async.iterator.fn (/home/locos/.node/v0.8.7/lib/node_modules/async/lib/async.js:517:34)
+    at async.waterfall.wrapIterator (/home/locos/.node/v0.8.7/lib/node_modules/async/lib/async.js:441:34)
+    at process.startup.processNextTick.process._tickCallback (node.js:244:9);]
+2012/9/14 15:38:16:464 [0:--- MgrMon background process start;]
+2012/9/14 15:38:16:470 [0:--- MgrAgv background process start;]
+2012/9/14 15:49:30:286 [0:--- MgrMon background process start;]
+2012/9/14 15:49:30:291 [0:--- MgrAgv background process start;]
+2012/9/14 15:51:39:676 [0:--- MgrMon background process start;]
+2012/9/14 15:51:39:684 [0:--- MgrAgv background process start;]
+2012/9/14 17:55:11:102 [0:--- MgrMon background process start;]
+2012/9/14 17:55:11:106 [0:--- MgrAgv background process start;]
+2012/9/14 17:55:30:83 []
+2012/9/14 17:55:30:86 [0:ReferenceError: shoError is not defined
+    at plist.checkParams (/home/locos/demo/somali/controller/str/str.js:227:13)
+    at async.apply (/home/locos/.node/v0.8.7/lib/node_modules/async/lib/async.js:532:23)
+    at async.series.results (/home/locos/.node/v0.8.7/lib/node_modules/async/lib/async.js:486:21)
+    at _asyncMap (/home/locos/.node/v0.8.7/lib/node_modules/async/lib/async.js:185:13)
+    at async.forEachSeries.iterate (/home/locos/.node/v0.8.7/lib/node_modules/async/lib/async.js:108:13)
+    at async.forEachSeries (/home/locos/.node/v0.8.7/lib/node_modules/async/lib/async.js:124:9)
+    at _asyncMap (/home/locos/.node/v0.8.7/lib/node_modules/async/lib/async.js:184:9)
+    at Object.doSeries [as mapSeries] (/home/locos/.node/v0.8.7/lib/node_modules/async/lib/async.js:174:23)
+    at Object.async.series (/home/locos/.node/v0.8.7/lib/node_modules/async/lib/async.js:484:19)
+    at lcsAp.series (/home/locos/demo/somali/lib/ap/lcsap.js:180:15);]
+2012/9/14 17:55:52:992 [0:--- MgrMon background process start;]
+2012/9/14 17:55:52:997 [0:--- MgrAgv background process start;]
+2012/9/18 9:7:29:326 [0:--- MgrMon background process start;]
+2012/9/18 9:7:29:331 [0:--- MgrAgv background process start;]
+2012/9/18 9:16:8:857 [0:--- MgrMon background process start;]
+2012/9/18 9:16:8:862 [0:--- MgrAgv background process start;]
+2012/9/18 10:49:2:131 [0:invalid params: lcsui.config map;]
+2012/9/18 10:49:2:132 [0:invalid params: lcsui.config frame;]
+2012/9/18 10:49:2:132 [0:invalid params: lcsui.config tags;]
+2012/9/18 10:49:2:257 [0:--- MgrMon background process start;]
+2012/9/18 10:49:2:261 [0:--- MgrAgv background process start;]
+2012/9/18 10:50:37:19 [0:invalid params: lcsui.config map;]
+2012/9/18 10:50:37:148 [0:--- MgrMon background process start;]
+2012/9/18 10:50:37:153 [0:--- MgrAgv background process start;]
+2012/9/18 10:50:43:728 []
+2012/9/18 10:50:43:734 [0:TypeError: Cannot read property 'main' of undefined
+    at _dispatch (/home/locos/demo/somali/lib/ap/lcsui.js:137:45)
+    at lcsUI.doAction (/home/locos/demo/somali/lib/ap/lcsui.js:185:14)
+    at callbacks (/home/locos/.node/v0.8.7/lib/node_modules/express/lib/router/index.js:272:11)
+    at param (/home/locos/.node/v0.8.7/lib/node_modules/express/lib/router/index.js:246:11)
+    at param (/home/locos/.node/v0.8.7/lib/node_modules/express/lib/router/index.js:243:11)
+    at pass (/home/locos/.node/v0.8.7/lib/node_modules/express/lib/router/index.js:253:5)
+    at Router._dispatch (/home/locos/.node/v0.8.7/lib/node_modules/express/lib/router/index.js:280:5)
+    at Object.middleware [as handle] (/home/locos/.node/v0.8.7/lib/node_modules/express/lib/router/index.js:45:10)
+    at next (/home/locos/.node/v0.8.7/lib/node_modules/express/node_modules/connect/lib/http.js:204:15)
+    at Object.session [as handle] (/home/locos/.node/v0.8.7/lib/node_modules/express/node_modules/connect/lib/middleware/session.js:304:7);]
+2012/9/18 10:50:54:197 []
+2012/9/18 10:50:54:198 [0:TypeError: Cannot read property 'main' of undefined
+    at _dispatch (/home/locos/demo/somali/lib/ap/lcsui.js:137:45)
+    at lcsUI.doAction (/home/locos/demo/somali/lib/ap/lcsui.js:185:14)
+    at callbacks (/home/locos/.node/v0.8.7/lib/node_modules/express/lib/router/index.js:272:11)
+    at param (/home/locos/.node/v0.8.7/lib/node_modules/express/lib/router/index.js:246:11)
+    at param (/home/locos/.node/v0.8.7/lib/node_modules/express/lib/router/index.js:243:11)
+    at pass (/home/locos/.node/v0.8.7/lib/node_modules/express/lib/router/index.js:253:5)
+    at Router._dispatch (/home/locos/.node/v0.8.7/lib/node_modules/express/lib/router/index.js:280:5)
+    at Object.middleware [as handle] (/home/locos/.node/v0.8.7/lib/node_modules/express/lib/router/index.js:45:10)
+    at next (/home/locos/.node/v0.8.7/lib/node_modules/express/node_modules/connect/lib/http.js:204:15)
+    at store.get.next (/home/locos/.node/v0.8.7/lib/node_modules/express/node_modules/connect/lib/middleware/session.js:322:9);]
+2012/9/18 10:51:11:620 []
+2012/9/18 10:51:11:620 [0:TypeError: Cannot read property 'main' of undefined
+    at _dispatch (/home/locos/demo/somali/lib/ap/lcsui.js:137:45)
+    at lcsUI.doAction (/home/locos/demo/somali/lib/ap/lcsui.js:185:14)
+    at callbacks (/home/locos/.node/v0.8.7/lib/node_modules/express/lib/router/index.js:272:11)
+    at param (/home/locos/.node/v0.8.7/lib/node_modules/express/lib/router/index.js:246:11)
+    at param (/home/locos/.node/v0.8.7/lib/node_modules/express/lib/router/index.js:243:11)
+    at pass (/home/locos/.node/v0.8.7/lib/node_modules/express/lib/router/index.js:253:5)
+    at Router._dispatch (/home/locos/.node/v0.8.7/lib/node_modules/express/lib/router/index.js:280:5)
+    at Object.middleware [as handle] (/home/locos/.node/v0.8.7/lib/node_modules/express/lib/router/index.js:45:10)
+    at next (/home/locos/.node/v0.8.7/lib/node_modules/express/node_modules/connect/lib/http.js:204:15)
+    at store.get.next (/home/locos/.node/v0.8.7/lib/node_modules/express/node_modules/connect/lib/middleware/session.js:322:9);]
+2012/9/18 10:52:15:982 [0:invalid params: lcsui.config 0;]
+2012/9/18 10:52:16:105 [0:--- MgrMon background process start;]
+2012/9/18 10:52:16:109 [0:--- MgrAgv background process start;]
+2012/9/18 10:53:26:385 [0:invalid params: lcsui.config 0;]
+2012/9/18 10:53:26:540 [0:--- MgrMon background process start;]
+2012/9/18 10:53:26:544 [0:--- MgrAgv background process start;]
+2012/9/18 10:56:46:52 [0:--- MgrMon background process start;]
+2012/9/18 10:56:46:57 [0:--- MgrAgv background process start;]
+2012/9/18 10:57:58:877 [0:--- MgrMon background process start;]
+2012/9/18 10:57:58:881 [0:--- MgrAgv background process start;]
+2012/9/18 10:58:45:93 [0:--- MgrMon background process start;]
+2012/9/18 10:58:45:97 [0:--- MgrAgv background process start;]
+2012/9/18 10:59:44:806 [0:--- MgrMon background process start;]
+2012/9/18 10:59:44:811 [0:--- MgrAgv background process start;]
+2012/9/18 11:19:1:605 [0:--- MgrMon background process start;]
+2012/9/18 11:19:1:610 [0:--- MgrAgv background process start;]
+2012/9/18 11:19:16:277 []
+2012/9/18 11:19:16:283 [0:ReferenceError: req is not defined
+    at validCheck.checkParams (/home/locos/demo/somali/controller/str/str.js:211:24)
+    at async.apply (/home/locos/.node/v0.8.7/lib/node_modules/async/lib/async.js:532:23)
+    at async.series.results (/home/locos/.node/v0.8.7/lib/node_modules/async/lib/async.js:486:21)
+    at _asyncMap (/home/locos/.node/v0.8.7/lib/node_modules/async/lib/async.js:185:13)
+    at async.forEachSeries.iterate (/home/locos/.node/v0.8.7/lib/node_modules/async/lib/async.js:108:13)
+    at async.forEachSeries (/home/locos/.node/v0.8.7/lib/node_modules/async/lib/async.js:124:9)
+    at _asyncMap (/home/locos/.node/v0.8.7/lib/node_modules/async/lib/async.js:184:9)
+    at Object.doSeries [as mapSeries] (/home/locos/.node/v0.8.7/lib/node_modules/async/lib/async.js:174:23)
+    at Object.async.series (/home/locos/.node/v0.8.7/lib/node_modules/async/lib/async.js:484:19)
+    at lcsAp.series (/home/locos/demo/somali/lib/ap/lcsap.js:180:15);]
+2012/9/18 11:20:30:32 [0:--- MgrMon background process start;]
+2012/9/18 11:20:30:37 [0:--- MgrAgv background process start;]
+2012/9/18 11:20:34:452 [0:--- MgrMon background process start;]
+2012/9/18 11:20:34:457 [0:--- MgrAgv background process start;]
+2012/9/18 11:20:58:945 []
+2012/9/18 11:20:58:954 [0:ReferenceError: req is not defined
+    at validCheck.checkParams (/home/locos/demo/somali/controller/str/str.js:212:24)
+    at async.apply (/home/locos/.node/v0.8.7/lib/node_modules/async/lib/async.js:532:23)
+    at async.series.results (/home/locos/.node/v0.8.7/lib/node_modules/async/lib/async.js:486:21)
+    at _asyncMap (/home/locos/.node/v0.8.7/lib/node_modules/async/lib/async.js:185:13)
+    at async.forEachSeries.iterate (/home/locos/.node/v0.8.7/lib/node_modules/async/lib/async.js:108:13)
+    at async.forEachSeries (/home/locos/.node/v0.8.7/lib/node_modules/async/lib/async.js:124:9)
+    at _asyncMap (/home/locos/.node/v0.8.7/lib/node_modules/async/lib/async.js:184:9)
+    at Object.doSeries [as mapSeries] (/home/locos/.node/v0.8.7/lib/node_modules/async/lib/async.js:174:23)
+    at Object.async.series (/home/locos/.node/v0.8.7/lib/node_modules/async/lib/async.js:484:19)
+    at lcsAp.series (/home/locos/demo/somali/lib/ap/lcsap.js:180:15);]
+2012/9/18 11:21:47:180 [0:--- MgrMon background process start;]
+2012/9/18 11:21:47:186 [0:--- MgrAgv background process start;]
+2012/9/18 11:21:59:586 []
+2012/9/18 11:21:59:593 [0:ReferenceError: req is not defined
+    at validCheck.checkParams (/home/locos/demo/somali/controller/str/str.js:212:24)
+    at async.apply (/home/locos/.node/v0.8.7/lib/node_modules/async/lib/async.js:532:23)
+    at async.series.results (/home/locos/.node/v0.8.7/lib/node_modules/async/lib/async.js:486:21)
+    at _asyncMap (/home/locos/.node/v0.8.7/lib/node_modules/async/lib/async.js:185:13)
+    at async.forEachSeries.iterate (/home/locos/.node/v0.8.7/lib/node_modules/async/lib/async.js:108:13)
+    at async.forEachSeries (/home/locos/.node/v0.8.7/lib/node_modules/async/lib/async.js:124:9)
+    at _asyncMap (/home/locos/.node/v0.8.7/lib/node_modules/async/lib/async.js:184:9)
+    at Object.doSeries [as mapSeries] (/home/locos/.node/v0.8.7/lib/node_modules/async/lib/async.js:174:23)
+    at Object.async.series (/home/locos/.node/v0.8.7/lib/node_modules/async/lib/async.js:484:19)
+    at lcsAp.series (/home/locos/demo/somali/lib/ap/lcsap.js:180:15);]
+2012/9/18 11:22:23:817 []
+2012/9/18 11:22:23:822 [0:ReferenceError: req is not defined
+    at validCheck.checkParams (/home/locos/demo/somali/controller/str/str.js:212:24)
+    at async.apply (/home/locos/.node/v0.8.7/lib/node_modules/async/lib/async.js:532:23)
+    at async.series.results (/home/locos/.node/v0.8.7/lib/node_modules/async/lib/async.js:486:21)
+    at _asyncMap (/home/locos/.node/v0.8.7/lib/node_modules/async/lib/async.js:185:13)
+    at async.forEachSeries.iterate (/home/locos/.node/v0.8.7/lib/node_modules/async/lib/async.js:108:13)
+    at async.forEachSeries (/home/locos/.node/v0.8.7/lib/node_modules/async/lib/async.js:124:9)
+    at _asyncMap (/home/locos/.node/v0.8.7/lib/node_modules/async/lib/async.js:184:9)
+    at Object.doSeries [as mapSeries] (/home/locos/.node/v0.8.7/lib/node_modules/async/lib/async.js:174:23)
+    at Object.async.series (/home/locos/.node/v0.8.7/lib/node_modules/async/lib/async.js:484:19)
+    at lcsAp.series (/home/locos/demo/somali/lib/ap/lcsap.js:180:15);]
+2012/9/18 11:23:50:316 [0:--- MgrMon background process start;]
+2012/9/18 11:23:50:321 [0:--- MgrAgv background process start;]
+2012/9/18 11:23:58:721 []
+2012/9/18 11:23:58:727 [0:ReferenceError: req is not defined
+    at validCheck.checkParams (/home/locos/demo/somali/controller/str/str.js:212:24)
+    at async.apply (/home/locos/.node/v0.8.7/lib/node_modules/async/lib/async.js:532:23)
+    at async.series.results (/home/locos/.node/v0.8.7/lib/node_modules/async/lib/async.js:486:21)
+    at _asyncMap (/home/locos/.node/v0.8.7/lib/node_modules/async/lib/async.js:185:13)
+    at async.forEachSeries.iterate (/home/locos/.node/v0.8.7/lib/node_modules/async/lib/async.js:108:13)
+    at async.forEachSeries (/home/locos/.node/v0.8.7/lib/node_modules/async/lib/async.js:124:9)
+    at _asyncMap (/home/locos/.node/v0.8.7/lib/node_modules/async/lib/async.js:184:9)
+    at Object.doSeries [as mapSeries] (/home/locos/.node/v0.8.7/lib/node_modules/async/lib/async.js:174:23)
+    at Object.async.series (/home/locos/.node/v0.8.7/lib/node_modules/async/lib/async.js:484:19)
+    at lcsAp.series (/home/locos/demo/somali/lib/ap/lcsap.js:180:15);]
+2012/9/18 11:25:54:289 [0:--- MgrMon background process start;]
+2012/9/18 11:25:54:297 [0:--- MgrAgv background process start;]
+2012/9/18 11:26:4:973 []
+2012/9/18 11:26:4:980 [0:ReferenceError: req is not defined
+    at validCheck.checkParams (/home/locos/demo/somali/controller/str/str.js:212:26)
+    at async.apply (/home/locos/.node/v0.8.7/lib/node_modules/async/lib/async.js:532:23)
+    at async.series.results (/home/locos/.node/v0.8.7/lib/node_modules/async/lib/async.js:486:21)
+    at _asyncMap (/home/locos/.node/v0.8.7/lib/node_modules/async/lib/async.js:185:13)
+    at async.forEachSeries.iterate (/home/locos/.node/v0.8.7/lib/node_modules/async/lib/async.js:108:13)
+    at async.forEachSeries (/home/locos/.node/v0.8.7/lib/node_modules/async/lib/async.js:124:9)
+    at _asyncMap (/home/locos/.node/v0.8.7/lib/node_modules/async/lib/async.js:184:9)
+    at Object.doSeries [as mapSeries] (/home/locos/.node/v0.8.7/lib/node_modules/async/lib/async.js:174:23)
+    at Object.async.series (/home/locos/.node/v0.8.7/lib/node_modules/async/lib/async.js:484:19)
+    at lcsAp.series (/home/locos/demo/somali/lib/ap/lcsap.js:180:15);]
+2012/9/18 12:30:9:820 [0:--- MgrMon background process start;]
+2012/9/18 12:30:9:826 [0:--- MgrAgv background process start;]
+2012/9/18 12:32:26:430 [0:--- MgrMon background process start;]
+2012/9/18 12:32:26:434 [0:--- MgrAgv background process start;]
+2012/9/18 12:32:33:778 []
+2012/9/18 12:32:33:785 [0:TypeError: Cannot read property 'text' of undefined
+    at lcsAp.getMsgI18N (/home/locos/demo/somali/lib/ap/lcsap.js:261:30)
+    at shoError (/home/locos/demo/somali/controller/str/str.js:189:24)
+    at validCheck.checkParams (/home/locos/demo/somali/controller/str/str.js:215:13)
+    at async.apply (/home/locos/.node/v0.8.7/lib/node_modules/async/lib/async.js:532:23)
+    at async.series.results (/home/locos/.node/v0.8.7/lib/node_modules/async/lib/async.js:486:21)
+    at _asyncMap (/home/locos/.node/v0.8.7/lib/node_modules/async/lib/async.js:185:13)
+    at async.forEachSeries.iterate (/home/locos/.node/v0.8.7/lib/node_modules/async/lib/async.js:108:13)
+    at async.forEachSeries (/home/locos/.node/v0.8.7/lib/node_modules/async/lib/async.js:124:9)
+    at _asyncMap (/home/locos/.node/v0.8.7/lib/node_modules/async/lib/async.js:184:9)
+    at Object.doSeries [as mapSeries] (/home/locos/.node/v0.8.7/lib/node_modules/async/lib/async.js:174:23);]
+2012/9/18 12:32:47:677 [0:--- MgrMon background process start;]
+2012/9/18 12:32:47:682 [0:--- MgrAgv background process start;]
+2012/9/18 12:35:1:356 [0:--- MgrMon background process start;]
+2012/9/18 12:35:1:362 [0:--- MgrAgv background process start;]
+2012/9/18 12:39:26:350 [0:--- MgrMon background process start;]
+2012/9/18 12:39:26:357 [0:--- MgrAgv background process start;]
+2012/9/18 12:42:45:159 [0:--- MgrMon background process start;]
+2012/9/18 12:42:45:164 [0:--- MgrAgv background process start;]
+2012/9/18 12:43:28:520 []
+2012/9/18 12:43:28:528 [0:TypeError: Cannot read property 'msg' of undefined
+    at validCheck.checkParams (/home/locos/demo/somali/controller/str/str.js:216:38)
+    at async.apply (/home/locos/.node/v0.8.7/lib/node_modules/async/lib/async.js:532:23)
+    at async.series.results (/home/locos/.node/v0.8.7/lib/node_modules/async/lib/async.js:486:21)
+    at _asyncMap (/home/locos/.node/v0.8.7/lib/node_modules/async/lib/async.js:185:13)
+    at async.forEachSeries.iterate (/home/locos/.node/v0.8.7/lib/node_modules/async/lib/async.js:108:13)
+    at async.forEachSeries (/home/locos/.node/v0.8.7/lib/node_modules/async/lib/async.js:124:9)
+    at _asyncMap (/home/locos/.node/v0.8.7/lib/node_modules/async/lib/async.js:184:9)
+    at Object.doSeries [as mapSeries] (/home/locos/.node/v0.8.7/lib/node_modules/async/lib/async.js:174:23)
+    at Object.async.series (/home/locos/.node/v0.8.7/lib/node_modules/async/lib/async.js:484:19)
+    at lcsAp.series (/home/locos/demo/somali/lib/ap/lcsap.js:180:15);]
+2012/9/18 12:46:29:431 [0:--- MgrMon background process start;]
+2012/9/18 12:46:29:436 [0:--- MgrAgv background process start;]
+2012/9/18 12:55:59:576 [0:--- MgrMon background process start;]
+2012/9/18 12:55:59:581 [0:--- MgrAgv background process start;]
+2012/9/18 12:59:11:959 [0:--- MgrMon background process start;]
+2012/9/18 12:59:11:964 [0:--- MgrAgv background process start;]
+2012/9/18 13:4:45:510 [0:--- MgrMon background process start;]
+2012/9/18 13:4:45:514 [0:--- MgrAgv background process start;]
+2012/9/18 13:6:14:709 [0:--- MgrMon background process start;]
+2012/9/18 13:6:14:716 [0:--- MgrAgv background process start;]
+2012/9/18 13:6:49:521 [0:--- MgrMon background process start;]
+2012/9/18 13:6:49:526 [0:--- MgrAgv background process start;]
+2012/9/18 13:7:52:260 [0:--- MgrMon background process start;]
+2012/9/18 13:7:52:265 [0:--- MgrAgv background process start;]
+2012/9/18 13:8:33:718 [0:--- MgrMon background process start;]
+2012/9/18 13:8:33:724 [0:--- MgrAgv background process start;]
+2012/9/18 13:9:37:91 [0:--- MgrMon background process start;]
+2012/9/18 13:9:37:95 [0:--- MgrAgv background process start;]
+2012/9/18 13:10:27:906 [0:--- MgrMon background process start;]
+2012/9/18 13:10:27:911 [0:--- MgrAgv background process start;]
+2012/9/18 13:11:22:466 [0:--- MgrMon background process start;]
+2012/9/18 13:11:22:471 [0:--- MgrAgv background process start;]
+2012/9/18 13:12:42:583 []
+2012/9/18 13:12:42:587 [0:SyntaxError: Unexpected string
+    at Object.parse (native)
+    at lcsAp.getMsgI18N (/home/locos/demo/somali/lib/ap/lcsap.js:255:29)
+    at lcsUI.checkVal (/home/locos/demo/somali/lib/ap/lcsui.js:312:32)
+    at validCheck.checkParams (/home/locos/demo/somali/controller/str/str.js:207:25)
+    at async.apply (/home/locos/.node/v0.8.7/lib/node_modules/async/lib/async.js:532:23)
+    at async.series.results (/home/locos/.node/v0.8.7/lib/node_modules/async/lib/async.js:486:21)
+    at _asyncMap (/home/locos/.node/v0.8.7/lib/node_modules/async/lib/async.js:185:13)
+    at async.forEachSeries.iterate (/home/locos/.node/v0.8.7/lib/node_modules/async/lib/async.js:108:13)
+    at async.forEachSeries (/home/locos/.node/v0.8.7/lib/node_modules/async/lib/async.js:124:9)
+    at _asyncMap (/home/locos/.node/v0.8.7/lib/node_modules/async/lib/async.js:184:9);]
+2012/9/18 13:12:45:153 [0:uncaughtException: SyntaxError: Unexpected string;]
+2012/9/18 13:12:45:153 [0:uncaughtException trace: SyntaxError: Unexpected string
+    at Object.parse (native)
+    at lcsAp.getMsgI18N (/home/locos/demo/somali/lib/ap/lcsap.js:255:29)
+    at /home/locos/demo/somali/controller/str/str.js:37:29
+    at lcsDb.query.sql (/home/locos/demo/somali/lib/db/lcsdb.js:207:37)
+    at Query.Client.query (/home/locos/.node/v0.8.7/lib/node_modules/mysql/lib/client.js:108:11)
+    at Query.EventEmitter.emit (events.js:85:17)
+    at Query._handlePacket (/home/locos/.node/v0.8.7/lib/node_modules/mysql/lib/query.js:51:14)
+    at Client._handlePacket (/home/locos/.node/v0.8.7/lib/node_modules/mysql/lib/client.js:319:14)
+    at Parser.EventEmitter.emit (events.js:88:17)
+    at Parser.write.emitPacket (/home/locos/.node/v0.8.7/lib/node_modules/mysql/lib/parser.js:71:14);]
+2012/9/18 13:12:59:816 [0:--- MgrMon background process start;]
+2012/9/18 13:12:59:821 [0:--- MgrAgv background process start;]
+2012/9/18 13:13:0:697 [0:uncaughtException: SyntaxError: Unexpected string;]
+2012/9/18 13:13:0:697 [0:uncaughtException trace: SyntaxError: Unexpected string
+    at Object.parse (native)
+    at lcsAp.getMsgI18N (/home/locos/demo/somali/lib/ap/lcsap.js:255:29)
+    at /home/locos/demo/somali/controller/str/str.js:37:29
+    at lcsDb.query.sql (/home/locos/demo/somali/lib/db/lcsdb.js:207:37)
+    at Query.Client.query (/home/locos/.node/v0.8.7/lib/node_modules/mysql/lib/client.js:108:11)
+    at Query.EventEmitter.emit (events.js:85:17)
+    at Query._handlePacket (/home/locos/.node/v0.8.7/lib/node_modules/mysql/lib/query.js:51:14)
+    at Client._handlePacket (/home/locos/.node/v0.8.7/lib/node_modules/mysql/lib/client.js:319:14)
+    at Parser.EventEmitter.emit (events.js:88:17)
+    at Parser.write.emitPacket (/home/locos/.node/v0.8.7/lib/node_modules/mysql/lib/parser.js:71:14);]
+2012/9/18 13:14:10:910 [0:--- MgrMon background process start;]
+2012/9/18 13:14:10:914 [0:--- MgrAgv background process start;]
+2012/9/18 13:14:31:109 [0:cmnd  err: Error: Unknown column 'NaN' in 'field list';]
+2012/9/18 13:16:31:314 [0:cmnd  err: Error: Unknown column 'NaN' in 'field list';]
+2012/9/18 13:23:40:681 [0:--- MgrMon background process start;]
+2012/9/18 13:23:40:685 [0:--- MgrAgv background process start;]
+2012/9/18 13:37:11:495 [0:--- MgrMon background process start;]
+2012/9/18 13:37:11:500 [0:--- MgrAgv background process start;]
+2012/9/18 14:23:58:410 [0:--- MgrMon background process start;]
+2012/9/18 14:23:58:421 [0:--- MgrAgv background process start;]
+2012/9/18 14:49:53:928 [0:--- MgrMon background process start;]
+2012/9/18 14:49:53:933 [0:--- MgrAgv background process start;]
+2012/9/18 15:51:47:707 [0:--- MgrMon background process start;]
+2012/9/18 15:51:47:711 [0:--- MgrAgv background process start;]
+2012/9/18 16:35:4:24 [0:uncaughtException: Error: Can't set headers after they are sent.;]
+2012/9/18 16:35:4:24 [0:uncaughtException trace: Error: Can't set headers after they are sent.
+    at ServerResponse.OutgoingMessage.setHeader (http.js:644:11)
+    at ServerResponse.res.setHeader (/home/locos/.node/v0.8.7/lib/node_modules/express/node_modules/connect/lib/patch.js:62:20)
+    at module.exports.JSON.stringify.error (/home/locos/.node/v0.8.7/lib/node_modules/express/node_modules/connect/lib/middleware/errorHandler.js:72:19)
+    at fs.readFile (fs.js:176:14)
+    at Object.oncomplete (fs.js:297:15);]
+2012/9/18 16:35:4:65 [0:uncaughtException: TypeError: Object #<Object> has no method 'isMobile';]
+2012/9/18 16:35:4:65 [0:uncaughtException trace: TypeError: Object #<Object> has no method 'isMobile'
+    at lcsUI.login (/home/locos/demo/somali/lib/ap/lcsui.js:198:47)
+    at module.exports.RedisStore.get (/home/locos/.node/v0.8.7/lib/node_modules/connect-redis/lib/connect-redis.js:100:9)
+    at try_callback (/home/locos/.node/v0.8.7/lib/node_modules/connect-redis/node_modules/redis/index.js:484:9)
+    at RedisClient.return_reply (/home/locos/.node/v0.8.7/lib/node_modules/connect-redis/node_modules/redis/index.js:555:13)
+    at HiredisReplyParser.RedisClient.init_parser (/home/locos/.node/v0.8.7/lib/node_modules/connect-redis/node_modules/redis/index.js:256:14)
+    at HiredisReplyParser.EventEmitter.emit (events.js:88:17)
+    at HiredisReplyParser.execute (/home/locos/.node/v0.8.7/lib/node_modules/connect-redis/node_modules/redis/lib/parser/hiredis.js:43:18)
+    at RedisClient.on_data (/home/locos/.node/v0.8.7/lib/node_modules/connect-redis/node_modules/redis/index.js:440:27)
+    at Socket.<anonymous> (/home/locos/.node/v0.8.7/lib/node_modules/connect-redis/node_modules/redis/index.js:70:14)
+    at Socket.EventEmitter.emit (events.js:88:17);]
+2012/9/18 16:36:22:769 [0:--- MgrMon background process start;]
+2012/9/18 16:36:22:774 [0:--- MgrAgv background process start;]
+2012/9/19 10:47:3:741 [0:--- MgrMon background process start;]
+2012/9/19 10:47:3:746 [0:--- MgrAgv background process start;]
+2012/9/19 10:58:26:203 [0:uncaughtException: TypeError: Object #<Object> has no method 'isMobile';]
+2012/9/19 10:58:26:203 [0:uncaughtException trace: TypeError: Object #<Object> has no method 'isMobile'
+    at lcsUI.login (/home/locos/demo/somali/lib/ap/lcsui.js:198:47)
+    at module.exports.RedisStore.get (/home/locos/.node/v0.8.7/lib/node_modules/connect-redis/lib/connect-redis.js:100:9)
+    at try_callback (/home/locos/.node/v0.8.7/lib/node_modules/connect-redis/node_modules/redis/index.js:484:9)
+    at RedisClient.return_reply (/home/locos/.node/v0.8.7/lib/node_modules/connect-redis/node_modules/redis/index.js:555:13)
+    at HiredisReplyParser.RedisClient.init_parser (/home/locos/.node/v0.8.7/lib/node_modules/connect-redis/node_modules/redis/index.js:256:14)
+    at HiredisReplyParser.EventEmitter.emit (events.js:88:17)
+    at HiredisReplyParser.execute (/home/locos/.node/v0.8.7/lib/node_modules/connect-redis/node_modules/redis/lib/parser/hiredis.js:43:18)
+    at RedisClient.on_data (/home/locos/.node/v0.8.7/lib/node_modules/connect-redis/node_modules/redis/index.js:440:27)
+    at Socket.<anonymous> (/home/locos/.node/v0.8.7/lib/node_modules/connect-redis/node_modules/redis/index.js:70:14)
+    at Socket.EventEmitter.emit (events.js:88:17);]
+2012/9/19 10:59:18:400 [0:--- MgrMon background process start;]
+2012/9/19 10:59:18:408 [0:--- MgrAgv background process start;]
+2012/9/19 11:6:1:338 [0:--- MgrMon background process start;]
+2012/9/19 11:6:1:342 [0:--- MgrAgv background process start;]
+2012/9/19 11:7:48:776 [0:uncaughtException: TypeError: Object #<Object> has no method 'isMobile';]
+2012/9/19 11:7:48:776 [0:uncaughtException trace: TypeError: Object #<Object> has no method 'isMobile'
+    at lcsUI.login (/home/locos/demo/somali/lib/ap/lcsui.js:198:47)
+    at module.exports.RedisStore.get (/home/locos/.node/v0.8.7/lib/node_modules/connect-redis/lib/connect-redis.js:100:9)
+    at try_callback (/home/locos/.node/v0.8.7/lib/node_modules/connect-redis/node_modules/redis/index.js:484:9)
+    at RedisClient.return_reply (/home/locos/.node/v0.8.7/lib/node_modules/connect-redis/node_modules/redis/index.js:555:13)
+    at HiredisReplyParser.RedisClient.init_parser (/home/locos/.node/v0.8.7/lib/node_modules/connect-redis/node_modules/redis/index.js:256:14)
+    at HiredisReplyParser.EventEmitter.emit (events.js:88:17)
+    at HiredisReplyParser.execute (/home/locos/.node/v0.8.7/lib/node_modules/connect-redis/node_modules/redis/lib/parser/hiredis.js:43:18)
+    at RedisClient.on_data (/home/locos/.node/v0.8.7/lib/node_modules/connect-redis/node_modules/redis/index.js:440:27)
+    at Socket.<anonymous> (/home/locos/.node/v0.8.7/lib/node_modules/connect-redis/node_modules/redis/index.js:70:14)
+    at Socket.EventEmitter.emit (events.js:88:17);]
+2012/9/19 14:11:25:48 [0:--- MgrMon background process start;]
+2012/9/19 14:11:25:53 [0:--- MgrAgv background process start;]
+2012/9/19 14:13:38:63 [0:--- MgrMon background process start;]
+2012/9/19 14:13:38:67 [0:--- MgrAgv background process start;]
+2012/9/19 14:30:8:998 [0:--- MgrMon background process start;]
+2012/9/19 14:30:9:4 [0:--- MgrAgv background process start;]
+2012/9/19 14:30:57:414 [0:--- MgrMon background process start;]
+2012/9/19 14:30:57:421 [0:--- MgrAgv background process start;]
+2012/9/24 15:4:20:229 [0:--- MgrMon background process start;]
+2012/9/24 15:4:20:233 [0:--- MgrAgv background process start;]
+2012/9/25 9:46:4:560 [0:--- MgrMon background process start;]
+2012/9/25 9:46:4:567 [0:--- MgrAgv background process start;]
+2012/9/25 10:14:46:346 [0:--- MgrMon background process start;]
+2012/9/25 10:14:46:351 [0:--- MgrAgv background process start;]
+2012/9/25 11:5:22:626 [0:--- MgrMon background process start;]
+2012/9/25 11:5:22:630 [0:--- MgrAgv background process start;]
+2012/9/25 11:7:43:198 [0:--- MgrMon background process start;]
+2012/9/25 11:7:43:202 [0:--- MgrAgv background process start;]
+2012/9/25 11:8:1:439 [0:--- MgrMon background process start;]
+2012/9/25 11:8:1:443 [0:--- MgrAgv background process start;]
+2012/9/25 11:33:13:673 [0:--- MgrMon background process start;]
+2012/9/25 11:33:13:680 [0:--- MgrAgv background process start;]
+2012/9/25 11:44:21:459 [0:--- MgrMon background process start;]
+2012/9/25 11:44:21:467 [0:--- MgrAgv background process start;]
+2012/9/25 12:15:5:137 [0:--- MgrMon background process start;]
+2012/9/25 12:15:5:142 [0:--- MgrAgv background process start;]
+2012/9/25 12:19:7:980 [0:--- MgrMon background process start;]
+2012/9/25 12:19:7:990 [0:--- MgrAgv background process start;]
+2012/9/25 12:20:9:672 [0:--- MgrMon background process start;]
+2012/9/25 12:20:9:678 [0:--- MgrAgv background process start;]
+2012/9/25 12:20:18:731 [0:--- MgrMon background process start;]
+2012/9/25 12:20:18:738 [0:--- MgrAgv background process start;]
+2012/9/25 12:25:6:821 [0:--- MgrMon background process start;]
+2012/9/25 12:25:6:829 [0:--- MgrAgv background process start;]
+2012/9/25 12:28:20:24 [0:--- MgrMon background process start;]
+2012/9/25 12:28:20:29 [0:--- MgrAgv background process start;]
+2012/9/25 12:29:0:989 [0:--- MgrMon background process start;]
+2012/9/25 12:29:0:996 [0:--- MgrAgv background process start;]
+2012/9/25 12:30:23:269 [0:--- MgrMon background process start;]
+2012/9/25 12:30:23:276 [0:--- MgrAgv background process start;]
+2012/9/25 12:52:26:636 [0:--- MgrMon background process start;]
+2012/9/25 12:52:26:643 [0:--- MgrAgv background process start;]
+2012/9/25 12:56:26:56 [0:--- MgrMon background process start;]
+2012/9/25 12:56:26:63 [0:--- MgrAgv background process start;]
+2012/9/25 13:28:57:882 [0:--- MgrMon background process start;]
+2012/9/25 13:28:57:888 [0:--- MgrAgv background process start;]
+2012/9/25 13:34:38:821 []
+2012/9/25 13:34:38:829 [0:SyntaxError: Unexpected token {
+    at Object.parse (native)
+    at Object.exports.main (/home/locos/demo/somali/controller/str/201/str201.js:444:31)
+    at _dispatch (/home/locos/demo/somali/lib/ap/lcsui.js:113:43)
+    at lcsUI.doAction (/home/locos/demo/somali/lib/ap/lcsui.js:151:14)
+    at callbacks (/home/locos/.node/v0.8.7/lib/node_modules/express/lib/router/index.js:162:11)
+    at param (/home/locos/.node/v0.8.7/lib/node_modules/express/lib/router/index.js:136:11)
+    at param (/home/locos/.node/v0.8.7/lib/node_modules/express/lib/router/index.js:133:11)
+    at pass (/home/locos/.node/v0.8.7/lib/node_modules/express/lib/router/index.js:143:5)
+    at Router._dispatch (/home/locos/.node/v0.8.7/lib/node_modules/express/lib/router/index.js:170:5)
+    at Object.router (/home/locos/.node/v0.8.7/lib/node_modules/express/lib/router/index.js:33:10);]
+2012/9/25 13:34:49:228 []
+2012/9/25 13:34:49:229 [0:SyntaxError: Unexpected token {
+    at Object.parse (native)
+    at Object.exports.main (/home/locos/demo/somali/controller/str/201/str201.js:444:31)
+    at _dispatch (/home/locos/demo/somali/lib/ap/lcsui.js:113:43)
+    at lcsUI.doAction (/home/locos/demo/somali/lib/ap/lcsui.js:151:14)
+    at callbacks (/home/locos/.node/v0.8.7/lib/node_modules/express/lib/router/index.js:162:11)
+    at param (/home/locos/.node/v0.8.7/lib/node_modules/express/lib/router/index.js:136:11)
+    at param (/home/locos/.node/v0.8.7/lib/node_modules/express/lib/router/index.js:133:11)
+    at pass (/home/locos/.node/v0.8.7/lib/node_modules/express/lib/router/index.js:143:5)
+    at Router._dispatch (/home/locos/.node/v0.8.7/lib/node_modules/express/lib/router/index.js:170:5)
+    at Object.router (/home/locos/.node/v0.8.7/lib/node_modules/express/lib/router/index.js:33:10);]
+2012/9/25 13:49:10:204 [0:--- MgrMon background process start;]
+2012/9/25 13:49:10:209 [0:--- MgrAgv background process start;]
+2012/9/25 13:53:2:203 [0:--- MgrMon background process start;]
+2012/9/25 13:53:2:207 [0:--- MgrAgv background process start;]
+2012/9/25 13:55:27:8 [0:--- MgrMon background process start;]
+2012/9/25 13:55:27:14 [0:--- MgrAgv background process start;]
+2012/9/25 13:59:28:210 [0:--- MgrMon background process start;]
+2012/9/25 13:59:28:215 [0:--- MgrAgv background process start;]
+2012/9/25 14:2:34:164 [0:--- MgrMon background process start;]
+2012/9/25 14:2:34:168 [0:--- MgrAgv background process start;]
+2012/9/25 14:3:42:12 [0:--- MgrMon background process start;]
+2012/9/25 14:3:42:18 [0:--- MgrAgv background process start;]
+2012/9/25 14:11:8:321 [0:--- MgrMon background process start;]
+2012/9/25 14:11:8:327 [0:--- MgrAgv background process start;]
+2012/9/25 14:13:36:158 [0:--- MgrMon background process start;]
+2012/9/25 14:13:36:164 [0:--- MgrAgv background process start;]
+2012/9/25 14:24:0:961 [0:--- MgrMon background process start;]
+2012/9/25 14:24:0:968 [0:--- MgrAgv background process start;]
+2012/9/25 14:24:43:266 [0:--- MgrMon background process start;]
+2012/9/25 14:24:43:271 [0:--- MgrAgv background process start;]
+2012/9/25 14:29:39:50 [0:--- MgrMon background process start;]
+2012/9/25 14:29:39:57 [0:--- MgrAgv background process start;]
+2012/9/25 14:36:38:490 [0:--- MgrMon background process start;]
+2012/9/25 14:36:38:495 [0:--- MgrAgv background process start;]
+2012/9/25 14:47:11:808 [0:--- MgrMon background process start;]
+2012/9/25 14:47:11:813 [0:--- MgrAgv background process start;]
+2012/9/25 14:56:41:169 [0:--- MgrMon background process start;]
+2012/9/25 14:56:41:177 [0:--- MgrAgv background process start;]
+2012/9/25 14:57:32:226 [0:--- MgrMon background process start;]
+2012/9/25 14:57:32:231 [0:--- MgrAgv background process start;]
+2012/9/25 15:0:1:979 [0:--- MgrMon background process start;]
+2012/9/25 15:0:1:986 [0:--- MgrAgv background process start;]
+2012/9/25 16:2:1:773 [0:--- MgrMon background process start;]
+2012/9/25 16:2:1:785 [0:--- MgrAgv background process start;]
+2012/9/25 22:2:29:252 [0:--- MgrMon background process start;]
+2012/9/25 22:2:29:257 [0:--- MgrAgv background process start;]
+2012/9/25 22:4:58:113 [0:--- MgrMon background process start;]
+2012/9/25 22:4:58:119 [0:--- MgrAgv background process start;]
+2012/9/26 12:13:35:421 [0:--- MgrMon background process start;]
+2012/9/26 12:13:35:425 [0:--- MgrAgv background process start;]
+2012/9/26 12:17:21:310 []
+2012/9/26 12:17:21:316 [0:TypeError: Cannot read property 'main' of undefined
+    at _dispatch (/home/locos/demo/somali/lib/ap/lcsui.js:103:45)
+    at lcsUI.doAction (/home/locos/demo/somali/lib/ap/lcsui.js:151:14)
+    at callbacks (/home/locos/.node/v0.8.7/lib/node_modules/express/lib/router/index.js:162:11)
+    at param (/home/locos/.node/v0.8.7/lib/node_modules/express/lib/router/index.js:136:11)
+    at param (/home/locos/.node/v0.8.7/lib/node_modules/express/lib/router/index.js:133:11)
+    at pass (/home/locos/.node/v0.8.7/lib/node_modules/express/lib/router/index.js:143:5)
+    at Router._dispatch (/home/locos/.node/v0.8.7/lib/node_modules/express/lib/router/index.js:170:5)
+    at Object.router (/home/locos/.node/v0.8.7/lib/node_modules/express/lib/router/index.js:33:10)
+    at next (/home/locos/.node/v0.8.7/lib/node_modules/express/node_modules/connect/lib/proto.js:190:15)
+    at store.get.next (/home/locos/.node/v0.8.7/lib/node_modules/express/node_modules/connect/lib/middleware/session.js:302:9);]
+2012/9/26 12:17:26:907 []
+2012/9/26 12:17:26:908 [0:TypeError: Cannot read property 'main' of undefined
+    at _dispatch (/home/locos/demo/somali/lib/ap/lcsui.js:103:45)
+    at lcsUI.doAction (/home/locos/demo/somali/lib/ap/lcsui.js:151:14)
+    at callbacks (/home/locos/.node/v0.8.7/lib/node_modules/express/lib/router/index.js:162:11)
+    at param (/home/locos/.node/v0.8.7/lib/node_modules/express/lib/router/index.js:136:11)
+    at param (/home/locos/.node/v0.8.7/lib/node_modules/express/lib/router/index.js:133:11)
+    at pass (/home/locos/.node/v0.8.7/lib/node_modules/express/lib/router/index.js:143:5)
+    at Router._dispatch (/home/locos/.node/v0.8.7/lib/node_modules/express/lib/router/index.js:170:5)
+    at Object.router (/home/locos/.node/v0.8.7/lib/node_modules/express/lib/router/index.js:33:10)
+    at next (/home/locos/.node/v0.8.7/lib/node_modules/express/node_modules/connect/lib/proto.js:190:15)
+    at store.get.next (/home/locos/.node/v0.8.7/lib/node_modules/express/node_modules/connect/lib/middleware/session.js:302:9);]
+2012/9/26 12:51:32:323 []
+2012/9/26 12:51:32:323 [0:TypeError: Cannot read property 'main' of undefined
+    at _dispatch (/home/locos/demo/somali/lib/ap/lcsui.js:103:45)
+    at lcsUI.doAction (/home/locos/demo/somali/lib/ap/lcsui.js:151:14)
+    at callbacks (/home/locos/.node/v0.8.7/lib/node_modules/express/lib/router/index.js:162:11)
+    at param (/home/locos/.node/v0.8.7/lib/node_modules/express/lib/router/index.js:136:11)
+    at param (/home/locos/.node/v0.8.7/lib/node_modules/express/lib/router/index.js:133:11)
+    at pass (/home/locos/.node/v0.8.7/lib/node_modules/express/lib/router/index.js:143:5)
+    at Router._dispatch (/home/locos/.node/v0.8.7/lib/node_modules/express/lib/router/index.js:170:5)
+    at Object.router (/home/locos/.node/v0.8.7/lib/node_modules/express/lib/router/index.js:33:10)
+    at next (/home/locos/.node/v0.8.7/lib/node_modules/express/node_modules/connect/lib/proto.js:190:15)
+    at store.get.next (/home/locos/.node/v0.8.7/lib/node_modules/express/node_modules/connect/lib/middleware/session.js:302:9);]
+2012/9/26 13:3:44:525 []
+2012/9/26 13:3:44:525 [0:TypeError: Cannot read property 'main' of undefined
+    at _dispatch (/home/locos/demo/somali/lib/ap/lcsui.js:103:45)
+    at lcsUI.doAction (/home/locos/demo/somali/lib/ap/lcsui.js:151:14)
+    at callbacks (/home/locos/.node/v0.8.7/lib/node_modules/express/lib/router/index.js:162:11)
+    at param (/home/locos/.node/v0.8.7/lib/node_modules/express/lib/router/index.js:136:11)
+    at param (/home/locos/.node/v0.8.7/lib/node_modules/express/lib/router/index.js:133:11)
+    at pass (/home/locos/.node/v0.8.7/lib/node_modules/express/lib/router/index.js:143:5)
+    at Router._dispatch (/home/locos/.node/v0.8.7/lib/node_modules/express/lib/router/index.js:170:5)
+    at Object.router (/home/locos/.node/v0.8.7/lib/node_modules/express/lib/router/index.js:33:10)
+    at next (/home/locos/.node/v0.8.7/lib/node_modules/express/node_modules/connect/lib/proto.js:190:15)
+    at store.get.next (/home/locos/.node/v0.8.7/lib/node_modules/express/node_modules/connect/lib/middleware/session.js:302:9);]
+2012/9/26 13:10:24:90 []
+2012/9/26 13:10:24:90 [0:TypeError: Cannot read property 'main' of undefined
+    at _dispatch (/home/locos/demo/somali/lib/ap/lcsui.js:103:45)
+    at lcsUI.doAction (/home/locos/demo/somali/lib/ap/lcsui.js:151:14)
+    at callbacks (/home/locos/.node/v0.8.7/lib/node_modules/express/lib/router/index.js:162:11)
+    at param (/home/locos/.node/v0.8.7/lib/node_modules/express/lib/router/index.js:136:11)
+    at param (/home/locos/.node/v0.8.7/lib/node_modules/express/lib/router/index.js:133:11)
+    at pass (/home/locos/.node/v0.8.7/lib/node_modules/express/lib/router/index.js:143:5)
+    at Router._dispatch (/home/locos/.node/v0.8.7/lib/node_modules/express/lib/router/index.js:170:5)
+    at Object.router (/home/locos/.node/v0.8.7/lib/node_modules/express/lib/router/index.js:33:10)
+    at next (/home/locos/.node/v0.8.7/lib/node_modules/express/node_modules/connect/lib/proto.js:190:15)
+    at store.get.next (/home/locos/.node/v0.8.7/lib/node_modules/express/node_modules/connect/lib/middleware/session.js:302:9);]
+2012/9/26 13:27:20:679 [0:--- MgrMon background process start;]
+2012/9/26 13:27:20:684 [0:--- MgrAgv background process start;]
+2012/9/26 13:27:27:209 [errno:34;code:ENOENT;path:./controller/data/mnt501ini.json;syscall:open;]
+2012/9/26 13:27:27:214 [0:Error: ENOENT, no such file or directory './controller/data/mnt501ini.json'
+    at Object.fs.openSync (fs.js:338:18)
+    at Object.fs.readFileSync (fs.js:182:15)
+    at Object.exports.main (/home/locos/demo/somali/controller/mnt/501/mnt501.js:470:51)
+    at _dispatch (/home/locos/demo/somali/lib/ap/lcsui.js:113:43)
+    at lcsUI.doAction (/home/locos/demo/somali/lib/ap/lcsui.js:151:14)
+    at callbacks (/home/locos/.node/v0.8.7/lib/node_modules/express/lib/router/index.js:162:11)
+    at param (/home/locos/.node/v0.8.7/lib/node_modules/express/lib/router/index.js:136:11)
+    at param (/home/locos/.node/v0.8.7/lib/node_modules/express/lib/router/index.js:133:11)
+    at pass (/home/locos/.node/v0.8.7/lib/node_modules/express/lib/router/index.js:143:5)
+    at Router._dispatch (/home/locos/.node/v0.8.7/lib/node_modules/express/lib/router/index.js:170:5);]
+2012/9/26 13:27:31:834 [errno:34;code:ENOENT;path:./controller/data/mnt501ini.json;syscall:open;]
+2012/9/26 13:27:31:835 [0:Error: ENOENT, no such file or directory './controller/data/mnt501ini.json'
+    at Object.fs.openSync (fs.js:338:18)
+    at Object.fs.readFileSync (fs.js:182:15)
+    at Object.exports.main (/home/locos/demo/somali/controller/mnt/501/mnt501.js:470:51)
+    at _dispatch (/home/locos/demo/somali/lib/ap/lcsui.js:113:43)
+    at lcsUI.doAction (/home/locos/demo/somali/lib/ap/lcsui.js:151:14)
+    at callbacks (/home/locos/.node/v0.8.7/lib/node_modules/express/lib/router/index.js:162:11)
+    at param (/home/locos/.node/v0.8.7/lib/node_modules/express/lib/router/index.js:136:11)
+    at param (/home/locos/.node/v0.8.7/lib/node_modules/express/lib/router/index.js:133:11)
+    at pass (/home/locos/.node/v0.8.7/lib/node_modules/express/lib/router/index.js:143:5)
+    at Router._dispatch (/home/locos/.node/v0.8.7/lib/node_modules/express/lib/router/index.js:170:5);]
+2012/9/26 13:29:59:513 [0:--- MgrMon background process start;]
+2012/9/26 13:29:59:520 [0:--- MgrAgv background process start;]
+2012/9/26 13:30:24:67 [0:--- MgrMon background process start;]
+2012/9/26 13:30:24:74 [0:--- MgrAgv background process start;]
+2012/9/26 13:33:39:891 [0:--- MgrMon background process start;]
+2012/9/26 13:33:39:895 [0:--- MgrAgv background process start;]
+2012/9/26 13:52:17:979 [0:--- MgrMon background process start;]
+2012/9/26 13:52:17:984 [0:--- MgrAgv background process start;]
+2012/9/26 14:1:16:406 []
+2012/9/26 14:1:16:412 [0:TypeError: Cannot read property 'main' of undefined
+    at _dispatch (/home/locos/demo/somali/lib/ap/lcsui.js:103:45)
+    at lcsUI.doAction (/home/locos/demo/somali/lib/ap/lcsui.js:151:14)
+    at callbacks (/home/locos/.node/v0.8.7/lib/node_modules/express/lib/router/index.js:162:11)
+    at param (/home/locos/.node/v0.8.7/lib/node_modules/express/lib/router/index.js:136:11)
+    at param (/home/locos/.node/v0.8.7/lib/node_modules/express/lib/router/index.js:133:11)
+    at pass (/home/locos/.node/v0.8.7/lib/node_modules/express/lib/router/index.js:143:5)
+    at Router._dispatch (/home/locos/.node/v0.8.7/lib/node_modules/express/lib/router/index.js:170:5)
+    at Object.router (/home/locos/.node/v0.8.7/lib/node_modules/express/lib/router/index.js:33:10)
+    at next (/home/locos/.node/v0.8.7/lib/node_modules/express/node_modules/connect/lib/proto.js:190:15)
+    at store.get.next (/home/locos/.node/v0.8.7/lib/node_modules/express/node_modules/connect/lib/middleware/session.js:302:9);]
+2012/9/26 17:21:35:84 [0:--- MgrMon background process start;]
+2012/9/26 17:21:35:89 [0:--- MgrAgv background process start;]
+2012/9/26 17:21:48:989 []
+2012/9/26 17:21:48:994 [0:ReferenceError: rq is not defined
+    at operate (/home/locos/demo/somali/controller/mnt/501/mnt501.js:429:16)
+    at Object.exports.main (/home/locos/demo/somali/controller/mnt/501/mnt501.js:446:9)
+    at _dispatch (/home/locos/demo/somali/lib/ap/lcsui.js:113:43)
+    at lcsUI.doAction (/home/locos/demo/somali/lib/ap/lcsui.js:151:14)
+    at callbacks (/home/locos/.node/v0.8.7/lib/node_modules/express/lib/router/index.js:162:11)
+    at param (/home/locos/.node/v0.8.7/lib/node_modules/express/lib/router/index.js:136:11)
+    at param (/home/locos/.node/v0.8.7/lib/node_modules/express/lib/router/index.js:133:11)
+    at pass (/home/locos/.node/v0.8.7/lib/node_modules/express/lib/router/index.js:143:5)
+    at Router._dispatch (/home/locos/.node/v0.8.7/lib/node_modules/express/lib/router/index.js:170:5)
+    at Object.router (/home/locos/.node/v0.8.7/lib/node_modules/express/lib/router/index.js:33:10);]
+2012/9/26 17:21:56:421 []
+2012/9/26 17:21:56:422 [0:ReferenceError: rq is not defined
+    at operate (/home/locos/demo/somali/controller/mnt/501/mnt501.js:429:16)
+    at Object.exports.main (/home/locos/demo/somali/controller/mnt/501/mnt501.js:446:9)
+    at _dispatch (/home/locos/demo/somali/lib/ap/lcsui.js:113:43)
+    at lcsUI.doAction (/home/locos/demo/somali/lib/ap/lcsui.js:151:14)
+    at callbacks (/home/locos/.node/v0.8.7/lib/node_modules/express/lib/router/index.js:162:11)
+    at param (/home/locos/.node/v0.8.7/lib/node_modules/express/lib/router/index.js:136:11)
+    at param (/home/locos/.node/v0.8.7/lib/node_modules/express/lib/router/index.js:133:11)
+    at pass (/home/locos/.node/v0.8.7/lib/node_modules/express/lib/router/index.js:143:5)
+    at Router._dispatch (/home/locos/.node/v0.8.7/lib/node_modules/express/lib/router/index.js:170:5)
+    at Object.router (/home/locos/.node/v0.8.7/lib/node_modules/express/lib/router/index.js:33:10);]
+2012/9/26 17:22:14:412 [0:--- MgrMon background process start;]
+2012/9/26 17:22:14:417 [0:--- MgrAgv background process start;]
+2012/9/26 17:24:26:125 [0:--- MgrMon background process start;]
+2012/9/26 17:24:26:131 [0:--- MgrAgv background process start;]
+2012/9/26 17:25:26:163 [0:--- MgrMon background process start;]
+2012/9/26 17:25:26:167 [0:--- MgrAgv background process start;]
+2012/9/26 17:28:18:632 [0:--- MgrMon background process start;]
+2012/9/26 17:28:18:636 [0:--- MgrAgv background process start;]
+2012/9/26 17:38:40:366 [0:--- MgrMon background process start;]
+2012/9/26 17:38:40:372 [0:--- MgrAgv background process start;]
+2012/9/26 17:38:50:661 []
+2012/9/26 17:38:50:665 [0:ReferenceError: key is not defined
+    at Object.exports.main (/home/locos/demo/somali/controller/mnt/501/mnt501.js:445:17)
+    at _dispatch (/home/locos/demo/somali/lib/ap/lcsui.js:113:43)
+    at lcsUI.doAction (/home/locos/demo/somali/lib/ap/lcsui.js:151:14)
+    at callbacks (/home/locos/.node/v0.8.7/lib/node_modules/express/lib/router/index.js:162:11)
+    at param (/home/locos/.node/v0.8.7/lib/node_modules/express/lib/router/index.js:136:11)
+    at param (/home/locos/.node/v0.8.7/lib/node_modules/express/lib/router/index.js:133:11)
+    at pass (/home/locos/.node/v0.8.7/lib/node_modules/express/lib/router/index.js:143:5)
+    at Router._dispatch (/home/locos/.node/v0.8.7/lib/node_modules/express/lib/router/index.js:170:5)
+    at Object.router (/home/locos/.node/v0.8.7/lib/node_modules/express/lib/router/index.js:33:10)
+    at next (/home/locos/.node/v0.8.7/lib/node_modules/express/node_modules/connect/lib/proto.js:190:15);]
+2012/9/26 17:38:52:767 []
+2012/9/26 17:38:52:768 [0:ReferenceError: key is not defined
+    at Object.exports.main (/home/locos/demo/somali/controller/mnt/501/mnt501.js:445:17)
+    at _dispatch (/home/locos/demo/somali/lib/ap/lcsui.js:113:43)
+    at lcsUI.doAction (/home/locos/demo/somali/lib/ap/lcsui.js:151:14)
+    at callbacks (/home/locos/.node/v0.8.7/lib/node_modules/express/lib/router/index.js:162:11)
+    at param (/home/locos/.node/v0.8.7/lib/node_modules/express/lib/router/index.js:136:11)
+    at param (/home/locos/.node/v0.8.7/lib/node_modules/express/lib/router/index.js:133:11)
+    at pass (/home/locos/.node/v0.8.7/lib/node_modules/express/lib/router/index.js:143:5)
+    at Router._dispatch (/home/locos/.node/v0.8.7/lib/node_modules/express/lib/router/index.js:170:5)
+    at Object.router (/home/locos/.node/v0.8.7/lib/node_modules/express/lib/router/index.js:33:10)
+    at next (/home/locos/.node/v0.8.7/lib/node_modules/express/node_modules/connect/lib/proto.js:190:15);]
+2012/9/26 17:38:59:92 []
+2012/9/26 17:38:59:93 [0:ReferenceError: key is not defined
+    at Object.exports.main (/home/locos/demo/somali/controller/mnt/501/mnt501.js:445:17)
+    at _dispatch (/home/locos/demo/somali/lib/ap/lcsui.js:113:43)
+    at lcsUI.doAction (/home/locos/demo/somali/lib/ap/lcsui.js:151:14)
+    at callbacks (/home/locos/.node/v0.8.7/lib/node_modules/express/lib/router/index.js:162:11)
+    at param (/home/locos/.node/v0.8.7/lib/node_modules/express/lib/router/index.js:136:11)
+    at param (/home/locos/.node/v0.8.7/lib/node_modules/express/lib/router/index.js:133:11)
+    at pass (/home/locos/.node/v0.8.7/lib/node_modules/express/lib/router/index.js:143:5)
+    at Router._dispatch (/home/locos/.node/v0.8.7/lib/node_modules/express/lib/router/index.js:170:5)
+    at Object.router (/home/locos/.node/v0.8.7/lib/node_modules/express/lib/router/index.js:33:10)
+    at next (/home/locos/.node/v0.8.7/lib/node_modules/express/node_modules/connect/lib/proto.js:190:15);]
+2012/9/26 17:39:20:629 [0:--- MgrMon background process start;]
+2012/9/26 17:39:20:634 [0:--- MgrAgv background process start;]
+2012/9/26 17:39:41:822 [0:--- MgrMon background process start;]
+2012/9/26 17:39:41:829 [0:--- MgrAgv background process start;]
+2012/9/26 17:42:3:755 [0:--- MgrMon background process start;]
+2012/9/26 17:42:3:760 [0:--- MgrAgv background process start;]
+2012/9/26 17:43:45:918 [0:--- MgrMon background process start;]
+2012/9/26 17:43:45:922 [0:--- MgrAgv background process start;]
+2012/9/26 17:57:46:187 [0:--- MgrMon background process start;]
+2012/9/26 17:57:46:191 [0:--- MgrAgv background process start;]
+2012/9/26 17:57:51:138 []
+2012/9/26 17:57:51:142 [0:ReferenceError: fn501a_add is not defined
+    at Object.exports.main (/home/locos/demo/somali/controller/mnt/501/mnt501.js:442:28)
+    at _dispatch (/home/locos/demo/somali/lib/ap/lcsui.js:113:43)
+    at lcsUI.doAction (/home/locos/demo/somali/lib/ap/lcsui.js:151:14)
+    at callbacks (/home/locos/.node/v0.8.7/lib/node_modules/express/lib/router/index.js:162:11)
+    at param (/home/locos/.node/v0.8.7/lib/node_modules/express/lib/router/index.js:136:11)
+    at param (/home/locos/.node/v0.8.7/lib/node_modules/express/lib/router/index.js:133:11)
+    at pass (/home/locos/.node/v0.8.7/lib/node_modules/express/lib/router/index.js:143:5)
+    at Router._dispatch (/home/locos/.node/v0.8.7/lib/node_modules/express/lib/router/index.js:170:5)
+    at Object.router (/home/locos/.node/v0.8.7/lib/node_modules/express/lib/router/index.js:33:10)
+    at next (/home/locos/.node/v0.8.7/lib/node_modules/express/node_modules/connect/lib/proto.js:190:15);]
+2012/9/26 17:58:13:259 [0:--- MgrMon background process start;]
+2012/9/26 17:58:13:265 [0:--- MgrAgv background process start;]
+2012/9/26 17:58:17:5 []
+2012/9/26 17:58:17:9 [0:ReferenceError: fn501a_add is not defined
+    at Object.exports.main (/home/locos/demo/somali/controller/mnt/501/mnt501.js:442:28)
+    at _dispatch (/home/locos/demo/somali/lib/ap/lcsui.js:113:43)
+    at lcsUI.doAction (/home/locos/demo/somali/lib/ap/lcsui.js:151:14)
+    at callbacks (/home/locos/.node/v0.8.7/lib/node_modules/express/lib/router/index.js:162:11)
+    at param (/home/locos/.node/v0.8.7/lib/node_modules/express/lib/router/index.js:136:11)
+    at param (/home/locos/.node/v0.8.7/lib/node_modules/express/lib/router/index.js:133:11)
+    at pass (/home/locos/.node/v0.8.7/lib/node_modules/express/lib/router/index.js:143:5)
+    at Router._dispatch (/home/locos/.node/v0.8.7/lib/node_modules/express/lib/router/index.js:170:5)
+    at Object.router (/home/locos/.node/v0.8.7/lib/node_modules/express/lib/router/index.js:33:10)
+    at next (/home/locos/.node/v0.8.7/lib/node_modules/express/node_modules/connect/lib/proto.js:190:15);]
+2012/9/26 17:58:42:190 []
+2012/9/26 17:58:42:191 [0:TypeError: Cannot read property 'main' of undefined
+    at _dispatch (/home/locos/demo/somali/lib/ap/lcsui.js:103:45)
+    at lcsUI.doAction (/home/locos/demo/somali/lib/ap/lcsui.js:151:14)
+    at callbacks (/home/locos/.node/v0.8.7/lib/node_modules/express/lib/router/index.js:162:11)
+    at param (/home/locos/.node/v0.8.7/lib/node_modules/express/lib/router/index.js:136:11)
+    at param (/home/locos/.node/v0.8.7/lib/node_modules/express/lib/router/index.js:133:11)
+    at pass (/home/locos/.node/v0.8.7/lib/node_modules/express/lib/router/index.js:143:5)
+    at Router._dispatch (/home/locos/.node/v0.8.7/lib/node_modules/express/lib/router/index.js:170:5)
+    at Object.router (/home/locos/.node/v0.8.7/lib/node_modules/express/lib/router/index.js:33:10)
+    at next (/home/locos/.node/v0.8.7/lib/node_modules/express/node_modules/connect/lib/proto.js:190:15)
+    at store.get.next (/home/locos/.node/v0.8.7/lib/node_modules/express/node_modules/connect/lib/middleware/session.js:302:9);]
+2012/9/26 17:58:53:492 []
+2012/9/26 17:58:53:493 [0:ReferenceError: fn501a_add is not defined
+    at Object.exports.main (/home/locos/demo/somali/controller/mnt/501/mnt501.js:442:28)
+    at _dispatch (/home/locos/demo/somali/lib/ap/lcsui.js:113:43)
+    at lcsUI.doAction (/home/locos/demo/somali/lib/ap/lcsui.js:151:14)
+    at callbacks (/home/locos/.node/v0.8.7/lib/node_modules/express/lib/router/index.js:162:11)
+    at param (/home/locos/.node/v0.8.7/lib/node_modules/express/lib/router/index.js:136:11)
+    at param (/home/locos/.node/v0.8.7/lib/node_modules/express/lib/router/index.js:133:11)
+    at pass (/home/locos/.node/v0.8.7/lib/node_modules/express/lib/router/index.js:143:5)
+    at Router._dispatch (/home/locos/.node/v0.8.7/lib/node_modules/express/lib/router/index.js:170:5)
+    at Object.router (/home/locos/.node/v0.8.7/lib/node_modules/express/lib/router/index.js:33:10)
+    at next (/home/locos/.node/v0.8.7/lib/node_modules/express/node_modules/connect/lib/proto.js:190:15);]
+2012/9/26 18:6:57:511 [0:--- MgrMon background process start;]
+2012/9/26 18:6:57:518 [0:--- MgrAgv background process start;]
+2012/9/26 18:7:17:69 []
+2012/9/26 18:7:17:74 [0:ReferenceError: posts is not defined
+    at Object.addProf [as 501a_ADD] (/home/locos/demo/somali/controller/mnt/501/501a.js:431:5)
+    at Object.exports.main (/home/locos/demo/somali/controller/mnt/501/mnt501.js:450:25)
+    at _dispatch (/home/locos/demo/somali/lib/ap/lcsui.js:113:43)
+    at lcsUI.doAction (/home/locos/demo/somali/lib/ap/lcsui.js:151:14)
+    at callbacks (/home/locos/.node/v0.8.7/lib/node_modules/express/lib/router/index.js:162:11)
+    at param (/home/locos/.node/v0.8.7/lib/node_modules/express/lib/router/index.js:136:11)
+    at param (/home/locos/.node/v0.8.7/lib/node_modules/express/lib/router/index.js:133:11)
+    at pass (/home/locos/.node/v0.8.7/lib/node_modules/express/lib/router/index.js:143:5)
+    at Router._dispatch (/home/locos/.node/v0.8.7/lib/node_modules/express/lib/router/index.js:170:5)
+    at Object.router (/home/locos/.node/v0.8.7/lib/node_modules/express/lib/router/index.js:33:10);]
+2012/9/26 20:34:4:70 [0:--- MgrMon background process start;]
+2012/9/26 20:34:4:75 [0:--- MgrAgv background process start;]
+2012/9/26 20:34:13:36 []
+2012/9/26 20:34:13:41 [0:ReferenceError: lcsap is not defined
+    at Object.exports.main (/home/locos/demo/somali/controller/mnt/501/mnt501.js:30:5)
+    at _dispatch (/home/locos/demo/somali/lib/ap/lcsui.js:113:43)
+    at lcsUI.doAction (/home/locos/demo/somali/lib/ap/lcsui.js:151:14)
+    at callbacks (/home/locos/.node/v0.8.7/lib/node_modules/express/lib/router/index.js:162:11)
+    at param (/home/locos/.node/v0.8.7/lib/node_modules/express/lib/router/index.js:136:11)
+    at param (/home/locos/.node/v0.8.7/lib/node_modules/express/lib/router/index.js:133:11)
+    at pass (/home/locos/.node/v0.8.7/lib/node_modules/express/lib/router/index.js:143:5)
+    at Router._dispatch (/home/locos/.node/v0.8.7/lib/node_modules/express/lib/router/index.js:170:5)
+    at Object.router (/home/locos/.node/v0.8.7/lib/node_modules/express/lib/router/index.js:33:10)
+    at next (/home/locos/.node/v0.8.7/lib/node_modules/express/node_modules/connect/lib/proto.js:190:15);]
+2012/9/26 20:34:31:915 []
+2012/9/26 20:34:31:916 [0:ReferenceError: lcsap is not defined
+    at Object.exports.main (/home/locos/demo/somali/controller/mnt/501/mnt501.js:30:5)
+    at _dispatch (/home/locos/demo/somali/lib/ap/lcsui.js:113:43)
+    at lcsUI.doAction (/home/locos/demo/somali/lib/ap/lcsui.js:151:14)
+    at callbacks (/home/locos/.node/v0.8.7/lib/node_modules/express/lib/router/index.js:162:11)
+    at param (/home/locos/.node/v0.8.7/lib/node_modules/express/lib/router/index.js:136:11)
+    at param (/home/locos/.node/v0.8.7/lib/node_modules/express/lib/router/index.js:133:11)
+    at pass (/home/locos/.node/v0.8.7/lib/node_modules/express/lib/router/index.js:143:5)
+    at Router._dispatch (/home/locos/.node/v0.8.7/lib/node_modules/express/lib/router/index.js:170:5)
+    at Object.router (/home/locos/.node/v0.8.7/lib/node_modules/express/lib/router/index.js:33:10)
+    at next (/home/locos/.node/v0.8.7/lib/node_modules/express/node_modules/connect/lib/proto.js:190:15);]
+2012/9/26 20:34:40:230 []
+2012/9/26 20:34:40:231 [0:ReferenceError: lcsap is not defined
+    at Object.exports.main (/home/locos/demo/somali/controller/mnt/501/mnt501.js:30:5)
+    at _dispatch (/home/locos/demo/somali/lib/ap/lcsui.js:113:43)
+    at lcsUI.doAction (/home/locos/demo/somali/lib/ap/lcsui.js:151:14)
+    at callbacks (/home/locos/.node/v0.8.7/lib/node_modules/express/lib/router/index.js:162:11)
+    at param (/home/locos/.node/v0.8.7/lib/node_modules/express/lib/router/index.js:136:11)
+    at param (/home/locos/.node/v0.8.7/lib/node_modules/express/lib/router/index.js:133:11)
+    at pass (/home/locos/.node/v0.8.7/lib/node_modules/express/lib/router/index.js:143:5)
+    at Router._dispatch (/home/locos/.node/v0.8.7/lib/node_modules/express/lib/router/index.js:170:5)
+    at Object.router (/home/locos/.node/v0.8.7/lib/node_modules/express/lib/router/index.js:33:10)
+    at next (/home/locos/.node/v0.8.7/lib/node_modules/express/node_modules/connect/lib/proto.js:190:15);]
+2012/9/26 20:34:41:836 []
+2012/9/26 20:34:41:836 [0:TypeError: Cannot read property 'main' of undefined
+    at _dispatch (/home/locos/demo/somali/lib/ap/lcsui.js:103:45)
+    at lcsUI.doAction (/home/locos/demo/somali/lib/ap/lcsui.js:151:14)
+    at callbacks (/home/locos/.node/v0.8.7/lib/node_modules/express/lib/router/index.js:162:11)
+    at param (/home/locos/.node/v0.8.7/lib/node_modules/express/lib/router/index.js:136:11)
+    at param (/home/locos/.node/v0.8.7/lib/node_modules/express/lib/router/index.js:133:11)
+    at pass (/home/locos/.node/v0.8.7/lib/node_modules/express/lib/router/index.js:143:5)
+    at Router._dispatch (/home/locos/.node/v0.8.7/lib/node_modules/express/lib/router/index.js:170:5)
+    at Object.router (/home/locos/.node/v0.8.7/lib/node_modules/express/lib/router/index.js:33:10)
+    at next (/home/locos/.node/v0.8.7/lib/node_modules/express/node_modules/connect/lib/proto.js:190:15)
+    at store.get.next (/home/locos/.node/v0.8.7/lib/node_modules/express/node_modules/connect/lib/middleware/session.js:302:9);]
+2012/9/26 20:39:1:289 [0:--- MgrMon background process start;]
+2012/9/26 20:39:1:295 [0:--- MgrAgv background process start;]
+2012/9/26 20:39:9:677 [0:mnt501 Undefined caller;]
+2012/9/26 20:39:30:912 [0:mnt501 Undefined caller;]
+2012/9/26 20:39:52:236 [0:--- MgrMon background process start;]
+2012/9/26 20:39:52:240 [0:--- MgrAgv background process start;]
+2012/9/26 20:39:57:239 [0:mnt501 Undefined caller;]
+2012/9/26 20:41:11:288 [0:--- MgrMon background process start;]
+2012/9/26 20:41:11:292 [0:--- MgrAgv background process start;]
+2012/9/26 20:41:16:503 [0:mnt501 Undefined caller;]
+2012/9/26 20:41:16:525 []
+2012/9/26 20:41:16:529 [0:TypeError: Cannot read property 'main' of undefined
+    at _dispatch (/home/locos/demo/somali/lib/ap/lcsui.js:103:45)
+    at lcsUI.doAction (/home/locos/demo/somali/lib/ap/lcsui.js:151:14)
+    at callbacks (/home/locos/.node/v0.8.7/lib/node_modules/express/lib/router/index.js:162:11)
+    at param (/home/locos/.node/v0.8.7/lib/node_modules/express/lib/router/index.js:136:11)
+    at param (/home/locos/.node/v0.8.7/lib/node_modules/express/lib/router/index.js:133:11)
+    at pass (/home/locos/.node/v0.8.7/lib/node_modules/express/lib/router/index.js:143:5)
+    at Router._dispatch (/home/locos/.node/v0.8.7/lib/node_modules/express/lib/router/index.js:170:5)
+    at Object.router (/home/locos/.node/v0.8.7/lib/node_modules/express/lib/router/index.js:33:10)
+    at next (/home/locos/.node/v0.8.7/lib/node_modules/express/node_modules/connect/lib/proto.js:190:15)
+    at store.get.next (/home/locos/.node/v0.8.7/lib/node_modules/express/node_modules/connect/lib/middleware/session.js:302:9);]
+2012/9/26 20:41:19:715 [0:mnt501 Undefined caller;]
+2012/9/26 20:41:19:733 []
+2012/9/26 20:41:19:733 [0:TypeError: Cannot read property 'main' of undefined
+    at _dispatch (/home/locos/demo/somali/lib/ap/lcsui.js:103:45)
+    at lcsUI.doAction (/home/locos/demo/somali/lib/ap/lcsui.js:151:14)
+    at callbacks (/home/locos/.node/v0.8.7/lib/node_modules/express/lib/router/index.js:162:11)
+    at param (/home/locos/.node/v0.8.7/lib/node_modules/express/lib/router/index.js:136:11)
+    at param (/home/locos/.node/v0.8.7/lib/node_modules/express/lib/router/index.js:133:11)
+    at pass (/home/locos/.node/v0.8.7/lib/node_modules/express/lib/router/index.js:143:5)
+    at Router._dispatch (/home/locos/.node/v0.8.7/lib/node_modules/express/lib/router/index.js:170:5)
+    at Object.router (/home/locos/.node/v0.8.7/lib/node_modules/express/lib/router/index.js:33:10)
+    at next (/home/locos/.node/v0.8.7/lib/node_modules/express/node_modules/connect/lib/proto.js:190:15)
+    at store.get.next (/home/locos/.node/v0.8.7/lib/node_modules/express/node_modules/connect/lib/middleware/session.js:302:9);]
+2012/9/26 20:41:52:380 [0:--- MgrMon background process start;]
+2012/9/26 20:41:52:385 [0:--- MgrAgv background process start;]
+2012/9/26 20:41:58:107 [0:mnt501 Undefined caller;]
+2012/9/26 20:41:58:129 []
+2012/9/26 20:41:58:134 [0:TypeError: Cannot read property 'main' of undefined
+    at _dispatch (/home/locos/demo/somali/lib/ap/lcsui.js:103:45)
+    at lcsUI.doAction (/home/locos/demo/somali/lib/ap/lcsui.js:151:14)
+    at callbacks (/home/locos/.node/v0.8.7/lib/node_modules/express/lib/router/index.js:162:11)
+    at param (/home/locos/.node/v0.8.7/lib/node_modules/express/lib/router/index.js:136:11)
+    at param (/home/locos/.node/v0.8.7/lib/node_modules/express/lib/router/index.js:133:11)
+    at pass (/home/locos/.node/v0.8.7/lib/node_modules/express/lib/router/index.js:143:5)
+    at Router._dispatch (/home/locos/.node/v0.8.7/lib/node_modules/express/lib/router/index.js:170:5)
+    at Object.router (/home/locos/.node/v0.8.7/lib/node_modules/express/lib/router/index.js:33:10)
+    at next (/home/locos/.node/v0.8.7/lib/node_modules/express/node_modules/connect/lib/proto.js:190:15)
+    at store.get.next (/home/locos/.node/v0.8.7/lib/node_modules/express/node_modules/connect/lib/middleware/session.js:302:9);]
+2012/9/26 20:41:59:776 []
+2012/9/26 20:41:59:777 [0:TypeError: Cannot read property 'main' of undefined
+    at _dispatch (/home/locos/demo/somali/lib/ap/lcsui.js:103:45)
+    at lcsUI.doAction (/home/locos/demo/somali/lib/ap/lcsui.js:151:14)
+    at callbacks (/home/locos/.node/v0.8.7/lib/node_modules/express/lib/router/index.js:162:11)
+    at param (/home/locos/.node/v0.8.7/lib/node_modules/express/lib/router/index.js:136:11)
+    at param (/home/locos/.node/v0.8.7/lib/node_modules/express/lib/router/index.js:133:11)
+    at pass (/home/locos/.node/v0.8.7/lib/node_modules/express/lib/router/index.js:143:5)
+    at Router._dispatch (/home/locos/.node/v0.8.7/lib/node_modules/express/lib/router/index.js:170:5)
+    at Object.router (/home/locos/.node/v0.8.7/lib/node_modules/express/lib/router/index.js:33:10)
+    at next (/home/locos/.node/v0.8.7/lib/node_modules/express/node_modules/connect/lib/proto.js:190:15)
+    at store.get.next (/home/locos/.node/v0.8.7/lib/node_modules/express/node_modules/connect/lib/middleware/session.js:302:9);]
+2012/9/26 20:42:4:350 [0:mnt501 Undefined caller;]
+2012/9/26 20:42:4:368 []
+2012/9/26 20:42:4:368 [0:TypeError: Cannot read property 'main' of undefined
+    at _dispatch (/home/locos/demo/somali/lib/ap/lcsui.js:103:45)
+    at lcsUI.doAction (/home/locos/demo/somali/lib/ap/lcsui.js:151:14)
+    at callbacks (/home/locos/.node/v0.8.7/lib/node_modules/express/lib/router/index.js:162:11)
+    at param (/home/locos/.node/v0.8.7/lib/node_modules/express/lib/router/index.js:136:11)
+    at param (/home/locos/.node/v0.8.7/lib/node_modules/express/lib/router/index.js:133:11)
+    at pass (/home/locos/.node/v0.8.7/lib/node_modules/express/lib/router/index.js:143:5)
+    at Router._dispatch (/home/locos/.node/v0.8.7/lib/node_modules/express/lib/router/index.js:170:5)
+    at Object.router (/home/locos/.node/v0.8.7/lib/node_modules/express/lib/router/index.js:33:10)
+    at next (/home/locos/.node/v0.8.7/lib/node_modules/express/node_modules/connect/lib/proto.js:190:15)
+    at store.get.next (/home/locos/.node/v0.8.7/lib/node_modules/express/node_modules/connect/lib/middleware/session.js:302:9);]
+2012/9/26 20:42:36:540 [0:--- MgrMon background process start;]
+2012/9/26 20:42:36:547 [0:--- MgrAgv background process start;]
+2012/9/26 20:50:51:194 [0:--- MgrMon background process start;]
+2012/9/26 20:50:51:200 [0:--- MgrAgv background process start;]
+2012/9/26 20:50:54:977 []
+2012/9/26 20:50:54:981 [0:ReferenceError: _initial is not defined
+    at Object.exports.main (/home/locos/demo/somali/controller/mnt/501/mnt501.js:46:5)
+    at _dispatch (/home/locos/demo/somali/lib/ap/lcsui.js:113:43)
+    at lcsUI.doAction (/home/locos/demo/somali/lib/ap/lcsui.js:151:14)
+    at callbacks (/home/locos/.node/v0.8.7/lib/node_modules/express/lib/router/index.js:162:11)
+    at param (/home/locos/.node/v0.8.7/lib/node_modules/express/lib/router/index.js:136:11)
+    at param (/home/locos/.node/v0.8.7/lib/node_modules/express/lib/router/index.js:133:11)
+    at pass (/home/locos/.node/v0.8.7/lib/node_modules/express/lib/router/index.js:143:5)
+    at Router._dispatch (/home/locos/.node/v0.8.7/lib/node_modules/express/lib/router/index.js:170:5)
+    at Object.router (/home/locos/.node/v0.8.7/lib/node_modules/express/lib/router/index.js:33:10)
+    at next (/home/locos/.node/v0.8.7/lib/node_modules/express/node_modules/connect/lib/proto.js:190:15);]
+2012/9/26 20:50:57:166 []
+2012/9/26 20:50:57:166 [0:ReferenceError: _initial is not defined
+    at Object.exports.main (/home/locos/demo/somali/controller/mnt/501/mnt501.js:46:5)
+    at _dispatch (/home/locos/demo/somali/lib/ap/lcsui.js:113:43)
+    at lcsUI.doAction (/home/locos/demo/somali/lib/ap/lcsui.js:151:14)
+    at callbacks (/home/locos/.node/v0.8.7/lib/node_modules/express/lib/router/index.js:162:11)
+    at param (/home/locos/.node/v0.8.7/lib/node_modules/express/lib/router/index.js:136:11)
+    at param (/home/locos/.node/v0.8.7/lib/node_modules/express/lib/router/index.js:133:11)
+    at pass (/home/locos/.node/v0.8.7/lib/node_modules/express/lib/router/index.js:143:5)
+    at Router._dispatch (/home/locos/.node/v0.8.7/lib/node_modules/express/lib/router/index.js:170:5)
+    at Object.router (/home/locos/.node/v0.8.7/lib/node_modules/express/lib/router/index.js:33:10)
+    at next (/home/locos/.node/v0.8.7/lib/node_modules/express/node_modules/connect/lib/proto.js:190:15);]
+2012/9/26 20:51:47:887 [0:--- MgrMon background process start;]
+2012/9/26 20:51:47:891 [0:--- MgrAgv background process start;]
+2012/9/26 20:51:53:938 []
+2012/9/26 20:51:53:941 [0:ReferenceError: showDemo is not defined
+    at _initial (/home/locos/demo/somali/controller/mnt/501/mnt501.js:20:5)
+    at Object.exports.main (/home/locos/demo/somali/controller/mnt/501/mnt501.js:46:5)
+    at _dispatch (/home/locos/demo/somali/lib/ap/lcsui.js:113:43)
+    at lcsUI.doAction (/home/locos/demo/somali/lib/ap/lcsui.js:151:14)
+    at callbacks (/home/locos/.node/v0.8.7/lib/node_modules/express/lib/router/index.js:162:11)
+    at param (/home/locos/.node/v0.8.7/lib/node_modules/express/lib/router/index.js:136:11)
+    at param (/home/locos/.node/v0.8.7/lib/node_modules/express/lib/router/index.js:133:11)
+    at pass (/home/locos/.node/v0.8.7/lib/node_modules/express/lib/router/index.js:143:5)
+    at Router._dispatch (/home/locos/.node/v0.8.7/lib/node_modules/express/lib/router/index.js:170:5)
+    at Object.router (/home/locos/.node/v0.8.7/lib/node_modules/express/lib/router/index.js:33:10);]
+2012/9/26 20:52:53:918 [0:--- MgrMon background process start;]
+2012/9/26 20:52:53:922 [0:--- MgrAgv background process start;]
+2012/9/26 20:53:3:338 []
+2012/9/26 20:53:3:342 [0:ReferenceError: showDemo is not defined
+    at _initial (/home/locos/demo/somali/controller/mnt/501/mnt501.js:20:5)
+    at Object.exports.main (/home/locos/demo/somali/controller/mnt/501/mnt501.js:46:5)
+    at _dispatch (/home/locos/demo/somali/lib/ap/lcsui.js:113:43)
+    at lcsUI.doAction (/home/locos/demo/somali/lib/ap/lcsui.js:151:14)
+    at callbacks (/home/locos/.node/v0.8.7/lib/node_modules/express/lib/router/index.js:162:11)
+    at param (/home/locos/.node/v0.8.7/lib/node_modules/express/lib/router/index.js:136:11)
+    at param (/home/locos/.node/v0.8.7/lib/node_modules/express/lib/router/index.js:133:11)
+    at pass (/home/locos/.node/v0.8.7/lib/node_modules/express/lib/router/index.js:143:5)
+    at Router._dispatch (/home/locos/.node/v0.8.7/lib/node_modules/express/lib/router/index.js:170:5)
+    at Object.router (/home/locos/.node/v0.8.7/lib/node_modules/express/lib/router/index.js:33:10);]
+2012/9/26 20:53:39:28 [0:--- MgrMon background process start;]
+2012/9/26 20:53:39:33 [0:--- MgrAgv background process start;]

@@ -74,12 +74,50 @@
    "ejs":"layout.ejs",
    "parmit":1
 },
-"str":{
-  "path" : "../../controller/str/str", 
+"str201":{
+  "path" : "../../controller/str/201/str201", 
   "msg":{
-        "/scr/201" : "main",
-        "/scr/202" : "main",
+        "/scr/201" : "main"
+        },
+   "ejs":"layout.ejs",
+   "parmit":1
+},
+"str202":{
+  "path" : "../../controller/str/202/str202", 
+  "msg":{
+        "/scr/202" : "main"
+        },
+   "ejs":"layout.ejs",
+   "parmit":1
+},
+"str203":{
+  "path" : "../../controller/str/203/str203", 
+  "msg":{
         "/scr/203" : "main"
+        },
+   "ejs":"layout.ejs",
+   "parmit":1
+},
+"mnt501":{
+  "path" : "../../controller/mnt/501/mnt501", 
+  "msg":{
+        "/scr/501" : "main"
+        },
+   "ejs":"layout.ejs",
+   "parmit":1
+},
+"mnt502":{
+  "path" : "../../controller/mnt/502/mnt502", 
+  "msg":{
+        "/mnt/502" : "main"
+        },
+   "ejs":"layout.ejs",
+   "parmit":1
+},
+"mnt503":{
+  "path" : "../../controller/mnt/503/mnt503", 
+  "msg":{
+        "/mnt/503" : "main"
         },
    "ejs":"layout.ejs",
    "parmit":1

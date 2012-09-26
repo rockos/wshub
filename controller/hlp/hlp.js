@@ -21,9 +21,9 @@ function showHelp(req, res, posts) {
     //2012.07.20 taka
     if( !posts.pageNavi.userid || posts.pageNavi.userid=='undefined'
         || posts.pageNavi.userid=='not login' ) {
-        posts.layout = "layout2.ejs";
+        posts.layouts = "layout2.ejs";
     }else {
-        posts.layout = "layout.ejs";
+        posts.layouts = "layout.ejs";
     }
 
     if (req.body['Demo']) {
@@ -54,7 +54,7 @@ exports.main = function(req, res, frame){
 
     /* page情報設定 */
     posts = frame.frameNavi;
-    debugger;
+
 
     showHelp(req, res, frame);
 

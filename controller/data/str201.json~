@@ -1,0 +1,26 @@
+{"dummy": "hogehoge"
+,"title": "在庫検索"
+,"scrhead": "This screen is for form test."
+,"comment":"WEBトランクルーム"
+,"options2":[
+ {"userid": "u1001","selected":"","address":"010101"}
+ ,{"userid": "u2001","selected":"select","address":"010102"}
+ ,{"userid": "u3001","selected":"","address":"010103"}
+ ,{"userid": "u4001","selected":"","address":"010104"}
+ ,{"userid": "u5001","selected":"","address":"010104"}
+]
+,"tab":[
+ {"userid": "Moutain railway", "sqty":"001","pnam": "there are smoking area."
+  ,"lotn":"001","mem1":"mem1","mem2":"mem2","mem3":"mem3"}
+,{"userid": "Korea Air line", "sqty":"001","pnam": "this is no smoking area."
+  ,"lotn":"001","mem1":"mem1","mem2":"mem2","mem3":"mem3"}
+,{"userid": "Central Sea transport", "sqty":"001","pnam": "office & utilities."
+  ,"lotn":"001","mem1":"mem1","mem2":"mem2","mem3":"mem3"}
+,{"userid": "sky walker", "sqty":"001","pnam": "Not ready"
+  ,"lotn":"001","mem1":"mem1","mem2":"mem2","mem3":"mem3"}
+,{"userid": "message in the bottle", "sqty":"001","pnam": "out of order"
+  ,"lotn":"001","mem1":"mem1","mem2":"mem2","mem3":"mem3"}
+,{"userid": "BooBoo", "sqty":"001","pnam": "BAD weather"
+  ,"lotn":"001","mem1":"mem1","mem2":"mem2","mem3":"mem3"}
+]
+}

@@ -1,77 +1,63 @@
 {
-    "title":"チェックアウト",
-    "scrhead":"",
-    "comment":"",
+    "title":"出庫(全量)",
     "scrNo":"scr/scr301",
     "mesg":"ここは警告表示行",
     "mesg_level_color":"",
     "userid":"",
     "text":{
-        "ordr":"",
-        "lotn":""
+        "txt1":"",
+        "txt2":""
     },
     "checkbox":{
-        "chk1":["1","2","3"]
+        "chk1":["C1","C2","C3"]
     },
-    "options":[{
-        "area":"",
-        "area_name":"",
-        "selected":""
-    }],
-    "options2":[{
-        "pcode":"",
-        "pcode_name":"",
-        "selected":""
-    }],
-    "tables":[{
-        "ordr":"", 
-        "lotn":"", 
-        "area":"", 
-        "area_name":"", 
-        "sqty":"",
-        "mem1":"",
-        "mem2":"",
-        "mem3":"",
-        "mem4":"",
-        "mem5":"",
-        "stat":"",
-        "stat_str":"",
-        "radio":"",
-        "radio_checked":""
-    }],
-    "tables2_head":{
-        "ordr":"",
-        "start":""
+    "radio":{
+        "rbt1":["R1","R2","R3"]
     },
-    "tables2":[{
-        "ordr":"", 
-        "cary_seqn":"", 
-        "part":"", 
-        "part_name":"", 
-        "locn":"", 
-        "locn_name":"", 
-        "sqty":"",
-        "mem1":"",
-        "mem2":"",
-        "mem3":"",
-        "mem4":"",
-        "mem5":""
-    }],
-    "tabpart":[{
-        "partkeys": "", 
-        "pcode": "", 
-        "sqty": "", 
-        "pnam": "", 
-        "lotn": "", 
-        "mem1": "",
-        "mem2": "",
-        "mem3": "",
-        "checkbox": "",
-        "chk_checked": ""
-    }],
-    "socket_io_start":"",
+    "select":{
+        "opt1":[{
+            "value":"",
+            "disp":"",
+            "selected":""
+        }],
+        "opt2":[{
+            "value":"",
+            "disp":"",
+            "selected":""
+        }]
+    },
+    "table":{
+        "tab1":[{
+            "chk1":{
+                "exist":"",
+                "value":"",
+                "on":""
+            },
+            "col1":"", 
+            "col2":"", 
+            "col3":"", 
+            "col4":"", 
+            "col5":"",
+            "col6":"",
+            "col7":"",
+            "col8":""
+        }],
+        "tab2_head":{
+            "key1":"",
+            "key2":""
+        },
+        "tab2":[{
+            "col1":"", 
+            "col2":"", 
+            "col3":"", 
+            "col4":"", 
+            "col5":"",
+            "col6":"",
+            "col7":"",
+            "col8":""
+        }]
+    },
+    "socket_io_conn":"",
     "err_code":0,
-    "dspcstm": ["corp","priv","vist"],
-    "dspcstm_val": "",
     "end":""
 }
