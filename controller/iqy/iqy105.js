@@ -1,3 +1,7 @@
+
+var rootdir = process.env.ROCKOS_ROOT;
+//var lcsAp = require(rootdir + 'lib/ap/lcsap').create('IQY105');
+
 var mongoose = require('mongoose');
 
 var _schema_gndlog = new mongoose.Schema({
@@ -10,9 +14,6 @@ var _schema_gndlog = new mongoose.Schema({
         jiss_date: Date
 
     });
-
-var rootdir = process.env.LOCOS_DEV;
-//var lcsAp = require(rootdir + 'lib/ap/lcsap').create('IQY105');
 var lcsMog = require(rootdir +'lib/db/lcsmog').create('appServer',rootdir +'etc/mongo.cf', _schema_gndlog, "jisslogs" );
 
 var fs = require('fs');
