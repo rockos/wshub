@@ -1,7 +1,3 @@
-
-var rootdir = process.env.LOCOS_DEV;
-//var lcsAp = require(rootdir + 'lib/ap/lcsap').create('IQY105');
-
 var mongoose = require('mongoose');
 
 var _schema_gndlog = new mongoose.Schema({
@@ -14,6 +10,9 @@ var _schema_gndlog = new mongoose.Schema({
         jiss_date: Date
 
     });
+
+var rootdir = process.env.LOCOS_DEV;
+//var lcsAp = require(rootdir + 'lib/ap/lcsap').create('IQY105');
 var lcsMog = require(rootdir +'lib/db/lcsmog').create('appServer',rootdir +'etc/mongo.cf', _schema_gndlog, "jisslogs" );
 
 var fs = require('fs');
@@ -346,7 +345,7 @@ function initSend(req, res, posts) {
  * @param  {Object}req, {Object}res
  * @date   16/jul/2012
  */
-exports.main = function(req, res, frame){
+exports.main = function(req, res){
 
     var posts = {};
 
@@ -360,8 +359,6 @@ exports.main = function(req, res, frame){
         res.redirect('/');
         return;
     }
-    /* page情報設定 */
-    posts.frameNavi = frame.frameNavi;
 
     if( req.method=="GET" ) {
         /*GET メソッド*/
