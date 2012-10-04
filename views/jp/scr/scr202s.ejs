@@ -1,0 +1,93 @@
+<% layout('layout') -%>
+
+<form name="main_form" method="post" action="/scr/202">
+
+
+  <div id="sub_body">
+    <ul>
+      <li><input type="submit" class="send" name="202s_QRY" value="予約検索"><li>
+      <li><input type="submit" class="send" name="202s_STR" value="入庫確定"><li>
+    </ul>
+  </div>
+
+  <div id="main_body">
+    <div class="mesg_bar">
+      <span class="= mesg_level_color "><%= mesg %></span>
+    </div>
+
+    <table class="cond201">
+      <colgroup>
+        <col span="1" class="c1">
+        <col span="1" class="c2">
+        <col span="1" class="c3">
+        <col span="1" class="c4">
+        <tr>
+          <th>会員番号</th>
+          <td colspan="3">
+            <INPUT type="text" class="STYLE_PCOD" size="8" placeholder="必須"
+              maxlength="8" name="id_user" value="" tabindex = "11">
+          </td>
+        </tr>
+        <tr>
+          <th>会員名</th>
+          <td colspan="3">
+            <INPUT type="text" class="STYLE_PNAM" size="10" placeholder=""
+              maxlength="10" name="nickname" value="" tabindex = "12">
+          </td>
+        </tr>
+    </table>
+
+    <br/>
+
+    <table class="list201">
+      <colgroup>
+        <col span="1" class="c1">
+        <col span="1" class="c2">
+        <col span="1" class="c3">
+        <col span="1" class="c4">
+        <col span="1" class="c5">
+        <thead>
+        <tr>
+          <th></th>
+          <th>会員番号</th>
+          <th>会員名</th>
+          <th>保管アドレス</th>
+          <th>入庫予定日</th>
+          <th>タグNo</th>
+        </tr>
+        </thead>
+
+<script>
+var dataSet = function(x) {
+    var ary = x.value.split(',');
+    main_form.pcode.value = ary[0];
+    main_form.sqty.value = ary[1];
+    main_form.pnam.value = ary[2];
+    main_form.lotn.value = ary[3];
+    main_form.mem1.value = ary[4];
+    main_form.mem2.value = ary[5];
+    main_form.mem3.value = ary[6];
+}
+</script>
+
+        <tbody>
+        <% for (var i = 0, max = pageNavi.tab.length; i < max; i++) { %>
+        <tr>
+          <td>
+            <% if (pageNavi.tab[i].reserved == '1') { %>
+              <input type='radio' name='rdo01' value='<%= pageNavi.tab[i].radiodata %>' onclick='dataSet(this);' checked > 
+            <% } else { %>
+              <input type='radio' name='rdo01' value='<%= pageNavi.tab[i].radiodata %>' onclick='dataSet(this);'> 
+            <% } %>
+          </td>
+<TD><%= pageNavi.tab[i].id_user %></TD>
+<TD><%= pageNavi.tab[i].nickname %></TD>
+<TD><%= pageNavi.tab[i].address %></TD>
+<TD><%= pageNavi.tab[i].schedule %></TD>
+<TD><%= pageNavi.tab[i].id_stock %></TD>
+        </tr>
+        <% } %>
+        </tbody>
+    </table>
+  </div>
+</form>
