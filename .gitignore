@@ -6,7 +6,7 @@
 tmp/
 log/
 var/
-var/*/*
+var/**/*
 
 # modeles for node.js
 node_modules/
