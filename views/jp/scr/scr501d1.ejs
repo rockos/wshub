@@ -1,0 +1,73 @@
+<% layout('layout') -%>
+
+<form name="main_form" method="post" action="/scr/501">
+
+  <div id="sub_body">
+    <ul>
+      <li><input type="submit" class="send" name="501m_DEL" value="削除"><li>
+      <li><input type="submit" class="send" name="501m_RTN" value="戻り"><li>
+
+    </ul>
+  </div>
+
+  <div id="main_body">
+    <div class="mesg_bar">
+      <span class="= mesg_level_color "><%= mesg %></span>
+    </div>
+
+    <table class="cond201">
+      <colgroup>
+        <col span="1" class="c1">
+        <col span="1" class="c2">
+        <col span="1" class="c3">
+        <col span="1" class="c4">
+        <tr>
+          <th>会員番号</th>
+          <td colspan="3">
+            <INPUT type="text" class="STYLE_PCOD" size="12" placeholder="Necessity"
+              maxlength="12" name="id_user" id="id_user" value="" tabindex = "11">
+          </td>
+        </tr>
+        <tr>
+          <th>会員名</th>
+          <td colspan="3">
+            <INPUT type="text" class="STYLE_PNAM" size="24" placeholder="Necessity"
+              maxlength="24" name="nickname" id="nickname" value="" tabindex = "12">
+          </td>
+        </tr>
+    </table>
+
+
+    <table class="list201">
+      <colgroup>
+        <col span="1" class="c1">
+        <col span="1" class="c2">
+        <col span="1" class="c3">
+        <col span="1" class="c4">
+        <thead>
+        <tr>
+          <th></th>
+          <th>会員番号</th>
+          <th>会員名</th>
+          <th>メールアドレス</th>
+          <th>備考</th>
+        </tr>
+        </thead>
+
+
+        <tbody>
+        <% for (var i = 0, max = pageNavi.tab.length; i < max; i++) { %>
+        <tr>
+          <td>
+<TD><%= pageNavi.tab[i].id_user %></TD>
+<TD><%= pageNavi.tab[i].nickname %></TD>
+<TD><%= pageNavi.tab[i].mail_address %></TD>
+<TD><%= pageNavi.tab[i].remark %></TD>
+        </tr>
+        <% } %>
+        </tbody>
+    </table>
+
+
+  </div>
+</form>

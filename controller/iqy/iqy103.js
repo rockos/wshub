@@ -102,7 +102,7 @@ function initSend(req, res, posts) {
  * @param  {Object}req, {Object}res
  * @date   29/jun/2012
  */
-exports.main = function(req, res){
+exports.main = function(req, res, frame){
 
     var posts = {};
 
@@ -116,6 +116,8 @@ exports.main = function(req, res){
         res.redirect('/');
         return;
     }
+    /* page情報設定 */
+    posts.frameNavi = frame.frameNavi;
 
     if( req.method=="GET" ) {
         /*GET メソッド*/

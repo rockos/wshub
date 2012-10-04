@@ -1,7 +1,7 @@
 'use strict';
 /* common file include */
 /* local file */
-var UPSTR = require('./upmnt501.js');
+var UPSTR = require('./upstr202.js');
 /*
  * Mar-25-2012
  */
@@ -363,13 +363,60 @@ function modStr(req, res, posts) {
 /*
  * sep-25-2012
  */
-function _showResult(req, res, posts, templete) {
+function showDemo(req, res, posts, templete) {
 
     var msg = lcsAp.getMsgI18N("0");
     posts.mesg = msg.text;
     posts.mesg_lavel_color = msg.warn;
 
 
+    /*
+      [posts.mesg, posts.mesg_lavel_color] = lcsAp.getMsgI18N(String(err));
+    */
+    posts.dspcstm = new Array;
+    posts.dspcstm["corp"] = "hidden";
+    posts.dspcstm["priv"] = "hidden";
+    posts.dspcstm["vist"] = "hidden";
+    if( req.method=="POST" ) {
+        switch( req.body.dspcstm ) {
+        case "corp":
+            posts.dspcstm["corp"] = "";
+            posts.dspcstm_val = "corp";
+            break;
+        case "priv":
+            posts.dspcstm["priv"] = "";
+            posts.dspcstm_val = "priv";
+            break;
+        case "vist":
+            posts.dspcstm["vist"] = "";
+            posts.dspcstm_val = "vist";
+            break;
+        case "default":
+            posts.dspcstm["corp"] = "";
+            posts.dspcstm_val = "corp";
+            break;
+        }
+    } else {
+        var str = req.url.replace(/\.+/,'').split('/');
+        switch( str[2] ) {
+        case "201":
+            posts.dspcstm["corp"] = "";
+            posts.dspcstm_val = "corp";
+            break;
+        case "202":
+            posts.dspcstm["priv"] = "";
+            posts.dspcstm_val = "priv";
+            break;
+        case "203":
+            posts.dspcstm["vist"] = "";
+            posts.dspcstm_val = "vist";
+            break;
+        default:
+            posts.dspcstm["corp"] = "";
+            posts.dspcstm_val = "corp";
+            break;
+        }
+    }
     
     res.render(templete, posts);
 };
@@ -378,11 +425,12 @@ function _showResult(req, res, posts, templete) {
  * main routine
  * date 22.mar.2012
  */
-exports.addProf = function(req, res, frame){
+exports.main = function(req, res, frame){
 
     var posts = {};
-    var file = './controller/data/mnt501.json',
-    inifile = './controller/data/mnt501ini.json';
+    var file = './controller/data/str201.json',
+    inifile = './controller/data/str201ini.json';
+
 
     /* page情報設定 */
     posts.frameNavi = frame.frameNavi;
@@ -392,9 +440,45 @@ exports.addProf = function(req, res, frame){
              res.redirect('/');
     }
     
-    posts.pageNavi = JSON.parse(require('fs').readFileSync(inifile));
-    posts.pageNavi.userid = req.session.userid ? req.session.userid: 'undefined'; 
-    debugger;
+    if (req.body['QRY']) {
+        posts.pageNavi = JSON.parse(require('fs').readFileSync(file));
+        posts.pageNavi.userid = req.session.userid ? req.session.userid: 'undefined'; 
+        showDemo(req, res, posts, "scr/scr202");
 
-    _showResult(req, res, posts, "scr/scr501");
+    } else if (req.body['SEL']) {
+        posts.pageNavi = JSON.parse(require('fs').readFileSync(file));
+        posts.pageNavi.userid = req.session.userid ? req.session.userid: 'undefined'; 
+        showDemo(req, res, posts, "scr/scr202-1");
+
+        //        addStr_sync(req, res, posts);
+    } else if (req.body['ADD']) {
+        /*
+        addStr(req, res, posts);
+         */
+        posts.pageNavi = JSON.parse(require('fs').readFileSync(inifile));
+        posts.pageNavi.userid = req.session.userid ? req.session.userid: 'undefined'; 
+        showDemo(req, res, posts, "scr/scr202");
+
+    } else if (req.body['DEL']) {
+        /*        delStr(req, res, posts); */
+
+    } else if (req.body['MOD']) {
+
+        /*        modStr(req, res, posts);*/
+
+    } else {
+        posts.pageNavi = JSON.parse(require('fs').readFileSync(inifile));
+        posts.pageNavi.userid = req.session.userid ? req.session.userid: 'undefined'; 
+        debugger;
+        showDemo(req, res, posts, "scr/scr202");
+    }
+    /*
+      } catch(e) {
+        lcsAp.log(e.stack);
+        res.redirect('/');
+        
+        } 
+    */
 };
+
+

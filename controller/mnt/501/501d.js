@@ -363,7 +363,7 @@ function modStr(req, res, posts) {
 /*
  * sep-25-2012
  */
-function _showResult(req, res, posts, templete) {
+function showDemo(req, res, posts, templete) {
 
     var msg = lcsAp.getMsgI18N("0");
     posts.mesg = msg.text;
@@ -374,11 +374,12 @@ function _showResult(req, res, posts, templete) {
     res.render(templete, posts);
 };
 
+
 /*
  * main routine
  * date 22.mar.2012
  */
-exports.addProf = function(req, res, frame){
+exports.delProf = function(req, res, frame){
 
     var posts = {};
     var file = './controller/data/mnt501.json',
@@ -392,9 +393,34 @@ exports.addProf = function(req, res, frame){
              res.redirect('/');
     }
     
-    posts.pageNavi = JSON.parse(require('fs').readFileSync(inifile));
-    posts.pageNavi.userid = req.session.userid ? req.session.userid: 'undefined'; 
-    debugger;
-
-    _showResult(req, res, posts, "scr/scr501");
+        posts.pageNavi = JSON.parse(require('fs').readFileSync(inifile));
+        posts.pageNavi.userid = req.session.userid ? req.session.userid: 'undefined'; 
+        debugger;
+        showDemo(req, res, posts, "scr/scr501d");
 };
+/*
+ * main routine
+ * date 22.mar.2012
+ */
+exports.selUser = function(req, res, frame){
+
+    var posts = {};
+    var file = './controller/data/mnt501.json',
+    inifile = './controller/data/mnt501ini.json';
+
+    /* page情報設定 */
+    posts.frameNavi = frame.frameNavi;
+    //    try {
+
+    if (!lcsAp.isSession(req.session)) {
+             res.redirect('/');
+    }
+    
+        posts.pageNavi = JSON.parse(require('fs').readFileSync(inifile));
+        posts.pageNavi.userid = req.session.userid ? req.session.userid: 'undefined'; 
+        debugger;
+        showDemo(req, res, posts, "scr/scr501d1");
+};
+
+
+

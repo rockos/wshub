@@ -1,7 +1,12 @@
 'use strict';
 /* common file include */
+
 /* local file */
 var UPSTR = require('./upstr201.js');
+var fn201a = require('./201a.js');
+var fn201d = require('./201d.js');
+
+
 /*
  * Mar-25-2012
  */
@@ -363,122 +368,85 @@ function modStr(req, res, posts) {
 /*
  * sep-25-2012
  */
-function showDemo(req, res, posts, templete) {
+function _showResult(req, res, frame) {
 
+    var posts = {};
+    var file = './controller/data/str201.json';
     var msg = lcsAp.getMsgI18N("0");
     posts.mesg = msg.text;
     posts.mesg_lavel_color = msg.warn;
 
-
-    /*
-      [posts.mesg, posts.mesg_lavel_color] = lcsAp.getMsgI18N(String(err));
-    */
-    posts.dspcstm = new Array;
-    posts.dspcstm["corp"] = "hidden";
-    posts.dspcstm["priv"] = "hidden";
-    posts.dspcstm["vist"] = "hidden";
-    if( req.method=="POST" ) {
-        switch( req.body.dspcstm ) {
-        case "corp":
-            posts.dspcstm["corp"] = "";
-            posts.dspcstm_val = "corp";
-            break;
-        case "priv":
-            posts.dspcstm["priv"] = "";
-            posts.dspcstm_val = "priv";
-            break;
-        case "vist":
-            posts.dspcstm["vist"] = "";
-            posts.dspcstm_val = "vist";
-            break;
-        case "default":
-            posts.dspcstm["corp"] = "";
-            posts.dspcstm_val = "corp";
-            break;
-        }
-    } else {
-        var str = req.url.replace(/\.+/,'').split('/');
-        switch( str[2] ) {
-        case "201":
-            posts.dspcstm["corp"] = "";
-            posts.dspcstm_val = "corp";
-            break;
-        case "202":
-            posts.dspcstm["priv"] = "";
-            posts.dspcstm_val = "priv";
-            break;
-        case "203":
-            posts.dspcstm["vist"] = "";
-            posts.dspcstm_val = "vist";
-            break;
-        default:
-            posts.dspcstm["corp"] = "";
-            posts.dspcstm_val = "corp";
-            break;
-        }
-    }
-    
-    res.render(templete, posts);
-};
-
-/*
- * main routine
- * date 22.mar.2012
- */
-exports.main = function(req, res, frame){
-
-    var posts = {};
-    var file = './controller/data/str201.json',
-    inifile = './controller/data/str201ini.json';
-
-
     /* page情報設定 */
     posts.frameNavi = frame.frameNavi;
-    //    try {
+
 
     if (!lcsAp.isSession(req.session)) {
              res.redirect('/');
     }
     
-    if (req.body['QRY']) {
-        posts.pageNavi = JSON.parse(require('fs').readFileSync(file));
-        posts.pageNavi.userid = req.session.userid ? req.session.userid: 'undefined'; 
-        showDemo(req, res, posts, "scr/scr201");
+    posts.pageNavi = JSON.parse(require('fs').readFileSync(file));
+    posts.pageNavi.userid = req.session.userid ? req.session.userid: 'undefined'; 
 
-    } else if (req.body['SEL']) {
-        posts.pageNavi = JSON.parse(require('fs').readFileSync(file));
-        posts.pageNavi.userid = req.session.userid ? req.session.userid: 'undefined'; 
-        showDemo(req, res, posts, "scr/scr201-1");
+    res.render('scr/scr201s', posts);
 
-        //        addStr_sync(req, res, posts);
-    } else if (req.body['ADD']) {
-        /*
-        addStr(req, res, posts);
-         */
-        posts.pageNavi = JSON.parse(require('fs').readFileSync(file));
-        posts.pageNavi.userid = req.session.userid ? req.session.userid: 'undefined'; 
-        showDemo(req, res, posts, "scr/scr201");
 
-    } else if (req.body['DEL']) {
-        /*        delStr(req, res, posts); */
+};
 
-    } else if (req.body['MOD']) {
+/*
+ * main routine
+ * date 27.sep.2012
+ */
+function _showInitial(req, res, frame){
 
-        /*        modStr(req, res, posts);*/
+    var posts = {};
+    var file = './controller/data/str201ini.json';
 
-    } else {
-        posts.pageNavi = JSON.parse(require('fs').readFileSync(inifile));
-        posts.pageNavi.userid = req.session.userid ? req.session.userid: 'undefined'; 
-        debugger;
-        showDemo(req, res, posts, "scr/scr201");
+    var msg = lcsAp.getMsgI18N("0");
+    posts.mesg = msg.text;
+    posts.mesg_lavel_color = msg.warn;
+
+    /* page情報設定 */
+    posts.frameNavi = frame.frameNavi;
+
+
+    if (!lcsAp.isSession(req.session)) {
+             res.redirect('/');
     }
-    /*
-      } catch(e) {
-        lcsAp.log(e.stack);
-        res.redirect('/');
-        
-        } 
-    */
+    
+    posts.pageNavi = JSON.parse(require('fs').readFileSync(file));
+    posts.pageNavi.userid = req.session.userid ? req.session.userid: 'undefined'; 
+
+
+    res.render("scr/scr201", posts);
 };
 
 
+/**
+ * Main routine of profile editor
+ * date 26.sep.2012 first edition.
+ *
+ */
+exports.main = function(req, res, frame){
+    
+    var tof = {/* Table of function for each button */
+        "201_QRY" : _showResult,
+        "201a_ADD" : fn201a.addRsrv,
+        "201a_RTN" : _showInitial,
+
+        /* message for delete */
+        "201d_DEL" : fn201d.delRsrv,
+        "201d_RTN" : _showInitial
+    };
+
+    debugger;
+    for (var key in tof) {
+        if (req.body[key]) {
+            if (typeof tof[key] === "function") {
+                tof[key](req, res, frame);
+                return;
+            }
+        }
+    }
+    _showInitial(req, res, frame);
+
+};

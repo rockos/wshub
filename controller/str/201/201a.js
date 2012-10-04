@@ -1,7 +1,7 @@
 'use strict';
 /* common file include */
 /* local file */
-var UPSTR = require('./upmnt501.js');
+var UPSTR = require('./upstr201.js');
 /*
  * Mar-25-2012
  */
@@ -360,6 +360,7 @@ function modStr(req, res, posts) {
                dspWin );
 
 }
+
 /*
  * sep-25-2012
  */
@@ -373,28 +374,28 @@ function _showResult(req, res, posts, templete) {
     
     res.render(templete, posts);
 };
-
 /*
- * main routine
- * date 22.mar.2012
+ * sep-25-2012
  */
-exports.addProf = function(req, res, frame){
+exports.addRsrv = function (req, res, frame) {
 
     var posts = {};
-    var file = './controller/data/mnt501.json',
-    inifile = './controller/data/mnt501ini.json';
+    var file = './controller/data/str201a.json';
+
+    var msg = lcsAp.getMsgI18N("0");
+    posts.mesg = msg.text;
+    posts.mesg_lavel_color = msg.warn;
 
     /* page情報設定 */
     posts.frameNavi = frame.frameNavi;
-    //    try {
 
     if (!lcsAp.isSession(req.session)) {
              res.redirect('/');
     }
     
-    posts.pageNavi = JSON.parse(require('fs').readFileSync(inifile));
+    posts.pageNavi = JSON.parse(require('fs').readFileSync(file));
     posts.pageNavi.userid = req.session.userid ? req.session.userid: 'undefined'; 
-    debugger;
 
-    _showResult(req, res, posts, "scr/scr501");
+    _showResult(req, res, posts, "scr/scr201a");
+
 };

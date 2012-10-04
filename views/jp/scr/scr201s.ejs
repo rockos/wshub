@@ -1,11 +1,14 @@
 <% layout('layout') -%>
+<%- stylesheet('/stylesheets/cstm/201.css') -%>
 
-<form name="main_form" method="post" action="/scr/202">
 
+<form name="main_form" method="post" action="/scr/201">
 
   <div id="sub_body">
     <ul>
-      <li><input type="submit" class="send" name="202_QRY" value="予約検索"><li>
+      <li><input type="submit" class="send" name="201_QRY" value="在庫検索"><li>
+      <li><input type="submit" class="send" name="201a_ADD" value="予約登録"><li>
+      <li><input type="submit" class="send" name="201d_DEL" value="予約削除" ><li>
     </ul>
   </div>
 
@@ -22,18 +25,25 @@
         <col span="1" class="c4">
         <tr>
           <th>会員番号</th>
-          <td colspan="3">
-            <INPUT type="text" class="STYLE_PCOD" size="8" placeholder="必須"
+          <td colspan="1">
+            <INPUT type="text" class="STYLE_PCOD" size="8" placeholder=""
               maxlength="8" name="id_user" value="" tabindex = "11">
           </td>
-        </tr>
-        <tr>
+
           <th>会員名</th>
-          <td colspan="3">
+          <td colspan="1">
             <INPUT type="text" class="STYLE_PNAM" size="10" placeholder=""
               maxlength="10" name="nickname" value="" tabindex = "12">
           </td>
         </tr>
+        <tr>
+          <th>入庫予定日</th>
+          <td colspan="1">
+            <INPUT type="text" class="STYLE_PNAM" size="10" placeholder="年月日"
+              maxlength="10" name="schedule" value="" tabindex = "12">
+          </td>
+        </tr>
+
     </table>
 
     <br/>
@@ -45,14 +55,17 @@
         <col span="1" class="c3">
         <col span="1" class="c4">
         <col span="1" class="c5">
+        <col span="1" class="c6">
+        <col span="1" class="c7">
         <thead>
         <tr>
           <th></th>
           <th>会員番号</th>
           <th>会員名</th>
           <th>保管アドレス</th>
-          <th>入庫予定日</th>
           <th>タグNo</th>
+          <th>預け入れ期間</th>
+          <th>備考</th>
         </tr>
         </thead>
 
@@ -82,8 +95,9 @@ var dataSet = function(x) {
 <TD><%= pageNavi.tab[i].id_user %></TD>
 <TD><%= pageNavi.tab[i].nickname %></TD>
 <TD><%= pageNavi.tab[i].address %></TD>
-<TD><%= pageNavi.tab[i].schedule %></TD>
 <TD><%= pageNavi.tab[i].id_stock %></TD>
+<TD><%= pageNavi.tab[i].period %></TD>
+<TD><%= pageNavi.tab[i].remark %></TD>
         </tr>
         <% } %>
         </tbody>
