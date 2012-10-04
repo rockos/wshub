@@ -1,5 +1,5 @@
 
-var rootdir = process.env.LOCOS_DEV;
+var rootdir = process.env.ROCKOS_ROOT;
 //var lcsAp = require(rootdir + 'lib/ap/lcsap').create('IQY105');
 
 var mongoose = require('mongoose');
