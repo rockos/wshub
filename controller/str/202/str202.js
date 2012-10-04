@@ -2,6 +2,8 @@
 /* common file include */
 /* local file */
 var UPSTR = require('./upstr202.js');
+var fn202s = require('./202s.js');
+
 /*
  * Mar-25-2012
  */
@@ -421,64 +423,84 @@ function showDemo(req, res, posts, templete) {
     res.render(templete, posts);
 };
 
+
 /*
- * main routine
- * date 22.mar.2012
+ * sep-25-2012
  */
-exports.main = function(req, res, frame){
+function _showResult(req, res, frame) {
 
     var posts = {};
-    var file = './controller/data/str201.json',
-    inifile = './controller/data/str201ini.json';
-
+    var file = './controller/data/str202.json';
+    var msg = lcsAp.getMsgI18N("0");
+    posts.mesg = msg.text;
+    posts.mesg_lavel_color = msg.warn;
 
     /* page情報設定 */
     posts.frameNavi = frame.frameNavi;
-    //    try {
+
 
     if (!lcsAp.isSession(req.session)) {
              res.redirect('/');
     }
     
-    if (req.body['QRY']) {
-        posts.pageNavi = JSON.parse(require('fs').readFileSync(file));
-        posts.pageNavi.userid = req.session.userid ? req.session.userid: 'undefined'; 
-        showDemo(req, res, posts, "scr/scr202");
+    posts.pageNavi = JSON.parse(require('fs').readFileSync(file));
+    posts.pageNavi.userid = req.session.userid ? req.session.userid: 'undefined'; 
 
-    } else if (req.body['SEL']) {
-        posts.pageNavi = JSON.parse(require('fs').readFileSync(file));
-        posts.pageNavi.userid = req.session.userid ? req.session.userid: 'undefined'; 
-        showDemo(req, res, posts, "scr/scr202-1");
+    res.render('scr/scr202s', posts);
 
-        //        addStr_sync(req, res, posts);
-    } else if (req.body['ADD']) {
-        /*
-        addStr(req, res, posts);
-         */
-        posts.pageNavi = JSON.parse(require('fs').readFileSync(inifile));
-        posts.pageNavi.userid = req.session.userid ? req.session.userid: 'undefined'; 
-        showDemo(req, res, posts, "scr/scr202");
 
-    } else if (req.body['DEL']) {
-        /*        delStr(req, res, posts); */
+};
 
-    } else if (req.body['MOD']) {
+/*
+ * main routine
+ * date 27.sep.2012
+ */
+function _showInitial(req, res, frame){
 
-        /*        modStr(req, res, posts);*/
+    var posts = {};
+    var file = './controller/data/str202ini.json';
 
-    } else {
-        posts.pageNavi = JSON.parse(require('fs').readFileSync(inifile));
-        posts.pageNavi.userid = req.session.userid ? req.session.userid: 'undefined'; 
-        debugger;
-        showDemo(req, res, posts, "scr/scr202");
+    var msg = lcsAp.getMsgI18N("0");
+    posts.mesg = msg.text;
+    posts.mesg_lavel_color = msg.warn;
+
+    /* page情報設定 */
+    posts.frameNavi = frame.frameNavi;
+
+
+    if (!lcsAp.isSession(req.session)) {
+             res.redirect('/');
     }
-    /*
-      } catch(e) {
-        lcsAp.log(e.stack);
-        res.redirect('/');
-        
-        } 
-    */
+    
+    posts.pageNavi = JSON.parse(require('fs').readFileSync(file));
+    posts.pageNavi.userid = req.session.userid ? req.session.userid: 'undefined'; 
+
+
+    res.render("scr/scr202", posts);
+};
+/*
+ * main routine
+ * date 22.Sep.2012
+ */
+exports.main = function(req, res, frame){
+
+    var tof = {/* Table of function for each button */
+        "202_QRY" : _showResult,
+        "202s_STR" : fn202s.stor,
+        "202s_RTN" : _showInitial,
+    };
+
+
+    for (var key in tof) {
+        if (req.body[key]) {
+            if (typeof tof[key] === "function") {
+                tof[key](req, res, frame);
+                return;
+            }
+        }
+    }
+    _showInitial(req, res, frame);
+
 };
 
 

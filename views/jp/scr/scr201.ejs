@@ -1,18 +1,11 @@
 <% layout('layout') -%>
+<%- stylesheet('/stylesheets/cstm/201.css') -%>
 
 <form name="main_form" method="post" action="/scr/201">
-<input type="hidden" name="dspcstm" value="<%= dspcstm_val %>">
 
   <div id="sub_body">
-    <p class="<%= dspcstm['corp'] %>"><a href="#">法人会員様</a></p>
-    <p class="<%= dspcstm['priv'] %>"><a href="#">個人会員様</a></p>
-    <p class="<%= dspcstm['vist'] %>"><a href="#">ビジター様</a></p>
     <ul>
-      <li><input type="submit" class="send" name="QRY" value="在庫検索"><li>
-      <li><input type="submit" class="send" name="SEL" value="在庫選択"><li>
-      <li><input type="submit" class="send" name="ADD" value="予約登録"><li>
-      <li><input type="submit" class="send" name="MOD" value="変更" disabled="disabled"><li>
-      <li><input type="submit" class="send" name="DEL" value="削除" disabled="disabled"><li>
+      <li><input type="submit" class="send" name="201_QRY" value="在庫検索"><li>
     </ul>
   </div>
 
@@ -29,16 +22,21 @@
         <col span="1" class="c4">
         <tr>
           <th>会員番号</th>
-          <td colspan="3">
-            <INPUT type="text" class="STYLE_PCOD" size="8" placeholder="Necessity"
+          <td colspan="1">
+            <INPUT type="text" class="STYLE_PCOD" size="8" placeholder=""
               maxlength="8" name="id_user" value="" tabindex = "11">
+          </td>
+          <th>会員名</th>
+          <td colspan="1">
+            <INPUT type="text" class="STYLE_PNAM" size="10" placeholder=""
+              maxlength="10" name="nickname" value="" tabindex = "12">
           </td>
         </tr>
         <tr>
-          <th>会員名</th>
-          <td colspan="3">
-            <INPUT type="text" class="STYLE_PNAM" size="10" placeholder="Necessity"
-              maxlength="10" name="nickname" value="" tabindex = "12">
+          <th>入庫予定日</th>
+          <td colspan="1">
+            <INPUT type="text" class="STYLE_PNAM" size="10" placeholder="年月日"
+              maxlength="10" name="schedule" value="" tabindex = "12">
           </td>
         </tr>
     </table>

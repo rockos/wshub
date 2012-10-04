@@ -1,16 +1,11 @@
 <% layout('layout') -%>
 
 <form name="main_form" method="post" action="/scr/202">
-<input type="hidden" name="dspcstm" value="<%= dspcstm_val %>">
+
 
   <div id="sub_body">
-    <p class="<%= dspcstm['corp'] %>"><a href="#">法人会員様</a></p>
-    <p class="<%= dspcstm['priv'] %>"><a href="#">個人会員様</a></p>
-    <p class="<%= dspcstm['vist'] %>"><a href="#">ビジター様</a></p>
     <ul>
-      <li><input type="submit" class="send" name="QRY" value="予約検索"><li>
-      <li><input type="submit" class="send" name="SEL" value="予約選択"><li>
-      <li><input type="submit" class="send" name="ADD" value="入庫確定"><li>
+      <li><input type="submit" class="send" name="202_QRY" value="予約検索"><li>
     </ul>
   </div>
 
