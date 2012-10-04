@@ -1,3 +1,12 @@
-# 除外するファイルを記載
-# emacs バックアップファイル
-*.*~
+# git に追跡してほしく'ない'ファイル
+# backup file for emacs
+*~
+
+# variable file log..
+tmp/
+log/
+var/
+var/log/*
+
+# modeles for node.js
+node_modules/
