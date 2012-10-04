@@ -10,10 +10,16 @@ var/log/*
 
 # modeles for node.js
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 5ab1337a28b0b6acabbff0bf6e921bdf9db2fb65
 node_modules/
 
 .DS_Store
 Thumbs.db
+<<<<<<< HEAD
 =======
 node_modules/
 >>>>>>> fef8b5d124da7248eac892984359231b84b7012f
+=======
+>>>>>>> 5ab1337a28b0b6acabbff0bf6e921bdf9db2fb65
