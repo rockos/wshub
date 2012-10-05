@@ -106,19 +106,17 @@ app.post('/check', lcsUI.checkUser);
 
 /* this is for express@v3 */
 var server = http.createServer(app).listen(PORT, function(){
-        //        console.log("Snowshoe server(node v0.8) listening on port %d in %s mode", app.address().port, app.settings.env);
-        console.log("Snowshoe server(node v0.8.9) listening on port %d in %s mode", PORT, app.settings.env);
+        lcsAp.syslog("info" 
+                     ,{"Somali server(node v0.8.11) listening on port ":PORT
+                     ,"running mod":app.settings.env});
         });
 
 /*
  * 例外処理
  */
 process.on('uncaughtException', function (error) {
-
-        console.log("system error: " + error);
-        console.log("system error trace: " + error.stack);
-        lcsAp.log('uncaughtException: ' + error);
-        lcsAp.log('uncaughtException trace: ' + error.stack);
+        lcsAp.syslog("error", 'uncaughtException: ' + error);
+        lcsAp.syslog("error", 'uncaughtException trace: ' + error.stack);
     });
 
 
