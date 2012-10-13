@@ -24,19 +24,19 @@ function _delPart(adt, callback) {
 exports._upDelStr = function (args, nextExec) {
 
     var upfuncs = new Array(1);
-    var updata = {};
+    var adt= {};
     var dt = new Date;
 
     /* set audit data */
-    updata.usrid = (args.req.session.userid) ? args.req.session.userid:'undefined';
-    updata.oper = 'DEL';
-    updata.udat = dt.toLocaleString();
-    updata.pcode = args.req.body.pcode;
+    adt.usrid = (args.req.session.userid) ? args.req.session.userid:'undefined';
+    adt.oper = 'DEL';
+    adt.udat = dt.toLocaleString();
+    adt.pcode = args.req.body.pcode;
     upfuncs[0] = _delPart;
 
 
     /* update */
-    lcsDb.update(upfuncs, updata, function(err)/*これがopt*/{
+    lcsDb.update(upfuncs, adt, function(err)/*これがopt*/{
             if( err ) {
                 nextExec( err, args);
                 return;
@@ -52,63 +52,73 @@ exports._upDelStr = function (args, nextExec) {
 /*
  * Mar-28-2012
  */
-function insPart(adt, callback) {
+function insUser(adt, callback) {
 
-    /* insert into PART */
-    var insSql ='insert into part (pcode,sqty,lotn,mem1,mem2,mem3,pnam) ';
-	insSql += 'values (?,?,?,?,?,?,?)';
     var ary = [];
-    ary = [adt.pcode, adt.sqty, adt.lotn, adt.mem1, adt.mem2, adt.mem3, adt.pnam];
-    lcsDb.cmnd(insSql, ary, adt, callback);
+    /* insert into t_users */
+    var insSql ='insert into m_users (id_user,nickname,password,mail_address,initial_date,revised_date)';
+    insSql += 'values (?,?,?,?,CURRENT_TIMESTAMP(),CURRENT_TIMESTAMP())';
+
+    ary = [adt.id_user, adt.nickname, adt.password, adt.email];
+    lcsDb.cmndOne(insSql, ary, callback);
 }
 /*
- * jul-9-2012
+ * 12-OCT-2012
  */
-function insUlog(adt, callback) {
-
-    /* insert into ULOG */
-    var insSql ='insert into ulog (userid,pcode,oper,udat) ';
-	insSql += 'values (?,?,?,?)';
+function insProof(adt, callback) {
     var ary = [];
-    ary = [adt.usrid, adt.pcode, adt.oper, adt.udat];
+    var str = '';
+
+    /* insert into t_proof */
+    var insSql ='insert into t_proof (initial_date, text) ';
+    insSql += 'values (CURRENT_TIMESTAMP(),?)';
+
+    for (var key in adt) {
+        str += key + ':' + adt[key] + ';';
+    }
+    ary = [str];
 
     lcsDb.cmnd(insSql, ary, adt, callback);
 }
 
+
 /*
- * delete inventry
+ * insert user's profile 
  *
  */
-exports._upAddStr = function (args, nextExec) {
+exports.upAddProf = function (args, callback) {
 
-    var upfuncs = new Array(2);
-    var updata = {};
+    var adt = {};
     var dt = new Date;
+    var id_user = '';
 
     /* set audit data */
-    updata.usrid = (args.req.session.userid) ? args.req.session.userid:'undefined';
-    updata.oper = 'ADD';
-    updata.udat = dt.toLocaleString();
-    updata.pcode = args.req.body.pcode;
-    updata.sqty = args.req.body.sqty;
-    updata.lotn = args.req.body.lotn;
-    updata.mem1 = args.req.body.mem1;
-    updata.mem2 = args.req.body.mem2;
-    updata.mem3 = args.req.body.mem3;
-    updata.pnam = args.req.body.pnam;
-    upfuncs[0] = insUlog;
-    upfuncs[1] = insPart;
+    adt.callback = callback;
+    adt.usrid = (args.req.session.userid) ? args.req.session.userid:'undefined';
+    adt.oper = 'ADD';
+    adt.udat = dt.toLocaleString();
+    adt.id_user = args.id_user;
+    adt.nickname = args.req.body.nickname;
+    adt.email = args.req.body.email;
+    adt.password = args.req.body.password;
+debugger;
 
     /* update */
-    lcsDb.update(upfuncs, updata, function(err)/*これがopt*/{
-            if( err ) {
-                nextExec( err, args);
+    lcsDb.correct(adt, [
+                  insUser,
+                  insProof]);
+/*
+    lcsDb.correct(upfuncs, adt, function(err) {
+        debugger;
+        if (err) {
+                nextExec(err, args);
                 return;
-            }else{
-                nextExec( null, args);
+            } else {
+                nextExec(null, args);
                 return;
             }
         });
+*/
 }
 
 /*
@@ -129,25 +139,26 @@ function modPart(adt, callback) {
 exports._upModStr = function (args, nextExec) {
 
     var upfuncs = new Array(2);
-    var updata = {};
+    var adt = {};
     var dt = new Date;
 
     /* set audit data */
-    updata.usrid = (args.req.session.userid) ? args.req.session.userid:'undefined';
-    updata.oper = 'ADD';
-    updata.udat = dt.toLocaleString();
-    updata.pcode = args.req.body.pcode;
-    updata.sqty = args.req.body.sqty;
-    updata.lotn = args.req.body.lotn;
-    updata.mem1 = args.req.body.mem1;
-    updata.mem2 = args.req.body.mem2;
-    updata.mem3 = args.req.body.mem3;
-    updata.pnam = args.req.body.pnam;
+    adt.usrid = (args.req.session.userid) ? args.req.session.userid:'undefined';
+    adt.oper = 'ADD';
+    adt.udat = dt.toLocaleString();
+    adt.pcode = args.req.body.pcode;
+    adt.sqty = args.req.body.sqty;
+    adt.lotn = args.req.body.lotn;
+    adt.mem1 = args.req.body.mem1;
+    adt.mem2 = args.req.body.mem2;
+    adt.mem3 = args.req.body.mem3;
+    adt.pnam = args.req.body.pnam;
     upfuncs[0] = insUlog;
     upfuncs[1] = modPart;
 
+
     /* update */
-    lcsDb.update(upfuncs, updata, function(err)/*これがopt*/{
+    lcsDb.correct(upfuncs, adt, function(err) /*これがopt*/{
             if (err) {
                 nextExec( err, args);
                 return;

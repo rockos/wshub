@@ -1,139 +1,49 @@
 'use strict';
 /* common file include */
 /* local file */
-var UPSTR = require('./upmnt501.js');
-/*
- * Mar-25-2012
- */
-function showPart(req, res, posts) {
-
-
-    var sql ='select * from part order by pcode';
-    var results, fields;
-    
-    
-    lcsDb.query(sql, function(err, results, fields) {
-            if (err){
-                console.log('err: ' + err);
-            };
-
-
-            posts.tab = results;
-            for( var i=0,max=posts.tab.length; i<max; i++ ) {
-                posts.tab[i].radiodata = 
-                    posts.tab[i].pcode + "," +
-                    posts.tab[i].sqty + "," +
-                    posts.tab[i].pnam + "," +
-                    posts.tab[i].lotn + "," +
-                    posts.tab[i].mem1 + "," +
-                    posts.tab[i].mem2 + "," +
-                    posts.tab[i].mem3;
-            }
-
-            posts.frameNavi.userid = (req.session.userid)? req.session.userid:'undefined';
-            //            lcsAp.getScrInfI18N(scrinf);
-
-
-            var msg = lcsAp.getMsgI18N("0");
-            posts.mesg = msg.text;
-            posts.mesg_lavel_color = msg.warn;
-
-            /*
-            [posts.mesg, posts.mesg_lavel_color] = lcsAp.getMsgI18N(String(err));
-            */
-            posts.dspcstm = new Array;
-            posts.dspcstm["corp"] = "hidden";
-            posts.dspcstm["priv"] = "hidden";
-            posts.dspcstm["vist"] = "hidden";
-            if( req.method=="POST" ) {
-                switch( req.body.dspcstm ) {
-                case "corp":
-                    posts.dspcstm["corp"] = "";
-                    posts.dspcstm_val = "corp";
-                    break;
-                case "priv":
-                    posts.dspcstm["priv"] = "";
-                    posts.dspcstm_val = "priv";
-                    break;
-                case "vist":
-                    posts.dspcstm["vist"] = "";
-                    posts.dspcstm_val = "vist";
-                    break;
-                case "default":
-                    posts.dspcstm["corp"] = "";
-                    posts.dspcstm_val = "corp";
-                    break;
-                }
-            } else {
-                var str = req.url.replace(/\.+/,'').split('/');
-                switch( str[2] ) {
-                case "201":
-                    posts.dspcstm["corp"] = "";
-                    posts.dspcstm_val = "corp";
-                    break;
-                case "202":
-                    posts.dspcstm["priv"] = "";
-                    posts.dspcstm_val = "priv";
-                    break;
-                case "203":
-                    posts.dspcstm["vist"] = "";
-                    posts.dspcstm_val = "vist";
-                    break;
-                default:
-                    posts.dspcstm["corp"] = "";
-                    posts.dspcstm_val = "corp";
-                    break;
-                }
-            }
-
-            res.render('scr/scr201', posts);
-
-
-        });
-};
-
-
+var UPMNT501 = require('./upmnt501.js');
 /*
  *  暫定
  */
-//function dspWin(err, args) {
 function dspWin(args, callback) {
 
     //Login user用
-    args.post.userid = (args.req.session.userid) ? args.req.session.userid:'undefined';
+    args.post.userid = (args.req.session.userid) ?
+        args.req.session.userid : 'undefined';
 
     var msg = lcsAp.getMsgI18N('0');
     args.post.mesg = msg.text;
     args.post.mesg_lavel_color = msg.warn;
 
     /*
-    [args.post.mesg, args.post.mesg_lavel_color] = lcsAp.getMsgI18N(String(err));
-    */
-
+       [args.post.mesg, args.post.mesg_lavel_color] =
+       lcsAp.getMsgI18N(String(err));
+       */
+/*
     args.post.dspcstm = new Array;
-    args.post.dspcstm["corp"] = "hidden";
-    args.post.dspcstm["priv"] = "hidden";
-    args.post.dspcstm["vist"] = "hidden";
-    switch( args.req.body.dspcstm ) {
-    case "corp":
-        args.post.dspcstm["corp"] = "";
-        args.post.dspcstm_val = "corp";
+    args.post.dspcstm['corp'] = 'hidden';
+    args.post.dspcstm['priv'] = 'hidden';
+    args.post.dspcstm['vist'] = 'hidden';
+    switch (args.req.body.dspcstm) {
+        case 'corp':
+            args.post.dspcstm['corp'] = '';
+        args.post.dspcstm_val = 'corp';
         break;
-    case "priv":
-        args.post.dspcstm["priv"] = "";
-        args.post.dspcstm_val = "priv";
+        case 'priv':
+            args.post.dspcstm['priv'] = '';
+        args.post.dspcstm_val = 'priv';
         break;
-    case "vist":
-        args.post.dspcstm["vist"] = "";
-        args.post.dspcstm_val = "vist";
+        case 'vist':
+            args.post.dspcstm['vist'] = '';
+        args.post.dspcstm_val = 'vist';
         break;
-    default:
-        args.post.dspcstm["corp"] = "";
-        args.post.dspcstm_val = "corp";
+        default:
+            args.post.dspcstm['corp'] = '';
+        args.post.dspcstm_val = 'corp';
         break;
     }
-
-    args.res.render('scr/scr201', args.post);
+*/
+    args.res.render('scr/scr501a', args.post);
     callback(null, callback);
 }
 /*
@@ -141,260 +51,231 @@ function dspWin(args, callback) {
  */
 function postData(args, nextExec) {
 
-    var sql ='select * from part order by pcode';
+    var sql = 'select * from part order by pcode';
     var results, fields;
 
     lcsDb.query(sql, function(err, results, fields) {
-            debugger;
-            if (err){
-                lcsAp.log('err: ' + err);
-            };
+        if (err) {
+            lcsAp.log('err: ' + err);
+        }
 
-            args.post.title = 'check in';
-            args.post.tab = results;
+        args.post.title = 'check in';
+        args.post.tab = results;
 
-            for( var i=0,max=args.post.tab.length; i<max; i++ ) {
-                args.post.tab[i].radiodata = 
-                    args.post.tab[i].pcode + "," +
-                    args.post.tab[i].sqty + "," +
-                    args.post.tab[i].pnam + "," +
-                    args.post.tab[i].lotn + "," +
-                    args.post.tab[i].mem1 + "," +
-                    args.post.tab[i].mem2 + "," +
-                    args.post.tab[i].mem3;
-            }
+        for (var i = 0, max = args.post.tab.length; i < max; i++) {
+            args.post.tab[i].radiodata =
+                args.post.tab[i].pcode + ',' +
+                args.post.tab[i].sqty + ',' +
+                args.post.tab[i].pnam + ',' +
+                args.post.tab[i].lotn + ',' +
+                args.post.tab[i].mem1 + ',' +
+                args.post.tab[i].mem2 + ',' +
+                args.post.tab[i].mem3;
+        }
 
 
-            //            args.post.userid = args.req.session.userid;
+        //            args.post.userid = args.req.session.userid;
 
-            if (!err) err = 0;
+        if (!err) err = 0;
 
-            var msg = lcsAp.getMsgI18N(String(err));
-            args.post.mesg = msg.text;
-            args.post.mesg_lavel_color = msg.warn;
+        var msg = lcsAp.getMsgI18N(String(err));
+        args.post.mesg = msg.text;
+        args.post.mesg_lavel_color = msg.warn;
 
-            /*
-            [args.post.mesg, args.post.mesg_lavel_color] = lcsAp.getMsgI18N(String(err));
-            */
-            nextExec( null, args);
+        /*
+           [args.post.mesg, args.post.mesg_lavel_color] =
+           lcsAp.getMsgI18N(String(err));
+           */
+        nextExec(null, args);
 
-            return;
-        });
+        return;
+    });
 
-};
+}
 /**
  *
  */
 function shoError(args, emsg) {
-    args.post.mesg = emsg.text;
-    args.res.render('scr/error', args.post);
-};
-/*
-function shoError(args, emsg) {
-    var msgobj = lcsAp.getMsgI18N(emsg);
-    args.post.mesg = msgobj.text;
-    args.res.render('scr/error', args.post);
-};
-*/
-
+    if (typeof emsg === 'object') {
+        args.errors = emsg;
+        args.post.mesg = emsg.text;
+        args.res.render('scr/error', args.post);
+    } else {
+        var msgobj = lcsAp.getMsgI18N(emsg);
+        args.errors = msgobj;
+        args.post.mesg = msgobj.text;
+        args.res.render('scr/error', args.post);
+    }
+}
+/**
+ * Validator for form data.
+ *
+ */
 var validCheck = {
-    err : 0,
+    err: 0,
 
-    checkParams : function (args ,/* next function */ callback) {
-        var rtn = lcsUI.checkVal(args.req, ['pcode', 'pnam', 'sqty', 'lotn']);
+    checkParams: function(args , /* next function */ callback) {
+        var rtn = lcsUI.checkVal(args.req, ['nickname', 'password', 'email']);
         if (rtn) {
             shoError(args, rtn);
-            return callback(rtn, args, callback);
+            return callback(rtn);
         }
-        
-        /* sanitize */
-        args.req.sanitize('sqty').toInt(); 
-        
-        /* normal complete */
-        return callback(0, args, callback);        
-        
-    },
-    checkParams_del : function (args ,/* next function */ callback) {
-        var rtn = lcsUI.checkVal(args.req, ['pcode']);
-        if (rtn) {
-            shoError(args, rtn);
-            return callback(rtn, args, callback);
-        }
-        
-        /* normal complete */
-        return callback(0, args, callback);        
-        
-    },
-    filter : function (args ,/* next function */ callback) {
-        /* sanitize */
-        //        args.req.sanitize('sqty').toInt(); 
-        
-        /* normal complete */
-        return callback(0, args, callback);        
-        
-    },
-    checkDb : function (args ,callback) {
 
-        args.post.userid = (args.req.session.userid) ? args.req.session.userid:'undefined';
+        /* normal complete */
+        return callback(0, args, callback);
+    },
+    filter: function(args, /* next function */ callback) {
+        /* sanitize */
+        /* args.req.sanitize('sqty').toInt(); */
+        /* normal complete */
+
+        return callback(0, args, callback);
+
+    },
+    checkDb: function(args, callback) {
         var err = 0, errtext = [];
         var results, fields;
 
-        var sql ='select * from part where pcode=?';
+        var sql = 'select * from m_users where nickname=?';
 
-        lcsDb.query(sql, [args.req.body['pcode']],function(err, results, fields) {
-                debugger;
-                if (err){
-                    shoError(args, '99'); /* db error */
-                    callback( err, args, callback);
+        lcsDb.query(sql, [args.req.body['nickname']],
+                    function(err, results, fields) {
+                        if (err) {
+                            shoError(args, lcsAp.getMsgI18N('99')); /* db error */
+                            callback(err);
+                            return;
+                        }
+                        callback(0, args, callback);
+
+                        return;
+                    });
                     return;
-                };
-                callback(0, args, callback);
-
-                return;
-            });
-        return;
     }
 };
-/* empty function */
-var finParse = function(err){
+/**
+ * 
+ * 
+ */
+var finParent = function(err, args) {
     if (err) {
         return;
     }
-}
-/* empty function */
-var fin = function(err){
-    if (err) {
-        return;
+    return;
+};
+/**
+ * 親のコールバック関数を呼ぶ 
+ * 
+ */
+var finChild = function(err, args) {
+
+    if (typeof args[0].callback === 'function') {
+        args[0].callback(err, args);
+    } else if (typeof args[0][0].callback === 'function') {
+        args[0][0].callback(err, args);
     }
-}
+    return;
+};
 /**
  *
  *
  */
-function parseData_add(args, nextExec) {
-    //        var pl = plist;
-    //args.plist = {"pcode","p"};
-    lcsAp.series(args, [validCheck.checkParams, validCheck.checkDb, validCheck.filter], finParse);
+function parseData(args, callback) {
+    args.callback = callback;
+    lcsAp.doSync(args, [
+                 validCheck.checkParams, 
+                 validCheck.checkDb,
+                 validCheck.filter]);
+                /*
+    args.callback = callback;
+    lcsAp.series(args, [
+                 validCheck.checkParams, 
+                 validCheck.checkDb,
+                 validCheck.filter],
+                 finChild);
+                */
+}
+/*
+ * 12-OCT-2012
+ */
+function getID(args, callback) {
+    var sql = '', sql1, sql2, sql3, sql4, sql5;
+    var ary = [];
+    var results, fields;
 
-    if (args.errors) {
-        nextExec(args.errors, args);
-        return;
+    /* insert into t_proof */
+    if (args.seqnID === 'id_user') {
+        sql = 'update t_sequence set seqn_user=seqn_user+1,user_uptime=CURRENT_TIMESTAMP()';
+    } else if (args.seqnID === 'id_stock') {
+        sql = 'update t_sequence set seqn_tock=seqn_stock+1,user_uptime=CURRENT_TIMESTAMP()';;
+    } else {
+        return 'undefined';
     }
+    lcsDb.cmndOne(sql, ary, function(err, results) {
+        if (err) {
+            lcsAp.syslog('error', 'getID lcsdb.cmnd');
+            callback(err, args);
+            return;
+        }
+        /*
+           sql = 'select concat(substring(CURRENT_TIMESTAMP(),1,4),' 
+           ' substring(CURRENT_TIMESTAMP(),6,2),'
+           ' substring(CURRENT_TIMESTAMP(),9,2),'
+           ' lpad(seqn_user,4,"0"))'
+           ' from t_sequence;';
+           */
+        sql1 = 'select concat(substring(CURRENT_TIMESTAMP(),1,4),'; 
+        sql2 = 'substring(CURRENT_TIMESTAMP(),6,2),';
+        sql3 = 'substring(CURRENT_TIMESTAMP(),9,2),';
+        sql4 = 'lpad(seqn_user,4,"0")) as "id_user"';
+        sql5 = 'from t_sequence;';
 
-    nextExec( null, args);
-}
-/**
- *
- *
- */
-function parseData_del(args, nextExec) {
-
-    lcsAp.series(args, [validCheck.checkParams_del, validCheck.checkDb], finParse);
-
-    if (args.errors) {
-        nextExec(args.errors, args);
-        return;
-    }
-
-    nextExec( null, args);
+        lcsDb.query(sql1+sql2+sql3+sql4+sql5, 
+                    function(err, results, fields) {
+                        if (err) {
+                            lcsAp.syslog('error','getID lcsdb.query');
+                            callback(err, args);
+                            return;
+                        }
+                        args.id_user = results[0].id_user;
+                        callback(null, args);
+                    });
+    });
 }
 /*
- *
- *
+ * 12-OCT-2012
  */
-function addStr(req, res, posts) {
+function prepareData(args, callback) {
+    args.seqnID = 'id_user';
+    args.callback = callback;
     
-    /*ex.*/
-    var post = {};
-    var args = {};
-    args.req = req;
-    args.res = res;
-    args.post = posts;
-    args.post.frameNavi.userid =  (req.session.userid)? req.session.userid:'undefined';
-    lcsAp.series(args,
-               [parseData_add, /* 入力チェック*/
-                UPSTR._upAddStr, /* データベース登録 upstr.js */
-                postData,
-                dspWin], /* 後処理 */
-               fin);
-
+    lcsAp.doSync(args,
+                 [getID]);
 }
-
-/*
- * delete inventry
- *
- */
-function delStr(req, res, posts) {
-
-    var args = {};
-    args.req = req;
-    args.res = res;
-    args.post = posts;
-    args.post.frameNavi.userid =  (req.session.userid)? req.session.userid:'undefined';
-
-    lcsAp.series(args,
-               [parseData_del, /* 入力チェック*/
-                UPSTR._upDelStr,
-                postData,
-                dspWin], /* 後処理 */
-               fin);
-
-}
-/*
- * modification of inventry
- *
- */
-function modStr(req, res, posts) {
-
-    var args = {};
-
-    args.req = req;
-    args.res = res;
-    args.post = posts;
-    args.post.frameNavi.userid =  (req.session.userid)? req.session.userid:'undefined';
-
-    lcsAp.sync(args,
-               [parseData, /* 入力チェック*/
-                UPSTR._upModStr,
-                postData], /* 後処理 */
-               dspWin );
-
-}
-/*
- * sep-25-2012
- */
-function _showResult(req, res, posts, templete) {
-
-    var msg = lcsAp.getMsgI18N("0");
-    posts.mesg = msg.text;
-    posts.mesg_lavel_color = msg.warn;
-
-
-    
-    res.render(templete, posts);
-};
 
 /*
  * main routine
  * date 22.mar.2012
  */
-exports.addProf = function(req, res, frame){
+exports.addProf = function(req, res, frame) {
 
     var posts = {};
-    var file = './controller/data/mnt501.json',
-    inifile = './controller/data/mnt501ini.json';
 
     /* page情報設定 */
     posts.frameNavi = frame.frameNavi;
     //    try {
 
-    if (!lcsAp.isSession(req.session)) {
-             res.redirect('/');
-    }
-    
-    posts.pageNavi = JSON.parse(require('fs').readFileSync(inifile));
-    posts.pageNavi.userid = req.session.userid ? req.session.userid: 'undefined'; 
-    debugger;
 
-    _showResult(req, res, posts, "scr/scr501");
+    var args = {};
+    args.req = req;
+    args.res = res;
+    args.post = posts;
+    args.errors = {};
+    args.post.frameNavi.userid = (req.session.userid) ?
+        req.session.userid : 'undefined';
+    lcsAp.series(args,
+                 [parseData, /* 入力チェック*/
+                     prepareData,   /* 前処理 */
+                     UPMNT501.upAddProf, /* データベース登録 upmnt501.js */
+                     dspWin], /* 後処理 */
+                     finParent);
 };

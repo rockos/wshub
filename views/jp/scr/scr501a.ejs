@@ -17,23 +17,16 @@
       <span class="= mesg_level_color "><%= mesg %></span>
     </div>
 
-    <table class="cond201">
+    <table class="cond501">
       <colgroup>
         <col span="1" class="c1">
         <col span="1" class="c2">
         <col span="1" class="c3">
         <col span="1" class="c4">
         <tr>
-          <th>会員番号</th>
-          <td colspan="3">
-            <INPUT type="text" class="STYLE_PCOD" size="12" placeholder="Necessity"
-              maxlength="12" name="id_user" id="id_user" value="" tabindex = "11">
-          </td>
-        </tr>
-        <tr>
           <th>会員名</th>
           <td colspan="3">
-            <INPUT type="text" class="STYLE_PNAM" size="24" placeholder="Necessity"
+            <INPUT type="text" class="STYLE_USER" size="24" placeholder=""
               maxlength="24" name="nickname" id="nickname" value="" tabindex = "12">
           </td>
         </tr>
@@ -43,20 +36,30 @@
             <INPUT type="password" class="STYLE_QNTY" size="24" 
               maxlength="24" name="password" id="password" value="" tabindex = "13">
           </td>
+        </tr>
+        <tr>
           <th>メールアドレス</th>
           <td>
             <INPUT type="text" class="STYLE_SMM" size="20" placeholder="option"
-              maxlength="20" name="mem2" value="" tabindex = "14">
-          </td>
-        </tr>
-        <tr>
-          <th>お客様メモ</th>
-          <td>
-            <INPUT type="text" id="smm3" class="STYLE_SMM" size="20" placeholder="option"
-              maxlength="20" name="mem3" value="" tabindex = "17">
+              maxlength="20" name="email" value="" tabindex = "14">
           </td>
         </tr>
     </table>
 
   </div>
+<div class=mnt501>
+<!--
+<label for="name">お名前</label>
+<input type="text" name="name" value="" />
+<label for="email">E-Mail</label>
+<input type="email" name="email" value=""  />
+<label for="name">電話番号</label>
+<input type="tel" name="tel" value=""  />
+<label for="url">ウェブサイトのURL</label>
+<input type="url" name="url" value=""  />
+<label for="message">お問い合わせ内容</label> 
+<textarea name="message" rows="0" cols="0"></textarea>
+-->
+
+</div>
 </form>

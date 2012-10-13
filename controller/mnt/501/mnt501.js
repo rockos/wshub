@@ -7,11 +7,11 @@ var fn501m = require('./501m.js');
 var fn501d = require('./501d.js');
 
 
-function _showInitial(req, res, frame){
+function _showInitial(req, res, frame) {
 
     var posts = {};
     var inifile = './controller/data/mnt501ini.json';
-    var msg = lcsAp.getMsgI18N("0");
+    var msg = lcsAp.getMsgI18N('0');
     posts.mesg = msg.text;
     posts.mesg_lavel_color = msg.warn;
 
@@ -19,20 +19,17 @@ function _showInitial(req, res, frame){
     posts.frameNavi = frame.frameNavi;
 
     posts.pageNavi = JSON.parse(require('fs').readFileSync(inifile));
-    posts.pageNavi.userid = req.session.userid ? req.session.userid: 'undefined'; 
+    posts.pageNavi.userid = req.session.userid ?
+        req.session.userid : 'undefined';
 
-    res.render("scr/scr501", posts);
-    //    fn501a.showDemo(req, res, posts, "scr/scr501");
+    res.render('scr/scr501', posts);
+    //    fn501a.showDemo(req, res, posts, 'scr/scr501');
 }
-/**
- * show second screen (501a or 501m)
- *
- */
-function _showScr(req, res, frame){
+function _showScr(req, res, frame) {
 
     var posts = {};
     var inifile = './controller/data/mnt501ini.json';
-    var msg = lcsAp.getMsgI18N("0");
+    var msg = lcsAp.getMsgI18N('0');
     posts.mesg = msg.text;
     posts.mesg_lavel_color = msg.warn;
 
@@ -41,51 +38,53 @@ function _showScr(req, res, frame){
 
     if (req.body['501a']) {
         posts.pageNavi = JSON.parse(require('fs').readFileSync(inifile));
-        posts.pageNavi.userid = req.session.userid ? req.session.userid: 'undefined'; 
+        posts.pageNavi.userid = req.session.userid ?
+            req.session.userid : 'undefined';
 
-        res.render("scr/scr501a", posts);
+        res.render('scr/scr501a', posts);
     } else if (req.body['501m']) {
         posts.pageNavi = JSON.parse(require('fs').readFileSync(inifile));
-        posts.pageNavi.userid = req.session.userid ? req.session.userid: 'undefined'; 
+        posts.pageNavi.userid = req.session.userid ?
+            req.session.userid : 'undefined';
 
-        res.render("scr/scr501m", posts);
+        res.render('scr/scr501m', posts);
     } else {
         posts.pageNavi = JSON.parse(require('fs').readFileSync(inifile));
-        posts.pageNavi.userid = req.session.userid ? req.session.userid: 'undefined'; 
+        posts.pageNavi.userid = req.session.userid ?
+            req.session.userid : 'undefined';
 
-        res.render("scr/scr501d", posts);
+        res.render('scr/scr501d', posts);
     }
 }
 
-/**
+/*
  * Main routine of profile editor
  * date 26.sep.2012 first edition.
  *
  */
-exports.main = function(req, res, frame){
-    
+exports.main = function(req, res, frame) {
+
     var tof = {/* Table of function for each button */
-        "501a" : _showScr,
-        "501m" : _showScr,
-        "501d" : _showScr,
-        "501a_ADD" : fn501a.addProf,
-        "501a_RTN" : _showInitial,
+        '501a' : _showScr,
+        '501m' : _showScr,
+        '501d' : _showScr,
+        '501a_ADD' : fn501a.addProf,
+        '501a_RTN' : _showInitial,
         /* message for modify */
-        "501m_SEL" : fn501m.selUser,
-        "501m_MOD" : fn501m.modProf,
-        "501m_RTN" : _showInitial,
+        '501m_SEL' : fn501m.selUser,
+        '501m_MOD' : fn501m.modProf,
+        '501m_RTN' : _showInitial,
 
         /* message for delete */
-        "501d_SEL" : fn501d.selUser,
-        "501d_DEL" : fn501d.delProf,
-        "501d_RTN" : _showInitial
+        '501d_SEL' : fn501d.selUser,
+        '501d_DEL' : fn501d.delProf,
+        '501d_RTN' : _showInitial
     };
 
 
-    debugger;
     for (var key in tof) {
         if (req.body[key]) {
-            if (typeof tof[key] === "function") {
+            if (typeof tof[key] === 'function') {
                 tof[key](req, res, frame);
                 return;
             }
@@ -94,10 +93,7 @@ exports.main = function(req, res, frame){
     _showInitial(req, res, frame);
 
     /*
-      lcsAp.log("mnt501 Undefined caller");
+      lcsAp.log('mnt501 Undefined caller');
       res.redirect('scr/scr404');
     */
 };
-
-
-

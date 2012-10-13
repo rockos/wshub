@@ -9,21 +9,21 @@
  */
 'use strict';
 var express = require('express')
-    , expressValidator = require('express-validator')
-    , rootDir = __dirname
-    , RedisStore = require('connect-redis')(express)
-    , opts = require('opts')
-    , fs = require('fs')
-    , engine = require('ejs-locals')
-    , http = require('http');
+, expressValidator = require('express-validator')
+, rootDir = __dirname
+, RedisStore = require('connect-redis')(express)
+, opts = require('opts')
+, fs = require('fs')
+, engine = require('ejs-locals')
+, http = require('http');
 
 /* */
 var privateKey = fs.readFileSync('etc/rockos.key').toString();
 var certificate = fs.readFileSync('etc/rockos.crt').toString();  
 
 /* below is secure server
-var app = module.exports = express.createServer({key: privateKey, cert: certificate});
-*/
+   var app = module.exports = express.createServer({key: privateKey, cert: certificate});
+   */
 
 //var app = module.exports = express.createServer();
 /* for express@v3 */
@@ -46,13 +46,13 @@ global['lcsDb'] = lcsDb;
 
 /* define command line arguments */
 opts.parse([
-            {'short': 'p',
-                    'long': 'port',
-                    'description': 'HTTP port',
-                    'value': true,
-                    'required': false
-                    },
-            ]);
+        {'short': 'p',
+        'long': 'port',
+        'description': 'HTTP port',
+        'value': true,
+        'required': false
+        },
+        ]);
 
 var PORT = opts.get('port') || 3010;
 
@@ -63,36 +63,33 @@ app.engine('ejs', engine);
 
 app.set('views', __dirname + '/views/jp');
 app.set('view engine', 'ejs');
-app.locals({
-        _layoutFile: false
-            });
+app.locals({_layoutFile: false});
 app.use(express.bodyParser());
 app.use(expressValidator);
 app.use(express.methodOverride());
 //sessionを扱うときはrouterの前にこれを書かなければならない
 app.use(express.cookieParser());
 app.use(express.session({secret: "secret",
-                store: auth = new RedisStore({db:0}), /* default db number 0 */
-                cookie: {maxAge: 60 * 60 * 1000}}));
+            store: auth = new RedisStore({db:0}), /* default db number 0 */
+            cookie: {maxAge: 60 * 60 * 1000}}));
 /* cookie: {maxAge: 1 * 60 * 1000}})); 1 min */
 app.use(app.router);
 app.use(express.static(__dirname + '/public'));
 
-
 app.configure('development', function(){
-  app.use(express.errorHandler({ dumpExceptions: true, showStack: true }));
-});
+        app.use(express.errorHandler({ dumpExceptions: true, showStack: true }));
+        });
 
 app.configure('production', function(){
         app.use(express.errorHandler());
-});
+        });
 
 /* 画面プログラムの登録 */
 lcsUI.config([
-             {"map" : "./controller/map.json"}
-             ,{"frame" : "./views/jp/framenavi.json"}
-             ,{"tags" : "./views/jp/pagetags.json"}
-    ]);
+        {"map" : "./controller/map.json"}
+        ,{"frame" : "./views/jp/framenavi.json"}
+        ,{"tags" : "./views/jp/pagetags.json"}
+        ]);
 
 /* ルーティング処理 */
 app.get('/', lcsUI.login);
@@ -107,8 +104,8 @@ app.post('/check', lcsUI.checkUser);
 /* this is for express@v3 */
 var server = http.createServer(app).listen(PORT, function(){
         lcsAp.syslog("info" 
-                     ,{"Somali server(node v0.8.11) listening on port ":PORT
-                     ,"running mod":app.settings.env});
+            ,{"Somali server(node v0.8.11) listening on port ":PORT
+            ,"running mod":app.settings.env});
         });
 
 /*
@@ -117,7 +114,7 @@ var server = http.createServer(app).listen(PORT, function(){
 process.on('uncaughtException', function (error) {
         lcsAp.syslog("error", 'uncaughtException: ' + error);
         lcsAp.syslog("error", 'uncaughtException trace: ' + error.stack);
-    });
+        });
 
 
 /* this is for express@v3 */
