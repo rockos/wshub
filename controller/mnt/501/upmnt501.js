@@ -16,12 +16,12 @@ function insUser(args, callback) {
         'values (?,?,?,?,CURRENT_TIMESTAMP(),CURRENT_TIMESTAMP())';
     ary = [args.adt.id_user, args.adt.nickname,
         args.adt.password, args.adt.email];
-    lcsDb.query(insSql, ary, function(err, results) {
-        if (err) {
-            return callback(err, args);
-        }
-        callback(null, args);
-    });
+        lcsDb.query(insSql, ary, function(err, results) {
+            if (err) {
+                return callback(err, args);
+            }
+            callback(null, args);
+        });
 }
 /*
  * 12-OCT-2012
@@ -39,6 +39,7 @@ function insProof(args, callback) {
     }
     ary = [str];
     lcsDb.query(insSql, ary, function(err, results) {
+        debugger;
         if (err) {
             return callback(err, args);
         }
@@ -47,8 +48,10 @@ function insProof(args, callback) {
 }
 
 
-/*
+/**
  * insert user's profile
+ * @param {Object} args argument.
+ * @param {Function} callback which shoud run at next step.
  *
  */
 exports.upAddProf = function(args, callback) {

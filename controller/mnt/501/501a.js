@@ -2,9 +2,11 @@
 /* common file include */
 /* local file */
 var UPMNT501 = require('./upmnt501.js');
-/*
- *  暫定
- */
+/**
+ *   結果表示
+* @param {Object} args argument.
+* @param {Function} callback which shoud run at next setp.
+*/
 function dspWin(args, callback) {
 
     //Login user用
@@ -17,52 +19,10 @@ function dspWin(args, callback) {
     args.res.render('scr/scr501a', args.post);
     callback(null, callback);
 }
-/*
- * 後処理関数
- */
-function postData(args, nextExec) {
-
-    var sql = 'select * from part order by pcode';
-    var results, fields;
-
-    lcsDb.query(sql, function(err, results, fields) {
-        if (err) {
-            lcsAp.log('err: ' + err);
-        }
-
-        args.post.title = 'check in';
-        args.post.tab = results;
-
-        for (var i = 0, max = args.post.tab.length; i < max; i++) {
-            args.post.tab[i].radiodata =
-                args.post.tab[i].pcode + ',' +
-                args.post.tab[i].sqty + ',' +
-                args.post.tab[i].pnam + ',' +
-                args.post.tab[i].lotn + ',' +
-                args.post.tab[i].mem1 + ',' +
-                args.post.tab[i].mem2 + ',' +
-                args.post.tab[i].mem3;
-        }
-
-
-        //            args.post.userid = args.req.session.userid;
-
-        if (!err) err = 0;
-
-        var msg = lcsAp.getMsgI18N(String(err));
-        args.post.mesg = msg.text;
-        args.post.mesg_lavel_color = msg.warn;
-
-        /*
-           [args.post.mesg, args.post.mesg_lavel_color] =
-           lcsAp.getMsgI18N(String(err));
-           */
-        nextExec(null, args);
-    });
-
-}
 /**
- *
+ * show error message.
+ * @param {Object} args argument.
+ * @param {Object} emsg contents of error.
  */
 function shoError(args, emsg) {
     if (typeof emsg === 'object') {
@@ -78,7 +38,9 @@ function shoError(args, emsg) {
 }
 /**
  * Validator for form data.
- *
+ * @param {Object} args argument.
+ * @param {Function} callback function which shoud run at next step.
+ * @return {Function} callback.
  */
 var validCheck = {
     err: 0,
@@ -100,42 +62,89 @@ var validCheck = {
 
         return callback(null, args);
 
-    },
-    checkDb: function(args, callback) {
-        var err = 0, errtext = [];
-        var results, fields;
-        var sql = 'select * from m_users where nickname=?';
-        lcsDb.query(sql, [args.req.body['nickname']],
+    }
+};
+/**
+ * データベースの整合性チェック
+ * @param {Object} args argument of parent function.
+ * @param {Function} callback function which should run at next step.
+ */
+var checkDb = {
+
+    blockA: function(args, callback) {
+        var err = 0;
+        var sql = '';
+        var results = {}, fields = {};
+        debugger;
+        sql = 'select count(*) as count from m_users ' +
+            'where nickname=? or mail_address=?';
+        lcsDb.query(sql, [args.req.body['nickname'],
+                    args.req.body['email']],
                     function(err, results) {
-                        if (err) {
-                            shoEOrror(args,
-                                      lcsAp.getMsgI18N('99')); /* db error */
-                                      callback(err, args);
-                                      return;
+                        debugger;
+                        if (err || results.length == 0) {
+                            shoError(args,
+                                     lcsAp.getMsgI18N('99')); /* db error */
+                                     lcsAp.syslog('error',
+                                                  {'checkDb.blockA: ':
+                                                      err.message});
+                                                  callback(true, args);
+                                                  return;
+                        }
+                        debugger;
+                        if (results[0].count != 0) {
+                            shoError(args,
+                                     lcsAp.getMsgI18N('301')); /* tourokusumi */
+                                     callback(true, args);
+                                     return;
                         }
                         callback(null, args);
 
                         return;
                     });
                     return;
+    },
+    blockB: function(args, callback) {
+        var err = 0;
+        var sql = '';
+        var results = {}, fields = {};
+
+        sql = 'rollback';
+        lcsDb.query(sql,
+                    function(err, results) {
+                        debugger;
+                        if (err || results.length == 0) {
+                            shoError(args,
+                                     lcsAp.getMsgI18N('301')); /* db error */
+                                     lcsAp.syslog('error',
+                                                  {'checkDb.blockB: ': sql});
+                                                  callback(true, args);
+                                                  return;
+                        }
+                        callback(null, args);
+
+                        return;
+                    });
+                    return;
+    },
+    blockC: function(err, result) {
+        callback(null, args);
+        return;
+    },
+    blockD: function(err, results) {
+        callback(null, args);
+        return;
     }
 };
 /**
+ * generate m_users.ID
  *
+ * @param {Object} args argument of parent function.
+ * @param {Function} callback function which should run at next step.
  *
- */
-function parseData(args, callback) {
-    lcsAp.doSync(args, [
-                 validCheck.checkParams,
-                 validCheck.checkDb,
-                 validCheck.filter],
-                 callback);
-}
-/*
- * 12-OCT-2012
  */
 function getID(args, callback) {
-    var sql = '', sql1, sql2, sql3, sql4, sql5;
+    var sql = '';
     var ary = [];
     var results, fields;
 
@@ -148,7 +157,8 @@ function getID(args, callback) {
             'user_uptime=CURRENT_TIMESTAMP()';
     } else {
         shoError('300');
-        return callback('undefined', args);
+        callback('undefined', args);
+        return;
     }
     lcsDb.query(sql, ary, function(err, results) {
         if (err) {
@@ -175,8 +185,24 @@ function getID(args, callback) {
                     });
     });
 }
-/*
- * 12-OCT-2012
+/**
+ * validate form data.
+ * @param {Object} args argument.
+ * @param {Function} callback function which should run.
+ *
+ */
+function parseData(args, callback) {
+    lcsAp.doSync(args, [
+                 validCheck.checkParams,
+                 checkDb.blockB,
+                 checkDb.blockA,
+                 validCheck.filter],
+                 callback);
+}
+/**
+ * 前処理
+ * @param {Object} args argument of parent function.
+ * @param {function} callback function should run at next step.
  */
 function prepareData(args, callback) {
     args.seqnID = 'id_user';
@@ -185,14 +211,19 @@ function prepareData(args, callback) {
                  callback);
 }
 
-/*
+/**
  * main routine
  * date 22.mar.2012
+ * @param {Object} req request data from client.
+ * @param {Object} res respons data to client.
+ * @param {Object} frame data for render.
+ * @author msyaono@rockos.co.jp
  */
 exports.addProf = function(req, res, frame) {
 
     var posts = {};
     var args = {};
+    var sync_pool = [];
 
     /* page情報設定 */
     posts.frameNavi = frame.frameNavi;
@@ -203,7 +234,7 @@ exports.addProf = function(req, res, frame) {
     args.res = res;
     args.post = posts;
     args.errors = {};
-    lcsAp.initSync();
+    lcsAp.initSync(sync_pool);
     lcsAp.doSync(args, [
                  parseData,     /* 入力チェック*/
                  prepareData,   /* 前処理 */
