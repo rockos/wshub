@@ -1,9 +1,0 @@
-/*
- * main routine
- * date 22.mar.2012
- */
-exports.main = function(req, res){
-    var deffile = './controller/data/def.json';
-    var posts = JSON.parse(require('fs').readFileSync(deffile));
-    res.render('scr/scr800', posts);
-};
