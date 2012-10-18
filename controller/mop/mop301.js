@@ -262,24 +262,7 @@ function setEcho(args, nextDo) {
     var req = args.req, res = args.res;
 
     // information bar へ出力
-    args.posts.mesg = 'ここは警告表示行';
-
-    // text object へ出力
-    if( req.body.txt1 ) {
-        args.posts.text.txt1 = req.body.txt1;
-    } else {
-        args.posts.text.txt1 = '';
-    }
-
-    //check box へ出力
-    args.req.body.chk1 = ['c1','c2'];
-    if( req.body.chk1 ) {
-        for( var i=0 ; i<req.body.chk1.length ; i++ ) {
-            if(req.body.chk1[i]){
-                args.posts.checkbox.chk1[req.body.chk1[i]] = "checked";
-            }
-        }
-    }
+    args.posts.mesg = "";
 
     nextDo( null, args );
     return;
