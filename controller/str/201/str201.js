@@ -439,8 +439,15 @@ exports.main = function(req, res, frame){
     };
 
     debugger;
+
+    /*
+lcsAp.syslog('info', '懸念を表明する');
+lcsAp.syslog('notice', '強い懸念を表明する');
+lcsAp.syslog('error', '強い遺憾の意を示す');
+    */
     for (var key in tof) {
         if (req.body[key]) {
+                lcsAp.syslog('error', 'error from str', {'key':key});
             if (typeof tof[key] === "function") {
                 tof[key](req, res, frame);
                 return;

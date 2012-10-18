@@ -1,7 +1,0 @@
-{
- "0" : {"text" : "Process complete.", "kind":"I"}
-,"2" : {"text" : "This method is out of supposition.", "kind":"F"}
-,"3" : {"text" : "This button is out of supposition.", "kind":"F"}
-,"99" : {"text" : "Database error occured.", "kind":"F"}
-,"100" : {"text" : "This error is out of supposition.", "kind":"W"}
-}
