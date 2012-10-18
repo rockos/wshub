@@ -1,0 +1,100 @@
+/**
+ *  scr751
+ */
+div.scr751 {
+    width:1120px;
+    height:790px;
+    border: solid 1px white;
+}
+
+div.scr751 div.header751 {
+    margin-left:10px;
+    margin-right:10px;
+    margin-top:10px;
+    width:1100px;
+    height:40px;
+    border: none 1px black;
+}
+div.scr751 div.header751 h1 {
+    float: left;
+    margin-left:5px;
+    font-size: 20px;
+}
+div.scr751 div.header751 q {
+    float: right;
+    margin-right:5px;
+    font-size: 14px;
+}
+
+div.scr751 table.list751 {
+    margin-left:5px;
+    margin-right:5px;
+    width:1110px;
+    border-collapse: collapse;
+    border: solid 1px #999;
+    table-layout: fixed;
+}
+div.scr751 table.list751 tr {
+    height:44px;
+}
+div.scr751 table.list751 th,
+div.scr751 table.list751 td {
+    border: solid 1px #999;
+    padding: 4px 6px;
+}
+div.scr751 table.list751 th {
+    background: #E6E6E6;
+    white-space: ;
+    color: #666;
+    font-weight: bold;
+}
+
+div.scr751 table.list751 tr th:nth-child(1) {
+    width: ;
+}
+div.scr751 table.list751 tr th:nth-child(2) {
+    width: 80px;
+}
+div.scr751 table.list751 tr th:nth-child(3) {
+    width: 200px;
+}
+div.scr751 table.list751 tr th:nth-child(4) {
+    width: 200px;
+}
+div.scr751 table.list751 tr th:nth-child(5) {
+    width: 80px;
+}
+div.scr751 table.list751 tr th:nth-child(6) {
+    width: 50px;
+}
+div.scr751 table.list751 tr th:nth-child(7) {
+    width: 120px;
+}
+div.scr751 table.list751 tr th:nth-child(8) {
+    width: 180px;
+}
+
+div.scr751 table.list751 tr td:nth-child(1) {
+    text-align:left;
+}
+div.scr751 table.list751 tr td:nth-child(2) {
+    text-align:left;
+}
+div.scr751 table.list751 tr td:nth-child(3) {
+    text-align:left;
+}
+div.scr751 table.list751 tr td:nth-child(4) {
+    text-align:left;
+}
+div.scr751 table.list751 tr td:nth-child(5) {
+    text-align:left;
+}
+div.scr751 table.list751 tr td:nth-child(6) {
+    text-align:center;
+}
+div.scr751 table.list751 tr td:nth-child(7) {
+    text-align:left;
+}
+div.scr751 table.list751 tr td:nth-child(8) {
+    text-align:left;
+}

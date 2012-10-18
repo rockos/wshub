@@ -95,8 +95,8 @@ exports.main = function(req, res, frame){
         return;
     }
 
-    posts = lcsAp.initialz_posts( req, posts );
-    if( !posts ) {
+    posts = lcsAp.initPosts(req, frame);
+    if (!posts) {
         res.redirect('/');
         return;
     }

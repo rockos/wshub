@@ -297,6 +297,13 @@ function setEcho(args, nextDo) {
 function postData(args, nextDo) {
     var req = args.req, res = args.res, posts = args.posts;
 
+    //**** デモ中 ***********************************************************
+    var __file = "./controller/mop/test002.json";
+    args.posts.table = JSON.parse(require('fs').readFileSync(__file));
+    nextDo( null, args );
+    //***********************************************************************
+
+    /*
     var sql = "",
         part_rows = [];
 
@@ -327,6 +334,7 @@ function postData(args, nextDo) {
         args.posts.table.tab1 = part_rows;
         nextDo( null, args );
     });
+    */
 }
 
 /**
@@ -338,6 +346,13 @@ function postData(args, nextDo) {
 function optionsDsp(args, nextDo) {
     var req = args.req, res = args.res;
 
+    //**** デモ中 ***********************************************************
+    var __file = "./controller/mop/test001.json";
+    args.posts.select = JSON.parse(require('fs').readFileSync(__file));
+    nextDo( null, args );
+    //***********************************************************************
+
+    /*
     var sql = "",
         ary = [];
 
@@ -362,6 +377,7 @@ function optionsDsp(args, nextDo) {
         args.posts.select.opt1 = results;
         nextDo( null, args );
     });
+    */
 }
 
 /**
@@ -376,6 +392,8 @@ function addPB(req, res, posts) {
 
     lcsAp.series(args,
                  [setEcho,
+                  optionsDsp,
+                  postData,
                   dspWin], /* 後処理 */
                  fin);
 }
@@ -411,6 +429,7 @@ function initSend(req, res, posts) {
     lcsAp.series(args,
                  [setEcho,
                   optionsDsp,
+                  postData,
                   dspWin], /* 後処理 */
                  fin);
 }
