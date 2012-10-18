@@ -1,0 +1,98 @@
+<% layout('layout') -%>
+
+<form id="main" name="main_form" method="post" action="/scr/119">
+   <script>
+    var dataSet = function(x) {
+        var ary = x.value.split(',');
+        main_form.pcode.value = ary[0];
+        main_form.sqty.value = ary[1];
+        main_form.pnam.value = ary[2];
+        main_form.lotn.value = ary[3];
+        main_form.mem1.value = ary[4];
+        main_form.mem2.value = ary[5];
+        main_form.mem3.value = ary[6];
+        }
+    </script>
+
+ <INPUT type="hidden" id="funcPB" name="func_xxx" value="xxx">
+ <INPUT type="hidden" id="id_location" name="undefined" value="undefined">
+
+<input type="hidden" name="dspcstm" value="<%= dspcstm_val %>">
+
+  <div id="sub_body">
+    <p class="<%= dspcstm['corp'] %>"><a href="#">法人会員様</a></p>
+    <p class="<%= dspcstm['priv'] %>"><a href="#">個人会員様</a></p>
+    <p class="<%= dspcstm['vist'] %>"><a href="#">ビジター様</a></p>
+    <ul>
+      <li><input type="submit" class="send" name="QRY" value="検索"><li>
+      <li class="hidden"><a href="#">レポート</a><li>
+    </ul>
+  </div>
+
+
+  <div id="main_body">
+    <div class="mesg_bar">
+      <span class="= mesg_level_color "><%= mesg %></span>
+    </div>
+
+    <a href="#" class="next">反時計回転</a>
+    <a href="#" class="prev">時計回転</a>
+
+
+        <ul class='test'>
+        <% for (var i = 0, max = pageNavi.tana.length; i < max; i++) { %>
+             <li class="mover" onClick="rcsSetAttr('<%= pageNavi.tana[i].name %>')">
+                 <%= pageNavi.tana[i].name %></li>
+        <% } %>
+        </ul>
+
+        <table class="list201">
+          <colgroup>
+            <col span="1" class="c1">
+            <col span="1" class="c2">
+            <col span="1" class="c3">
+            <col span="1" class="c4">
+            <col span="1" class="c5">
+            <col span="1" class="c6">
+            <col span="1" class="c7">
+            <col span="1" class="c8">
+            <thead>
+              <tr>
+                <th></th>
+                <th><%= pageTags.head1 %></th>
+                <th><%= pageTags.head2 %></th>
+                <th><%= pageTags.head3 %></th>
+                <th><%= pageTags.head4 %></th>
+                <th><%= pageTags.head5 %></th>
+                <th><%= pageTags.head6 %></th>
+                <th><%= pageTags.head7 %></th>
+              </tr>
+            </thead>
+
+
+        <tbody>
+        <% for (var i = 0, max = pageNavi.tab.length; i < max; i++) { %>
+        <tr>
+          <td>
+            <% if (pageNavi.tab[i].sqty >1000) { %>
+              <input type='radio' name='rdo01' value='<%= pageNavi.tab[i].radiodata %>' onclick='dataSet(this);' checked > 
+            <% } else { %>
+              <input type='radio' name='rdo01' value='<%= pageNavi.tab[i].radiodata %>' onclick='dataSet(this);'> 
+            <% } %>
+          </td>
+          <TD><%= pageNavi.tab[i].userid %></TD>
+          <TD><%= pageNavi.tab[i].sqty %></TD>
+          <TD><%= pageNavi.tab[i].pnam %></TD>
+          <TD><%= pageNavi.tab[i].lotn %></TD>
+          <TD><%= pageNavi.tab[i].mem1 %></TD>
+          <TD><%= pageNavi.tab[i].mem2 %></TD>
+          <TD><%= pageNavi.tab[i].mem3 %></TD>
+        </tr>
+        <% } %>
+        </tbody>
+    </table>
+
+
+
+</div>
+</form>

@@ -62,7 +62,7 @@ var PORT = opts.get('port') || 3010;
 //        app.engine('html', require('ejs').renderFile);
 app.engine('ejs', engine);
 
-app.set('views', __dirname + '/views/jp');
+app.set('views', __dirname + '/views');
 app.set('view engine', 'ejs');
 app.locals({_layoutFile: false});
 app.use(express.bodyParser());
@@ -88,9 +88,19 @@ app.configure('production', function() {
 
 /* 画面プログラムの登録 */
 lcsUI.config([
-             {'map': './controller/map.json'},
-             {'frame': './views/jp/framenavi.json'},
-             {'tags': './views/jp/pagetags.json'}
+             {map: './ini/map.json'},
+             {frame: [
+                 {jp: './ini/scr/jp/framenavi.json'},
+                 {kr: './ini/scr/kr/framenavi.json'},
+                 {en: './ini/scr/en/framenavi.json'},
+                 {ch: './ini/scr/ch/framenavi.json'},
+             ]},
+             {tags: [
+                 {jp: './ini/scr/jp/pagetags.json'},
+                 {kr: './ini/scr/kr/pagetags.json'},
+                 {en: './ini/scr/en/pagetags.json'},
+                 {ch: './ini/scr/ch/pagetags.json'},
+             ]}
 ]);
 
 /* ルーティング処理 */
@@ -107,7 +117,7 @@ app.post('/check', lcsUI.checkUser);
 var server = http.createServer(app).listen(PORT, function() {
     lcsAp.syslog('info',
                  {'Somali server(node v0.8.11) listening on port ': PORT,
-                     'running mod': app.settings.env});
+                     'running mode': app.settings.env});
 });
 
 /*

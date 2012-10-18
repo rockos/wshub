@@ -1,28 +1,8 @@
-<!--
-<header id="header">
-	<h1 id="siteID"><a href="#">MdN Card</a></h1>
-	<ul id="userInfo">
-		<li>こんにちは<b>山田敬美</b>さん（<a href="#">ログアウト</a>）</li>
-		<li>前回ログイン日時：2011年12月25日</li>
-	</ul>
-	<ul id="utilityNav">
-		<li><a href="#">ヘルプ</a></li>
-		<li><a href="#">お問い合わせ</a></li>
-	</ul>
-	<nav id="mainNav">
-		<ul>
-			<li><a href="#">トップ</a></li>
-			<li><a href="#">ご利用明細</a></li>
-			<li><a href="#">ご利用可能額</a></li>
-			<li><a href="#">キャッシング</a></li>
-			<li><a href="#">お客様情報</a></li>
-		</ul>
-	</nav>
-</header>
--->
+<% layout('layout') -%>
+
 <section id="contents_rpt">
 	<div class="lead">
-		<h1>在庫明細</h1>
+		<h1>お客様番号 C20120001</h1>
 		<p>確定済みの明細をご確認いただけます。</p>
 	</div>
 <section class="detailList">
@@ -31,9 +11,9 @@
 			<thead>
 				<tr>
 					<th>入庫日</th>
-					<th>品名</th>
-					<th>部品番号</th>
-					<th>注文番号</th>
+					<th>ロッカーNo</th>
+					<th>タグNo</th>
+					<th>預け入れ期間(日)</th>
 					<th>メモ</th>
 					<th>数量</th>
 
@@ -42,14 +22,14 @@
 			<tbody>
 			  <tr>
 			    <% var sum=0 %>
-			  <% for (var i = 0; i < tab.length; i++) { %>
-			     <TD><%= tab[i].date %></TD>
-			     <TD><%= tab[i].pname %></TD>
-			     <TD><%= tab[i].pcode %></TD>
-			     <TD><%= tab[i].odno %></TD>
-			     <TD><%= tab[i].mem1 %></TD>
-			     <TD><%= tab[i].sqty %></TD>
-			     <% sum += tab[i].sqty %>
+			  <% for (var i = 0; i < pageNavi.tab.length; i++) { %>
+			     <TD><%= pageNavi.tab[i].date %></TD>
+			     <TD><%= pageNavi.tab[i].pname %></TD>
+			     <TD><%= pageNavi.tab[i].pcode %></TD>
+			     <TD align=center><%= pageNavi.tab[i].odno %></TD>
+			     <TD><%= pageNavi.tab[i].mem1 %></TD>
+			     <TD align=right><%= pageNavi.tab[i].sqty %></TD>
+			     <% sum += parseInt(pageNavi.tab[i].sqty) %>
 			  </TR>   
 			  <% } %>
 

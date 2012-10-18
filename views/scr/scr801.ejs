@@ -1,0 +1,68 @@
+<% layout('layout') -%>
+
+<form name="main_form" method="post" action="/scr/800">
+  <INPUT type="hidden" id="funcPB" name="send_xxx" value="FUNC">
+  <div id="main_body_800">
+      <table>
+        <colgroup>
+        <col span="1" class="c1"/>
+        <col span="1" class="c2"/>
+        <col span="1" class="c3"/>
+        <col span="1" class="c4"/>
+        <tr>
+          <th></th>
+          <th>差出人</th>
+          <th>件名</th>
+          <th>日付</th>
+        </tr>
+        <tr class="<%= current['Demo'] %>" 
+          onclick="document.getElementById('funcPB').name='Demo';document.main_form.submit();">
+		  <td></td>
+          <td>ヘルプデスク</td>
+          <td>このデモについて</td>
+          <td>2012/05/08 10:00</td>
+        </tr>
+        <tr class="<%= current['I18N'] %>" 
+          onclick="document.getElementById('funcPB').name='I18N';document.main_form.submit();">
+          <td></td>
+          <td>ヘルプデスク</td>
+          <td>言語の切換え</td>
+          <td>2012/05/06 16:32</td>
+        </tr>
+        <tr class="<%= current['Graph'] %>" 
+          onclick="document.getElementById('funcPB').name='Graph';document.main_form.submit();">
+          <td></td>
+          <td>ヘルプデスク</td>
+          <td>見える化</td>
+          <td>2012/01/05 14:22</td>
+        </tr>
+      </table>
+  </div>
+
+  <div id="main_dtil_800">
+    <ul>
+      <li><span>件名:</span>デモについてのご説明</li>
+      <li><span>From:</span>ヘルプデスク</li>
+      <li><span>To:</span>foo&ltat&gtvar.co.jp</li>
+    </ul>
+
+    <p>仮想のトランクルームを対象にしたWEBサイトです。
+       対話的でレスポンシブなWEBアプリケーションを体験することができます。<br>
+       体験用アカウント hello とパスワードはworld でログインしてください。
+    </p>
+
+    <img src="/images/sys_kousei.jpeg" class="img1"></img>
+    <div>
+      <h2>特徴1 リアルタイム環境モニタ</h2>
+      <p>Wifiを搭載した機器からのデータをリアルタイムに収集・表示します。</p>
+      <h2>特徴2 メンテナンスフリー</h2>
+      <p>インフラの保守・管理から開放されます。</p>
+      <h2>特徴3 レスポンシブweb</h2>
+      <p>PC、タブレット、モバイルフォンに対応します。
+      <p>また、Webサーバとアプリケーションの一体化により高レスポンスを実現します。</p>
+      <h2>特徴4 国際化対応</h2>
+      <p>日本語、英語はもとより中国語や韓国語など多言語に容易に対応できます。</p>
+    </div>
+  </div>
+
+</form>

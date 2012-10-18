@@ -1,0 +1,20 @@
+<% layout('layout') -%>
+<%- stylesheet('/stylesheets/cstm/500.css') -%>
+
+<form name="main_form" method="post" action="/scr/error">
+  <table>
+    <tbody>
+         <tr>
+           <TD><%= mesg %></TD>
+         </tr>
+      <!--
+      <% for (var i = 0, max = mesg.length; i < max; i++) { %>
+         <tr>
+           <TD><%= mesg[i] %></TD>
+         </tr>
+         <% } %>
+    -->
+    </tbody>
+  </table>
+
+</form>
