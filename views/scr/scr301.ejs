@@ -1,117 +1,152 @@
-<div id="contents">
+<% layout('layout') -%>
+<%- stylesheet('/stylesheets/cstm/301.css') -%>
 
-	<div id="main">
-		<section id="mailTray">
-			<h1>製造指示</h1>
-			<div id="operationPanel">
-				<ul>
-					<li><a href="#">出庫開始</a></li>
-					<li><a href="#">出庫中断</a></li>
-					<li><a href="#">状況報告</a></li>
-				</ul>
-				<ul>
-					<li><a href="#">登録</a></li>
-					<li><a href="#">削除</a></li>
-				</ul>
-				<ul>
-					<li><a href="#">指示書印刷</a></li>
-				</ul>
-			</div>
-			<div id="mailList">
-				<form action="#" method="post">
-					<table>
-						<thead>
-							<tr>
-								<th></th>
-								<th>オーダ番号</th>
-								<th>ロット</th>
-								<th>製造エリア</th>
-								<th>製造量</th>
-							</tr>
-						</thead>
-						<tbody>
-							<tr>
-								<td><input type="radio" name='mop'></td>
-								<td>2012/07/15 #1234</td>
-								<td>LOT12A01</td>
-								<td>AREA_01</td>
-								<td>1234</td>
-							</tr>
-							<tr class="current"><
-								<td> <input type="radio" name='mop'checked>
-								<td>2012/07/15 #1234</td>
-								<td>LOT12A01</td>
-								<td>AREA_01</td>
-								<td>1234</td>
-							</tr>
-							<tr>
-								<td><input type='radio' name='mop'></td>
-								<td>2012/07/15 #1234</td>
-								<td>LOT12A01</td>
-								<td>AREA_01</td>
-								<td>1234</td>
-							</tr>
-						</tbody>
-					</table>
-				</form>
-			</div>
-		</section>
-		<section id="mailDetail">
-			<header>
-				<h1>出庫状況一覧</h1>
-				<ul>
-					<li><span>登録:</span>製造部</li>
+<form name="main_form" method="post" action="/scr/301">
 
-				</ul>
-				<p><time datetime="2012-01-06T16:32:30+0900">2012/01/06 16:32</time></p>
-			</header>
-			<div class="body">
-				6月10日〜12日時点。<br>
-				<br>
-				------------------------------------------------------------<br>
-				A棟Xエリア<br>
-				------------------------------------------------------------<br>
-				オーダ番号：2012/07/15 #1234<br>
-				開始時間： 2012/06/02 09:00<br>
-				作業状況： 一部欠品発生<br>
-				<br>
-				------------------------------------------------------------<br>
-				オーダ番号：2012/07/15 #1234<br>
-				開始時間： 2012/06/02 09:00<br>
-				作業状況： 一部欠品発生<br>
-				<br>
-				------------------------------------------------------------<br>
-				A棟Yエリア<br>
-				------------------------------------------------------------<br>
-				オーダ番号：2012/07/15 #1234<br>
-				開始時間： 2012/06/02 09:00<br>
-				作業状況： 一部欠品発生<br>
-				<br>
-				------------------------------------------------------------<br>
-				オーダ番号：2012/07/15 #1234<br>
-				開始時間： 2012/06/02 09:00<br>
-				作業状況： 一部欠品発生<br>
-				<br>
-				------------------------------------------------------------<br>
-			</div>
-		</section>
-	</div>
-	<div id="sub">
-	     <section id="createMail">
-		<h1>作業種類選択</h1>
-		<p><a href="#">新規作成</a></p>
-	      </section>
-		<section id="folderList">
-		<h1>作業一覧</h1>
-			<ul>
-			<li class="current"><a href="#">製造部供給</a></li>
-			<li><a href="#">外注出荷</a></li>
-		        <li><a href="#">2次保管</a></li>
-			<li><a href="#">検品</a></li>
-			<li><a href="#">廃棄</a></li>
-			</ul>
-																			    </section>
-																			</div>
-</div>
+  <div id="sub_body">
+    <p class=""><a href="#"><%= pageTags.caption %></a></p>
+    <ul>
+      <% if( step=="0" || step=="1" ) { %>
+      <li><input type="submit" name="send_iqy" value="<%= pageTags.send_iqy %>"></li>
+      <% } %>
 
+<!--
+      <% if( step=="99" ) { %>
+      <li class="add301"><input type="button" class="send" name="" value="予約設定" />
+        <ul>
+          <li>
+            <labelx for="txt1">予定日</label>
+            <inputx type="text" id="txt1" class="" size="8" maxlength="8" 
+                   placeholder="必須入力" name="txt1" 
+                   value="<%= text.txt1 %>" tabindex = "-1">
+          </li>
+          <li>
+            <labelx for="txt2">備考　</label>
+            <inputx type="text" id="txt2" class="" size="20" maxlength="20" 
+                   placeholder="オプション" name="txt2" 
+                   value="<%= text.txt2 %>" tabindex = "-1">
+          </li>
+          <li><inputx type="submit" class="send" name="send_add" value="実行"></li>
+        </ul>
+      </li>
+      <% } %>
+-->
 
+      <% if( step=="2" ) { %>
+      <li><input type="submit" name="send_add" value="<%= pageTags.send_add %>" /></li>
+      <% } %>
+
+      <% if( step=="2" ) { %>
+      <li><input type="submit" name="send_del" value="<%= pageTags.send_del %>"></li>
+      <% } %>
+
+      <% if( step=="2" ) { %>
+      <li><input type="submit" name="send_bak1" value="<%= pageTags.send_bak1 %>"></li>
+      <% } %>
+
+      <% if( step=="3" ) { %>
+      <li><input type="submit" name="send_add_exe" value="<%= pageTags.send_add_exe %>"></li>
+      <% } %>
+
+      <% if( step=="4" ) { %>
+      <li><input type="submit" name="send_del_exe" value="<%= pageTags.send_del_exe %>"></li>
+      <% } %>
+
+      <% if( step=="3" || step=="4" ) { %>
+      <li><input type="submit" name="send_bak2" value="<%= pageTags.send_bak2 %>"></li>
+      <% } %>
+    </ul>
+  </div>
+
+  <div id="main_body">
+    <div class="mesg_bar">
+      <span class="<%= mesg_level_color %>"><%= mesg %></span>
+    </div>
+
+    <div class="cond301">
+      <ul>
+        <% if( step=="0" || step=="1" ) { %>
+        <li class="l1">
+          <label for="sel1"><%= pageTags.cond_id_user %></label>
+          <select name="sel1" id="sel1">
+            <option value=""></option><!--dmy-->
+            <% for (var i=0,max=select.opt1.length; i < max; i++ ) { %>
+              <option value="<%= select.opt1[i].value %>" <%= select.opt1[i].selected %>>
+                <%= select.opt1[i].dsp %>
+              </option>
+            <% } %>
+          </select>
+        </li>
+        <% } %>
+
+        <% if( step=="2" || step=="3" || step=="4" ) { %>
+        <li class="l2">
+          <label for="txt3"><%= pageTags.cond_id_user %></label>
+          <input type="text" id="txt3" class="" size="8" maxlength="8" 
+                 placeholder="" name="txt3" 
+                 value="<%= text.txt3 %>" tabindex="-1" readonly>
+          <%= dsp.user %>
+        </li>
+        <% } %>
+
+        <% if( step=="3" ) { %>
+        <li class="l3">
+          <label for="txt1"><%= pageTags.cond_schedule %></label>
+          <input type="text" id="txt1" class="" size="10" maxlength="10" 
+                 placeholder="<%= pageTags.ph_required %>" name="txt1" 
+                 value="<%= text.txt1 %>" tabindex = "-1">
+        </li>
+        <li class="l4">
+          <label for="txt2"><%= pageTags.cond_remark %></label>
+          <input type="text" id="txt2" class="" size="30" maxlength="30" 
+                 placeholder="<%= pageTags.ph_option %>" name="txt2" 
+                 value="<%= text.txt2 %>" tabindex = "-1">
+        </li>
+        <% } %>
+      </ul>
+    </div>
+
+    <br class="dmy_spc">
+
+    <table class="list301">
+        <thead>
+        <tr>
+          <th><%= pageTags.listhd_select %></th>
+          <th><%= pageTags.listhd_address %></th>
+          <th><%= pageTags.listhd_item_code %></th>
+          <th><%= pageTags.listhd_item_name %></th>
+          <th><%= pageTags.listhd_id_stock %></th>
+          <th><%= pageTags.listhd_quantity %></th>
+          <th><%= pageTags.listhd_date %></th>
+          <th><%= pageTags.listhd_remark %></th>
+          <th><%= pageTags.listhd_reserve %></th>
+        </tr>
+        </thead>
+
+        <tbody>
+        <% if( step!="0" ) { %>
+          <% for (var i = 0, max = table.tab1.length; i < max; i++) { %>
+          <tr>
+            <td>
+            <% if (table.tab1[i].chk1.exist == "1") { %>
+              <input type='checkbox' name='tab1_chk' 
+                value='<%= table.tab1[i].chk1.val %>' <%= table.tab1[i].chk1.on %>> 
+            <% } %>
+            </td>
+            <td><%= table.tab1[i].col1 %></td>
+            <td><%= table.tab1[i].col2 %></td>
+            <td><%= table.tab1[i].col3 %></td>
+            <td><%= table.tab1[i].col4 %></td>
+            <td><%= table.tab1[i].col5 %></td>
+            <td><%= table.tab1[i].col6 %></td>
+            <td><%= table.tab1[i].col7 %></td>
+            <td><%= table.tab1[i].col8 %></td>
+          </tr>
+          <% } %>
+        <% } %>
+        </tbody>
+    </table>
+
+  </div>
+
+</form>
