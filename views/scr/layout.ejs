@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= frameNavi.name %></title>
+    <link rel='stylesheet' href='/stylesheets/html5reset.css' />
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+
+<!-- 5-sep-2012 locos client library -->
+    <script type="text/javascript" src="/javascripts/rcs/libclient.js"></script>
+  </head>
+
+  <body>
+    <div id="body">
+      <%- body %>
+    </div>
+
+    <div id="header">
+	  <div class="company"><a href="/"><%= frameNavi.customer %></a></div>
+      <div class="topNavi">
+        <ul>
+          <% for (var i = 0, max = frameNavi.topMenu.length; i < max; i++) { %>
+          <li><a href="#"><%= frameNavi.topMenu[i].name %></a>
+            <ul>
+              <% for (var j = 0, maxj = frameNavi.topMenu[i].subMenu.length; j < maxj; j++) { %>
+              <li><a href="<%= frameNavi.topMenu[i].subMenu[j].href %> "> <%= frameNavi.topMenu[i].subMenu[j].name %></a></li>
+              <% } %>
+            </ul>
+          </li>
+          <% } %>
+        </ul>
+      </div>
+
+      <p class="comment"><%= frameNavi.comment %></p>
+      <p class="userInfo">
+        <span><%= frameNavi.userid %></span>
+	  </p>
+    </div>
+
+    <div id="footer">
+      <h3>Copyright (C) Rockos co.,Ltd. All Rights Reserved.</h3>
+    </div>
+  </body>
+</html>

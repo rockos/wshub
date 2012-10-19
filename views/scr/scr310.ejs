@@ -1,0 +1,222 @@
+<% layout('layout') -%>
+<%- stylesheet('/stylesheets/cstm/310.css') -%>
+
+<form name="prnt_form" method="post" action="/scr/310" onSubmit="return false;">
+  <input type="hidden" id="send_prn" name="" value="帳票">
+
+</form>
+
+<script>
+var print = function() {
+    var fff = document.prnt_form;
+    fff.target = "print";
+    var wo = window.open("about:blanc",fff.target);
+    wo.focus();
+    document.getElementById("send_prn").name="send_prn";
+    fff.submit();
+}
+</script>
+
+<form name="main_form" method="post" action="/scr/310">
+
+  <div id="sub_body">
+    <p class=""><a href="#">棚卸</a></p>
+    <ul>
+      <% if( step == "0" || step == "1" ) { %>
+      <li><input type="submit" class="send" name="send_iqy" value="表示"></li>
+      <% } %>
+
+      <% if( step == "1" ) { %>
+      <li><input type="submit" class="send" name="send_mod" value="データ変更"></li>
+      <% } %>
+
+      <% if( step == "2" ) { %>
+      <li><input type="submit" class="send exe303" name="send_exe" value="実行"></li>
+      <li><input type="submit" class="send" name="send_iqy" value="戻る"></li>
+      <% } %>
+
+      <% if( step == "1" ) { %>
+      <li><input type="button" class="send" value="帳票" onclick="print()"></li>
+      <% } %>
+    </ul>
+  </div>
+
+  <div id="main_body">
+    <div class="mesg_bar">
+      <span class="<%= mesg_level_color %>"><%= mesg %></span>
+    </div>
+
+    <% if( step == "0" || step == "1" ) { %>
+    <div class="cond310">
+      <ul>
+        <li>
+          <label for="txt1">棚番地</label>
+            <input type="text" id="txt1" class="" size="2" maxlength="2" 
+                   name="txt1" 
+                   value="<%= text.txt1 %>" tabindex="11">
+            <input type="text" id="txt2" class="" size="2" maxlength="2" 
+                   name="txt2" 
+                   value="<%= text.txt2 %>" tabindex="12">
+            <input type="text" id="txt3" class="" size="2" maxlength="2" 
+                   name="txt3" 
+                   value="<%= text.txt3 %>" tabindex="13">
+            <span>〜</span>
+            <input type="text" id="txt4" class="" size="2" maxlength="2" 
+                   name="txt4" 
+                   value="<%= text.txt4 %>" tabindex="14">
+            <input type="text" id="txt5" class="" size="2" maxlength="2" 
+                   name="txt5" 
+                   value="<%= text.txt5 %>" tabindex="15">
+            <input type="text" id="txt6" class="" size="2" maxlength="2" 
+                   name="txt6" 
+                   value="<%= text.txt6 %>" tabindex="16">
+        </li>
+
+        <li>
+          <label for="sel1">会員番号</label>
+            <select name="sel1" id="sel1">
+              <option value=""></option><!--dmy-->
+              <% for (var i=0,max=select.opt1.length; i < max; i++ ) { %>
+                <option value="<%= select.opt1[i].value %>" <%= select.opt1[i].selected %>>
+                  <%= select.opt1[i].dsp %>
+                </option>
+              <% } %>
+            </select>
+        </li>
+
+        <li>
+          <label for="txt7">預入日</label>
+            <input type="text" id="txt7" class="" size="10" maxlength="10" 
+                   name="txt7" 
+                   value="<%= text.txt7 %>" tabindex="17">
+            <span>〜</span>
+            <input type="text" id="txt8" class="" size="10" maxlength="10" 
+                   name="txt8" 
+                   value="<%= text.txt8 %>" tabindex="18">
+        </li>
+      </ul>
+    </div>
+    <% } %>
+
+    <% if( step == "1" || step == "2" ) { %>
+    <table class="list310">
+      <colgroup>
+        <col span="1" class="c21">
+        <col span="1" class="c22">
+        <col span="1" class="c23">
+        <col span="1" class="c24">
+        <col span="1" class="c25">
+        <col span="1" class="c26">
+        <col span="1" class="c27">
+        <col span="1" class="c28">
+        <col span="1" class="c29">
+        <thead>
+        <tr>
+          <th></th>
+          <th>番地</th>
+          <th>会員番号<br>会員名</th>
+          <th>品コード<br>品名</th>
+          <th>タグNo</th>
+          <th>数量</th>
+          <th>預入日</th>
+          <th>お客様メモ</th>
+          <th>棚卸</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        <% for (var i = 0, max = table.tab1.length; i < max; i++) { %>
+        <tr>
+          <td class="c21">
+          <% if (table.tab1[i].chk1.exist == "1") { %>
+            <input type='radio' name='tab1_chk' 
+              value='<%= table.tab1[i].chk1.value %>' <%= table.tab1[i].chk1.on %>> 
+          <% } %>
+          </td>
+          <td class="c22"><%= table.tab1[i].col1 %></td>
+          <td class="c23"><%= table.tab1[i].col2 %><br><%= table.tab1[i].col3 %></td>
+          <td class="c24"><%= table.tab1[i].col4 %><br><%= table.tab1[i].col5 %></td>
+          <td class="c25"><%= table.tab1[i].col6 %></td>
+          <td class="c26"><%= table.tab1[i].col7 %></td>
+          <td class="c27"><%= table.tab1[i].col8 %></td>
+          <td class="c28"><%= table.tab1[i].col9 %></td>
+          <td class="c29"><%= table.tab1[i].col10 %></td>
+        </tr>
+        <% } %>
+        </tbody>
+    </table>
+    <% } %>
+
+    <% if( step == "2" ) { %>
+    <div class="modf310">
+      <ul>
+        <li>
+          <label for="m_txt1">棚番地</label>
+            <input type="text" id="m_txt1" class="" size="2" maxlength="2" 
+                   name="m_txt1" 
+                   value="<%= mod.text.txt1 %>" tabindex="111" readonly>
+            <input type="text" id="txt2" class="" size="2" maxlength="2" 
+                   name="m_txt2" 
+                   value="<%= mod.text.txt2 %>" tabindex="112" readonly>
+            <input type="text" id="txt3" class="" size="2" maxlength="2" 
+                   name="m_txt3" 
+                   value="<%= mod.text.txt3 %>" tabindex="113" readonly>
+        </li>
+
+        <li>
+          <label for="m_sel1">会員番号</label>
+            <select name="m_sel1" id="m_sel1">
+              <option value=""></option><!--dmy-->
+              <% for (var i=0,max=mod.select.opt1.length; i < max; i++ ) { %>
+                <option value="<%= mod.select.opt1[i].value %>" <%= mod.select.opt1[i].selected %>>
+                  <%= mod.select.opt1[i].dsp %>
+                </option>
+              <% } %>
+            </select>
+        </li>
+
+        <li>
+          <label for="m_sel2">品コード</label>
+            <select name="m_sel2" id="m_sel2">
+              <option value=""></option><!--dmy-->
+              <% for (var i=0,max=mod.select.opt2.length; i < max; i++ ) { %>
+                <option value="<%= mod.select.opt2[i].value %>" <%= mod.select.opt2[i].selected %>>
+                  <%= mod.select.opt2[i].dsp %>
+                </option>
+              <% } %>
+            </select>
+        </li>
+
+        <li>
+          <label for="m_txt4">タグＮＯ</label>
+            <input type="text" id="m_txt4" class="" size="12" maxlength="12" 
+                   name="m_txt4" 
+                   value="<%= mod.text.txt4 %>" tabindex="114">
+        </li>
+
+        <li>
+          <label for="m_txt5">数量</label>
+            <input type="text" id="m_txt5" class="" size="5" maxlength="5" 
+                   name="m_txt5" 
+                   value="<%= mod.text.txt5 %>" tabindex="115">
+        </li>
+
+        <li>
+          <label for="m_txt6">預入日</label>
+            <input type="text" id="m_txt6" class="" size="8" maxlength="8" 
+                   name="m_txt6" 
+                   value="<%= mod.text.txt6 %>" tabindex="116">
+        </li>
+
+        <li>
+          <label for="m_txt7">お客様メモ</label>
+            <input type="text" id="m_txt7" class="" size="20" maxlength="20" 
+                   name="m_txt7" 
+                   value="<%= mod.text.txt7 %>" tabindex="117">
+        </li>
+    </div>
+    <% } %>
+
+  </div>
+
+</form>

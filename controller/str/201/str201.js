@@ -399,7 +399,7 @@ function _showResult(req, res, frame) {
 function _showInitial(req, res, frame){
 
     var posts = {};
-    var file = './controller/data/str201ini.json';
+    var file = './ini/data/str201ini.json';
 
     var msg = lcsAp.getMsgI18N("0");
     posts.mesg = msg.text;
