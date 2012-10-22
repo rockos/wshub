@@ -213,7 +213,7 @@ function emiter( srct, x, y, err, errorStr, chargeStr ) {
 
     var text = String(x) + "," + String(y) + ","+
         err + "," + errorStr + "," + chargeStr;
-    sck_io.sockets.emit( emit_name, text );
+    sck_io.of("/scr/103").emit( emit_name, text );
 }
 
 /*

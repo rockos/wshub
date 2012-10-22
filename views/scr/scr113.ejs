@@ -1,6 +1,41 @@
 <% layout('layout') -%>
 <%- stylesheet('/stylesheets/cstm/113.css') -%>
 
+<script type="text/javascript" src="/socket.io/socket.io.js"></script>
+<script type="text/javascript">
+var socket = io.connect("/scr/113");
+
+socket.on("mesg", function (text) {
+    document.getElementById("main_body").innerHTML += text;
+});
+var sock = function( my ) {
+    socket.emit(my.name,{"d1":"test","d2":"空棚","d3":"01-02-03"});
+}
+</script>
+
+<script type="text/javascript" src="/javascripts/jquery.min.js"></script>
+<script type="text/javascript" src="/javascripts/fredhq-roundabout-c1bcd37/jquery.roundabout.min.js"></script>
+
+<style>
+.roundabout-holder {
+    list-style: none;
+    width: 45%;
+    height: 10em;
+    margin: 1em auto;
+}
+.roundabout-moveable-item {
+    height: 4em;
+    width: 8em;
+    border: 1px dotted #999;
+    background-color: #f3f3f3;
+    font-size: 2em;
+    cursor: pointer;
+}
+.roundabout-in-focus {
+    cursor: auto;
+}
+</style>
+
 <form name="main_form" method="post" action="/scr/113">
 
   <div id="sub_body">
@@ -8,6 +43,9 @@
     <ul>
       <% if( step=="0" || step=="1" ) { %>
       <li><input type="submit" name="send_iqy" value="<%= pageTags.send_iqy %>"></li>
+      <% } %>
+      <% if( step=="0" || step=="1" ) { %>
+      <li><input type="button" name="sock_iqy" value="<%= pageTags.sock_iqy %>" onclick="sock(this)"></li>
       <% } %>
     </ul>
   </div>
@@ -30,8 +68,41 @@
       </ul>
     </div>
 
+    <div>
+      <ul class="roundabout113">
+        <li><span>1</span>
+        </li>
+        <li><span>2</span></li>
+        <li><span>3</span></li>
+        <li><span>4</span></li>
+        <li><span>5</span></li>
+        <li><span>6</span></li>
+      </ul>
+    </div>
+
     <br class="dmy_spc">
 
   </div>
 
+    <div>
+      <ul class="roundabout113">
+        <li><span>1</span>
+        </li>
+        <li><span>2</span></li>
+        <li><span>3</span></li>
+        <li><span>4</span></li>
+        <li><span>5</span></li>
+        <li><span>6</span></li>
+      </ul>
+    </div>
+
+<script type="text/javascript">
+$(document).ready( function() {
+    $('ul.roundabout113').roundabout({
+        "shape":"square"
+    });
+});
+</script>
+
 </form>
+

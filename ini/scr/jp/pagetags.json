@@ -32,12 +32,13 @@
         "ph_number":     "数字",
         "ph_date":       "日付",
         "end":""
-    },
+    }
 ,"scr113":{
         "caption":       "空棚検索",
         "send_iqy":      "一覧表示",
+        "sock_iqy":      "Sock表示",
 
-        "cond_location":  "会員番号",
+        "cond_location":  "棚番地",
 
         "end":""
     }

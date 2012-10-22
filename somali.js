@@ -131,6 +131,15 @@ process.on('uncaughtException', function(error) {
 
 /* this is for express@v3 */
 var socketio = require('socket.io').listen(server);
+socketio.configure('production', function() {
+        socketio.set('log level', 1);
+    });
+socketio.configure('development', function() {
+        socketio.set('log level', 2);
+    });
+socketio.configure('degub', function() {
+        socketio.set('log level', 2);
+    });
 
 
 global['auth'] = auth;
@@ -141,6 +150,9 @@ global['sck_io'] = socketio;
 /*
  *  バックグラウンドで動く処理
  *  add 2012.06.30 takahashi
+ *  ＊mapに乗せられるかな？
  */
 require('./controller/mgr/mgrmon').main();
 require('./controller/mgr/mgragv').main();
+require('./controller/iqy/iqy113').sck_main();
+

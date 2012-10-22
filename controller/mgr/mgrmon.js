@@ -129,7 +129,7 @@ function showData() {
     }else{
         text = valu[1] - rand + 10;
     }
-    sck_io.sockets.emit('scr104_tmplog', text);
+    sck_io.of("/scr/104").emit('scr104_tmplog', text);
 
     setTimeout( showData, 1000 );
 }
@@ -153,7 +153,7 @@ function showData2() {
     }else{
         text = valu[2] - rand + 45;
     }
-    sck_io.sockets.emit('scr104_worklog', text);
+    sck_io.of("/scr/104").emit('scr104_worklog', text);
 
     setTimeout( showData2, 400 );
 }

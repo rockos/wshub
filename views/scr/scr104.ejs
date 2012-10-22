@@ -268,7 +268,7 @@ var bar_draw = function(text,p,type) {
     }
 }
 
-var socket = io.connect();
+var socket = io.connect("/scr/104");
 
 socket.on("scr104_tmplog", function (text) { 
     document.getElementById("tmplog").innerHTML = text;

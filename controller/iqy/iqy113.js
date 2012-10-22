@@ -152,3 +152,33 @@ exports.main = function(req, res, frame){
     return;
 
 }
+
+/**
+ * 空棚画面/socket.io main routine
+ * @module iqy113
+ * @param  
+ * @date   22/oct/2012
+ */
+exports.sck_main = function(){
+    var lcname = sck_io.of("/scr/113");
+    lcname.on("connection", function(socket) {
+            console.log( "connect---" + "/scr/113" );
+            debugger;
+            lcname.sockets[socket.id].volatile.emit("mesg", "conn::"+socket.id+"<br>");
+
+            /*クライアントからエミットされた*/
+            socket.on("sock_iqy", function(msg) {
+                    var ddd = msg;
+                    lcname.sockets[socket.id].volatile.emit("mesg", ddd.d1+"<br>");
+                    lcname.sockets[socket.id].volatile.emit("mesg", ddd.d2+"<br>");
+                    lcname.sockets[socket.id].volatile.emit("mesg", ddd.d3+"<br>");
+
+                });
+
+            /*クライアントからディスコネクトされた*/
+            socket.on("disconnect", function(msg) {
+
+                });
+
+        });
+}
