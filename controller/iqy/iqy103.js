@@ -9,38 +9,17 @@ var fs = require('fs');
  * @param  {number}err, {Object}req, {Object}res, {Object}posts, {function}callback
  * @date   30/jun/2012
  */
-function dspWin(err, req, res, posts) {
+function dspWin(args, callback) {
 
     //Login user用
-    posts.userid = (req.session.userid)?req.session.userid:'undefined';
+    args.posts.userid = (args.req.session.userid)?args.req.session.userid:'undefined';
 
-    if( err ){
-        lcsAp.log('winDsp error : '+err);
-        switch(err){
-        case 2:
-            /*規定外のメソッドタイプです*/
-            posts.mesg = '規定外のメソッドタイプです';
-            posts.mesg_level_color = 'operationPanel_fatal';
-            break;
-        case 3:
-            /*規定外のボタンです*/
-            posts.mesg = '規定外のボタンです';
-            posts.mesg_level_color = 'operationPanel_fatal';
-            break;
-        case 4:
-            /*DB Error*/
-            posts.mesg = 'データベースエラー';
-            posts.mesg_level_color = 'operationPanel_fatal';
-            break;
-        default:
-            posts.mesg = 'その他エラー';
-            posts.mesg_level_color = 'operationPanel_warning';
-        }
-        res.render(posts.scrNo, posts);
-        return;
-    }
+    var msg = lcsAp.getMsgI18N('0');
+    args.posts.mesg = msg.text;
+    args.posts.mesg_lavel_color = msg.warn;
 
-    res.render(posts.scrNo, posts);
+    args.res.render(args.posts.scrNo, args.posts);
+    callback(null, callback);
 }
 
 /**
@@ -49,9 +28,9 @@ function dspWin(err, req, res, posts) {
  * @param  {Object}req, {Object}res, {Object}posts, {function}callback
  * @date   30/jun/2012
  */
-function dmyDsp(req, res, posts, callback) {
+function dmyDsp(args, callback) {
 
-    callback( null, req, res, posts );
+    callback( null, args );
 }
 
 /**
@@ -61,9 +40,12 @@ function dmyDsp(req, res, posts, callback) {
  * @date   30/jun/2012
  */
 function showDemo(req, res, posts) {
+    var args = {"req":req, "res":res, "posts": posts };
+    var sync_pool = [];
 
     // information bar へ出力
-    posts.mesg = 'ここは警告表示行';
+    args.posts.mesg = "";
+    args.posts.mesg_lavel_color = "";
 
     // text object へ出力
 
@@ -71,8 +53,10 @@ function showDemo(req, res, posts) {
 
     posts.socket_io_start = "1";
 
-    lcsAp.waterfall( req, res, posts,
-                     [dmyDsp], dspWin );
+    lcsAp.initSync(sync_pool);
+    lcsAp.doSync( args,
+                  [dmyDsp, 
+                   dspWin ]);
 }
 
 /**
@@ -82,18 +66,15 @@ function showDemo(req, res, posts) {
  * @date   30/jun/2012
  */
 function initSend(req, res, posts) {
-
-    // information bar へ出力
-    posts.mesg = 'ここは警告表示行';
-
-    // text object へ出力
-
-    //check box へ出力
+    var args = {"req":req, "res":res, "posts": posts };
+    var sync_pool = [];
 
     posts.socket_io_start = "1";
 
-    lcsAp.waterfall( req, res, posts,
-                     [dmyDsp], dspWin );
+    lcsAp.initSync(sync_pool);
+    lcsAp.doSync( args,
+                  [dmyDsp, 
+                   dspWin ]);
 }
 
 /**
@@ -105,19 +86,18 @@ function initSend(req, res, posts) {
 exports.main = function(req, res, frame){
 
     var posts = {};
+    try {
+        posts = lcsAp.initPosts( req, frame );
+    } catch (e) {
+        lcsAp.syslog('error', {'lcsAp.initPosts': frame});
+        res.redirect('/');
+        return;
+    }
 
     if (!lcsAp.isSession(req.session)) {
         res.redirect('/');
         return;
     }
-
-    posts = lcsAp.initialz_posts( req, posts );
-    if( !posts ) {
-        res.redirect('/');
-        return;
-    }
-    /* page情報設定 */
-    posts.frameNavi = frame.frameNavi;
 
     if( req.method=="GET" ) {
         /*GET メソッド*/

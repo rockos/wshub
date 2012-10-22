@@ -93,13 +93,13 @@ lcsUI.config([
                  {jp: './ini/scr/jp/framenavi.json'},
                  {kr: './ini/scr/kr/framenavi.json'},
                  {en: './ini/scr/en/framenavi.json'},
-                 {ch: './ini/scr/ch/framenavi.json'},
+                 {ch: './ini/scr/ch/framenavi.json'}
              ]},
              {tags: [
                  {jp: './ini/scr/jp/pagetags.json'},
                  {kr: './ini/scr/kr/pagetags.json'},
                  {en: './ini/scr/en/pagetags.json'},
-                 {ch: './ini/scr/ch/pagetags.json'},
+                 {ch: './ini/scr/ch/pagetags.json'}
              ]}
 ]);
 

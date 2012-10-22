@@ -1,0 +1,37 @@
+<% layout('layout') -%>
+<%- stylesheet('/stylesheets/cstm/113.css') -%>
+
+<form name="main_form" method="post" action="/scr/113">
+
+  <div id="sub_body">
+    <p class=""><a href="#"><%= pageTags.caption %></a></p>
+    <ul>
+      <% if( step=="0" || step=="1" ) { %>
+      <li><input type="submit" name="send_iqy" value="<%= pageTags.send_iqy %>"></li>
+      <% } %>
+    </ul>
+  </div>
+
+  <div id="main_body">
+    <div class="mesg_bar">
+      <span class="<%= mesg_level_color %>"><%= mesg %></span>
+    </div>
+
+    <div class="cond113">
+      <ul>
+        <% if( step=="0" || step=="1" ) { %>
+        <li class="l1">
+          <label for="txt1"><%= pageTags.cond_location %></label>
+          <input type="text" id="txt1" class="" size="8" maxlength="8" 
+                 placeholder="" name="txt1" 
+                 value="<%= text.txt1 %>" tabindex="-1">
+        </li>
+        <% } %>
+      </ul>
+    </div>
+
+    <br class="dmy_spc">
+
+  </div>
+
+</form>

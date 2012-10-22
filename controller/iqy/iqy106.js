@@ -478,9 +478,7 @@ function initSend(req, res, posts) {
 exports.main = function(req, res, frame){
 
     var posts = {};
-    posts = lcsAp.initialz_posts(req,posts,"106");
-    posts.frameNavi = frame.frameNavi;
-    posts.frameNavi.userid =  (req.session.userid)? req.session.userid:'undefined';
+    posts = lcsAp.initPosts(req,frame);
 
     if (!lcsAp.isSession(req.session)) {
         res.redirect('/');

@@ -21,6 +21,7 @@
 , {"name":"検索",
         "subMenu":[
         {"href":"/scr/106","name":"実績照会"}
+        ,{"href":"/scr/113","name":"空棚検索"}
         ,{"href":"/scr/110","name":"在庫検索"}
         ,{"href":"/scr/119","name":"ロケ検索"}
         ,{"href":"/scr/701","name":"利用明細"}

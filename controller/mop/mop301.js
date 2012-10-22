@@ -20,6 +20,7 @@ function dspWin(args, nextDo) {
     posts.mesg = msg.text;
     posts.mesg_lavel_color = msg.warn;
     res.render(posts.scrNo, posts);
+    nextDo( null, args );
 }
 
 /**
@@ -561,7 +562,13 @@ exports.main = function(req, res, frame){
     };
 
     var posts = {};
-    posts = lcsAp.initPosts( req, frame );
+    try {
+        posts = lcsAp.initPosts(req, frame);
+    } catch(e) {
+        lcsAp.syslog( "error", "lcsAp.initPosts" );
+        res.redirect('/');
+        return;
+    }
 
     if (!lcsAp.isSession(req.session)) {
         res.redirect('/');

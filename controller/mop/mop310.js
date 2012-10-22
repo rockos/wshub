@@ -586,15 +586,18 @@ function initSend(req, res, posts) {
 exports.main = function(req, res, frame){
 
     var posts = {};
-    posts = lcsAp.initialz_posts(req,posts,"310");
-    posts.frameNavi = frame.frameNavi;
-    posts.frameNavi.userid =  (req.session.userid)? req.session.userid:'undefined';
+    try {
+        posts = lcsAp.initPosts(req, frame);
+    } catch(e) {
+        lcsAp.syslog( "error", "lcsAp.initPosts" );
+        res.redirect('/');
+        return;
+    }
 
     if (!lcsAp.isSession(req.session)) {
         res.redirect('/');
+        return;
     }
-
-    console.log(req.body);
 
     if( req.method=="GET" ) {
         /*GET メソッド*/

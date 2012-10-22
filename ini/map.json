@@ -55,6 +55,14 @@
    "ejs":"layout.ejs",
    "parmit":0
    },
+"iqy113":{
+  "path" : "../../controller/iqy/iqy113",
+   "msg":{
+          "/scr/113" : "main"
+         },
+   "ejs":"layout.ejs",
+   "parmit":0
+   },
 "iqy114":{
   "path" : "../../controller/iqy/iqy114",
    "msg":{

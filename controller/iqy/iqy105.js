@@ -25,23 +25,16 @@ var fs = require('fs');
  * @param  {number}err, {Object}req, {Object}res, {Object}posts, {function}callback
  * @date   30/jun/2012
  */
-function dspWin(err, req, res, posts) {
-
+function dspWin(args,callback) {
     //Login user用
-    posts.userid = (req.session.userid)?req.session.userid:'undefined';
+    args.posts.userid = (args.req.session.userid)?args.req.session.userid:'undefined';
 
-    if( err ){
-        lcsAp.log('winDsp error : '+err);
-        /*規定外のメソッドタイプです*/
-        var mmm = lcsAp.getMsgI18N(err);
-        posts.mesg = mmm.text;
-        posts.mesg_level_color = mmm.warn;
+    var msg = lcsAp.getMsgI18N('0');
+    args.posts.mesg = msg.text;
+    args.posts.mesg_lavel_color = msg.warn;
 
-        res.render(posts.scrNo, posts);
-        return;
-    }
-
-    res.render(posts.scrNo, posts);
+    args.res.render(args.posts.scrNo, args.posts);
+    callback(null, callback);
 }
 
 /**
@@ -50,9 +43,9 @@ function dspWin(err, req, res, posts) {
  * @param  {Object}req, {Object}res, {Object}posts, {function}callback
  * @date   30/jun/2012
  */
-function dmyDsp(req, res, posts, callback) {
+function dmyDsp(args, callback) {
 
-    callback( null, req, res, posts );
+    callback( null, args );
 }
 
 /**
@@ -61,9 +54,12 @@ function dmyDsp(req, res, posts, callback) {
  * @param  {Object}req, {Object}res, {Object}posts, {function}callback
  * @date   16/jul/2012
  */
-function optionsFyear(req, res, posts, callback) {
+function optionsFyear(args, callback) {
 
-    var limit = 3, //何年前から表示するか
+    var req = args.req, 
+        res = args.res,
+        posts = args.posts,
+        limit = 3, //何年前から表示するか
         d = new Date,
         y,
         m,
@@ -89,7 +85,7 @@ function optionsFyear(req, res, posts, callback) {
                 y_opt.selected = "";
             }
         }
-        posts.options.fyear.push(y_opt);
+        args.posts.options.fyear.push(y_opt);
     }
 
     for( var i=1; i<=12; i++ ) {
@@ -110,10 +106,10 @@ function optionsFyear(req, res, posts, callback) {
                 m_opt.selected = "";
             }
         }
-        posts.options.fmonth.push(m_opt);
+        args.posts.options.fmonth.push(m_opt);
     }
 
-    callback( null, req, res, posts );
+    callback( null, args );
 }
 
 /**
@@ -122,9 +118,12 @@ function optionsFyear(req, res, posts, callback) {
  * @param  {Object}req, {Object}res, {Object}posts, {function}callback
  * @date   16/jul/2012
  */
-function optionsTyear(req, res, posts, callback) {
+function optionsTyear(args, callback) {
 
-    var limit = 3, //何年前から表示するか
+    var req = args.req, 
+        res = args.res,
+        posts = args.posts,
+        limit = 3, //何年前から表示するか
         d = new Date,
         y,
         m,
@@ -149,7 +148,7 @@ function optionsTyear(req, res, posts, callback) {
                 y_opt.selected = "";
             }
         }
-        posts.options.tyear.push(y_opt);
+        args.posts.options.tyear.push(y_opt);
     }
 
     for( var i=1; i<=12; i++ ) {
@@ -170,10 +169,10 @@ function optionsTyear(req, res, posts, callback) {
                 m_opt.selected = "";
             }
         }
-        posts.options.tmonth.push(m_opt);
+        args.posts.options.tmonth.push(m_opt);
     }
 
-    callback( null, req, res, posts );
+    callback( null, args );
 }
 
 /**
@@ -182,10 +181,11 @@ function optionsTyear(req, res, posts, callback) {
  * @param  {Object}req, {Object}res, {Object}posts, {function}callback
  * @date   16/jul/2012
  */
-function dataJiss(req, res, posts, callback) {
-
-    //posts.jiss_counter = 0;
-    var nd = new Date,
+function dataJiss(args, callback) {
+    var req = args.req, 
+        res = args.res,
+        posts = args.posts,
+        nd = new Date,
         y,
         m,
         fd,
@@ -202,15 +202,15 @@ function dataJiss(req, res, posts, callback) {
     td = new Date(y,m-1,nd.getDay());
 
     if( xd.getFullYear() >= td.getFullYear() && xd.getMonth() > td.getMonth() ) {
-        callback( null, req, res, posts );
+        callback( null, args );
         return;
     }
     if( xd.getFullYear() > td.getFullYear() ) {
-        callback( null, req, res, posts );
+        callback( null, args );
         return;
     }
     if( posts.jiss_counter > 100 ) {
-        callback( 5, req, res, posts );
+        callback( null, args );
         return;
     }
 
@@ -228,9 +228,9 @@ jiss_state: String,
 jiss_date: Date
 */
     if( m==1 ) {
-        posts.categories[posts.jiss_counter] = y + "/" + m;;
+        args.posts.categories[posts.jiss_counter] = y + "/" + m;
     }else{
-        posts.categories[posts.jiss_counter] = m;
+        args.posts.categories[posts.jiss_counter] = m;
     }
 
     // 法人
@@ -240,11 +240,11 @@ jiss_date: Date
             jiss_name : "法人"            
         }, function( err, docs ) {
             if ( err ) {
-                lcsAp.log( err );
-                callback( 4, req, res, posts );
+                lcsAp.syslog( "error", err );
+                callback( null, args );
                 return;
             }
-            posts.jisscount1[posts.jiss_counter] = docs;
+            args.posts.jisscount1[posts.jiss_counter] = docs;
 
             // 個人
             lcsMog.findCount( 
@@ -253,11 +253,11 @@ jiss_date: Date
                     jiss_name : "個人"            
                 }, function( err, docs ) {
                     if ( err ) {
-                        lcsAp.log( err );
-                        callback( 4, req, res, posts );
+                        lcsAp.syslog( "error", err );
+                        callback( null, args );
                         return;
                     }
-                    posts.jisscount2[posts.jiss_counter] = docs;
+                    args.posts.jisscount2[posts.jiss_counter] = docs;
 
                     // ゲスト
                     lcsMog.findCount( 
@@ -266,16 +266,16 @@ jiss_date: Date
                             jiss_name : "ビジター"            
                         }, function( err, docs ) {
                             if ( err ) {
-                                lcsAp.log( err );
-                                callback( 4, req, res, posts );
+                                lcsAp.syslog( "error", err );
+                                callback( null, args );
                                 return;
                             }
-                            posts.jisscount3[posts.jiss_counter] = docs;
-                            posts.jiss_counter++;
+                            args.posts.jisscount3[posts.jiss_counter] = docs;
+                            args.posts.jiss_counter++;
 
 
                             //再帰してDataGETを繰り返す
-                            dataJiss(req, res, posts, callback);
+                            dataJiss(args, callback);
                         });
                 });
         });
@@ -288,27 +288,21 @@ jiss_date: Date
  * @date   30/jun/2012
  */
 function showDemo(req, res, posts) {
+    var args = {"req":req, "res":res, "posts": posts };
+    var sync_pool = [];
 
-    // information bar へ出力
-    //posts.mesg = '';
+    args.posts.graph_type = req.body.chk1;
+    args.posts.checkbox.chk1[req.body.chk1] = "checked";
 
-    // text object へ出力
-    posts.graph_type = req.body.chk1;
+    args.posts.jiss_counter = 0;
 
-    // check box へ出力
-
-    // radio box へ出力
-    posts.checkbox.chk1[req.body.chk1] = "checked";
-
-    posts.jiss_counter = 0;
-
-    lcsAp.waterfall( req, res, posts,
-                     [
-                      dmyDsp,
-                      optionsFyear,
-                      optionsTyear,
-                      dataJiss
-                     ], dspWin );
+    lcsAp.initSync(sync_pool);
+    lcsAp.doSync( args, [
+                  dmyDsp,
+                  optionsFyear,
+                  optionsTyear,
+                  dataJiss,
+                  dmyDsp ]);
 }
 
 /**
@@ -318,26 +312,19 @@ function showDemo(req, res, posts) {
  * @date   30/jun/2012
  */
 function initSend(req, res, posts) {
-
-    // information bar へ出力
-    //posts.mesg = '';
-
-    // text object へ出力
-
-    // check box へ出力
-
+    var args = {"req":req, "res":res, "posts": posts };
+    var sync_pool = [];
     // radio box へ出力
-    posts.checkbox.chk1['line'] = "checked";
+    args.posts.checkbox.chk1['line'] = "checked";
 
-    posts.jiss_counter = 0;
+    args.posts.jiss_counter = 0;
 
-    lcsAp.waterfall( req, res, posts,
-                     [
-                      dmyDsp,
-                      optionsFyear,
-                      optionsTyear
-                     ], dspWin );
-
+    lcsAp.initSync(sync_pool);
+    lcsAp.doSync( args, [
+                  dmyDsp,
+                  optionsFyear,
+                  optionsTyear,
+                  dspWin] );
 }
 
 /**
@@ -346,17 +333,18 @@ function initSend(req, res, posts) {
  * @param  {Object}req, {Object}res
  * @date   16/jul/2012
  */
-exports.main = function(req, res){
+exports.main = function(req, res, frame){
 
     var posts = {};
-
-    if (!lcsAp.isSession(req.session)) {
+    try {
+        posts = lcsAp.initPosts(req, frame);
+    } catch (e) {
+        lcsAp.syslog('error', {'lcsAp.initPosts': frame});
         res.redirect('/');
         return;
     }
 
-    posts = lcsAp.initialz_posts( req, posts );
-    if( !posts ) {
+    if (!lcsAp.isSession(req.session)) {
         res.redirect('/');
         return;
     }
