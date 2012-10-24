@@ -52,10 +52,17 @@ opts.parse([
                'description': 'HTTP port',
                'value': true,
                'required': false
-}
+           },
+           {'short': 's',
+               'long': 'sesstime',
+               'description': 'session timeout (min)',
+               'value': true,
+               'required': false
+           }
 ]);
 
 var PORT = opts.get('port') || 3010;
+var SESS = opts.get('sesstime')*60*1000 || 60*60*1000;
 
 // Configuration
 /* for express@v3 */
@@ -73,7 +80,8 @@ app.use(express.cookieParser());
 app.use(express.session({secret: 'secret',
                         store: auth =
                             new RedisStore({db: 0}), /* default db number 0 */
-                        cookie: {maxAge: 60 * 60 * 1000}}));
+                //          cookie: {maxAge: 60 * 60 * 1000}}));
+                            cookie: {maxAge: SESS}}));
 /* cookie: {maxAge: 1 * 60 * 1000}})); 1 min */
 app.use(app.router);
 app.use(express.static(__dirname + '/public'));
@@ -93,13 +101,13 @@ lcsUI.config([
                  {jp: './ini/scr/jp/framenavi.json'},
                  {kr: './ini/scr/kr/framenavi.json'},
                  {en: './ini/scr/en/framenavi.json'},
-                 {ch: './ini/scr/ch/framenavi.json'},
+                 {ch: './ini/scr/ch/framenavi.json'}
              ]},
              {tags: [
                  {jp: './ini/scr/jp/pagetags.json'},
                  {kr: './ini/scr/kr/pagetags.json'},
                  {en: './ini/scr/en/pagetags.json'},
-                 {ch: './ini/scr/ch/pagetags.json'},
+                 {ch: './ini/scr/ch/pagetags.json'}
              ]}
 ]);
 
@@ -131,6 +139,15 @@ process.on('uncaughtException', function(error) {
 
 /* this is for express@v3 */
 var socketio = require('socket.io').listen(server);
+socketio.configure('production', function() {
+        socketio.set('log level', 1);
+    });
+socketio.configure('development', function() {
+        socketio.set('log level', 2);
+    });
+socketio.configure('degub', function() {
+        socketio.set('log level', 2);
+    });
 
 
 global['auth'] = auth;
@@ -141,6 +158,9 @@ global['sck_io'] = socketio;
 /*
  *  バックグラウンドで動く処理
  *  add 2012.06.30 takahashi
+ *  ＊mapに乗せられるかな？
  */
 require('./controller/mgr/mgrmon').main();
 require('./controller/mgr/mgragv').main();
+require('./controller/iqy/iqy113').sck_main();
+

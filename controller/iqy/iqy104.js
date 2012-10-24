@@ -7,23 +7,17 @@ var fs = require('fs');
  * @param  {number}err, {Object}req, {Object}res, {Object}posts, {function}callback
  * @date   30/jun/2012
  */
-function dspWin(err, req, res, posts) {
+var dspWin = function (args, callback) {
 
     //Login user用
-    posts.userid = (req.session.userid)?req.session.userid:'undefined';
+    args.posts.userid = (args.req.session.userid)?args.req.session.userid:'undefined';
 
-    if( err ){
-        lcsAp.log('winDsp error : '+err);
-        /*規定外のメソッドタイプです*/
-        var mmm = lcsAp.getMsgI18N(err);
-        posts.mesg = mmm.text;
-        posts.mesg_level_color = mmm.warn;
+    var msg = lcsAp.getMsgI18N('0');
+    args.posts.mesg = msg.text;
+    args.posts.mesg_lavel_color = msg.warn;
 
-        res.render(posts.scrNo, posts);
-        return;
-    }
-
-    res.render(posts.scrNo, posts);
+    args.res.render(args.posts.scrNo, args.posts);
+    callback(null, callback);
 }
 
 /**
@@ -32,9 +26,8 @@ function dspWin(err, req, res, posts) {
  * @param  {Object}req, {Object}res, {Object}posts, {function}callback
  * @date   30/jun/2012
  */
-function dmyDsp(req, res, posts, callback) {
-
-    callback( null, req, res, posts );
+function dmyDsp(args, callback) {
+    callback( null, args );
 }
 
 /**
@@ -44,18 +37,15 @@ function dmyDsp(req, res, posts, callback) {
  * @date   30/jun/2012
  */
 function showDemo(req, res, posts) {
-
-    // information bar へ出力
-    //posts.mesg = '';
-
-    // text object へ出力
-
-    // check box へ出力
+    var args = {"req":req, "res":res, "posts": posts };
+    var sync_pool = [];
 
     posts.socket_io_start = "1";
 
-    lcsAp.waterfall( req, res, posts,
-                     [dmyDsp], dspWin );
+    lcsAp.initSync(sync_pool);
+    lcsAp.doSync( args,
+                  [dmyDsp, 
+                   dspWin ]);
 }
 
 /**
@@ -65,19 +55,15 @@ function showDemo(req, res, posts) {
  * @date   30/jun/2012
  */
 function initSend(req, res, posts) {
-
-    // information bar へ出力
-    //posts.mesg = '';
-
-    // text object へ出力
-
-    //check box へ出力
+    var args = {"req":req, "res":res, "posts": posts };
+    var sync_pool = [];
 
     posts.socket_io_start = "1";
-    //posts.graph104 = JSON.parse(require('fs').readFileSync("./controller/iqy/graph104.json"));
 
-    lcsAp.waterfall( req, res, posts,
-                     [dmyDsp], dspWin );
+    lcsAp.initSync(sync_pool);
+    lcsAp.doSync( args,
+                  [dmyDsp, 
+                   dspWin ]);
 }
 
 /**
@@ -89,19 +75,18 @@ function initSend(req, res, posts) {
 exports.main = function(req, res, frame){
 
     var posts = {};
+    try {
+        posts = lcsAp.initPosts( req, frame );
+    } catch (e) {
+        lcsAp.syslog('error', {'lcsAp.initPosts': frame});
+        res.redirect('/');
+        return;
+    }
 
     if (!lcsAp.isSession(req.session)) {
         res.redirect('/');
         return;
     }
-
-    posts = lcsAp.initPosts(req, frame);
-    if (!posts) {
-        res.redirect('/');
-        return;
-    }
-    /* page情報設定 */
-    posts.frameNavi = frame.frameNavi;
 
     if( req.method=="GET" ) {
         /*GET メソッド*/

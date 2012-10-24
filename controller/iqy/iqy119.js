@@ -79,12 +79,12 @@ function showDemo(req, res, posts) {
  * @res {object} responce data to user agent
  * @frame {object} page infomation
  */
-exports.main = function(req, res, frame){
+exports.main = function(req, res, frame) {
 
     var posts = {};
     /* below is for test. */
-    var file = './controller/data/iqy119.json',
-    inifile = './controller/data/iqy119ini.json';
+    var file = './ini/data/iqy119.json',
+    inifile = './ini/data/iqy119ini.json';
 
     /* page情報設定 */
     posts.frameNavi = frame.frameNavi;
