@@ -52,10 +52,17 @@ opts.parse([
                'description': 'HTTP port',
                'value': true,
                'required': false
-}
+           },
+           {'short': 's',
+               'long': 'sesstime',
+               'description': 'session timeout (min)',
+               'value': true,
+               'required': false
+           }
 ]);
 
 var PORT = opts.get('port') || 3010;
+var SESS = opts.get('sesstime')*60*1000 || 60*60*1000;
 
 // Configuration
 /* for express@v3 */
@@ -73,7 +80,8 @@ app.use(express.cookieParser());
 app.use(express.session({secret: 'secret',
                         store: auth =
                             new RedisStore({db: 0}), /* default db number 0 */
-                        cookie: {maxAge: 60 * 60 * 1000}}));
+                //          cookie: {maxAge: 60 * 60 * 1000}}));
+                            cookie: {maxAge: SESS}}));
 /* cookie: {maxAge: 1 * 60 * 1000}})); 1 min */
 app.use(app.router);
 app.use(express.static(__dirname + '/public'));

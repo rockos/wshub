@@ -5,36 +5,78 @@
 <script type="text/javascript">
 var socket = io.connect("/scr/113");
 
-socket.on("mesg", function (text) {
-    document.getElementById("main_body").innerHTML += text;
+socket.on("changeTana", function (jdata) {
+    var adr = jdata.id;
+    if( jdata.stat=="1" ) {
+        document.getElementById(adr).className = document.getElementById(adr).className.replace(/off/g,"on");
+    } else {
+        document.getElementById(adr).className = document.getElementById(adr).className.replace(/on/g,"off");
+    }
+    //document.getElementById("debug").innerHTML += jdata.id+"<br>";
 });
 var sock = function( my ) {
     socket.emit(my.name,{"d1":"test","d2":"空棚","d3":"01-02-03"});
 }
 </script>
 
-<script type="text/javascript" src="/javascripts/jquery.min.js"></script>
 <script type="text/javascript" src="/javascripts/fredhq-roundabout-c1bcd37/jquery.roundabout.min.js"></script>
+<script type="text/javascript" src="/javascripts/fredhq-roundabout-c1bcd37/jquery.roundabout-shapes.min.js"></script>
 
-<style>
-.roundabout-holder {
-    list-style: none;
-    width: 45%;
-    height: 10em;
-    margin: 1em auto;
+<script type="text/javascript">
+var activ_row = <%= activ_row %>;
+var MAX_ROW = <%= location.row.length-1 %>;
+$(document).ready( function() {
+    $('ul.roundabout113').roundabout({
+        /*形状*/
+        "shape":"tearDrop",
+        //"shape":"square"
+        //"shape":"waterWheel"
+
+        /* options */
+        "minOpacity": 0.2, /*背後のパネルの透明度(0.4)*/
+        "maxOpacity": 1.0, /*全面のパネルの透明度(1.0)*/
+        "minScale": 0.4, /*背後のパネルの縮小度(0.4)*/
+        "maxScale": 1.0, /*全面のパネルの縮小度(1.0)*/
+        "duration": 1000, /*回転速度(600)*/
+
+        /*初期のパネル*/
+        "startingChild": <%= activ_row-1 %>
+    });
+    $('ul.roundabout113_2').roundabout({
+        //"shape":"square"
+        "shape":"waterWheel"
+        //"shape":"tearDrop"
+    });
+});
+var moving=0;
+var move_round = function( my ) {
+    if(moving) return;
+    moving=1;
+    var now_id = 'dp'+('00'+activ_row).slice(-2);
+    var activ_id;
+    if( my.name=="move_left" ) {
+        /*1進む*/
+        activ_row = (activ_row % MAX_ROW) +1;
+        activ_id = 'dp'+('00'+activ_row).slice(-2);
+        document.getElementById(now_id).className = "hide";
+        $('ul.roundabout113').roundabout("animateToNextChild",function(){
+            document.getElementById(activ_id).className = "actv";
+            moving=0;
+        });
+    } else if( my.name=="move_right" ) {
+        /*1戻る*/
+        activ_row = (activ_row+MAX_ROW-1) % MAX_ROW;
+        if( !activ_row ) activ_row=MAX_ROW;
+        activ_id = 'dp'+('00'+activ_row).slice(-2);
+        document.getElementById(now_id).className = "hide";
+        $('ul.roundabout113').roundabout("animateToPreviousChild",function(){
+            document.getElementById(activ_id).className = "actv";
+            moving=0;
+        });
+    }
+    document.getElementById("txt1").value = activ_row;
 }
-.roundabout-moveable-item {
-    height: 4em;
-    width: 8em;
-    border: 1px dotted #999;
-    background-color: #f3f3f3;
-    font-size: 2em;
-    cursor: pointer;
-}
-.roundabout-in-focus {
-    cursor: auto;
-}
-</style>
+</script>
 
 <form name="main_form" method="post" action="/scr/113">
 
@@ -44,8 +86,14 @@ var sock = function( my ) {
       <% if( step=="0" || step=="1" ) { %>
       <li><input type="submit" name="send_iqy" value="<%= pageTags.send_iqy %>"></li>
       <% } %>
+      <% if( step=="99" || step=="99" ) { %>
+      <li><input type="button" class="send" name="sock_iqy" value="<%= pageTags.sock_iqy %>" onclick="sock(this)"></li>
+      <% } %>
       <% if( step=="0" || step=="1" ) { %>
-      <li><input type="button" name="sock_iqy" value="<%= pageTags.sock_iqy %>" onclick="sock(this)"></li>
+      <li><input type="button" class="send" name="move_left" value="<%= pageTags.move_left %>" onclick="move_round(this)"></li>
+      <% } %>
+      <% if( step=="0" || step=="1" ) { %>
+      <li><input type="button" class="send" name="move_right" value="<%= pageTags.move_right %>" onclick="move_round(this)"></li>
       <% } %>
     </ul>
   </div>
@@ -68,41 +116,42 @@ var sock = function( my ) {
       </ul>
     </div>
 
-    <div>
-      <ul class="roundabout113">
-        <li><span>1</span>
-        </li>
-        <li><span>2</span></li>
-        <li><span>3</span></li>
-        <li><span>4</span></li>
-        <li><span>5</span></li>
-        <li><span>6</span></li>
-      </ul>
-    </div>
-
     <br class="dmy_spc">
 
   </div>
 
-    <div>
-      <ul class="roundabout113">
-        <li><span>1</span>
+  <div id="round_main">
+    <ul class="roundabout113">
+      <% for (var row=1, row_max=location.row.length-1; row<=row_max; row++) { %>
+        <li>
+          <span><%= row %></span>
+          <% if (row==activ_row) { %>
+          <span id="<%= 'dp'+('00'+row).slice(-2) %>" class="actv">
+          <% } else { %>
+          <span id="<%= 'dp'+('00'+row).slice(-2) %>" class="hide">
+          <% } %>
+            <% for (var tie=1, tie_max=location.row[row].tie.length-1; tie<=tie_max; tie++) { %>
+              <p class="<%= 't' + ('00'+tie).slice(-2) %>">
+                <% for (var bay=1, bay_max=location.row[row].tie[tie].bay.length-1; bay<=bay_max; bay++) { %>
+                  <q class="<%= 'b' + ('00'+bay).slice(-2) %> 
+                    <% if (location.row[row].tie[tie].bay[bay].status=="1") { %>
+                      on
+                    <% } else if (location.row[row].tie[tie].bay[bay].status=="0") { %>
+                      off
+                    <% } else { %>
+                      none
+                    <% } %>
+                      " id="<%= location.row[row].tie[tie].bay[bay].locid %>">
+                  </q>
+                <% } %>
+              </p>
+            <% } %>
+          </span>
         </li>
-        <li><span>2</span></li>
-        <li><span>3</span></li>
-        <li><span>4</span></li>
-        <li><span>5</span></li>
-        <li><span>6</span></li>
-      </ul>
-    </div>
+      <% } %>
+    </ul>
+  </div>
 
-<script type="text/javascript">
-$(document).ready( function() {
-    $('ul.roundabout113').roundabout({
-        "shape":"square"
-    });
-});
-</script>
-
+  <div id="debug"></div>
 </form>
 
