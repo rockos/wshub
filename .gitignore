@@ -1,7 +1,8 @@
 # git に追跡してほしく'ない'ファイル
 # backup file for emacs
 *~
-
+*swo
+.gitignore
 # variable file log..
 test/
 tmp/

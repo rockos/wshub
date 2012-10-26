@@ -2,10 +2,28 @@ var fs = require('fs');
 
 var fin = function(err){
     if (err) {
+        res.redirect('scr/error');
         return;
     }
 }
 
+/**                                                                                                                                                          
+ * show error message.                                                                                                                                       
+ * @param {Object} args argument.                                                                                                                            
+ * @param {Object} emsg contents of error.                                                                                                                   
+ */
+function shoError(args, emsg) {
+    if (typeof emsg === 'object') {
+        args.errors = emsg;
+        args.post.mesg = emsg.text;
+        args.res.render('scr/error', args.post);
+    } else {
+        var msgobj = lcsAp.getMsgI18N(emsg);
+        args.errors = msgobj;
+        args.post.mesg = msgobj.text;
+        args.res.render('scr/error', args.post);
+    }
+}
 
 /**
  * 画面表示
@@ -279,7 +297,7 @@ function postData(args, nextDo) {
     var req = args.req, res = args.res, posts = args.posts;
     var step = args.posts.step;
 
-    //**** デモ中 ***********************************************************
+    /* *** デモ中 ***********************************************************
     var __file = "./ini/data/moptest002.json";
     var ddd = JSON.parse(require('fs').readFileSync(__file));    
     if( step=="3" || step=="4" ) {
@@ -324,40 +342,64 @@ function postData(args, nextDo) {
         args.posts.table.tab1 = ddd.tab1;
     }
     nextDo( null, args );
-    //***********************************************************************
+    ***********************************************************************/
 
-    /*
     var sql = "",
-        part_rows = [];
+        stock_rows = [];
 
     sql += "" +
         "select " +
-        "    pcode as col1, sqty as col2, pnam as col3, lotn col4, " +
-        "    IFNULL(mem1,'') as col5, IFNULL(mem2,'') as col6, IFNULL(mem3,'') as col7 " +
-        "from part " +
-        "where 1=1 ";
-    if( req.body.txt1 ) {
-        sql += " and pcode = '" + req.body.txt1 +"' ";
+        "    l.name as col1, i.item_code as col2, i.item_name as col3, s.id_stock col4, " +
+        "    s.quantity as col5, DATE_FORMAT(s.initial_date,'%Y/%m/%d') as col6, s.remark as col7, " +
+        "    case " +
+        "    when exists(select * from t_rv_stock r where r.id_stock=s.id_stock) " +
+        "    then '◎'"+
+        "    else '' end as col8 " +
+        "from t_stocks s, t_join j, m_locations l, m_users u, m_items i " +
+        "where 1=1 " +
+        "    and j.id_join = s.id_join " +
+        "    and l.address = j.address and l.area = j.area " +
+        "    and u.id_user = s.id_user " +
+        "    and i.id_item = s.id_item ";
+
+    if (req.body.txt3) {
+        sql += " and s.id_user = '" + req.body.txt3 +"' ";
+    } else if (req.body.sel1) {
+        sql += " and s.id_user = '" + req.body.sel1 +"' ";
     }else{
-        sql += " and pcode = '" + "' ";
+        sql += " and s.id_user = '" + "' ";
     }
-    sql += "order by pcode ";
+    sql += "order by l.address ";
 
     lcsDb.query(sql, function(err, results, fields) {
-        if (err){
+        if (err) {
             nextDo( 4, args );
             return;
         }
-        part_rows = results;
-        for( var i=0, max=part_rows.length; i<max; i++ ){
-            part_rows[i].chk1.value = part_rows[i].col1;
-            part_rows[i].chk1.exist = "1";
-            part_rows[i].chk1.on = "checked";
+        stock_rows = results;
+        for( var i=0, max=stock_rows.length; i<max; i++ ){
+            stock_rows[i].chk1 = new Object();
+            stock_rows[i].chk1.val = stock_rows[i].col4;
+            stock_rows[i].chk1.exist = "1";
+            if( req.body.tab1_chk ) {
+                if( typeof req.body.tab1_chk === "string" ) {
+                    if( stock_rows[i].chk1.val == req.body.tab1_chk ) {
+                        stock_rows[i].chk1.on = "checked";
+                    }
+                } else {
+                    for (var j=0, maxj=req.body.tab1_chk.length; j<maxj; j++ ) {
+                        if( stock_rows[i].chk1.val == req.body.tab1_chk[j] ) {
+                            stock_rows[i].chk1.on = "checked";
+                            break;
+                        }
+                    }
+                }
+            }
         }
-        args.posts.table.tab1 = part_rows;
+        args.posts.table.tab1 = stock_rows;
         nextDo( null, args );
     });
-    */
+
 }
 
 /**
@@ -369,7 +411,55 @@ function postData(args, nextDo) {
 function optionsDsp(args, nextDo) {
     var req = args.req, res = args.res;
 
-    //**** デモ中 ***********************************************************
+    var sql = "",
+        ary = [];
+
+    sql = 
+        "select " +
+        "  id_user as value, nickname as dsp, 'xxx' as selected " +
+        "from m_users " +
+        "where 1=1 " +
+        "order by id_user ";
+    ary = ['XXX'];
+
+    lcsDb.query (sql, function (err, results, fields) {
+        if (err){
+            nextDo( 4, args );
+            return;
+        }
+        args.posts.select.opt1 = results;
+        for( var i=0, max=args.posts.select.opt1.length; ; i++ ) {
+            if( i < max ) {
+                args.posts.select.opt1[i].dsp = args.posts.select.opt1[i].value +
+                    ":" + args.posts.select.opt1[i].dsp;
+                if( req.body.sel1 ) {
+                    if( req.body.sel1 == args.posts.select.opt1[i].value ) {
+                        args.posts.select.opt1[i].selected = "selected";
+                        args.posts.text.txt3 = args.posts.select.opt1[i].value;
+                        args.posts.dsp.user = args.posts.select.opt1[i].dsp;
+                        break;
+                    }
+                } else if( req.body.txt3 ) {
+                    if( req.body.txt3 == args.posts.select.opt1[i].value ) {
+                        args.posts.select.opt1[i].selected = "selected";                                                                                                             args.posts.text.txt3 = args.posts.select.opt1[i].value;
+                        args.posts.dsp.user = args.posts.select.opt1[i].dsp;
+                        break;
+                    }
+                } else {
+                    if( 'hello' == args.posts.select.opt1[i].value ) {
+                        args.posts.select.opt1[i].selected = "selected";                                                                                                             args.posts.text.txt3 = args.posts.select.opt1[i].value;
+                        args.posts.dsp.user = args.posts.select.opt1[i].dsp;
+                        break;
+                    }
+                }
+            } else {
+                break;
+            }
+        }
+        nextDo( null, args );
+    });
+
+    /* *** デモ中 ***********************************************************
     var __file = "./ini/data/moptest001.json";
     var ddd = JSON.parse(require('fs').readFileSync(__file));
     for( var i=0, max=ddd.opt1.length; ; i++ ) {
@@ -397,34 +487,7 @@ function optionsDsp(args, nextDo) {
     args.posts.select.opt1 = ddd.opt1;
 
     nextDo( null, args );
-    //***********************************************************************
-
-    /*
-    var sql = "",
-        ary = [];
-
-    sql = 
-        "select " +
-        "  pcode as value, pcode as disp, if(pcode=?,'selected','xxx') as selected " +
-        "from part " +
-        "where 1=1 " +
-        "group by pcode " +
-        "order by pcode ";
-    if(req.body.txt1) {
-        ary = [req.body.txt1];
-    }else{
-        ary = ['XXX'];
-    }
-
-    lcsDb.query(sql, ary, function(err, results, fields) {
-        if (err){
-            nextDo( 4, args );
-            return;
-        }
-        args.posts.select.opt1 = results;
-        nextDo( null, args );
-    });
-    */
+    ***********************************************************************/
 }
 
 /**
@@ -511,10 +574,12 @@ function addPB(req, res, posts) {
  */
 function iqyPB(req, res, posts) {
 
+    var sync_pool = [];
     var args = {"req": req, "res": res, "posts": posts};
     args.posts.step = "2";
 
-    lcsAp.series(args,
+    lcsAp.initSync(sync_pool);
+    lcsAp.doSync(args,
                  [setEcho,
                   optionsDsp,
                   postData,
@@ -530,10 +595,12 @@ function iqyPB(req, res, posts) {
  */
 function initSend(req, res, posts) {
 
+    var sync_pool = [];
     var args = {"req": req, "res": res, "posts": posts};
     args.posts.step = "0";
 
-    lcsAp.series(args,
+    lcsAp.initSync(sync_pool);
+    lcsAp.doSync(args,
                  [setEcho,
                   optionsDsp,
                   dspWin], /* 後処理 */
