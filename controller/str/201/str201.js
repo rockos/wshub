@@ -371,7 +371,7 @@ function modStr(req, res, posts) {
 function _showResult(req, res, frame) {
 
     var posts = {};
-    var file = './controller/data/str201.json';
+    var file = './ini/data/str201.json';
     var msg = lcsAp.getMsgI18N("0");
     posts.mesg = msg.text;
     posts.mesg_lavel_color = msg.warn;

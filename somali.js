@@ -134,6 +134,7 @@ var server = http.createServer(app).listen(PORT, function() {
 process.on('uncaughtException', function(error) {
     lcsAp.syslog('error', 'uncaughtException: ' + error);
     lcsAp.syslog('error', 'uncaughtException trace: ' + error.stack);
+   console.log('error '+error.stack);
 });
 
 

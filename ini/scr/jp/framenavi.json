@@ -6,7 +6,6 @@
         "subMenu":[
         {"href":"/scr/201","name":"入荷予約"}
         ,{"href":"/scr/202","name":"入庫"}
-        ,{"href":"/scr/203","name":"検品"}
         ]
  }
 , {"name":"出庫",

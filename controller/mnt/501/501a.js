@@ -1,14 +1,16 @@
 'use strict';
 /* common file include */
+var domain = require('domain');
+var glb_dm = domain.create();
+
 /* local file */
 var UPMNT501 = require('./upmnt501.js');
 /**
  *   結果表示
-* @param {Object} args argument.
-* @param {Function} callback which shoud run at next setp.
-*/
+ * @param {Object} args argument.
+ * @param {Function} callback which shoud run at next step.
+ */
 function dspWin(args, callback) {
-
     //Login user用
     args.post.userid = (args.req.session.userid) ?
         args.req.session.userid : 'undefined';
@@ -36,105 +38,133 @@ function shoError(args, emsg) {
         args.res.render('scr/error', args.post);
     }
 }
+function _shoError(args, emsg) {
+    if (typeof emsg === 'object') {
+        args.errors = emsg;
+        args.post.mesg = emsg.text;
+        args.res.render('scr/error', args.post);
+    } else {
+        var msgobj = lcsAp.getMsgI18N(emsg);
+        args.errors = msgobj;
+        args.post.mesg = msgobj.text;
+        args.res.render('scr/error', args.post);
+    }
+}
 /**
  * Validator for form data.
  * @param {Object} args argument.
  * @param {Function} callback function which shoud run at next step.
  * @return {Function} callback.
  */
-var validCheck = {
-    err: 0,
+function checkParams(args , /* next function */ callback) {
+    var rtn = lcsUI.checkVal(args.req, 
+                             ['nickname', 'password', 'email']);
+                             if (rtn) {
+                                 shoError(args, rtn);
+                                 return callback(rtn, args);
+                             }
 
-    checkParams: function(args , /* next function */ callback) {
-        var rtn = lcsUI.checkVal(args.req, ['nickname', 'password', 'email']);
-        if (rtn) {
-            shoError(args, rtn);
-            return callback(rtn, args);
-        }
+                             /* normal complete */
+                             return callback(null, args);
+};
+/**
+ * Formデータサニタイズ
+ * 
+ * @param {Object} args argument of parent function.
+ * @param {Function} callback function which should run at next step.
+ */
+function filter(args, /* next function */ callback) {
+    /* sanitize */
+    /* args.req.sanitize('sqty').toInt(); */
+    /* normal complete */
 
-        /* normal complete */
-        return callback(null, args);
-    },
-    filter: function(args, /* next function */ callback) {
-        /* sanitize */
-        /* args.req.sanitize('sqty').toInt(); */
-        /* normal complete */
+    callback(null, args);
 
-        return callback(null, args);
+};
+function cb4blockA(err, results, args, callback) {
 
+    if (err || results.length == 0) {
+        shoError(args,
+                 lcsAp.getMsgI18N('99')); /* db error */
+                 lcsAp.syslog('error',
+                              {'Detail': err,
+                                  'Trace': lcsAp.getStackTrace()}
+                             );
+                             callback(true, args);
+                             return;
     }
+    if (results[0].count != 0) {
+        shoError(args,
+                 lcsAp.getMsgI18N('301')); /* tourokusumi */
+                 callback(true, args);
+                 return;
+    }
+    callback(null, args);
+
+    return;
 };
 /**
  * データベースの整合性チェック
  * @param {Object} args argument of parent function.
  * @param {Function} callback function which should run at next step.
  */
-var checkDb = {
+function blockA(args, callback) {
+    var err = 0;
+    var sql = '';
+    //throw 'Fire in Function';
 
-    blockA: function(args, callback) {
-        var err = 0;
-        var sql = '';
-        var results = {}, fields = {};
-        debugger;
-        sql = 'select count(*) as count from m_users ' +
-            'where nickname=? or mail_address=?';
-        lcsDb.query(sql, [args.req.body['nickname'],
-                    args.req.body['email']],
-                    function(err, results) {
-                        debugger;
-                        if (err || results.length == 0) {
-                            shoError(args,
-                                     lcsAp.getMsgI18N('99')); /* db error */
-                                     lcsAp.syslog('error',
-                                                  {'checkDb.blockA: ':
-                                                      err.message});
-                                                  callback(true, args);
-                                                  return;
-                        }
-                        debugger;
-                        if (results[0].count != 0) {
-                            shoError(args,
-                                     lcsAp.getMsgI18N('301')); /* tourokusumi */
-                                     callback(true, args);
-                                     return;
-                        }
-                        callback(null, args);
+    sql = 'select count(*) as count from m_users ' +
+        'where nickname=? or mail_address=?';
 
-                        return;
-                    });
-                    return;
-    },
-    blockB: function(args, callback) {
-        var err = 0;
-        var sql = '';
-        var results = {}, fields = {};
-
-        sql = 'rollback';
-        lcsDb.query(sql,
-                    function(err, results) {
-                        debugger;
-                        if (err || results.length == 0) {
-                            shoError(args,
-                                     lcsAp.getMsgI18N('301')); /* db error */
-                                     lcsAp.syslog('error',
-                                                  {'checkDb.blockB: ': sql});
-                                                  callback(true, args);
-                                                  return;
-                        }
-                        callback(null, args);
-
-                        return;
-                    });
-                    return;
-    },
-    blockC: function(err, result) {
-        callback(null, args);
-        return;
-    },
-    blockD: function(err, results) {
-        callback(null, args);
-        return;
+    lcsDb.query(sql, [args.req.body['nickname'],
+                args.req.body['email']],
+                [args, callback], cb4blockA);
+};
+/**
+ *
+ *
+ */
+function cb4blockB(err, result, args, callback) {
+    if (err || result.length == 0) {
+        shoError(args,
+                 lcsAp.getMsgI18N('301')); /* db error */
+                 lcsAp.syslog('error',
+                              {'checkDb.blockB: ': sql});
+                              callback(true, args);
+                              return;
     }
+    callback(null, args);
+    return;
+};
+/*
+ *
+ *
+ */
+function blockB(args, callback) {
+    var err = 0;
+    var sql = '';
+    var results = {}, fields = {};
+
+    sql = 'rollback';
+    lcsDb.query(sql, /* arg of sql */ [],
+                [args, callback], cb4blockB);
+                /* not arrived */
+};
+/**
+ *
+ *
+ */
+function blockC(args, callback) {
+    callback(null, args);
+    return;
+};
+/*
+ *
+ *
+ */
+function blockD(args, callback) {
+    callback(null, args);
+    return;
 };
 /**
  * generate m_users.ID
@@ -192,11 +222,13 @@ function getID(args, callback) {
  *
  */
 function parseData(args, callback) {
+
     lcsAp.doSync(args, [
-                 validCheck.checkParams,
-                 checkDb.blockB,
-                 checkDb.blockA,
-                 validCheck.filter],
+                 checkParams,
+                 blockA,
+                 blockB,
+                 blockC,
+                 filter],
                  callback);
 }
 /**
@@ -234,10 +266,24 @@ exports.addProf = function(req, res, frame) {
     args.res = res;
     args.post = posts;
     args.errors = {};
+
+    /* ドメインにバインド */
+    //   lcsAp.doSync = glb_dm.intercept(lcsAp.doSync);
+
+    /* 処理開始 */
     lcsAp.initSync(sync_pool);
     lcsAp.doSync(args, [
                  parseData,     /* 入力チェック*/
                  prepareData,   /* 前処理 */
                  UPMNT501.upAddProf, /* データベース登録 upmnt501.js */
                  dspWin]);      /* 後処理 */
+                 /*
+                    glb_dm.on('error', function(err) {
+                    lcsAp.syslog('error',
+                    {'Detail': err,
+                    'Trace': lcsAp.getStackTrace()}
+                    );
+                    });
+                    */
 };
+
