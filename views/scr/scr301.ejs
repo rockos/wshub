@@ -1,6 +1,76 @@
 <% layout('layout') -%>
 <%- stylesheet('/stylesheets/cstm/301.css') -%>
 
+<script type="text/javascript" src="/socket.io/socket.io.js"></script>
+<script type="text/javascript">
+var socket = io.connect("/scr/301");
+var sock = function( my ) {
+    var stocks = new Array();
+    var chkAry = [];
+    if (!main_form.tab1_chk) return;
+    if (main_form.tab1_chk.length) chkAry = main_form.tab1_chk;
+    else                           chkAry[0] = main_form.tab1_chk;
+    for (var i = 0,imax = chkAry.length; i < imax; i++) {
+        if (chkAry[i].checked) stocks.push(chkAry[i].value);
+    }
+
+    if (my.name == "sock_add") {
+        socket.emit(my.name, {
+                             "id_user": main_form.txt3.value,
+                             "schedule": main_form.txt1.value,
+                             "remark": main_form.txt2.value,
+                             "id_stock" : stocks });
+    } else if (my.name == "sock_del") {
+        socket.emit(my.name, {
+                             "id_user": main_form.txt3.value,
+                             "id_stock" : stocks });
+    }
+}
+
+socket.on("errmsg", function (data) {
+    debugtxt = document.getElementById("debugtxt");
+    if( typeof data==="object" ) {
+        for( var key in data ) {
+            debugtxt.innerHTML += (key+"::"+data[key]+"<br>");
+        }
+    }else{
+        debugtxt.innerHTML += data;
+    }
+
+    err = document.getElementById("mesg_bar");
+    err.className = data.color;
+    err.innerText = data.mesg;
+});
+
+socket.on("exec_comp", function (data) {
+    debugtxt = document.getElementById("debugtxt");
+    if( typeof data==="object" ) {
+        for( var key in data ) {
+            debugtxt.innerHTML += (key+"::"+data[key]+"<br>");
+        }
+    }else{
+        debugtxt.innerHTML += data;
+    }
+
+    err = document.getElementById("mesg_bar");
+    err.className = data.color;
+    err.innerText = data.mesg;
+});
+
+
+socket.on("debugz", function (data) {
+    debugtxt = document.getElementById("debugtxt");
+    if( typeof data==="object" ) {
+        for( var key in data ) {
+            debugtxt.innerHTML += (data[key]+"<br>");
+        }
+    }else{
+        debugtxt.innerHTML += data;
+    }
+});
+
+</script>
+
 <form name="main_form" method="post" action="/scr/301">
 
   <div id="sub_body">
@@ -44,12 +114,20 @@
       <li><input type="submit" name="send_bak1" value="<%= pageTags.send_bak1 %>"></li>
       <% } %>
 
-      <% if( step=="3" ) { %>
+      <% if( step=="333" ) { %>
       <li><input type="submit" name="send_add_exe" value="<%= pageTags.send_add_exe %>"></li>
       <% } %>
+      <% if( step=="3" ) { %>
+      <li><input type="button" name="sock_add" class="send" 
+                 value="<%= pageTags.send_add_exe %>" onclick="sock(this)"></li>
+      <% } %>
 
-      <% if( step=="4" ) { %>
+      <% if( step=="444" ) { %>
       <li><input type="submit" name="send_del_exe" value="<%= pageTags.send_del_exe %>"></li>
+      <% } %>
+      <% if( step=="4" ) { %>
+      <li><input type="button" name="sock_del" class="send"
+                 value="<%= pageTags.send_del_exe %>" onclick="sock(this)"></li>
       <% } %>
 
       <% if( step=="3" || step=="4" ) { %>
@@ -60,7 +138,7 @@
 
   <div id="main_body">
     <div class="mesg_bar">
-      <span class="<%= mesg_level_color %>"><%= mesg %></span>
+      <span id="mesg_bar" class="<%= mesg_level_color %>"><%= mesg %></span>
     </div>
 
     <div class="cond301">
@@ -150,3 +228,5 @@
   </div>
 
 </form>
+
+<div id="debugtxt"></div>

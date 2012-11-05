@@ -163,4 +163,5 @@ global['sck_io'] = socketio;
 require('./controller/mgr/mgrmon').main();
 require('./controller/mgr/mgragv').main();
 require('./controller/iqy/iqy113').sck_main();
+require('./controller/mop/mop301').sck_main();
 
