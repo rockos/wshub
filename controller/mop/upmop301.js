@@ -18,6 +18,7 @@ function insReserve(args, callback) {
            args.adt.schedule, args.adt.remark,
            args.adt.kind, args.adt.status];
     lcsDb.query(insSql, ary, function(err, results) {
+debugger;
             if (err) {
                 args.errmsg = lcsAp.getMsgI18N(99);
                 args.dberr = err;
@@ -52,6 +53,7 @@ function insRv_stock(args, callback) {
     };
 
     var rv_stock_ins_callback = function(err, callback) {
+debugger;
         if (err) {
             args.errmsg = lcsAp.getMsgI18N(99);
             args.dberr = err;
@@ -79,7 +81,7 @@ debugger;
         var bind = [];
         /* delete t_reserve */
         var sql = "" +
-        "DELETE t_reserve " +
+        "DELETE from t_reserve " +
         "where id_reserve = ? " +
         "  and not exists(select * from t_rv_stock where id_reserve = ?) ";
         bind = [id_reserve, id_reserve];

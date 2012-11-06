@@ -456,6 +456,7 @@ var checkDb = {
     "stockExists" : function(args, callback) {
         var counter = 0;
         var stock_check = function(id_stock, callback, nextDo) {
+debugger;
             var bind = [];
             /* exist check t_stocks */
             var sql = "" +
@@ -469,7 +470,7 @@ var checkDb = {
                         return;
                     }
                     if (!results[0].stock_exist) {
-                        nextDo(null, "401", callback);
+                        nextDo(null, "30101", callback);
                         return;
                     }
                     nextDo(null, null, callback);
@@ -477,6 +478,7 @@ var checkDb = {
         };
 
         var stock_check_callback = function(err, reason, callback) {
+debugger;
             if (err) {
                 args.errmsg = lcsAp.getMsgI18N(99);
                 args.dberr = err;
@@ -519,7 +521,7 @@ var checkDb = {
                         return;
                     }
                     if (results[0].rv_exist) {
-                        nextDo(null, "402", callback);
+                        nextDo(null, "30102", callback);
                         return;
                     }
                     nextDo(null, null, callback);
@@ -527,6 +529,7 @@ var checkDb = {
         };
 
         var rv_stock_check_callback = function(err, reason, callback) {
+debugger;
             if (err) {
                 args.errmsg = lcsAp.getMsgI18N(99);
                 args.dberr = err;
@@ -570,7 +573,7 @@ var checkDb = {
                         return;
                     }
                     if (!results[0].rv_exist) {
-                        nextDo(null, "402", callback);
+                        nextDo(null, "30103", callback);
                         return;
                     }
                     nextDo(null, null, callback);
@@ -578,6 +581,7 @@ var checkDb = {
         };
 
         var rv_stock_check_callback = function(err, reason, callback) {
+debugger;
             if (err) {
                 args.errmsg = lcsAp.getMsgI18N(99);
                 args.dberr = err;
@@ -646,6 +650,7 @@ function getReserve(args, callback) {
     };
     
     var get_reserve_callback = function(err, results, callback) {
+debugger;
         if (err) {
             args.errmsg = lcsAp.getMsgI18N(99);
             args.dberr = err;
@@ -654,14 +659,12 @@ function getReserve(args, callback) {
         }
         args.id_reserve.push(results[0].id_reserve);
         counter++;
-debugger;
         if (counter >= args.data.id_stock.length) {
             callback(null, args);
             return;
         }
         get_reserve(args.data.id_stock[counter], callback, get_reserve_callback);
     };
-debugger;
     get_reserve(args.data.id_stock[counter], callback, get_reserve_callback);
 }
 
@@ -739,10 +742,14 @@ function finSock(fail_args, true_args) {
         fail_args.sock301.sockets[fail_args.socket.id].emit("errmsg", { 
                 "mesg" : fail_args.errmsg.text,
                 "color" : fail_args.errmsg.warn });
+        if (fail_args.dberr) {
+            console.log(fail_args.dberr);
+            lcsAp.syslog("error", fail_args.dberr.text);
+        }
         return;
     }
-    console.log("info::sock finish");
-    console.log(true_args.id_reserve);
+    //console.log("info::sock finish");
+    //console.log(true_args.id_reserve);
 }
 
 /**

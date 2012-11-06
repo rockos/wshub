@@ -28,6 +28,7 @@ var sock = function( my ) {
 }
 
 socket.on("errmsg", function (data) {
+    /*
     debugtxt = document.getElementById("debugtxt");
     if( typeof data==="object" ) {
         for( var key in data ) {
@@ -36,6 +37,7 @@ socket.on("errmsg", function (data) {
     }else{
         debugtxt.innerHTML += data;
     }
+    */
 
     err = document.getElementById("mesg_bar");
     err.className = data.color;
@@ -43,6 +45,7 @@ socket.on("errmsg", function (data) {
 });
 
 socket.on("exec_comp", function (data) {
+    /*
     debugtxt = document.getElementById("debugtxt");
     if( typeof data==="object" ) {
         for( var key in data ) {
@@ -51,14 +54,18 @@ socket.on("exec_comp", function (data) {
     }else{
         debugtxt.innerHTML += data;
     }
-
+    */
+    /*
     err = document.getElementById("mesg_bar");
     err.className = data.color;
     err.innerText = data.mesg;
+    */
+    main_form.send_bak2.click();
 });
 
 
 socket.on("debugz", function (data) {
+    /*
     debugtxt = document.getElementById("debugtxt");
     if( typeof data==="object" ) {
         for( var key in data ) {
@@ -67,6 +74,7 @@ socket.on("debugz", function (data) {
     }else{
         debugtxt.innerHTML += data;
     }
+    */
 });
 
 </script>
