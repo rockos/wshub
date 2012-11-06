@@ -112,7 +112,11 @@ function blockA(args, callback) {
     var err = 0;
     var sql = '';
     //throw 'Fire in Function';
-
+    debugger;
+    if (err == 0) {
+        callback(args);
+        return;
+    }
     sql = 'select count(*) as count from m_users ' +
         'where nickname=? or mail_address=?';
 
@@ -222,7 +226,7 @@ function getID(args, callback) {
  *
  */
 function parseData(args, callback) {
-
+debugger;
     lcsAp.doSync(args, [
                  checkParams,
                  blockA,
@@ -251,6 +255,15 @@ function prepareData(args, callback) {
  * @param {Object} frame data for render.
  * @author msyaono@rockos.co.jp
  */
+function postFunc(err) {
+    debugger;
+    /*
+   if (err) {
+       lcsAp.syslog('info', {'err': err});
+   }
+   */
+}
+
 exports.addProf = function(req, res, frame) {
 
     var posts = {};
@@ -276,7 +289,8 @@ exports.addProf = function(req, res, frame) {
                  parseData,     /* 入力チェック*/
                  prepareData,   /* 前処理 */
                  UPMNT501.upAddProf, /* データベース登録 upmnt501.js */
-                 dspWin]);      /* 後処理 */
+                 dspWin],
+                postFunc);      /* 後処理 */
                  /*
                     glb_dm.on('error', function(err) {
                     lcsAp.syslog('error',
