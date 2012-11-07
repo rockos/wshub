@@ -1,9 +1,8 @@
 
-var rootdir = process.env.ROCKOS_ROOT;
+//var rootdir = process.env.ROCKOS_ROOT;
 //var lcsAp = require(rootdir + 'lib/ap/lcsap').create('IQY105');
-
-var mongoose = require('mongoose');
-
+//var mongoose = require('mongoose');
+/*
 var _schema_gndlog = new mongoose.Schema({
 
         //法人／会員／ゲスト
@@ -15,7 +14,7 @@ var _schema_gndlog = new mongoose.Schema({
 
     });
 var lcsMog = require(rootdir +'lib/db/lcsmog').create('appServer',rootdir +'etc/mongo.cf', _schema_gndlog, "jisslogs" );
-
+*/
 var fs = require('fs');
 
 
@@ -233,6 +232,62 @@ jiss_date: Date
         args.posts.categories[posts.jiss_counter] = m;
     }
 
+    var sql = "select count(*) as docs from test_results " + 
+        "where jiss_name='法人' " +
+        "  and jiss_date >= ? and jiss_date < ?";
+    var bind = new Array();
+
+    var fmt = function(y,m,d) {
+        return ("0000" + y.toString()).slice(-4) +
+        ("00" + m.toString()).slice(-2) +
+        ("00" + d.toString()).slice(-2);
+    };
+    bind = [
+            fmt(fff.getFullYear(),fff.getMonth()+1,fff.getDate()),
+            fmt(ttt.getFullYear(),ttt.getMonth()+1,ttt.getDate())
+            ];
+    lcsDb.query(sql, bind, function(err, results, fields) {
+            if (err) {
+                args.dberr = err;
+                callback( args );
+                return;
+            }
+            docs = results[0].docs;
+            args.posts.jisscount1[posts.jiss_counter] = docs;
+            
+            var sql = "select count(*) as docs from test_results " + 
+                "where jiss_name='個人' " +
+                "  and jiss_date >= ? and jiss_date < ?";
+            
+            lcsDb.query(sql, bind, function(err, results, fields) {
+                    if (err) {
+                        args.dberr = err;
+                        callback( args );
+                        return;
+                    }
+                    docs = results[0].docs;
+                    args.posts.jisscount2[posts.jiss_counter] = docs;
+                    
+                    var sql = "select count(*) as docs from test_results " + 
+                        "where jiss_name='ビジター' " +
+                        "  and jiss_date >= ? and jiss_date < ?";
+                    
+                    lcsDb.query(sql, bind, function(err, results, fields) {
+                            if (err) {
+                                args.dberr = err;
+                                callback( args );
+                                return;
+                            }
+                            docs = results[0].docs;
+                            args.posts.jisscount3[posts.jiss_counter] = docs;
+                            args.posts.jiss_counter++;
+                            
+                            dataJiss(args, callback);
+                        });
+                });
+        });
+    
+    /*
     // 法人
     lcsMog.findCount( 
         {
@@ -279,6 +334,7 @@ jiss_date: Date
                         });
                 });
         });
+    */
 }
 
 /**
@@ -298,11 +354,16 @@ function showDemo(req, res, posts) {
 
     lcsAp.initSync(sync_pool);
     lcsAp.doSync( args, [
-                  dmyDsp,
                   optionsFyear,
                   optionsTyear,
                   dataJiss,
-                  dmyDsp ]);
+                  dmyDsp,
+                  dspWin],
+                  function(err) {
+                      if (err) {
+                          lcsAp.syslog("error",{"detail":err.dberr});
+                      }
+                  });
 }
 
 /**
@@ -324,7 +385,12 @@ function initSend(req, res, posts) {
                   dmyDsp,
                   optionsFyear,
                   optionsTyear,
-                  dspWin] );
+                  dspWin],
+                  function(err) {
+                      if (err) {
+                          lcsAp.syslog("error",{"detail":err.dberr});
+                      }
+                  });
 }
 
 /**

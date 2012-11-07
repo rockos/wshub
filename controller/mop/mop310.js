@@ -524,20 +524,31 @@ function modPB(req, res, posts) {
 }
 
 /**
- * * * * 押下時の処理
+ * 帳票 * 押下時の処理
  * @module prnPB
  * @param  {Object}req, {Object}res, {Object}posts
  * @date   21/sep/2012
  */
 function prnPB(req, res, posts) {
-
     var args = {"req": req, "res": res, "posts": posts};
-    args.posts.scrNo="scr/scr751";
+    args.res.contentType("application/xpxd");
+    args.posts.scrNo="scr/scr752";
 
     lcsAp.series(args,
                  [postData,
                   dspWin], /* 後処理 */
                  fin);
+
+
+    /*
+    var args = {"req": req, "res": res, "posts": posts};
+    args.posts.scrNo="scr/scr751";
+
+    lcsAp.series(args,
+                 [postData,
+                  dspWin], /* 後処理 * /
+                 fin);
+    */
 }
 
 /**

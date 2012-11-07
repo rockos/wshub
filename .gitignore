@@ -3,6 +3,7 @@
 *~
 *swo
 .gitignore
+\#*
 # variable file log..
 test/
 tmp/

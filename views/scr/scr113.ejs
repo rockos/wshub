@@ -76,6 +76,25 @@ var move_round = function( my ) {
     }
     document.getElementById("txt1").value = activ_row;
 }
+var areaClic = function(row) {
+    var now_id = 'dp'+('00'+activ_row).slice(-2);
+    activ_row = row;
+    activ_id = 'dp'+('00'+activ_row).slice(-2);
+    document.getElementById(now_id).className = "hide";
+    document.getElementById(activ_id).className = "actv";
+    document.getElementById("txt1").value = activ_row;
+
+    /*---DEBUG---
+    document.getElementById('debug').innerHTML += 
+    (
+        "activ_row:" + activ_row + "__" +
+        "row:" + row + "__" +
+        "getChildInFocus:" + $('ul.roundabout113').roundabout('getChildInFocus') + "__" +
+        "getNearestChild:" + $('ul.roundabout113').roundabout('getNearestChild') + "__" +
+        "--click!!<br>"
+    );
+    */
+}
 </script>
 
 <form name="main_form" method="post" action="/scr/113">
@@ -123,7 +142,7 @@ var move_round = function( my ) {
   <div id="round_main">
     <ul class="roundabout113">
       <% for (var row=1, row_max=location.row.length-1; row<=row_max; row++) { %>
-        <li>
+        <li onclick="areaClic(<%= row %>)">
           <span><%= row %></span>
           <% if (row==activ_row) { %>
           <span id="<%= 'dp'+('00'+row).slice(-2) %>" class="actv">

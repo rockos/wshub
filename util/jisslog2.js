@@ -2,7 +2,7 @@
 
 var LIMIT = 1000;
 var counter = 0;
-var lcsDb = require("/home/locos/demo/birman/lib/db/lcsdb").create('appServer', "/home/locos/demo/birman/etc/db.cf");
+var lcsDb = require("../lib/db/lcsdb").create('appServer', "../etc/db.cf");
 
 function readDb() {
     var rand = Math.floor( Math.random() * 1400 );
@@ -14,8 +14,10 @@ function readDb() {
     var q_arg = [];
 
     if( counter >= LIMIT ) {
-        console.log("completed --- count =" + counter + " ---");
-        process.exit();
+        lcsDb.query( "commit", function( err ) {
+                console.log("completed --- count =" + counter + " ---");
+                process.exit();
+            });
     }
 
     switch(rand2) {
@@ -29,10 +31,8 @@ function readDb() {
                  name ];
 
     sql = ""+
-        "insert into jiss (jtim,name) "+
+        "insert into test_results (jiss_date,jiss_name) "+
         "values( ?, ? )";
-
-
 
     lcsDb.query( sql, q_arg, function( err ) {
             if( err ) {
