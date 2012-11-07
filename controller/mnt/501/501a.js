@@ -27,19 +27,7 @@ function dspWin(args, callback) {
  * @param {Object} emsg contents of error.
  */
 function shoError(args, emsg) {
-    if (typeof emsg === 'object') {
-        args.errors = emsg;
-        args.post.mesg = emsg.text;
-        args.res.render('scr/error', args.post);
-    } else {
-        var msgobj = lcsAp.getMsgI18N(emsg);
-        args.errors = msgobj;
-        args.post.mesg = msgobj.text;
-        args.res.render('scr/error', args.post);
-    }
-}
-function _shoError(args, emsg) {
-    if (typeof emsg === 'object') {
+    if (typeof emsg === 'Object') {
         args.errors = emsg;
         args.post.mesg = emsg.text;
         args.res.render('scr/error', args.post);
