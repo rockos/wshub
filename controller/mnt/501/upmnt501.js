@@ -18,9 +18,13 @@ function insUser(args, callback) {
         args.adt.password, args.adt.email];
         lcsDb.query(insSql, ary, function(err, results) {
             if (err) {
-                return callback(err, args);
+                lcsAp.syslog('error',{'sql': err.stack});
+                lcsUI.shoError(args,
+                               lcsAp.getMsgI18N('99')); /* db error */
+                               callback(err, args);
+            } else {
+                callback(null, args);
             }
-            callback(null, args);
         });
 }
 /*
@@ -31,7 +35,7 @@ function insProof(args, callback) {
     var str = '';
 
     /* insert into t_proof */
-    var insSql = 'insert into t_proof (initial_date, text) ' +
+    var insSql = 'x insert into t_proof (initial_date, text) ' +
         'values (CURRENT_TIMESTAMP(),?)';
 
     for (var key in args.adt) {
@@ -39,11 +43,15 @@ function insProof(args, callback) {
     }
     ary = [str];
     lcsDb.query(insSql, ary, function(err, results) {
-        debugger;
         if (err) {
-            return callback(err, args);
+            debugger;
+            lcsAp.syslog('error',{'sql': err.stack});
+            lcsUI.shoError(args,
+                           lcsAp.getMsgI18N('99')); /* db error */
+                           callback(err, args);
+        } else {
+            callback(null, args);
         }
-        callback(null, args);
     });
 }
 
