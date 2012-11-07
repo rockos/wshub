@@ -1,0 +1,13 @@
+<% layout('layout_xpxd') -%>
+
+<% for (var i=0; i<3; i++) { %>
+<page>
+    <svg x="0" y="0" width="21cm" height="29cm" viewBox="0 0 2100 2900">
+        <text x="100" y="200" font-size="100" fill="red" stroke="black" stroke-width="1">練習</text>
+        <text x="100" y="450" font-size="150" fill="black" stroke="black" stroke-width="1"><%= table.tab1[i].col1 %></text>
+        <text x="100" y="650" font-size="150" fill="black" stroke="black" stroke-width="1"><%= table.tab1[i].col2 %></text>
+        <text x="100" y="850" font-size="150" fill="black" stroke="black" stroke-width="1"><%= table.tab1[i].col3 %></text>
+        <text x="100" y="1050" font-size="150" fill="black" stroke="black" stroke-width="1"><%= table.tab1[i].col4 %></text>
+    </svg>
+</page>
+<% } %>
