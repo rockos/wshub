@@ -1,5 +1,7 @@
 'use strict';
 /* common file include */
+var domain = require('domain');
+var glb_dm = domain.create();
 
 /* local file */
 var fn501a = require('./501a.js');
@@ -30,6 +32,8 @@ function _showScr(req, res, frame) {
     var posts = {};
     var inifile = './ini/data/mnt501ini.json';
     var msg = lcsAp.getMsgI18N('0');
+
+    
     posts.mesg = msg.text;
     posts.mesg_lavel_color = msg.warn;
 
@@ -62,6 +66,7 @@ function _showScr(req, res, frame) {
  * date 26.sep.2012 first edition.
  *
  */
+function dmfunc() {};
 exports.main = function(req, res, frame) {
 
     var tof = {/* Table of function for each button */
@@ -80,20 +85,30 @@ exports.main = function(req, res, frame) {
         '501d_DEL' : fn501d.delProf,
         '501d_RTN' : _showInitial
     };
-
-
-    for (var key in tof) {
-        if (req.body[key]) {
-            if (typeof tof[key] === 'function') {
-                tof[key](req, res, frame);
-                return;
+    try {
+        for (var key in tof) {
+            if (req.body[key]) {
+                if (typeof tof[key] === 'function') {
+                     tof[key](req, res, frame);
+  //                  dmfunc = glb_dm.bind(tof[key]);
+  //                  dmfunc(req, res, frame);
+                    return;
+                }
             }
         }
-    }
-    _showInitial(req, res, frame);
-
-    /*
-      lcsAp.log('mnt501 Undefined caller');
-      res.redirect('scr/scr404');
-    */
+        _showInitial(req, res, frame);
+    } catch (e) {
+        lcsAp.exlog(e, lcsAp.getStackTrace());
+    } 
 };
+/*
+ *
+ */
+glb_dm.on('error', function(err) {
+    debugger;
+    lcsAp.syslog('error',
+                 {'Detail': err,
+                     'Trace': lcsAp.getStackTrace()}
+                );
+});
+

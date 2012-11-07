@@ -8,7 +8,7 @@ var UPSTR = require('./upstr203.js');
 function showPart(req, res, posts) {
 
 
-    var sql ='select * from part order by pcode';
+    var sql ='select * from m_items order by item_code';
     var results, fields;
     
     

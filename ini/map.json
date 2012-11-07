@@ -95,14 +95,6 @@
    "ejs":"layout.ejs",
    "parmit":1
 },
-"str203":{
-  "path" : "../../controller/str/203/str203", 
-  "msg":{
-        "/scr/203" : "main"
-        },
-   "ejs":"layout.ejs",
-   "parmit":1
-},
 "mop301":{
   "path" : "../../controller/mop/mop301", 
   "msg":{

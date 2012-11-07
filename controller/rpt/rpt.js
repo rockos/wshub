@@ -7,7 +7,6 @@ var lcsAp = LCSAP.create('IQY');
  * date 1.jun.2012
  */
 exports.main = function(req, res, frame){
-
     var posts = {};
     var deffile = './controller/data/def701.json';
     posts.pageNavi = JSON.parse(require('fs').readFileSync(deffile));
