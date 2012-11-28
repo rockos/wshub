@@ -424,11 +424,13 @@ div#main_body div.mesg_bar {
     padding: 5px 0 0;
     background: #D6E1C7;
 }
+div#main_body div.operationPanel_fatal,
 div#main_body div.mesg_bar span.operationPanel_fatal {
     background: #CC0033;
 }
+div#main_body div.operationPanel_warning,
 div#main_body div.mesg_bar span.operationPanel_warning {
-    background: #CC0033;
+    background: #f0e68c;
 }
 
 /**

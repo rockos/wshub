@@ -38,11 +38,13 @@ var auth;
 var lcsAp = require('./lib/ap/lcsap').create('appServer', rootDir, app);
 var lcsUI = require('./lib/ap/lcsui').create('appServer');
 var lcsDb = require('./lib/db/lcsdb').create('appServer', './etc/db.cf');
+var lcsSOCK = require('./lib/ap/lcssock').create('appServer');
 
 /* Gloval Object */
 global['lcsAp'] = lcsAp;
 global['lcsUI'] = lcsUI;
 global['lcsDb'] = lcsDb;
+global['lcsSOCK'] = lcsSOCK;
 
 
 /* define command line arguments */
@@ -138,22 +140,18 @@ process.on('uncaughtException', function(error) {
 });
 
 
-/* this is for express@v3 */
-var socketio = require('socket.io').listen(server);
-socketio.configure('production', function() {
-        socketio.set('log level', 1);
-    });
-socketio.configure('development', function() {
-        socketio.set('log level', 2);
-    });
-socketio.configure('degub', function() {
-        socketio.set('log level', 2);
-    });
-
+lcsSOCK.config(
+             {map: './ini/sockmap.json'}
+);
+/**
+  socket.io create
+  this is for express@v3 
+ */
+lcsSOCK.listen(server);
 
 global['auth'] = auth;
-// add 2012.06.30 takahashi
-global['sck_io'] = socketio;
+// 今後はこのグローバル使わない
+global['sck_io'] = lcsSOCK.io();
 
 
 /*
@@ -163,6 +161,6 @@ global['sck_io'] = socketio;
  */
 require('./controller/mgr/mgrmon').main();
 require('./controller/mgr/mgragv').main();
-require('./controller/iqy/iqy113').sck_main();
-require('./controller/mop/mop301').sck_main();
-
+//require('./controller/iqy/iqy113').sck_main();
+//require('./controller/mop/mop301').sck_main();
+lcsSOCK.emitError();

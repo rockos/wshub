@@ -1,0 +1,17 @@
+{
+    "error":{
+        "path" : "",
+        "ns": "/error",
+        "exec" : ""
+    },
+    "iqy113":{
+        "path" : "../../controller/iqy/iqy113",
+        "ns": "/scr/113",
+        "exec" : "sck_main"
+    },
+    "mop301":{
+        "path" : "../../controller/mop/mop301",
+        "ns": "/scr/301",
+        "exec" : "sck_main"
+    }
+}

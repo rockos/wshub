@@ -525,6 +525,34 @@ function modPB(req, res, posts) {
 
 /**
  * 帳票 * 押下時の処理
+ * @module prnPB2
+ * @param  {Object}req, {Object}res, {Object}posts
+ * @date   21/sep/2012
+ */
+function prnPB2(req, res, posts) {
+    var args = {"req": req, "res": res, "posts": posts};
+    args.posts.scrNo="scr/scr753";
+    args.posts.print_date = "2012/11/22";
+
+    lcsAp.series(args,
+                 [postData,
+                  dspWin], /* 後処理 */
+                 fin);
+
+
+    /*
+    var args = {"req": req, "res": res, "posts": posts};
+    args.posts.scrNo="scr/scr751";
+
+    lcsAp.series(args,
+                 [postData,
+                  dspWin], /* 後処理 * /
+                 fin);
+    */
+}
+
+/**
+ * 帳票 * 押下時の処理
  * @module prnPB
  * @param  {Object}req, {Object}res, {Object}posts
  * @date   21/sep/2012
@@ -533,6 +561,7 @@ function prnPB(req, res, posts) {
     var args = {"req": req, "res": res, "posts": posts};
     args.res.contentType("application/xpxd");
     args.posts.scrNo="scr/scr752";
+    args.posts.print_date = "2012/11/22";
 
     lcsAp.series(args,
                  [postData,
@@ -587,6 +616,14 @@ function initSend(req, res, posts) {
                   dspWin], /* 後処理 */
                  fin);
 }
+/**
+ *  test
+ */
+function zzzPB(req, res, posts) {
+
+    var args = {"req": req, "res": res, "posts": posts};
+    lcsUI.showError(args, 4);
+}
 
 /**
  * 供給画面/main routine
@@ -621,8 +658,12 @@ exports.main = function(req, res, frame){
             modPB( req, res, posts);
         } else if ( req.body.send_exe ) {
             exePB( req, res, posts);
+        } else if ( req.body.send_zzz ) {
+            zzzPB( req, res, posts);
         } else if ( req.body.send_prn ) {
             prnPB( req, res, posts);
+        } else if ( req.body.send_prn2 ) {
+            prnPB2( req, res, posts);
         //} else if ( req.body.send_add ) {
         //    addPB( req, res, posts);
         //} else if ( req.body.send_del ) {
