@@ -1,15 +1,7 @@
-<% layout('layout_xpxd') -%>
+<% layout('layout_svg') -%>
+
 
 <!--
- * paper-type="a4" 用紙サイズ「A4」
- * orientation="portrait" 用紙方向「縦」
- * orientation="landscape" 用紙方向「横」
- * name space はバーコード用
--->
-<pxd paper-type="a4" orientation="portrait" title="棚卸リスト" xmlns:pxd="http://www.pxdoc.com/">
-
-<!--
- * ここで設定
  * A4 297*210
 -->
 <% var rowWidth = 130; %> <!--一行の幅(200.0mm)-->
@@ -23,8 +15,11 @@
 <% var i=0; %>
 
 <% for (var p = 1; p <= MAX_PAGE; p++) { %>
-<page>
-  <svg width="21cm" height="29.7cm" viewBox="0 0 2100 2970">
+<svg width="21cm" height="29.7cm" viewBox="0 0 2100 2970" xmlns="http://www.w3.org/2000/svg">
+
+    <!--埋め込み-->
+    <image xlink:href="/images/test.svg" x="0" y="0" width="2100" height="2970" opacity="0.3" />
+
     <!-- ヘッダー -->
     <text x="1050" y="195" font-size="100" fill="black" stroke="none" text-anchor="middle">
       棚卸　在庫一覧
@@ -96,11 +91,8 @@
     <% for (var j = 0, maxi = table.tab1.length; i < BR_PAGE * p && i < maxi; i++, j++) { %>
       <rect x="50" y="<%= 350+(j*130) %>" width="2000" height="130" stroke="black" stroke-width="1" fill="none"/>
       <!--### x=50~250 w=200 L=4 V=確認印 ###-->
-      <pxd:barcode x="80" y="<%= 350+55+(j*130) %>" width="100" height="100" 
-       type="CODE39" data="<%= table.tab1[i].col4 %>"/>
-
-      <!text x="150" y="<%= 350+55+(j*130) %>" font-size="50" fill="black" stroke="none" text-anchor="middle">
-      <!/text>
+      <text x="150" y="<%= 350+55+(j*130) %>" font-size="50" fill="black" stroke="none" text-anchor="middle">
+      </text>
       <line x1="250" y1="<%= 350+(j*130) %>" x2="250" y2="<%= 350+((j+1)*130) %>" stroke="black" stroke-width="1"/>
 
       <!--### x=250~500 w=250 L=5 V=番地 y-offset=25 ###-->
@@ -158,14 +150,10 @@
         <%= table.tab1[i].col9 %>
       </text>
 
+    <% } /*loop of rows*/ %>
 
 
-    <% } %>
+</svg>
+<% } /*loop of pages*/  %>
 
-
-  </svg>
-</page>
-<% } %>
-
-</pxd>
 

@@ -1,0 +1,47 @@
+<% layout('layout') -%>
+<!-- @@@に画面番号を入れてください -->
+<%- stylesheet('/stylesheets/cstm/@@@.css') -%>
+
+<script type="text/javascript" src="/socket.io/socket.io.js"></script>
+<script type="text/javascript" src="/javascripts/rcs/libsocket.js"></script>
+<script type="text/javascript">
+<!-- @@@に画面番号を入れてください -->
+var socket = io.connect("/scr/@@@");
+sockEventShowError(socket);
+</script>
+
+<!-- @@@に画面番号を入れてください -->
+<form name="main_form" method="post" action="/scr/@@@">
+  <input type="hidden" name="clientID" id="clientID" value="" />
+  <input type="hidden" name="nameSpace" id="nameSpace" value="" />
+
+  <div id="sub_body">
+    <p class=""><a href="#"><%= pageTags.caption %></a></p>
+    <ul>
+      <% if( step=="0" || step=="1" ) { %>
+      <!-- 照会ボタン -->
+      <li><input type="submit" name="send_iqy" value="<%= pageTags.send_iqy %>"></li>
+      <% } %>
+
+      <% if( step=="3" ) { %>
+      <!-- 実行ボタン -->
+      <li><input type="submit" name="send_add_exe" value="<%= pageTags.send_add_exe %>"></li>
+      <% } %>
+    </ul>
+  </div>
+
+  <div id="main_body">
+
+    <div id="mesg_bar" class="mesg_bar <%= mesg_level_color %>"><%= mesg %></div>
+
+    <div class="">
+      <!-- TODO : ここにフィルターや更新用のフィールド -->
+    </div>
+
+    <table class="">
+      <!-- TODO : ここにデータ表示テーブル -->
+    </table>
+
+  </div>
+
+</form>
