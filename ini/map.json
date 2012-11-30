@@ -189,6 +189,14 @@
    "ejs":"layout.ejs",
    "parmit":0
 
+},
+"seq901":{
+  "path" : "../../controller/seq/seq901", 
+  "msg":{
+        "/scr/901" : "main"
+        },
+   "ejs":"layout_seq.ejs",
+   "parmit":1
 }
 
 
