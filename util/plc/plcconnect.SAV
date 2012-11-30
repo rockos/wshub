@@ -1,0 +1,158 @@
+#!/usr/bin/env node
+'use strict';
+/*
+ *
+ *
+ */
+//var redis = require("redis"),
+//    rd = redis.createClient();
+var net = require('net');
+var conf = './plc.conf';
+var HEAD = '03FF000A4420000000001700';
+var PARAM = {'port':3011, 'host':'rockos'};
+var socket;
+var state = 0;
+/*
+ * logging data
+ */
+function log(objs) {
+    var d = new Date,
+        fmtDate = '',
+        month;
+    var msg = {};
+    month = d.getMonth() + 1;
+
+    fmtDate = d.getFullYear() + '/' + month + '/' + d.getDate() +
+        ' ' + d.getHours() + ':' + d.getMinutes() + ':' +
+        d.getSeconds() + ':' + d.getMilliseconds();
+
+    console.log(fmtDate + ' ' + objs.title+':'+objs.info);
+}
+/*
+ *
+ *
+ */
+var param = JSON.parse(require('fs').readFileSync(conf));
+//var socket = net.createConnection(PARAM);
+/*
+ *
+ */
+function readReq() {
+    if (state == 1) {
+                log({'title':'client', 'info':'readReq'});
+        socket.write('01FF000A4420000000001900');
+    }
+}
+/*
+ *
+ */
+function writeReq(head, data) {
+    if (state == 1) {
+                log({'title':'client', 'info':'writeReq'});
+        socket.write(HEAD + data.slice(4, 4*20),
+                function(){
+                log({'title':'client', 'info':'write comp'});
+                });
+    }
+}
+/*
+ *
+ */
+/*
+   function reconnect() {
+   log({'title':'client', 'info':'reconnect'});
+   setTimeout(function() {
+   debugger;
+   net.connect(PARAM);
+   }, 1000);
+   }
+   */
+function reconnect() {
+    setTimeout(function() {
+            //socket.destroy();
+                log({'title':'client', 'info':'now reconnected'});
+
+            var news = net.connect(PARAM, function() {
+                debugger;
+                socekt = news;
+                debugger
+                state = 1; /* connect */
+                log({'title':'client', 'info':'reconnected'});
+                //socket.resume();
+                readReq();
+                });
+            }, 1000);
+}
+
+
+socket = net.connect(PARAM, function () {
+        log({'title':'client', 'info':'connected'});
+        state = 1; /* connect */
+        readReq();
+        //socket.end();
+        });
+/*
+ * network event hundler
+ *
+ */
+/*
+   socket.on('connect',
+   function() {
+   log({'title':'client', 'info':'connected'});
+   readReq();
+   });
+   */
+socket.setTimeout(5000);
+var cnt = 1;
+try {
+    socket.on('data',   /* some data received */
+            function(data) {
+            log({'title':'client', 'info':data});
+            if (cnt == 0) {
+            cnt = 1;
+            socket.end();
+            } else {
+
+            if (data.slice(0, 4) == '8100') {
+            setTimeout(
+                function() {
+                writeReq(HEAD, data);
+                }, 
+                500);
+            } else if (data.slice(0, 4) == '8300') {
+            setTimeout(
+                function() {
+                readReq();}, 1000);
+            }
+            }
+            });
+    socket.on('end',        /* disconnection */
+            function() {
+            log({'title':'client', 'info':'disconnected'});
+            state = 0; /* disconnect */
+            socket.end();
+            });
+    socket.on('close',        /* socket closed */
+            function() {
+            log({'title':'client', 'info':'closed'});
+            state = 0; /* disconnect */
+            socket.end();
+            socket.destroy();
+            reconnect();
+            });
+    socket.on('timeout',        /* timeout occured */
+            function() {
+            log({'title':'client', 'info':'timeout'});
+            state = 0; /* disconnect */
+            socket.end(); /* send fin packet */
+            reconnect();
+            });
+    socket.on('error',        /* any error occured */
+            function(err) {
+            state = 0; /* disconnect */
+            log({'title':'client', 'info': err});
+            reconnect();
+            });
+} catch(e) {
+    console.log('heavy error: ',e);
+}
