@@ -38,6 +38,7 @@
         {"href":"/scr/104","name":"グラフ(Dynamic)"}
         ,{"href":"/scr/105","name":"グラフ(static)"}
         ,{"href":"/scr/103","name":"マップ"}
+        ,{"href":"/scr/901","name":"シーケンサ"}
         ]
  }
 , {"name":"ユーザー",
