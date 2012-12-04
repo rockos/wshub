@@ -22,6 +22,7 @@ function dspWin(args, nextDo) {
     var msg = lcsAp.getMsgI18N("0");
     posts.mesg = msg.text;
     posts.mesg_lavel_color = msg.warn;
+    //posts.scrNo = req.url.substr(1);
     res.render(posts.scrNo, posts);
 }
 

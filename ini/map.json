@@ -199,6 +199,15 @@
    "parmit":1
 }
 
-
+,"mob801":{
+  "path" : "../../controller/mob/mob801", 
+  "msg":{
+        "/scr/mob811" : "main"
+        ,"/scr/mob821" : "main"
+        ,"/scr/mob831" : "main"
+        },
+   "ejs":"layout_mob.ejs",
+   "parmit":1
+}
 
 }
