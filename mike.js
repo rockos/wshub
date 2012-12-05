@@ -37,12 +37,17 @@ var auth;
 
 var lcsAp = require('./lib/ap/lcsap').create('appServer', rootDir, app);
 var lcsUI = require('./lib/ap/lcsui').create('appServer');
+var lcsSOCK = require('./lib/ap/lcssock').create('appServer');
+var lcsRdb = require('./lib/db/lcsrdb').create('appServer');
+
 /* not use untill Sqlie3
 var lcsDb = require('./lib/db/lcsdb').create('appServer', './etc/db.cf');
 */
 /* Gloval Object */
 global['lcsAp'] = lcsAp;
 global['lcsUI'] = lcsUI;
+global['lcsSOCK'] = lcsSOCK;
+global['lcsRdb'] = lcsRdb;
 /*
 global['lcsDb'] = lcsDb;
 */
@@ -100,13 +105,13 @@ app.configure('production', function() {
 lcsUI.config([
              {map: './ini/map.json'},
              {frame: [
-                 {jp: './ini/scr/jp/framenavi.json'},
+                 {jp: './ini/scr/jp/gframenavi.json'},
                  {kr: './ini/scr/kr/framenavi.json'},
                  {en: './ini/scr/en/framenavi.json'},
                  {ch: './ini/scr/ch/framenavi.json'}
              ]},
              {tags: [
-                 {jp: './ini/scr/jp/pagetags.json'},
+                 {jp: './ini/scr/jp/gpagetags.json'},
                  {kr: './ini/scr/kr/pagetags.json'},
                  {en: './ini/scr/en/pagetags.json'},
                  {ch: './ini/scr/ch/pagetags.json'}
@@ -139,23 +144,19 @@ process.on('uncaughtException', function(error) {
    console.log('error '+error.stack);
 });
 
-
-/* this is for express@v3 */
-var socketio = require('socket.io').listen(server);
-socketio.configure('production', function() {
-        socketio.set('log level', 1);
-    });
-socketio.configure('development', function() {
-        socketio.set('log level', 2);
-    });
-socketio.configure('degub', function() {
-        socketio.set('log level', 2);
-    });
+lcsSOCK.config(
+             {map: './ini/sockmap.json'}
+);
+/**
+  socket.io create
+  this is for express@v3 
+ */
+lcsSOCK.listen(server);
 
 
 global['auth'] = auth;
 // add 2012.06.30 takahashi
-global['sck_io'] = socketio;
+global['sck_io'] = lcsSOCK.io();
 
 
 /*
@@ -163,8 +164,10 @@ global['sck_io'] = socketio;
  *  add 2012.06.30 takahashi
  *  ＊mapに乗せられるかな？
  */
-require('./controller/mgr/mgrmon').main();
+//require('./controller/mgr/mgrmon').main();
 require('./controller/mgr/mgragv').main();
-require('./controller/iqy/iqy113').sck_main();
-require('./controller/mop/mop301').sck_main();
+//require('./controller/iqy/iqy113').sck_main();
+//require('./controller/mop/mop301').sck_main();
+require('./controller/seq/seq901').sockMain();
+lcsSOCK.emitError();
 

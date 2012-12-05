@@ -1,3 +1,4 @@
+'use strict';
 var fs = require('fs');
 
 /*デモ用グローバル*/
@@ -94,16 +95,34 @@ var demoRegchange = function() {
     require('fs').watchFile(__file, function( curr, prev ) {
             var nowReg = JSON.parse(require('fs').readFileSync(__file));
             for (var key in prevReg) {
-                if (prevReg[key] != nowReg[key]) {
-                    lcsSOCK.io().of('/scr/901').volatile.emit('regChange',
-                                                              {"reg":key,
-                                                                      "val":nowReg[key]});
-                }
+            if (prevReg[key] != nowReg[key]) {
+            lcsSOCK.io().of('/scr/901').volatile.emit('regChange',
+                {"reg":key,
+                "val":nowReg[key]});
+            }
             }
             prevReg = nowReg;
-        });
+            });
 }
-
+function rxplc() {
+    var curVal = '', prvVal = '';
+    var regVal = '', regKey = '';
+    lcsRdb.hget('h_plc:cur', 'r01', function(err, curVal) {
+             if (err) {
+                 lcsAp.syslog('Error: ', err);
+                 return;
+             }
+             for (var i = 0, k = 0; i < 20; i++, k += 4) {
+                 regKey = 'D' + ('0000' + i).slice(-4); 
+                 regVal = curVal.slice(k, k+4);
+                 //regVal = i + 1;
+                 lcsSOCK.io().of('/scr/901').volatile.emit('regChange',
+                                                           {"reg":regKey,
+                                                               "val":regVal});
+             }
+             setTimeout(rxplc, 300);
+            });
+};
 /**
  *  デモデータ
  */
@@ -484,6 +503,7 @@ exports.sockMain = function(){
         });
 
     /* デモ ぐるぐる回る処理 */
-    demoHeartbeat();
+    //demoHeartbeat();
     demoRegchange();
+    rxplc();
 }

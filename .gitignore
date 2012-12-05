@@ -2,6 +2,8 @@
 # backup file for emacs
 *~
 *swo
+*ORG
+*SAV
 .gitignore
 \#*
 # variable file log..

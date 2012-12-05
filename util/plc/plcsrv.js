@@ -79,18 +79,14 @@ function recvFrom(stream, data) {
 /**
  *
  */
-var server = net.createServer(function(stream) { //'connection' listener
+var server = net.createServer(function(stream) {
     log({'title':'server', 'info':'connected'});
         stream.on('data', function(data) {
-            debugger;
             recvFrom(stream, data);
             });
         stream.on('end', function() {
-            debugger;
             log({'title':'server', 'info':'disconnected'});
             });
-        //stream.write('hello\r\n');
-        // stream.pipe(stream);
         });
 
 server.listen(PORT, HOST, function() { //'listening' listener
