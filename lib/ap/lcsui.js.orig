@@ -269,14 +269,15 @@ function lcsUI(nm) {
      *
      */
     lcsUI.prototype.checkUser = function(req, res) {
-        var sql ='select id_user as "userid",password,permit from m_users where id_user=?';
-        var posts = {};
-        lcsDb.query(sql, [req.body.userid],function(err, results, fields) {
-            if (err){
-                lcsAp.syslog('error', err);
-                return res.redirect('/');
-            }
+        var posts = {}
+        /* ユーザー認証 ＯＫ */
+        req.session.views = 1;
+        req.session.userid = req.body.userid;
+        req.session.password = req.body.password;
+        req.session.permit = 1;
+        req.session.lang = req.body.lang;
 
+<<<<<<< HEAD
             if (results.length == 0) {
                 lcsAp.syslog('error', 'userid not exist: ' + req.body.userid);
                 return res.redirect('/');
@@ -309,6 +310,15 @@ function lcsUI(nm) {
                 return res.redirect('/');
             }
         });
+=======
+        posts.frameNavi = _frameInf[lcsAp.getLangI18N()];
+        posts.layouts = "layout.ejs";
+        posts.pageNavi = {};
+        posts.frameNavi.userid = req.session.userid;
+        posts.userid = req.session.userid;
+
+        res.render('scr/scr800', posts);
+>>>>>>> origin/master
     };
 
 
