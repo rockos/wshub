@@ -104,6 +104,7 @@ var demoRegchange = function() {
             prevReg = nowReg;
             });
 }
+/*
 function rxplc() {
     var curVal = '', prvVal = '';
     var regVal = '', regKey = '';
@@ -123,6 +124,7 @@ function rxplc() {
              setTimeout(rxplc, 300);
             });
 };
+*/
 /**
  *  デモデータ
  */
@@ -503,7 +505,7 @@ exports.sockMain = function(){
         });
 
     /* デモ ぐるぐる回る処理 */
-    //demoHeartbeat();
+    demoHeartbeat();
     demoRegchange();
-    rxplc();
+    //rxplc();
 }
