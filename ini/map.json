@@ -138,7 +138,7 @@
 "mnt502":{
   "path" : "../../controller/mnt/502/mnt502", 
   "msg":{
-        "/mnt/502" : "main"
+        "/scr/502" : "main"
         },
    "ejs":"layout.ejs",
    "parmit":1
