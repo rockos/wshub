@@ -3,7 +3,7 @@ var redis = require("redis"),
     client = redis.createClient();
 var net = require('net');
 var HOST = 'localhost';
-var PORT = 3011;
+var PORT = 3012;
 
 function log(objs) {
     var d = new Date,

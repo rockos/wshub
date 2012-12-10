@@ -103,7 +103,7 @@ app.configure('production', function() {
 
 /* 画面プログラムの登録 */
 lcsUI.config([
-             {map: './ini/map.json'},
+             {map: './ini/gmap.json'},
              {frame: [
                  {jp: './ini/scr/jp/gframenavi.json'},
                  {kr: './ini/scr/kr/framenavi.json'},
@@ -168,6 +168,6 @@ global['sck_io'] = lcsSOCK.io();
 require('./controller/mgr/mgragv').main();
 //require('./controller/iqy/iqy113').sck_main();
 //require('./controller/mop/mop301').sck_main();
-require('./controller/seq/seq901').sockMain();
+require('./controller/seq/seq910').sockMain();
 lcsSOCK.emitError();
 
