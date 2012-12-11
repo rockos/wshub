@@ -167,4 +167,5 @@ require('./controller/mgr/mgragv').main();
 //require('./controller/mop/mop301').sck_main();
 require('./controller/seq/seq901').sockMain();
 require('./controller/seq/seq902').sockMain();
+require('./controller/seq/seq903').sockMain();
 lcsSOCK.emitError();

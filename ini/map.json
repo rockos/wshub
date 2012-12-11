@@ -208,6 +208,14 @@
    "ejs":"layout.ejs",
    "parmit":1
 }
+,"seq903":{
+  "path" : "../../controller/seq/seq903", 
+  "msg":{
+        "/scr/903" : "main"
+        },
+   "ejs":"layout.ejs",
+   "parmit":1
+}
 
 ,"mob801":{
   "path" : "../../controller/mob/mob801", 

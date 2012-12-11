@@ -428,8 +428,8 @@ function showDemo(req, res, posts, templete) {
 exports.main = function(req, res, frame){
 
     var posts = {};
-    var file = './controller/data/mnt5201.json',
-    inifile = './controller/data/mnt501ini.json';
+    var file = './ini/data/mnt5201.json',
+    inifile = './ini/data/mnt501ini.json';
 
 
     /* page情報設定 */

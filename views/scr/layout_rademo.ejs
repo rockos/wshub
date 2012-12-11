@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= frameNavi.name %></title>
+    <link rel='stylesheet' href='/stylesheets/html5reset.css' />
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+<!--
+    <link rel='stylesheet' href='/stylesheets/cstm/201.css' />
+-->
+    <link rel='stylesheet' href='/stylesheets/jqtransform.css' />
+
+    <link rel='stylesheet' href='/stylesheets/roundabout.css' />
+
+    <meta http-equiv="content-script-type" content="text/javascript"> 
+    <script src="http://code.jquery.com/jquery-1.5.2.min.js"></script>
+
+
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script type="text/javascript" src="/javascripts/highcharts.js"></script>
+    <script type="text/javascript" src="/javascripts/modules/exporting.js"></script>
+    <script type="text/javascript" src="/javascripts/jqtransformplugin/jquery.jqtransform.js"></script>
+<!-- 5-sep-2012 locos client library -->
+    <script type="text/javascript" src="/javascripts/rcs/libclient.js"></script>
+
+    <script language="javascript">
+      $(function(){
+      $('form.regist').jqTransform({imgPath:'/javascripts/jqtransformplugin/img/'});
+      });
+      </script>
+<!-- Roundabout for 3d-modeling start -->
+    <script type="text/javascript" src="/javascripts/fredhq-roundabout-c1bcd37/jquery.roundabout.min.js"></script>
+    <script type="text/javascript" src="/javascripts/fredhq-roundabout-c1bcd37/jquery.roundabout-shapes.min.js"></script>
+<style>
+
+   .roundabout-holder {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      background-color: #aaa;
+      height: 5em;
+      width: 5em;
+   }
+   .roundabout-moveable-item {
+      height: 4em;
+      width: 4em;
+      cursor: pointer;
+      background-color: #ee0;
+      border: 10px solid #999;
+   }
+   .roundabout-in-focus {
+      cursor: auto;
+   }
+</style>
+
+<script>
+   $(document).ready(function() {
+      $('ul.test').roundabout({
+         btnNext: ".next",
+         btnPrev: ".prev",
+         duration: 100,
+         reflect: true,
+         shape: "tearDrop",
+
+   });
+
+   $(".moverX").click(function(){
+
+   $("#id_location").val("qwer");
+   $("#id_location").attr("name", "TANA");
+
+   $("#main").submit();
+   });
+   });
+</script>
+
+
+   });
+
+</script>
+<!-- for 3d-modeling end -->
+  </head>
+  <body>
+
+  <div id="body">
+    <%- body %>
+  </div>
+
+  <div id="header">
+	<div class="company"><a href="/"><%= frameNavi.customer %></a></div>
+
+      <div class="topNavi">
+        <ul>
+          <% for (var i = 0, max = frameNavi.topMenu.length; i < max; i++) { %>
+          <li><a href="#"><%= frameNavi.topMenu[i].name %></a>
+            <ul>
+              <% for (var j = 0, maxj = frameNavi.topMenu[i].subMenu.length; j < maxj; j++) { %>
+              <li><a href="<%= frameNavi.topMenu[i].subMenu[j].href %> "> <%= frameNavi.topMenu[i].subMenu[j].name %></a></li>
+              <% } %>
+            </ul>
+          </li>
+          <% } %>
+        </ul>
+      </div>
+
+      <p class="comment"><%= frameNavi.comment %></p>
+      <p class="userInfo">
+        <span><%= frameNavi.userid %></span>
+	  </p>
+    </div>
+
+  </div>
+
+  <div id="footer">
+    <h3>Copyright (C) Rockos co.,Ltd. All Rights Reserved.</h3>
+  </div>
+
+  </body>
+</html>

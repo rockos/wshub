@@ -8,7 +8,7 @@ var lcsAp = LCSAP.create('IQY');
  */
 exports.main = function(req, res, frame){
     var posts = {};
-    var deffile = './controller/data/def701.json';
+    var deffile = './ini/data/def701.json';
     posts.pageNavi = JSON.parse(require('fs').readFileSync(deffile));
 
     if (!lcsAp.isSession(req.session)) {
