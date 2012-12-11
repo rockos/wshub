@@ -41,7 +41,6 @@ socket910.on("regChange", function (data) {
     }
 });
 socket910.on("vupdateRegOne", function (data) {
-        var regTop = parseInt(data.regTop, 10);
         var regVal = parseInt(data.regVal, 16);
         var reg = document.getElementById(data.regDnum);
         reg.innerText = ('0000'+regVal.toString(16).toUpperCase()).slice(-4);
