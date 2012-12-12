@@ -54,15 +54,15 @@ var print2 = function() {
       <li><input type="submit" class="send" name="send_iqy" value="戻る"></li>
       <% } %>
 
-      <% if( step == "1" ) { %>
+      <% if( step == "999" ) { %>
       <li><input type="button" class="send" value="帳票(PXDOC)" onclick="print()"></li>
       <% } %>
 
       <% if( step == "1" ) { %>
-      <li><input type="button" class="send" value="帳票(SVG)" onclick="print2()"></li>
+      <li><input type="button" class="send" value="帳票" onclick="print2()"></li>
       <% } %>
 
-      <% if( step == "1" ) { %>
+      <% if( step == "999" ) { %>
       <li><input type="submit" class="send" name="send_zzz" value="テスト(error)"></li>
       <% } %>
     </ul>

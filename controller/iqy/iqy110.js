@@ -85,8 +85,8 @@ exports.main = function(req, res, frame){
 
     var posts = {};
 
-    var file = './controller/data/iqy110.json',
-    inifile = './controller/data/iqy110ini.json';
+    var file = './ini/data/iqy110.json',
+    inifile = './ini/data/iqy110ini.json';
 
     /* page情報設定 */
     posts.frameNavi = frame.frameNavi;

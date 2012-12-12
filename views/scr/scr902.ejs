@@ -1,0 +1,236 @@
+<% layout('layout') -%>
+<%- stylesheet('/stylesheets/cstm/902.css') -%>
+
+<%- stylesheet('/stylesheets/jquery-ui/jquery-ui-1.9.2.custom.min.css') -%>
+<script type="text/javascript" src="/javascripts/jquery-ui-1.9.2.custom.min.js"></script>
+
+<script type="text/javascript" src="/javascripts/rcs/libsocket.js"></script>
+<script type="text/javascript">
+var socket = io.connect("/error");
+sockEventShowError(socket);
+
+var socket902 = io.connect("/scr/902");
+
+socket902.on("message_bar", function (data) {
+    err = document.getElementById("mesg_bar");
+    err.className = "mesg_bar " + data.color;
+    err.innerText = data.mesg;
+});
+
+socket902.on("changeCrane", function (data) {
+    if (data.head) {
+        for (var key in data) {
+            switch(key) {
+            case "local_switch":
+                $("#machineView tbody#" + data.head + " tr:nth-child(1) td:nth-child(2)").html(data[key].text);
+                $("#machineView tbody#" + data.head + " tr:nth-child(1) td:nth-child(2)").removeClass();
+                $("#machineView tbody#" + data.head + " tr:nth-child(1) td:nth-child(2)").addClass(data[key].color);
+                break;
+            case "online_switch":
+                $("#machineView tbody#" + data.head + " tr:nth-child(1) td:nth-child(3)").html(data[key].text);
+                $("#machineView tbody#" + data.head + " tr:nth-child(1) td:nth-child(3)").removeClass();
+                $("#machineView tbody#" + data.head + " tr:nth-child(1) td:nth-child(3)").addClass(data[key].color);
+                break;
+            case "status":
+                $("#machineView tbody#" + data.head + " tr:nth-child(1) td:nth-child(4)").html(data[key].text);
+                $("#machineView tbody#" + data.head + " tr:nth-child(1) td:nth-child(4)").removeClass();
+                $("#machineView tbody#" + data.head + " tr:nth-child(1) td:nth-child(4)").addClass(data[key].color);
+                break;
+            case "move_start":
+                $("#machineView tbody#" + data.head + " tr:nth-child(1) td:nth-child(5)").html(data[key]);
+                break;
+            case "move_end":
+                $("#machineView tbody#" + data.head + " tr:nth-child(1) td:nth-child(6)").html(data[key]);
+                break;
+            case "id":
+                $("#machineView tbody#" + data.head + " tr:nth-child(1) td:nth-child(7)").html(data[key]);
+                break;
+            case "speed":
+                $("#machineView tbody#" + data.head + " tr:nth-child(2) td:nth-child(1)").html(data[key]);
+                break;
+            case "h_range":
+                $("#machineView tbody#" + data.head + " tr:nth-child(2) td:nth-child(2)").html(data[key]);
+                break;
+            case "v_range":
+                $("#machineView tbody#" + data.head + " tr:nth-child(2) td:nth-child(3)").html(data[key]);
+                break;
+            case "count":
+                $("#machineView tbody#" + data.head + " tr:nth-child(3) td:nth-child(1)").html(data[key]);
+                break;
+            case "h_total_distance":
+                $("#machineView tbody#" + data.head + " tr:nth-child(3) td:nth-child(2)").html(data[key]);
+                break;
+            case "v_total_distance":
+                $("#machineView tbody#" + data.head + " tr:nth-child(3) td:nth-child(3)").html(data[key]);
+                break;
+            case "error":
+                $("#machineView tbody#" + data.head + " tr:nth-child(4) td:nth-child(1)").html(data[key].text);
+                $("#machineView tbody#" + data.head + " tr:nth-child(4) td:nth-child(1)").removeClass();
+                $("#machineView tbody#" + data.head + " tr:nth-child(4) td:nth-child(1)").addClass(data[key].color);
+                break;
+            }
+        }
+    }
+});
+
+socket902.on("changeConveyor", function (data) {
+    if (data.head) {
+        for (var key in data) {
+            switch(key) {
+            case "local_switch":
+                $("#machineView-2 tbody#" + data.head + " tr:nth-child(1) td:nth-child(2)").html(data[key].text);
+                $("#machineView-2 tbody#" + data.head + " tr:nth-child(1) td:nth-child(2)").removeClass();
+                $("#machineView-2 tbody#" + data.head + " tr:nth-child(1) td:nth-child(2)").addClass(data[key].color);
+                break;
+            case "status":
+                $("#machineView-2 tbody#" + data.head + " tr:nth-child(1) td:nth-child(3)").html(data[key].text);
+                $("#machineView-2 tbody#" + data.head + " tr:nth-child(1) td:nth-child(3)").removeClass();
+                $("#machineView-2 tbody#" + data.head + " tr:nth-child(1) td:nth-child(3)").addClass(data[key].color);
+                break;
+            case "exists_load":
+                $("#machineView-2 tbody#" + data.head + " tr:nth-child(1) td:nth-child(4)").html(data[key]);
+                break;
+            case "direction":
+                $("#machineView-2 tbody#" + data.head + " tr:nth-child(1) td:nth-child(5)").html(data[key]);
+                break;
+            case "h_total_distance":
+                $("#machineView-2 tbody#" + data.head + " tr:nth-child(1) td:nth-child(6)").html(data[key]);
+                break;
+            case "error":
+                $("#machineView-2 tbody#" + data.head + " tr:nth-child(2) td:nth-child(1)").html(data[key].text);
+                $("#machineView-2 tbody#" + data.head + " tr:nth-child(2) td:nth-child(1)").removeClass();
+                $("#machineView-2 tbody#" + data.head + " tr:nth-child(2) td:nth-child(1)").addClass(data[key].color);
+                break;
+            }
+        }
+    }
+});
+
+function x() {
+    $("#debugtxt").html(
+        $("#debugtxt").html() + "emit!<br>");
+    socket902.emit('demoevent',{"a":"a"});
+};
+
+$(function() {
+    /* is loading */
+});
+
+</script>
+
+<form name="main_form" method="post" action="/scr/902">
+  <input type="hidden" name="clientID" id="clientID" value="" />
+  <input type="hidden" name="nameSpace" id="nameSpace" value="" />
+
+  <div id="sub_body">
+    <p class=""><a href="#">機械モニタ</a></p>
+    <ul>
+      <li>
+        <input type="submit" name="send_iqy" value="表示" />
+      </li>
+      <!--
+      <li>
+        <input type="button" value="test" id="test_pb" onclick="x()" />
+      </li>
+      -->
+  </div>
+
+  <div id="main_body">
+    <div id="mesg_bar" class="mesg_bar <%= mesg_level_color %>"><%= mesg %></div>
+
+    <table id="machineView">
+      <caption>クレーン</caption>
+      <thead>
+      <tr>
+        <th rowspan="3">名前</td>
+        <th rowspan="3">ローカル<br>スイッチ</th>
+        <th rowspan="3">オンライン<br>スイッチ</th>
+        <th rowspan="3">状態</th>
+        <th>開始 位置</th>
+        <th>終了 位置</th>
+        <th>荷物 ＩＤ</th>
+      </tr>
+      <tr>
+        <th>スピード</th>
+        <th>走行</th>
+        <th>昇降</th>
+      </tr>
+      <tr>
+        <th>回数</th>
+        <th>走行（累計）</th>
+        <th>昇降（累計）</th>
+      </tr>
+      </thead>
+
+      <% for (var i = 0, imax = table.crane.length; i < imax; i++) { %>
+      <tbody id="<%= table.crane[i].head %>">
+      <tr>
+        <td rowspan="4"><%= table.crane[i].name %></td>
+        <td rowspan="4" class="<%= table.crane[i].local_switch.color %>">
+            <%= table.crane[i].local_switch.text %></td>
+        <td rowspan="4" class="<%= table.crane[i].online_switch.color %>">
+            <%= table.crane[i].online_switch.text %></td>
+        <td rowspan="4" class="<%= table.crane[i].status.color %>">
+            <%= table.crane[i].status.text %></td>
+        <td><%= table.crane[i].move_start %></td>
+        <td><%= table.crane[i].move_end %></td>
+        <td><%= table.crane[i].id %></td>
+      </tr>
+      <tr>
+        <td><%= table.crane[i].speed %></td>
+        <td><%= table.crane[i].h_range %></td>
+        <td><%= table.crane[i].v_range %></td>
+      </tr>
+      <tr>
+        <td><%= table.crane[i].count %></td>
+        <td><%= table.crane[i].h_total_distance %></td>
+        <td><%= table.crane[i].v_total_distance %></td>
+      </tr>
+      <tr>
+        <td colspan="3" class="<%= table.crane[i].error.color %>">
+            <%= table.crane[i].error.text %></td>
+      </tr>
+      </tbody>
+      <% } /* for */ %>
+
+    </table>
+
+    <table id="machineView-2">
+      <caption>コンベヤ</caption>
+      <thead>
+      <tr>
+        <th rowspan="1">名前</td>
+        <th rowspan="1">ローカル<br>スイッチ</th>
+        <th rowspan="1">状態</th>
+        <th>在荷</th>
+        <th>向き</th>
+        <th>距離（累計）</th>
+      </tr>
+      </thead>
+
+      <% for (var i = 0, imax = table.conveyor.length; i < imax; i++) { %>
+      <tbody id="<%= table.conveyor[i].head %>">
+      <tr>
+        <td rowspan="2"><%= table.conveyor[i].name %></td>
+        <td rowspan="2" class="<%= table.conveyor[i].local_switch.color %>">
+            <%= table.conveyor[i].local_switch.text %></td>
+        <td rowspan="2" class="<%= table.conveyor[i].status.color %>">
+            <%= table.conveyor[i].status.text %></td>
+        <td><%= table.conveyor[i].exists_load %></td>
+        <td><%= table.conveyor[i].direction %></td>
+        <td><%= table.conveyor[i].h_total_distance %></td>
+      </tr>
+      <tr>
+        <td colspan="3" class="<%= table.conveyor[i].error.color %>">
+            <%= table.conveyor[i].error.text %></td>
+      </tr>
+      </tbody>
+      <% } /* for */ %>
+
+    </table>
+
+  </div>
+
+</form>
+
+<div id="debugtxt"></div>

@@ -39,12 +39,14 @@ var lcsAp = require('./lib/ap/lcsap').create('appServer', rootDir, app);
 var lcsUI = require('./lib/ap/lcsui').create('appServer');
 var lcsDb = require('./lib/db/lcsdb').create('appServer', './etc/db.cf');
 var lcsSOCK = require('./lib/ap/lcssock').create('appServer');
+//var lcsRdb = require('./lib/db/lcsrdb').create('appServer');
 
 /* Gloval Object */
 global['lcsAp'] = lcsAp;
 global['lcsUI'] = lcsUI;
 global['lcsDb'] = lcsDb;
 global['lcsSOCK'] = lcsSOCK;
+//global['lcsRdb'] = lcsRdb;
 
 
 /* define command line arguments */
@@ -164,4 +166,6 @@ require('./controller/mgr/mgragv').main();
 //require('./controller/iqy/iqy113').sck_main();
 //require('./controller/mop/mop301').sck_main();
 require('./controller/seq/seq901').sockMain();
+require('./controller/seq/seq902').sockMain();
+require('./controller/seq/seq903').sockMain();
 lcsSOCK.emitError();

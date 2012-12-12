@@ -1,0 +1,250 @@
+@charse "UTF-8";
+
+/**
+ *  
+ */
+
+#machineView,
+#machineView-2 {
+    table-layout: fixed;
+}
+
+#machineView caption,
+#machineView-2 caption {
+    width: 100px;
+    padding: 5px 5px 5px 5px;
+    color: rgba(0,0,0,1);
+    border: solid 1px rgba(72,209,204,1);
+    background-color: rgba(72,209,204,1);
+    box-shadow:         2px 2px 0px 0px rgba(0,0,0,0.4) inset;
+    -webkit-box-shadow: 2px 2px 0px 0px rgba(0,0,0,0.4) inset;
+    -moz-box-shadow:    2px 2px 0px 0px rgba(0,0,0,0.4) inset;
+}
+
+#machineView thead tr,
+#machineView-2 thead tr {
+    height: ;
+}
+
+/**
+ *  クレーン
+ */
+
+#machineView thead th,
+#machineView thead td {
+    border: solid 1px black;
+    padding: 3px 0px 3px 0px;
+    font: normal 12px Arial; 
+    text-align: center;
+    vertical-align: middle;
+}
+
+#machineView thead th {
+    background-color: #A9A9A9;
+    color: #FFFFFF;
+}
+
+#machineView thead td {
+    background-color: #FFFFFF;
+    color: #000000;
+}
+
+/* column毎の幅 */
+#machineView thead th:nth-child(1) {
+    width: 100px;
+}
+#machineView thead th:nth-child(2) {
+    width: 80px;
+}
+#machineView thead th:nth-child(3) {
+    width: 80px;
+}
+#machineView thead th:nth-child(4) {
+    width: 80px;
+}
+#machineView thead th:nth-child(5) {
+    width: 150px;
+}
+#machineView thead th:nth-child(6) {
+    width: 150px;
+}
+#machineView thead th:nth-child(7) {
+    width: 150px;
+}
+
+#machineView tbody th,
+#machineView tbody td {
+    border: solid 1px black;
+    padding: 3px 0px 3px 0px;
+    font: normal 12px Arial; 
+    text-align: center;
+    vertical-align: middle;
+}
+
+#machineView tbody th {
+    background-color: #A9A9A9;
+    color: #FFFFFF;
+}
+
+#machineView tbody td {
+    background-color: #FFFFFF;
+    color: #000000;
+}
+
+/* 号機 */
+#machineView tbody tr:nth-child(1) td:nth-child(1) {
+    font: normal 18px Arial; 
+    text-align: center;
+    vertical-align: middle;
+}
+
+/*  */
+#machineView tbody tr:nth-child(1) td:nth-child(2),
+#machineView tbody tr:nth-child(1) td:nth-child(3) {
+    font: normal 22px Arial; 
+    text-align: center;
+    vertical-align: middle;
+}
+
+#machineView tbody tr:nth-child(1) td:nth-child(4) {
+    font: normal 18px Arial; 
+    text-align: center;
+    vertical-align: middle;
+}
+
+#machineView tbody tr:nth-child(1) td:nth-child(5),
+#machineView tbody tr:nth-child(1) td:nth-child(6),
+#machineView tbody tr:nth-child(1) td:nth-child(7) {
+    font: normal 20px Arial; 
+    text-align: center;
+    vertical-align: middle;
+}
+
+#machineView tbody tr:nth-child(2) td:nth-child(1),
+#machineView tbody tr:nth-child(2) td:nth-child(2),
+#machineView tbody tr:nth-child(2) td:nth-child(3) {
+    font: normal 20px Arial; 
+    text-align: center;
+    vertical-align: middle;
+}
+
+#machineView tbody tr:nth-child(3) td:nth-child(1),
+#machineView tbody tr:nth-child(3) td:nth-child(2),
+#machineView tbody tr:nth-child(3) td:nth-child(3) {
+    font: normal 20px Arial; 
+    text-align: center;
+    vertical-align: middle;
+}
+
+#machineView tbody tr:nth-child(4) td:nth-child(1) {
+    padding-left: 5px; 
+    font: normal 14px Arial; 
+    text-align: left;
+    vertical-align: middle;
+}
+
+/**
+ *  コンベヤ
+ */
+#machineView-2 thead th,
+#machineView-2 thead td {
+    border: solid 1px black;
+    padding: 3px 0px 3px 0px;
+    font: normal 12px Arial; 
+    text-align: center;
+    vertical-align: middle;
+}
+
+#machineView-2 thead th {
+    background-color: #A9A9A9;
+    color: #FFFFFF;
+}
+
+#machineView-2 thead td {
+    background-color: #FFFFFF;
+    color: #000000;
+}
+
+/* column毎の幅 */
+#machineView-2 thead th:nth-child(1) {
+    width: 100px;
+}
+#machineView-2 thead th:nth-child(2) {
+    width: 80px;
+}
+#machineView-2 thead th:nth-child(3) {
+    width: 80px;
+}
+#machineView-2 thead th:nth-child(4) {
+    width: 150px;
+}
+#machineView-2 thead th:nth-child(5) {
+    width: 150px;
+}
+#machineView-2 thead th:nth-child(6) {
+    width: 150px;
+}
+
+#machineView-2 tbody th,
+#machineView-2 tbody td {
+    border: solid 1px black;
+    padding: 3px 0px 3px 0px;
+    font: normal 12px Arial; 
+    text-align: center;
+    vertical-align: middle;
+}
+
+#machineView-2 tbody th {
+    background-color: #A9A9A9;
+    color: #FFFFFF;
+}
+
+#machineView-2 tbody td {
+    background-color: #FFFFFF;
+    color: #000000;
+}
+
+/* */
+#machineView-2 tbody tr:nth-child(1) td:nth-child(1) {
+    font: normal 18px Arial; 
+    text-align: center;
+    vertical-align: middle;
+}
+
+/*  */
+#machineView-2 tbody tr:nth-child(1) td:nth-child(2),
+#machineView-2 tbody tr:nth-child(1) td:nth-child(3) {
+    font: normal 22px Arial; 
+    text-align: center;
+    vertical-align: middle;
+}
+
+#machineView-2 tbody tr:nth-child(1) td:nth-child(4),
+#machineView-2 tbody tr:nth-child(1) td:nth-child(5),
+#machineView-2 tbody tr:nth-child(1) td:nth-child(6) {
+    font: normal 20px Arial; 
+    text-align: center;
+    vertical-align: middle;
+}
+
+#machineView-2 tbody tr:nth-child(2) td:nth-child(1) {
+    padding-left: 5px; 
+    font: normal 14px Arial; 
+    text-align: left;
+    vertical-align: middle;
+}
+
+#machineView .blue,
+#machineView-2 .blue {
+    color: blue;
+}
+
+#machineView .red,
+#machineView-2 .red {
+    color: red;
+}
+
+#machineView .gray,
+#machineView-2 .gray {
+    color: gray;
+}

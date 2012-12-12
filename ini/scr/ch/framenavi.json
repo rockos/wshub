@@ -6,21 +6,21 @@
         "subMenu":[
         {"href":"/scr/201","name":"入荷予約"}
         ,{"href":"/scr/202","name":"入庫"}
-        ,{"href":"/scr/203","name":"検品"}
         ]
  }
-,
- {"name":"出庫",
+, {"name":"出庫",
         "subMenu":[
-        {"href":"/scr/301","name":"出庫(全量)"}
-        ,{"href":"/scr/302","name":"出庫(ピッキング)"}
-        ,{"href":"/scr/302","name":"出庫(積増)"}
+        {"href":"/scr/301","name":"計画"}
+        ,{"href":"/scr/302","name":"計画出庫"}
+        ,{"href":"/scr/303","name":"例外出庫"}
+        ,{"href":"/scr/310","name":"棚卸"}
         ]
  }
 , {"name":"検索",
         "subMenu":[
-        {"href":"/scr/110","name":"在庫検索"}
-        ,{"href":"/scr/119","name":"ロケ検索"}
+        {"href":"/scr/106","name":"実績照会"}
+        ,{"href":"/scr/113","name":"空棚検索"}
+        ,{"href":"/scr/110","name":"在庫検索"}
         ,{"href":"/scr/701","name":"利用明細"}
         ]
  }
@@ -28,7 +28,6 @@
         "subMenu":[
         {"href":"/scr/501","name":"プロファイル"}
         ,{"href":"/scr/502","name":"在庫修正"}
-        ,{"href":"/scr/503","name":"マスタ登録"}
         ]
  }
 , {"name":"環境モニタ",
@@ -36,6 +35,13 @@
         {"href":"/scr/104","name":"グラフ(Dynamic)"}
         ,{"href":"/scr/105","name":"グラフ(static)"}
         ,{"href":"/scr/103","name":"マップ"}
+        ,{"href":"/scr/901","name":"シーケンサ"}
+        ,{"href":"/scr/902","name":"機械モニタ"}
+        ]
+ }
+, {"name":"ユーザー",
+        "subMenu":[
+        {"href":"/logout","name":"ログアウト"}
         ]
  }
 ]

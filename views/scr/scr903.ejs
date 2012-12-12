@@ -1,0 +1,345 @@
+<% layout('layout') -%>
+<%- stylesheet('/stylesheets/cstm/903.css') -%>
+
+<%- stylesheet('/stylesheets/jquery-ui/jquery-ui-1.9.2.custom.min.css') -%>
+<script type="text/javascript" src="/javascripts/jquery-ui-1.9.2.custom.min.js"></script>
+
+<script type="text/javascript" src="/javascripts/rcs/libsocket.min.js"></script>
+<script type="text/javascript">
+var socket = io.connect("/error");
+sockEventShowError(socket);
+
+var socket903 = io.connect("/scr/903");
+
+socket903.on("message_bar", function (data) {
+    err = document.getElementById("mesg_bar");
+    err.className = "mesg_bar " + data.color;
+    err.innerText = data.mesg;
+});
+
+socket903.on("buttonEvent_01", function(data) {
+    for (var key in data) {
+        if (key == 'value_v') {
+            $('#machineView tbody tr td li:nth-child(3)').html(data[key]);
+        }
+        if (key == 'value_h') {
+            $('#machineView tbody tr td li:nth-child(8)').html(data[key]);
+        }
+        if (key == 'limit') {
+            if (data.move == 1) {
+                if (data.limit == 1) {
+                    $('#machineView tbody tr td li:nth-child(1)').addClass("limit");
+                } else {
+                    $('#machineView tbody tr td li:nth-child(1)').removeClass("limit");
+                }
+            }
+            if (data.move == 2) {
+                if (data.limit == 1) {
+                    $('#machineView tbody tr td li:nth-child(5)').addClass("limit");
+                } else {
+                    $('#machineView tbody tr td li:nth-child(5)').removeClass("limit");
+                }
+            }
+            if (data.move == 4) {
+                if (data.limit == 1) {
+                    $('#machineView tbody tr td li:nth-child(6)').addClass("limit");
+                } else {
+                    $('#machineView tbody tr td li:nth-child(6)').removeClass("limit");
+                }
+            }
+            if (data.move == 8) {
+                if (data.limit == 1) {
+                    $('#machineView tbody tr td li:nth-child(10)').addClass("limit");
+                } else {
+                    $('#machineView tbody tr td li:nth-child(10)').removeClass("limit");
+                }
+            }
+        }
+        if (key == 'color') {
+            if (data.move == 1) {
+                if (data.color == 1) {
+                    $('#machineView tbody tr td li:nth-child(2)').addClass("move");
+                } else {
+                    $('#machineView tbody tr td li:nth-child(2)').removeClass("move");
+                }
+            }
+            if (data.move == 2) {
+                if (data.color == 1) {
+                    $('#machineView tbody tr td li:nth-child(4)').addClass("move");
+                } else {
+                    $('#machineView tbody tr td li:nth-child(4)').removeClass("move");
+                }
+            }
+            if (data.move == 4) {
+                if (data.color == 1) {
+                    $('#machineView tbody tr td li:nth-child(7)').addClass("move");
+                } else {
+                    $('#machineView tbody tr td li:nth-child(7)').removeClass("move");
+                }
+            }
+            if (data.move == 8) {
+                if (data.color == 1) {
+                    $('#machineView tbody tr td li:nth-child(9)').addClass("move");
+                } else {
+                    $('#machineView tbody tr td li:nth-child(9)').removeClass("move");
+                }
+            }
+        }
+    }/* for(key in data) */
+});
+
+socket903.on("buttonEvent_02", function(data) {
+    for (var key in data) {
+        if (key == 'value_h') {
+            $('#machineView-2 tbody tr td li:nth-child(3)').html(data[key]);
+        }
+        if (key == 'limit') {
+            if (data.move == 1) {
+                if (data.limit == 1) {
+                    $('#machineView-2 tbody tr td li:nth-child(1)').addClass("limit");
+                } else {
+                    $('#machineView-2 tbody tr td li:nth-child(1)').removeClass("limit");
+                }
+            }
+            if (data.move == 2) {
+                if (data.limit == 1) {
+                    $('#machineView-2 tbody tr td li:nth-child(5)').addClass("limit");
+                } else {
+                    $('#machineView-2 tbody tr td li:nth-child(5)').removeClass("limit");
+                }
+            }
+        }
+        if (key == 'color') {
+            if (data.move == 1) {
+                if (data.color == 1) {
+                    $('#machineView-2 tbody tr td li:nth-child(2)').addClass("move");
+                } else {
+                    $('#machineView-2 tbody tr td li:nth-child(2)').removeClass("move");
+                }
+            }
+            if (data.move == 2) {
+                if (data.color == 1) {
+                    $('#machineView-2 tbody tr td li:nth-child(4)').addClass("move");
+                } else {
+                    $('#machineView-2 tbody tr td li:nth-child(4)').removeClass("move");
+                }
+            }
+        }
+    }/* for(key in data) */
+});
+
+function debugXp(str) {
+    $("#debugtxt").html(
+        $("#debugtxt").html() + str + "<br>");
+};
+
+$(function() {
+    /* on loading */
+    $("#craneUp").bind( {
+        "mousedown": function() {
+            socket903.emit("buttonEvent_01", {
+                "action": "UP"
+                ,"event": "ON"
+            });
+            //debugXp("Up ON");
+        }
+        ,"mouseup": function() {
+            socket903.emit("buttonEvent_01", {
+                "action": "UP"
+                ,"event": "OFF"
+            });
+            //debugXp("Up OFF");
+        }
+    });
+    $("#craneDown").bind( {
+        "mousedown": function() {
+            socket903.emit("buttonEvent_01", {
+                "action": "DOWN"
+                ,"event": "ON"
+            });
+            //debugXp("Down ON");
+        }
+        ,"mouseup": function() {
+            socket903.emit("buttonEvent_01", {
+                "action": "DOWN"
+                ,"event": "OFF"
+            });
+            //debugXp("Down OFF");
+        }
+    });
+    $("#craneLeft").bind( {
+        "mousedown": function() {
+            socket903.emit("buttonEvent_01", {
+                "action": "LEFT"
+                ,"event": "ON"
+            });
+            //debugXp("Left ON");
+        }
+        ,"mouseup": function() {
+            socket903.emit("buttonEvent_01", {
+                "action": "LEFT"
+                ,"event": "OFF"
+            });
+            //debugXp("Left OFF");
+        }
+    });
+    $("#craneRight").bind( {
+        "mousedown": function() {
+            socket903.emit("buttonEvent_01", {
+                "action": "RIGHT"
+                ,"event": "ON"
+            });
+            //debugXp("Right ON");
+        }
+        ,"mouseup": function() {
+            socket903.emit("buttonEvent_01", {
+                "action": "RIGHT"
+                ,"event": "OFF"
+            });
+            //debugXp("Right OFF");
+        }
+    });
+
+    $("#cartFore").bind( {
+        "mousedown": function() {
+            socket903.emit("buttonEvent_02", {
+                "action": "FORE"
+                ,"event": "ON"
+            });
+        }
+        ,"mouseup": function() {
+            socket903.emit("buttonEvent_02", {
+                "action": "FORE"
+                ,"event": "OFF"
+            });
+        }
+    });
+    $("#cartBack").bind( {
+        "mousedown": function() {
+            socket903.emit("buttonEvent_02", {
+                "action": "BACK"
+                ,"event": "ON"
+            });
+        }
+        ,"mouseup": function() {
+            socket903.emit("buttonEvent_02", {
+                "action": "BACK"
+                ,"event": "OFF"
+            });
+        }
+    });
+
+});
+
+</script>
+
+<form name="main_form" method="post" action="/scr/903">
+  <input type="hidden" name="clientID" id="clientID" value="" />
+  <input type="hidden" name="nameSpace" id="nameSpace" value="" />
+
+  <div id="sub_body">
+    <p class=""><a href="#">機械操作</a></p>
+    <ul>
+      <li>
+        <input type="submit" name="send_iqy" value="表示" />
+      </li>
+  </div>
+
+  <div id="main_body">
+    <div id="mesg_bar" class="mesg_bar <%= mesg_level_color %>"><%= mesg %></div>
+
+    <table id="machineView">
+      <caption>クレーン</caption>
+      <tbody>
+      <tr>
+        <td></td>
+        <td><button type="button" id="craneUp" name="craneUp">↑</button></td>
+        <td></td>
+        <td rowspan="3" class="monitor">
+          <ul>
+          <li
+          <% if (machineView.v >= machineView.limit_def.u) { %>
+              <%= "class='limit'" %>
+          <% } %>
+           >上限</li>
+          <li>上昇</li>
+          <li><%= machineView.v %></li>
+          <li>下降</li>
+          <li
+          <% if (machineView.v <= machineView.limit_def.d) { %>
+              <%= "class='limit'" %>
+          <% } %>
+           >下限</li>
+
+          <li
+          <% if (machineView.h <= machineView.limit_def.l) { %>
+              <%= "class='limit'" %>
+          <% } %>
+           >左限界</li>
+          <li>左</li>
+          <li><%= machineView.h %></li>
+          <li>右</li>
+          <li
+          <% if (machineView.h >= machineView.limit_def.r) { %>
+              <%= "class='limit'" %>
+          <% } %>
+           >右限界</li>
+          </ul>
+        </td>
+      </tr>
+      <tr>
+        <td><button type="button" id="craneLeft" name="craneLeft">←</button></td>
+        <td></td>
+        <td><button type="button" id="craneRight" name="craneRight">→</button></td>
+      </tr>
+      <tr>
+        <td></td>
+        <td><button type="button" id="craneDown" name="craneDown">↓</button></td>
+        <td></td>
+      </tr>
+      </tbody>
+    </table>
+
+    <table id="machineView-2">
+      <caption>台車</caption>
+      <tbody>
+      <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td rowspan="3" class="monitor">
+          <ul>
+          <li
+          <% if (machineView2.h >= machineView2.limit_def.f) { %>
+              <%= "class='limit'" %>
+          <% } %>
+           >限界</li>
+          <li>前進</li>
+          <li><%= machineView2.h %></li>
+          <li>後退</li>
+          <li
+          <% if (machineView2.h <= machineView2.limit_def.b) { %>
+              <%= "class='limit'" %>
+          <% } %>
+           >限界</li>
+          </ul>
+        </td>
+      </tr>
+      <tr>
+        <td><button type="button" id="cartFore" name="cartFore">←</button></td>
+        <td></td>
+        <td><button type="button" id="cartBack" name="cartBack">→</button></td>
+      </tr>
+      <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+      </tbody>
+    </table>
+
+  </div>
+
+</form>
+
+<div id="debugtxt"></div>

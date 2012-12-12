@@ -1,0 +1,29 @@
+<% layout('layout_mob') -%>
+<form name="main_form" method="post" action="/check" data-ajax="false" data-transition="slidedown">
+  <div data-role="content"> 
+    <p>ログイン</p>
+    <div data-role="fieldcontain"> 
+      <label for="userid">アカウント:</label> 
+      <input type="text" name="userid" id="userid" placeholder="hello" value=""/> 
+    </div> 
+
+    <div data-role="fieldcontain"> 
+      <label for="password">パスワード:</label> 
+      <input type="password" name="password" id="password" placeholder="world" value=""/> 
+    </div> 
+
+    <div data-role="fieldcontain"> 
+      <label for="lang" class="select">言語選択:</label> 
+      <select name="lang" id="lang"> 
+        <option selected value='jp'>日本語</option>
+        <option value='en'>English</option>
+      </select>
+    </div>
+
+    <fieldset class="ui-grid-a">
+      <div class="ui-block-a"><button type="submit" data-theme="a">ログイン</button></div> 
+    </fieldset> 
+
+  </div><!--content-->
+</form>
+

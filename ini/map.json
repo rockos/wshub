@@ -138,7 +138,7 @@
 "mnt502":{
   "path" : "../../controller/mnt/502/mnt502", 
   "msg":{
-        "/mnt/502" : "main"
+        "/scr/502" : "main"
         },
    "ejs":"layout.ejs",
    "parmit":1
@@ -189,8 +189,9 @@
    "ejs":"layout.ejs",
    "parmit":0
 
-},
-"seq901":{
+}
+
+,"seq901":{
   "path" : "../../controller/seq/seq901", 
   "msg":{
         "/scr/901" : "main"
@@ -199,6 +200,32 @@
    "parmit":1
 }
 
+,"seq902":{
+  "path" : "../../controller/seq/seq902", 
+  "msg":{
+        "/scr/902" : "main"
+        },
+   "ejs":"layout.ejs",
+   "parmit":1
+}
+,"seq903":{
+  "path" : "../../controller/seq/seq903", 
+  "msg":{
+        "/scr/903" : "main"
+        },
+   "ejs":"layout.ejs",
+   "parmit":1
+}
 
+,"mob801":{
+  "path" : "../../controller/mob/mob801", 
+  "msg":{
+        "/scr/mob811" : "main"
+        ,"/scr/mob821" : "main"
+        ,"/scr/mob831" : "main"
+        },
+   "ejs":"layout_mob.ejs",
+   "parmit":1
+}
 
 }
