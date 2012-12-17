@@ -1,9 +1,0 @@
-{"dummy": "hogehoge"
-,"title": "在庫検索"
-,"scrhead": "This screen is for form test."
-,"comment":"WEBトランクルーム"
-,"tab":[
- {"id_user": "u001","nickname":"小平商店", "address":"01-10-01","id_stock": "Tag01",
- "period": "9month", "remark":"there are smoking area.","reserved":"1","radiodata":"SEL"}
-]
-}
