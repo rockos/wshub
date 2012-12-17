@@ -1,18 +1,37 @@
 'use strict';
 var fs = require('fs');
 var net = require('net');
+var util = require('util');
 var HOST = '127.0.0.1';
-var PORT = 3012;
-
+var PORT = 3011;
+var TAG = '/scr/910';
+var __file = ROOTDIR + '/ini/data/seq910-test1.json';
+var _seq_txt = ROOTDIR + '/ini/data/seq.txt';
+var _DATABASE = 'none'; /* none or redis */
+var isClient = false; /* true if connection estabished */
+var RX_POSI = 0;  /* _seq_txt start position default 200 register */
+var TX_POSI = (200*4); /* ditto */
+var RXBUF = '';
+var TXBUF = '';
+var me = 'Seq910';
+var plcConnect = false;
 /*デモ用グローバル*/
 var Demo = {"conn":0,"port":""};
 var SendReg;
 /*レジスタのスタート/エンド 実際には.confファイルにもつ*/
-var RECV_START_REG = 0,
+/* var RECV_START_REG = 0,
     RECV_END_REG = 199;
+*/
+/* for 凸版*/
+var RECV_START_REG = 0,
+RECV_END_REG = 199;
 /*レジスタのスタート/エンド 実際には.confファイルにもつ*/
-var SEND_START_REG = 1000,
+/*var SEND_START_REG = 1000,
     SEND_END_REG = 1199;
+*/
+/* for 凸版*/
+var SEND_START_REG = 200,
+SEND_END_REG = 400;
 
 /**
  * doSync finally
@@ -82,7 +101,7 @@ var D0000 = 0;
 var demoHeartbeat = function() {
     if (Demo.conn == 9) {
         D0000 = (D0000+1)%2;
-        lcsSOCK.io().of('/scr/901').volatile.emit('Heartbeat',{"D0000":D0000});
+        lcsSOCK.io().of(TAG).volatile.emit('Heartbeat',{"D0000":D0000});
     }
     setTimeout(demoHeartbeat,300);
 }
@@ -92,14 +111,13 @@ var demoHeartbeat = function() {
  */
 
 var demoRegchange = function() {
-    var __file = './ini/data/seq901-test1.json';
-    var prevReg = JSON.parse(require('fs').readFileSync(__file));
+    var prevReg = JSON.parse(fs.readFileSync(__file));
 
     require('fs').watchFile(__file, function( curr, prev ) {
-            var nowReg = JSON.parse(require('fs').readFileSync(__file));
+            var nowReg = JSON.parse(fs.readFileSync(__file));
             for (var key in prevReg) {
             if (prevReg[key] != nowReg[key]) {
-            lcsSOCK.io().of('/scr/901').volatile.emit('regChange',
+            lcsSOCK.io().of(TAG).volatile.emit('regChange',
                 {"reg":key,
                 "val":nowReg[key]});
             }
@@ -107,25 +125,6 @@ var demoRegchange = function() {
             prevReg = nowReg;
             });
 }
-function rxplc() {
-    var curVal = '', prvVal = '';
-    var regVal = '', regKey = '';
-    lcsRdb.hget('h_plc:cur', 'r01', function(err, curVal) {
-             if (err) {
-                 lcsAp.syslog('Error: ', err);
-                 return;
-             }
-             for (var i = 0, k = 0; i < 20; i++, k += 4) {
-                 regKey = 'D' + ('0000' + i).slice(-4); 
-                 regVal = curVal.slice(k, k+4);
-                 //regVal = i + 1;
-                 lcsSOCK.io().of('/scr/901').volatile.emit('regChange',
-                                                           {"reg":regKey,
-                                                               "val":regVal});
-             }
-             setTimeout(rxplc, 300);
-            });
-};
 /**
  *  デモデータ
  */
@@ -134,8 +133,7 @@ var demoData_recv = function(args, nextDo) {
     start10,
     end10,
     mod10;
-
-    var dmyData = JSON.parse(require('fs')
+    var dmyData = JSON.parse(fs
                              .readFileSync(ROOTDIR + '/src/ini/data/seq901-test1.json'));
 
     mod10 = RECV_START_REG % 10;
@@ -172,7 +170,6 @@ var demoData_recv = function(args, nextDo) {
         }
     }
     args.posts.table.recv = recv;
-
     nextDo(null, args);
 }
 
@@ -229,6 +226,27 @@ var demoData_send = function(args, nextDo) {
 /**
  *  デモデータ(準備)
  */
+var demoPreX = function(args, nextDo) {
+    var msg = {};
+    if (plcConnect) {
+        /*接続*/
+        args.posts.step = "1"; /* 1:接続 */
+        args.posts.text.port = Demo.port;
+        msg = lcsAp.getMsgI18N(90100);
+    } else {
+        /*未接続*/
+        args.posts.step = "0"; /* 0:未接続 */
+        msg = lcsAp.getMsgI18N(90101);
+    }
+
+    args.posts.mesg = msg.text;
+    args.posts.mesg_lavel_color = msg.warn;
+
+    nextDo(null, args);
+}
+/**
+ *  デモデータ(準備)
+ */
 var demoPre = function(args, nextDo) {
     var msg = {};
     if (Demo.conn == 9) {
@@ -269,7 +287,7 @@ var demoConn = function(args, nextDo) {
             /* 接続 */
             Demo.conn = 9;
             var msg = lcsAp.getMsgI18N(90100);
-            lcsSOCK.io().of('/scr/901').emit('message_bar',
+            lcsSOCK.io().of(TAG).emit('message_bar',
                                              {'mesg': msg.text,
                                                      'color': msg.warn});
             //lcsUI.showError(args, msg);
@@ -321,7 +339,25 @@ function endPB(req, res, posts) {
                   dspEnd], /* 画面を終了する */
                  finSync );
 }
-
+/*
+ * バッファ内の指定レジスタの値を置換する
+ * D1000
+ */
+function replaceReg(src, name, value) {
+    var dstn = '';
+    var pos = 0, head = '', tail = ''; 
+    var regnum = parseInt(name.slice(1,5), 10);
+    
+    if (regnum > 1000) regnum -= 1000;
+    
+    pos = (regnum - SEND_START_REG) * 4;
+    head = src.slice(0, pos);
+    pos += 4;
+    tail = src.slice(pos, src.length);
+    dstn = head + value + tail;
+    
+    return dstn;
+}
 /**
  * 設定の処理
  * @module regsetPB
@@ -329,18 +365,18 @@ function endPB(req, res, posts) {
  * @date   21/sep/2012
  */
 function regsetPB(req, res, posts) {
-    var sync_pool = [];
-    var args = {"req": req, "res": res, "posts": posts};
-    lcsAp.initSync(sync_pool);
-    lcsAp.doSync(args,
-                 [
-                  /*TODO::送信レジスタセット*/
-                  demoSetsendreg,
-                  demoPre, /* 前処理 */
-                  demoData_recv,
-                  demoData_send,
-                  dspWin], /* 後処理 */
-                 finSync );
+    var reg = req.body.send_dreg;
+    var radix = req.body.radix;
+    var val = req.body.send_dreg_value;
+    var regVal = ('0000' + parseInt(val, radix).toString(16)).slice(-4)
+    debugger;
+    TXBUF = replaceReg(TXBUF, reg, regVal);
+    res.send(204);
+    lcsSOCK.io().of(TAG).volatile.emit('vupdateRegOne',
+                                       {
+                                           "regTop":"0",
+                                           "regDnum": reg,
+                                           "regVal": regVal});
 }
 
 /**
@@ -356,7 +392,7 @@ function disconnPB(req, res, posts) {
     lcsAp.doSync(args,
                  [
                   demoDisconn, /*TODO::切断処理*/
-                  demoPre, /* 前処理 */
+                  demoPreX, /* 前処理 */
                   demoData_recv,
                   demoData_send,
                   dspWin], /* 後処理 */
@@ -377,7 +413,7 @@ function connPB(req, res, posts) {
                  [
                   demoConn, /*TODO::接続処理*/
 
-                  demoPre, /* 前処理 */
+                  demoPreX, /* 前処理 */
                   demoData_recv,
                   demoData_send,
                   dspWin], /* 後処理 */
@@ -396,7 +432,7 @@ function iqyPB(req, res, posts) {
     lcsAp.initSync(sync_pool);
     lcsAp.doSync(args,
                  [
-                  demoPre, /* 前処理 */
+                  demoPreX, /* 前処理 */
                   demoData_recv,
                   demoData_send,
                   dspWin], /* 後処理 */
@@ -415,7 +451,7 @@ function initSend(req, res, posts) {
     lcsAp.initSync(sync_pool);
     lcsAp.doSync(args,
                  [
-                  demoPre, /* 前処理 */
+                  demoPreX, /* 前処理 */
                   demoData_recv, /* 表示１ */
                   demoData_send, /* 表示２ */
                   dspWin], /* 後処理 */
@@ -456,11 +492,12 @@ exports.main = function(req, res, frame){
         },
         "*" : errDisp
     };
+
     var posts = {};
     try {
         posts = lcsAp.initPosts(req, frame);
     } catch(e) {
-        lcsAp.syslog( "error", "lcsAp.initPosts" );
+        lcsAp.syslog("error", "lcsAp.initPosts" );
         ToF["*"](req, res, posts, 98);
         return;
     }
@@ -504,83 +541,281 @@ exports.main = function(req, res, frame){
  *
  *
  */
-function readDB(name, num, cb) {
-    lcsrdb.hget('PLC-SRC',
+function readDB(key, field, cb) {
+    lcsRdb.hget(key, field,
             function(err, reply) {
             cb(err, reply);
             });
 }
 /**
+ *
+ *
+ */
+function storeDB(key, field, data, cb) {
+    lcsRdb.hset(key, field, data,
+            function(err, reply) {
+            cb(err, reply);
+            });
+}
+/**
+ *
+ *
+ */
+function storeFile(fd, strt, length, data) {
+    var buffer = new Buffer(length);
+    buffer.write(data, 0);
+    return fs.writeSync(fd, buffer, strt*4, length, TX_POSI);
+}
+/**
+ *
+ *
+ */
+function readFile(fd, offset, length) {
+    var buffer = new Buffer(length);
+    var bytesRead = fs.readSync(fd, buffer, 0, length, offset);
+    var input = buffer.toString('utf8', 0, bytesRead);
+    return input;
+    /* return fs.readSync(fd, len); */
+    //fs.readSync(fd, buffer, 0, len, strt);
+}
+/*
+ *
+ *
+ */
+function updateAllcell(top, num, buf) {
+    if (!isClient) return;
+    lcsSOCK.io().of(TAG).volatile.emit('vupdateRegs',
+                                       {
+                                           "regTop": top,
+                                           "regNum": num,
+                                           "regVal": buf});
+}
+/**
+ *
+ *
+ */
+function update(fd, top, num, buf) {
+   //storeFile(fd, strt, num*4, data); 
+   debugger;
+   updateAllcell(top, num, buf);
+}
+/**
  * format
- * src
+ * recv data
  *  0123456789012345678901234567890
  *  01FF000A4420rrrrrrrrnn00
  *  r: start address of device (08x)
  *  n: number of device (02x)
- * repl
+ * repply data
  *  0123456789012345678901234567890
  *  8100aaaabbbbcccc...SS
  *   a,b,..: value of each device (04s)
  *   S: check sum (02x)
  */
-function formatData(stream, src, cb) {
+function recvR01(stream, fd, src, cb) {
     var buf = '';
     var head = '8100';
-    var devstrt = parseInt(src.slice(12, 20));
+    var devstrt = parseInt(src.slice(12, 19));
     var devnum = parseInt(src.slice(20, 22), 16);
-    repl = '';
-    repllen = devnum*4 + 4;
-    readDB(devstrt, devnum, function(err, data) {
+    var repl = '';
+    var repllen = devnum*4 + 4;
+
+    if (_DATABASE === 'redis') {
+        readDB('h_plc:demo', 'r01', function(err, data) {
             if (err) {
-            console.log('plcmon error occured: '+ err);
+                lcsAp.syslog('error', 'plcmon readDB: '+ err);
+                return;
             }
             buf = data.slice(0, devnum*4);
-            repl += head + buf + 'EE';
-            // log({'title':'readDb','data':repl});
+            //repl += head + buf + 'EE';
+            /* sumチェックを外す */
+            repl += head + buf;
             cb(stream, repl);
-            });
+        });
+    } else {
+        //buf = readFile(fd, devstrt, devnum*4);
+        buf = TXBUF.slice(devstrt, devnum*4);
+        //repl += head + buf + 'EE';
+        /* sumチェックを外す */
+        repl += head + buf;
+        cb(stream, repl);
+    }
+
 }
+/**
+ * 書き込み要求受信
+ * format
+ * recv data
+ *  0123456789012345678901234567890
+ *  03FF000A4420rrrrrrrrnn00DDDD...DDD
+ *  r: start address of device (08x)
+ *  n: number of device (02x)
+ * repply data
+ *  0123456789012345678901234567890
+ *  8300SS
+ *   S: check sum (02x)
+ * 
+ *
+ */
+function recvW03(stream, fd, src, cb) {
+    var buf = '';
+    var head = '8300';
+    var devstrt = parseInt(src.slice(12, 20), 16);
+    var devnum = parseInt(src.slice(20, 22), 16);
+    var repl = '';
+    var writelen = 0;
+    var datalen = src.length;
+    writelen = devnum * 4;
+    if (datalen < (24 + writelen)) {
+        lcsAp.syslog('error', 'plcmon invalid write length ' + writelen);
+        return;
+    }
+    if (writelen < 0 || writelen > 400) {
+        lcsAp.syslog('error', 'plcmon invalid length ' + writelen);
+        return;
+    }
+   
+    buf = src.slice(24, 24 + writelen);
+    if (buf.length < writelen) {
+        lcsAp.syslog('error', 'plcmon invalid length ' + writelen);
+        return;
+    }
+    if (_DATABASE === 'redis') {
+        storeDB('h_plc:demo', 'w03', buf, function(err, data) {
+            if (err) {
+                lcsAp.syslog('error', 'plcmon error occured: '+ err);
+                return;
+            }
+            /* sumチェックを外す */
+            //repl += head + 'EE';
+            repl += head;
+            cb(stream, repl);
+        });
+    } else { /* write to file */
+      update(fd, devstrt, devnum, buf);
+      /* sumチェックを外す */
+      //repl += head + 'EE';
+      repl += head;
+      cb(stream, repl);
+    }
+}
+/*
+ *
+ */
 function sendTo(to, data) {
+
     to.write(data);
-    log({'title':'send', 'info':data});
 }
 /**
  *
  */
-function recvFrom(stream, data) {
+function recvFrom(stream, fd, data) {
     var repl = '';
     var len = 0;
+    var kind = data.slice(0, 2);
 
-    log({'title':'recv', 'info':data});
-    if (data.slice(0, 2) == '01') {
-    formatData(stream, data, sendTo);
+    if (kind == '01') {
+        recvR01(stream, fd, data, sendTo);
+    } else if (kind == '03') {
+        recvW03(stream, fd, data, sendTo);
+    } else if (kind == '81') {
+        //recvW81(stream, fd, data);
+    } else if (kind == '83') {
+        ;   /* nothing to do */
     } else {
-        sendTo(stream, '8300');
+        lcsAp.syslog('error', 'plcmon invalid data:'+data);
     }
+}
+/**
+ *
+ */
+function disconnectFrom(s, fd) {
+    try {
+        fs.closeSync(fd);
+    } catch (e) {
+        lcsAp.syslog('error', 'plcmon closeSync:' + e);
+    }
+}
+/**
+ *
+ */
+function configServer(s, conf) {
+    var fd = 0;
+    try {
+        fd = fs.openSync(conf.spool, 'r+');
+        RXBUF = readFile(fd, 0, 200*4);   /* 先頭から800byte */
+        TXBUF = readFile(fd, 200*4, 200*4);   /* 800から400byte */
+        return fd;
+    } catch (e) {
+        lcsAp.syslog('error', 'plcmon openSync' + e);
+        return -1;
+    }
+}
+/*
+ * create tcp server
+ *
+ */
+function createServer(conf) {
+    var fd = 0;
+    var server = net.createServer(function(stream) {
+        stream.setEncoding('utf8');
+        stream.on('connect', function() {
+            lcsAp.syslog('info','plcmon connected');
+            configServer(stream, conf);
+            plcConnect = true;
+        });
+        stream.on('close', function() {
+            lcsAp.syslog('info','plcmon closed');
+            disconnectFrom(stream, fd);
+            plcConnect = false;
+        });
+        stream.on('data', function(data) {
+            //log({'title': me, 'info': 'received: '+data});
+            recvFrom(stream, fd, data);
+        });
+        stream.on('end', function() {
+            lcsAp.syslog('info','plcmon disconnected');
+            plcConnect = false;
+            disconnectFrom(stream, fd);
+        });
+    });
+
+    /*
+    server.listen(conf.port, conf.host, function() {
+        lcsAp.syslog('info','plcmon Server listen');
+    });
+    */
+   /* 外部から接続できないのでhostを指定しない */
+    server.listen(conf.port, function() { //'listening' listener
+        lcsAp.syslog('info','plcmon Server listen');
+    });
 }
 /*
  *
  *
  */
 exports.sockMain = function(){
-    lcsSOCK.io().of('/scr/901').on('connection', function(socket) {
-            /* socket.io */
-        });
-        var server = net.createServer(function(stream) {
-            log({'title':'server', 'info':'connected'});
-            stream.on('data', function(data) {
-                recvFrom(stream, data);
-            });
-            stream.on('end', function() {
-                log({'title':'server', 'info':'disconnected'});
-            });
-        });
-
-        server.listen(PORT, HOST, function() { //'listening' listener
-            console.log('server bound');
-        });
-    /* デモ ぐるぐる回る処理 */
-    //demoHeartbeat();
-    demoRegchange();
-    rxplc();
+    lcsSOCK.io().of(TAG).on('connection', function(socket) {
+        /* socket.io */
+        isClient = true;
+    });
+    lcsSOCK.io().of(TAG).on('end', function(socket) {
+        /* socket.io */
+        isClient = false;
+    });
+    createServer({host:HOST, port:PORT, spool:_seq_txt});
 }
+/*
+ * logging data
+ */
+function log(objs) {
+    if (typeof objs.title == 'undefined')
+        objs.title = 'plcconnect';
+    if (typeof objs.info === 'string')
+        util.log(util.format('%s: info:%s', objs.title, objs.info));
+    if (typeof objs.error === 'string')
+        util.log(util.format('%s: ERROR:%s', objs.title, objs.error));
+    if (typeof objs.debug === 'string' && DEBUG)
+        util.log(util.format('%s: debug:%s', objs.title, objs.debug));
+}
+
