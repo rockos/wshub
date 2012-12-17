@@ -1,0 +1,138 @@
+<% layout('layout') -%>
+<%- stylesheet('/stylesheets/cstm/200.css') -%>
+
+<form name="main_form" method="post" action="/scr/201">
+<input type="hidden" name="dspcstm" value="<%= dspcstm_val %>">
+
+  <div id="sub_body">
+    <p class="<%= dspcstm['corp'] %>"><a href="#">法人会員様</a></p>
+    <p class="<%= dspcstm['priv'] %>"><a href="#">個人会員様</a></p>
+    <p class="<%= dspcstm['vist'] %>"><a href="#">ビジター様</a></p>
+    <ul>
+      <li><input type="submit" class="send" name="ADD" value="受付"><li>
+      <li><input type="submit" class="send" name="MOD" value="変更"><li>
+      <li><input type="submit" class="send" name="DEL" value="削除"><li>
+      <li><input type="submit" class="send" name="QRY" value="最新表示"><li>
+      <li class="hidden"><a href="#">レポート</a><li>
+    </ul>
+  </div>
+
+  <div id="main_body">
+    <div class="mesg_bar">
+      <span class="= mesg_level_color "><%= mesg %></span>
+    </div>
+
+    <table class="cond201">
+      <colgroup>
+        <col span="1" class="c1">
+        <col span="1" class="c2">
+        <col span="1" class="c3">
+        <col span="1" class="c4">
+        <tr>
+          <th>会員番号</th>
+          <td colspan="3">
+            <INPUT type="text" id="pcod" class="STYLE_PCOD" size="8" placeholder="Necessity"
+              maxlength="8" name="pcode" id="pcod" value="" tabindex = "11">
+          </td>
+        </tr>
+        <tr>
+          <th>ロッカーNo</th>
+          <td colspan="3">
+            <INPUT type="text" id="pnam" class="STYLE_PNAM" size="10" placeholder="Necessity"
+              maxlength="10" name="pnam" id="pnam" value="" tabindex = "12">
+          </td>
+        </tr>
+        <tr>
+          <th>数量</th>
+          <td>
+            <INPUT type="text" id="qnty" class="STYLE_QNTY" size="4" placeholder="数字"
+              maxlength="4" name="sqty" id="pqty" value="" tabindex = "13">
+          </td>
+          <th>特記事項</th>
+          <td>
+            <INPUT type="text" id="smm2" class="STYLE_SMM" size="20" placeholder="option"
+              maxlength="20" name="mem2" value="" tabindex = "16">
+          </td>
+        </tr>
+        <tr>
+          <th>タグNo</th>
+          <td>
+            <INPUT  type="text" id="lotn" class="STYLE_LOTN" placeholder="option"
+              size="6" maxlength="6" name="lotn" value="" tabindex = "14">
+          </td>
+          <th>お客様メモ</th>
+          <td>
+            <INPUT type="text" id="smm3" class="STYLE_SMM" size="20" placeholder="option"
+              maxlength="20" name="mem3" value="" tabindex = "17">
+          </td>
+        </tr>
+        <tr>
+          <th>預け入れ期間</th>
+          <td colspan="3">
+            <INPUT type="text" id="smm1" class="STYLE_SMM" size="6" placeholder="option"
+              maxlength="6" name="mem1" value="" tabindex = "15">
+          </td>
+        </tr>
+    </table>
+
+    <br/>
+
+    <table class="list201">
+      <colgroup>
+        <col span="1" class="c1">
+        <col span="1" class="c2">
+        <col span="1" class="c3">
+        <col span="1" class="c4">
+        <col span="1" class="c5">
+        <col span="1" class="c6">
+        <col span="1" class="c7">
+        <col span="1" class="c8">
+        <thead>
+        <tr>
+          <th></th>
+          <th>会員番号</th>
+          <th>搬入数量</th>
+          <th>ロッカーNo</th>
+          <th>タグNo</th>
+          <th>預け入れ期間</th>
+          <th>特記事項</th>
+          <th>お客様メモ</th>
+        </tr>
+        </thead>
+
+<script>
+var dataSet = function(x) {
+    var ary = x.value.split(',');
+    main_form.pcode.value = ary[0];
+    main_form.sqty.value = ary[1];
+    main_form.pnam.value = ary[2];
+    main_form.lotn.value = ary[3];
+    main_form.mem1.value = ary[4];
+    main_form.mem2.value = ary[5];
+    main_form.mem3.value = ary[6];
+}
+</script>
+
+        <tbody>
+        <% for (var i = 0, max = tab.length; i < max; i++) { %>
+        <tr>
+          <td>
+            <% if (tab[i].sqty >1000) { %>
+              <input type='radio' name='rdo01' value='<%= tab[i].radiodata %>' onclick='dataSet(this);' checked > 
+            <% } else { %>
+              <input type='radio' name='rdo01' value='<%= tab[i].radiodata %>' onclick='dataSet(this);'> 
+            <% } %>
+          </td>
+<TD><%= tab[i].pcode %></TD>
+<TD><%= tab[i].sqty %></TD>
+<TD><%= tab[i].pnam %></TD>
+<TD><%= tab[i].lotn %></TD>
+<TD><%= tab[i].mem1 %></TD>
+<TD><%= tab[i].mem2 %></TD>
+<TD><%= tab[i].mem3 %></TD>
+        </tr>
+        <% } %>
+        </tbody>
+    </table>
+  </div>
+</form>

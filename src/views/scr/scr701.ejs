@@ -1,0 +1,50 @@
+<% layout('layout') -%>
+
+<section id="contents_rpt">
+	<div class="lead">
+		<h1>お客様番号 C20120001</h1>
+		<p>確定済みの明細をご確認いただけます。</p>
+	</div>
+<section class="detailList">
+		<h2>2012年1月25日締め在庫明細</h2>
+		<table>
+			<thead>
+				<tr>
+					<th>入庫日</th>
+					<th>ロッカーNo</th>
+					<th>タグNo</th>
+					<th>預け入れ期間(日)</th>
+					<th>メモ</th>
+					<th>数量</th>
+
+				</tr>
+			</thead>
+			<tbody>
+			  <tr>
+			    <% var sum=0 %>
+			  <% for (var i = 0; i < pageNavi.tab.length; i++) { %>
+			     <TD><%= pageNavi.tab[i].date %></TD>
+			     <TD><%= pageNavi.tab[i].pname %></TD>
+			     <TD><%= pageNavi.tab[i].pcode %></TD>
+			     <TD align=center><%= pageNavi.tab[i].odno %></TD>
+			     <TD><%= pageNavi.tab[i].mem1 %></TD>
+			     <TD align=right><%= pageNavi.tab[i].sqty %></TD>
+			     <% sum += parseInt(pageNavi.tab[i].sqty) %>
+			  </TR>   
+			  <% } %>
+
+			</tbody>
+			<tfoot>
+				<tr>
+					<td colspan="5">合計</td>
+					<td><%= sum %></td>
+
+				</tr>
+			</tfoot>
+		</table>
+	</section>
+</section>
+
+
+</body>
+</html>

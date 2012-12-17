@@ -1,0 +1,135 @@
+<!--タイトル部分-->
+<div id="contents">
+  <div id="mainx">
+	<FORM name="main_form" method="post" action="/scr/201" class="regist3">
+	  <section id="mailTray">
+		<h1>チェックイン</h1>
+		<div id="operationPanel">
+		  <%= mesg %>
+		</div>  <!-- operationPanel -->
+	  </section> <!-- mailTray -->
+
+	  <div id="partList">
+		<fieldset style="width:975" name="noname">
+
+		  <TABLE width="" align="" border="0">
+		    <COL width="110" align="center">
+		    <COL width="385" align="left">
+			<COL width="90" align="center">
+			<COL width="" align="left">
+		    <TR>
+		      <TH>会員番号</th>
+		      <TD>
+			    <INPUT type="text" id="pcod" class="STYLE_PCOD" size="8" placeholder="Necessity"
+			           maxlength="8" name="pcode" id="pcod" value="" tabindex = "11">
+		      </TD>
+		    </TR>
+		    <TR>
+		      <TH>ロッカーNo</th>
+		      <TD colspan="3">
+			    <INPUT type="text" id="pnam" class="STYLE_PNAM" size="10" placeholder="Necessity"
+			           maxlength="10" name="pnam" id="pnam" value="" tabindex = "12">
+		      </TD>
+		    </TR>
+		    <TR>
+		      <TH>数量</TH>
+		      <TD>
+			    <INPUT type="text" id="qnty" class="STYLE_QNTY" size="4" placeholder="数字"
+			           maxlength="4" name="sqty" id="pqty" value="" tabindex = "13">
+		      </TD>
+		      <TH>特記事項</TH>
+		      <TD>
+			<INPUT type="text" id="smm2" class="STYLE_SMM" size="20" placeholder="option"
+			       maxlength="20" name="mem2" value="" tabindex = "16">
+		      </TD>
+		    </TR>
+		    <TR>
+		      <TH>タグNo</TH>
+		      <TD>
+			    <INPUT  type="text" id="lotn" class="STYLE_LOTN" placeholder="option"
+				        size="6" maxlength="6" name="lotn" value="" tabindex = "14">
+		      </TD>
+		      <TH>お客様メモ</TH>
+		      <TD>
+			    <INPUT type="text" id="smm3" class="STYLE_SMM" size="20" placeholder="option"
+			           maxlength="20" name="mem3" value="" tabindex = "17">
+		      </TD>
+		    </TR>
+		    <TR>
+		      <TH>預け入れ期間</TH>
+		      <TD>
+			    <INPUT type="text" id="smm1" class="STYLE_SMM" size="6" placeholder="option"
+			           maxlength="6" name="mem1" value="" tabindex = "15">
+		      </TD>
+		    </TR>
+		  </TABLE>
+          
+		</fieldset>
+</TD>
+</TR>
+<br><br>
+</div> <!-- maillist -->
+<!--
+   <div class="body">
+-->
+<div id=inqList>
+  <table>
+	<thead>
+	  <tr>
+		<th></th>
+		<th>会員番号</th>
+		<th>搬入数量</th>
+	    <th>ロッカーNo</th>
+	    <th>タグNo</th>
+	    <th>預け入れ期間</th>
+	    <th>特記事項</th>
+	    <th>お客様メモ</th>
+	  </tr>
+	</thead>
+	<tbody>
+	  <% for (var i = 0; i < tab.length; i++) { %>
+		 <TR>
+		   <TD>
+			 <% if (tab[i].sqty >1000) { %>
+	  <input type='radio' name='rdo01' value='<%= tab[i].pcode %>' onclick='pcode.value=this.value;' checked > 
+	  <% } else { %>
+	  <input type='radio' name='rdo01' value='<%= tab[i].pcode %>' onclick='pcode.value=this.value;'> 
+	  <% } %>	  
+</TD>
+<TD><%= tab[i].pcode %></TD>
+<TD><%= tab[i].sqty %></TD>
+<TD><%= tab[i].pnam %></TD>
+<TD><%= tab[i].lotn %></TD>
+<TD><%= tab[i].mem1 %></TD>
+<TD><%= tab[i].mem2 %></TD>
+<TD><%= tab[i].mem3 %></TD>
+</TR>   
+<% } %>
+</tbody>
+</table>
+
+	
+</TABLE>
+</div> <!-- inqList -->
+
+
+</div> <!-- main -->
+<div id="sub">
+  <section id="createMail">
+    
+    <p><a href="#">個人会員様</a></p>
+  </section>
+
+  <section id="folderList">
+	<ul>
+      <li><INPUT type="hidden" id="funcPB" name="send_xxx" value="FUNC"></li>
+      <li class="current"><a href="#"  onclick="document.getElementById('funcPB').name='ADD';document.main_form.submit();">受付</a></li>
+      <li><a href="#" onclick="document.getElementById('funcPB').name='DEL';document.main_form.submit();">削除</a></li>
+      <li><a href="#" onclick="document.getElementById('funcPB').name='QRY';document.main_form.submit();">最新表示</a></li>
+
+
+	</ul>
+  </section>
+</div> <!-- sub -->
+</div> <!-- contents -->
+</FORM>

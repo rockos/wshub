@@ -1,0 +1,22 @@
+{
+"opt2":[
+    {"value":"ITEM001",
+     "dsp":"ITEM001:アイテム０１",
+     "selected":"selected"},
+    {"value":"ITEM002",
+     "dsp":"ITEM002:アイテム０２",
+     "selected":""},
+    {"value":"ITEM003",
+     "dsp":"ITEM003:アイテム０３",
+     "selected":""},
+    {"value":"ITEM004",
+     "dsp":"ITEM004:アイテム０４",
+     "selected":""},
+    {"value":"ITEM005",
+     "dsp":"ITEM005:アイテム０５",
+     "selected":""},
+    {"value":"ITEM006",
+     "dsp":"ITEM006:アイテム０６",
+     "selected":""}
+]
+}

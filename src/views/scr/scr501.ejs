@@ -1,0 +1,48 @@
+<% layout('layout') -%>
+<%- stylesheet('/stylesheets/cstm/500.css') -%>
+
+<form name="main_form" method="post" action="/scr/501">
+
+  <div id="sub_body">
+    <ul>
+      <li><input type="submit" class="send" name="501a" value="登録画面"><li>
+      <li><input type="submit" class="send" name="501m" value="修正画面"><li>
+      <li><input type="submit" class="send" name="501d" value="削除画面"><li>
+    </ul>
+  </div>
+
+  <div id="main_body">
+    <div class="mesg_bar">
+      <span class="= mesg_level_color "><%= mesg %></span>
+    </div>
+<!--
+    <table class="cond201">
+      <colgroup>
+        <col span="5" class="c1">
+        <col span="20" class="c2">
+        <tr>
+          <th>新規登録</th>
+          <td>新規ユーザのプロファイルを登録する画面です。</td>
+        </tr>
+        <tr>
+          <th>プロファイル修正</th>
+          <td>既存ユーザのプロファイルを修正する画面です。</td>
+        </tr>
+        <tr>
+          <th>プロファイル削除</th>
+          <td>既存ユーザのプロファイルを削除する画面です。</td>
+        </tr>
+    </table>
+-->
+<dl>
+          <dt>新規登録</dt>
+          <dd>新規ユーザのプロファイルを登録する画面です。</dd>
+
+          <dt>プロファイル修正</dt>
+          <dd>既存ユーザのプロファイルを修正する画面です。</dd>
+
+          <dt>プロファイル削除</dt>
+          <dd>既存ユーザのプロファイルを削除する画面です。</dd>
+</dl>
+  </div>
+</form>

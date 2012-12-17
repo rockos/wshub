@@ -1,0 +1,60 @@
+<form name="main_form" method="post" action="/scr/800">
+  <INPUT type="hidden" id="funcPB" name="send_xxx" value="FUNC">
+  <div id="main_body_800">
+      <table>
+        <colgroup>
+        <col span="1" class="c1"/>
+        <col span="1" class="c2"/>
+        <col span="1" class="c3"/>
+        <col span="1" class="c4"/>
+        <tr>
+          <th></th>
+          <th>差出人</th>
+          <th>件名</th>
+          <th>日付</th>
+        </tr>
+        <tr class="<%= current['Demo'] %>" 
+          onclick="document.getElementById('funcPB').name='Demo';document.main_form.submit();">
+		  <td></td>
+          <td>ヘルプデスク</td>
+          <td>このデモについて</td>
+          <td>2012/05/08 10:00</td>
+        </tr>
+        <tr class="<%= current['I18N'] %>" 
+          onclick="document.getElementById('funcPB').name='I18N';document.main_form.submit();">
+          <td></td>
+          <td>ヘルプデスク</td>
+          <td>言語の切換え</td>
+          <td>2012/05/06 16:32</td>
+        </tr>
+        <tr class="<%= current['Graph'] %>" 
+          onclick="document.getElementById('funcPB').name='Graph';document.main_form.submit();">
+          <td></td>
+          <td>ヘルプデスク</td>
+          <td>見える化</td>
+          <td>2012/01/05 14:22</td>
+        </tr>
+      </table>
+  </div>
+
+  <div id="main_dtil_800">
+    <ul>
+      <li><span>件名:</span>見える化</li>
+      <li><span>From:</span>ヘルプデスク</li>
+      <li><span>To:</span>foo&ltat&gtvar.co.jp</li>
+    </ul>
+
+    <p>
+      WEBアプリケーションは外部の機器とソケットで通信することができます。
+    </p>
+
+    <img src="/images/sensor_graph.png" class="img2"></img>
+    <div class="img2">
+      <p>センサーから送られてきたデータをリアルタイムでブラウザにグラフ表示します。<br>
+         データは逐次ストアされているので、過去のデータを期間指定で表示することもできます。
+      </p>
+    </div>
+  </div>
+
+</form>
+

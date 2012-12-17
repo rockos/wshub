@@ -1,0 +1,139 @@
+<% layout('layout') -%>
+<%- stylesheet('/stylesheets/cstm/106.css') -%>
+
+<form name="main_form" method="post" action="/scr/106">
+
+  <div id="sub_body">
+    <p class=""><a href="#">実績照会</a></p>
+    <ul>
+      <% if( step == "0" || step == "1" ) { %>
+      <li><input type="submit" class="send" name="send_iqy" value="最新表示"></li>
+      <% } %>
+    </ul>
+  </div>
+
+  <div id="main_body">
+    <div class="mesg_bar">
+      <span class="<%= mesg_level_color %>"><%= mesg %></span>
+    </div>
+
+    <% if( step == "0" || step == "1" ) { %>
+    <table class="cond106">
+      <colgroup>
+        <col span="1" class="c1">
+        <col span="1" class="c2">
+        <col span="1" class="c3">
+        <col span="1" class="c4">
+        <col span="1" class="c5">
+        <tr>
+          <th>実績日</th>
+          <td>
+            <input type="text" id="txt7" class="" size="8" maxlength="8" 
+                   name="txt7" 
+                   value="<%= text.txt7 %>" tabindex = "">
+            <span>〜</span>
+            <input type="text" id="txt8" class="" size="8" maxlength="8" 
+                   name="txt8" 
+                   value="<%= text.txt8 %>" tabindex = "">
+          </td>
+          <th>区分</th>
+          <td>
+            <input type="checkbox" id="" class="" name="c1" value="c1" tabindex="" checked>入庫
+            <input type="checkbox" id="" class="" name="c2" value="c2" tabindex="" checked>出庫
+          </td>
+        </tr>
+        <tr>
+          <th>棚番地</th>
+          <td>
+            <input type="text" id="txt1" class="" size="2" maxlength="2" 
+                   name="txt1" 
+                   value="<%= text.txt1 %>" tabindex = "10">
+            <input type="text" id="txt2" class="" size="2" maxlength="2" 
+                   name="txt2" 
+                   value="<%= text.txt2 %>" tabindex = "11">
+            <input type="text" id="txt3" class="" size="2" maxlength="2" 
+                   name="txt3" 
+                   value="<%= text.txt3 %>" tabindex = "12">
+          </td>
+          <th>タグＮＯ</th>
+          <td>
+            <input type="text" id="txt4" class="" size="12" maxlength="12" 
+                   name="txt4" 
+                   value="<%= text.txt4 %>" tabindex="">
+          </td>
+        </tr>
+        <tr>
+          <th>品コード</th>
+          <td>
+            <input type="text" id="txt5" class="" size="12" maxlength="12" 
+                   name="txt5" 
+                   value="<%= text.txt5 %>" tabindex = "">
+          </td>
+          <th>品名</th>
+          <td>
+            <input type="text" id="txt6" class="" size="20" maxlength="20" 
+                   name="txt6" 
+                   value="<%= text.txt6 %>" tabindex="">
+          </td>
+        </tr>
+        <tr>
+          <th>会員番号</th>
+          <td>
+            <select name="sel1">
+              <option value=""></option><!--dmy-->
+              <% for (var i=0,max=select.opt1.length; i < max; i++ ) { %>
+                <option value="<%= select.opt1[i].value %>" <%= select.opt1[i].selected %>>
+                  <%= select.opt1[i].dsp %>
+                </option>
+              <% } %>
+            </select>
+          </td>
+          <td colspan="2"></td>
+        </tr>
+    </table>
+    <% } %>
+
+    <% if( step == "1" ) { %>
+    <table class="list106">
+      <colgroup>
+        <col span="1" class="c21">
+        <col span="1" class="c27">
+        <col span="1" class="c22">
+        <col span="1" class="c24">
+        <col span="1" class="c25">
+        <col span="1" class="c26">
+        <col span="1" class="c23">
+        <col span="1" class="c28">
+        <thead>
+        <tr>
+          <th>区分</th>
+          <th>実績日</th>
+          <th>番地</th>
+          <th>品コード<br>品名</th>
+          <th>タグNo</th>
+          <th>数量</th>
+          <th>会員番号<br>会員名</th>
+          <th>お客様メモ</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        <% for (var i = 0, max = table.tab1.length; i < max; i++) { %>
+        <tr>
+          <td class="c21"><%= table.tab1[i].col10 %></td>
+          <td class="c27"><%= table.tab1[i].col8 %></td>
+          <td class="c22"><%= table.tab1[i].col1 %></td>
+          <td class="c24"><%= table.tab1[i].col4 %><br><%= table.tab1[i].col5 %></td>
+          <td class="c25"><%= table.tab1[i].col6 %></td>
+          <td class="c26"><%= table.tab1[i].col7 %></td>
+          <td class="c23"><%= table.tab1[i].col2 %><br><%= table.tab1[i].col3 %></td>
+          <td class="c28"><%= table.tab1[i].col9 %></td>
+        </tr>
+        <% } %>
+        </tbody>
+    </table>
+    <% } %>
+
+  </div>
+
+</form>

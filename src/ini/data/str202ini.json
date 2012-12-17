@@ -1,0 +1,14 @@
+{"dummy": "hogehoge"
+,"title": "在庫検索"
+,"scrhead": "This screen is for form test."
+,"comment":"WEBトランクルーム"
+,"options2":[
+ {"userid": "u1001","selected":"","address":"010101"}
+ ,{"userid": "u2001","selected":"select","address":"010102"}
+ ,{"userid": "u3001","selected":"","address":"010103"}
+ ,{"userid": "u4001","selected":"","address":"010104"}
+ ,{"userid": "u5001","selected":"","address":"010104"}
+]
+,"tab":[
+]
+}

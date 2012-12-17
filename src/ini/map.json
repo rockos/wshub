@@ -1,0 +1,204 @@
+{
+"iqy101":{
+  "path" : "../../controller/iqy/iqy",
+   "msg":{
+          "/scr/101" : "main"
+         },
+   "ejs":"layout.ejs",
+   "parmit":0
+   },
+"iqy102":{
+  "path" : "../../controller/iqy/iqy102",
+   "msg":{
+          "/scr/102" : "main"
+         },
+   "ejs":"layout.ejs",
+   "parmit":0
+   },
+"iqy103":{
+  "path" : "../../controller/iqy/iqy103",
+   "msg":{
+          "/scr/103" : "main"
+         },
+   "ejs":"layout.ejs",
+   "parmit":0
+   },
+"iqy104":{
+  "path" : "../../controller/iqy/iqy104",
+   "msg":{
+          "/scr/104" : "main"
+         },
+   "ejs":"layout.ejs",
+   "parmit":0
+   },
+"iqy105":{
+  "path" : "../../controller/iqy/iqy105",
+   "msg":{
+          "/scr/105" : "main"
+         },
+   "ejs":"layout.ejs",
+   "parmit":0
+   },
+"iqy106":{
+  "path" : "../../controller/iqy/iqy106",
+   "msg":{
+          "/scr/106" : "main"
+         },
+   "ejs":"layout.ejs",
+   "parmit":0
+   },
+"iqy110":{
+  "path" : "../../controller/iqy/iqy110",
+   "msg":{
+          "/scr/110" : "main"
+         },
+   "ejs":"layout.ejs",
+   "parmit":0
+   },
+"iqy113":{
+  "path" : "../../controller/iqy/iqy113",
+   "msg":{
+          "/scr/113" : "main"
+         },
+   "ejs":"layout.ejs",
+   "parmit":0
+   },
+"iqy114":{
+  "path" : "../../controller/iqy/iqy114",
+   "msg":{
+          "/scr/114" : "main"
+         },
+   "ejs":"layout.ejs",
+   "parmit":0
+   },
+"iqy119":{
+  "path" : "../../controller/iqy/iqy119",
+   "msg":{
+          "/scr/119" : "main"
+         },
+   "ejs":"layout.ejs",
+   "parmit":0
+   },
+"str201":{
+  "path" : "../../controller/str/201/str201", 
+  "msg":{
+        "/scr/201" : "main"
+        },
+   "ejs":"layout.ejs",
+   "parmit":1
+},
+"str202":{
+  "path" : "../../controller/str/202/str202", 
+  "msg":{
+        "/scr/202" : "main"
+        },
+   "ejs":"layout.ejs",
+   "parmit":1
+},
+"mop301":{
+  "path" : "../../controller/mop/mop301", 
+  "msg":{
+        "/scr/301" : "main"
+        },
+   "ejs":"layout.ejs",
+   "parmit":1
+},
+"mop302":{
+  "path" : "../../controller/mop/mop302", 
+  "msg":{
+        "/scr/302" : "main"
+        },
+   "ejs":"layout.ejs",
+   "parmit":1
+},
+"mop303":{
+  "path" : "../../controller/mop/mop303", 
+  "msg":{
+        "/scr/303" : "main"
+        },
+   "ejs":"layout.ejs",
+   "parmit":1
+},
+"mop310":{
+  "path" : "../../controller/mop/mop310", 
+  "msg":{
+        "/scr/310" : "main"
+        },
+   "ejs":"layout.ejs",
+   "parmit":1
+},
+"mnt501":{
+  "path" : "../../controller/mnt/501/mnt501", 
+  "msg":{
+        "/scr/501" : "main"
+        },
+   "ejs":"layout.ejs",
+   "parmit":1
+},
+"mnt502":{
+  "path" : "../../controller/mnt/502/mnt502", 
+  "msg":{
+        "/mnt/502" : "main"
+        },
+   "ejs":"layout.ejs",
+   "parmit":1
+},
+"mnt503":{
+  "path" : "../../controller/mnt/503/mnt503", 
+  "msg":{
+        "/mnt/503" : "main"
+        },
+   "ejs":"layout.ejs",
+   "parmit":1
+},
+"rpt": {
+  "path":"../../controller/rpt/rpt", 
+  "msg":{
+        "/scr/701" : "main"
+        },
+   "ejs":"layout.ejs",
+   "parmit":0
+},
+"inf":{
+       "path":"../../controller/inf/inf",
+       "msg":
+       {
+        "/scr/800" : "main"
+       },
+   "ejs":"layout.ejs",
+   "parmit":0
+},
+"sys":{
+       "path":"../../controller/sys/sys",
+       "msg":
+       {
+        "/check" : "main",
+        "/login" : "main"
+       },
+   "ejs":"layout.ejs",
+   "parmit":0
+},
+"hlp":{
+      "path":"../../controller/hlp/hlp",
+       "msg":
+       {
+        "/scr/800" : "main",
+        "/scr/801" : "main",
+        "/scr/802" : "main"
+       },
+   "ejs":"layout.ejs",
+   "parmit":0
+
+},
+"seq901":{
+  "path" : "../../controller/seq/seq901", 
+  "msg":{
+        "/scr/901" : "main"
+        },
+   "ejs":"layout_seq.ejs",
+   "parmit":1
+}
+
+
+
+}

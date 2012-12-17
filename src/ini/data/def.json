@@ -1,0 +1,17 @@
+{"dummy": "hogehoge"
+,"title": "日本語版"
+,"scrhead": "ダイナミック画面"
+,"comment":"ノーヅ"
+,"th1":[
+ {"col": "項目１"}
+,{"col": "こうもく２"}
+,{"col": "コウモク３"}
+]
+,"tab":[
+{"area": "Moutain railway", "stat": "there are smoking area."}
+,{"area": "Korea Air line", "stat": "this is no smoking area."}
+,{"area": "Central Sea transport", "stat": "office & utilities."}
+,{"area": "ふえたよ", "stat": "いちぎょうふやした"}
+
+]
+}

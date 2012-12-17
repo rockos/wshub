@@ -1,0 +1,14 @@
+{"customer": "武蔵倉庫"
+,"title": "在庫検索"
+,"scrhead": "This screen is for form test."
+,"comment":"WEBトランクルーム"
+,"tana":[
+ {"name": "u1001"}
+ ,{"name": "u2001"}
+ ,{"name": "u3001"}
+ ,{"name": "u4001"}
+ ,{"name": "u5001"}
+]
+,"tab":[
+]
+}

@@ -1,0 +1,54 @@
+<% layout('layout') -%>
+
+<form name="main_form" method="post" action="/scr/501">
+
+
+  <div id="sub_body">
+    <ul>
+      <li><input type="submit" class="send" name="501m_MOD" value="修正"><li>
+      <li><input type="submit" class="send" name="501m_RTN" value="戻る"><li>
+
+    </ul>
+  </div>
+
+  <div id="main_body">
+    <div class="mesg_bar">
+      <span class="= mesg_level_color "><%= mesg %></span>
+    </div>
+
+    <table class="cond201">
+      <colgroup>
+        <col span="1" class="c1">
+        <col span="1" class="c2">
+        <col span="1" class="c3">
+        <col span="1" class="c4">
+        <tr>
+          <th>会員名</th>
+          <td colspan="3">
+            <INPUT type="text" class="STYLE_PNAM" size="24" placeholder="Necessity"
+              maxlength="24" name="nickname" id="nickname" value="" tabindex = "12">
+          </td>
+        </tr>
+        <tr>
+          <th>パスワード</th>
+          <td>
+            <INPUT type="password" class="STYLE_QNTY" size="24" 
+              maxlength="24" name="password" id="password" value="" tabindex = "13">
+          </td>
+          <th>メールアドレス</th>
+          <td>
+            <INPUT type="text" class="STYLE_SMM" size="20" placeholder="option"
+              maxlength="20" name="mem2" value="" tabindex = "14">
+          </td>
+        </tr>
+        <tr>
+          <th>お客様メモ</th>
+          <td>
+            <INPUT type="text" id="smm3" class="STYLE_SMM" size="20" placeholder="option"
+              maxlength="20" name="mem3" value="" tabindex = "17">
+          </td>
+        </tr>
+    </table>
+
+  </div>
+</form>
