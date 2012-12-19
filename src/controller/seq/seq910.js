@@ -5,8 +5,10 @@ var util = require('util');
 var HOST = '127.0.0.1';
 var PORT = 3011;
 var TAG = '/scr/910';
-var __file = ROOTDIR + '/ini/data/seq910-test1.json';
-var _seq_txt = ROOTDIR + '/ini/data/seq.txt';
+var __file = ROOTDIR + '/src/ini/data/seq910-test1.json';
+var _seq_txt = ROOTDIR + '/src/ini/data/seq.txt';
+//var __file = './ini/data/seq910-test1.json';
+//var _seq_txt = './ini/data/seq.txt';
 var _DATABASE = 'none'; /* none or redis */
 var isClient = false; /* true if connection estabished */
 var RX_POSI = 0;  /* _seq_txt start position default 200 register */
@@ -135,6 +137,7 @@ var demoData_recv = function(args, nextDo) {
     mod10;
     var dmyData = JSON.parse(fs
                              .readFileSync(ROOTDIR + '/src/ini/data/seq901-test1.json'));
+    //var dmyData = JSON.parse(fs.readFileSync('./ini/data/seq910-test1.json'));
 
     mod10 = RECV_START_REG % 10;
     start10 = (RECV_START_REG - mod10) / 10;

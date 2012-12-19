@@ -2,8 +2,8 @@
 var redis = require("redis"),
     client = redis.createClient();
 var net = require('net');
-var HOST = 'localhost';
-var PORT = 3012;
+var HOST = '127.0.0.1';
+var PORT = 3011;
 
 function log(objs) {
     var d = new Date,
@@ -89,6 +89,7 @@ var server = net.createServer(function(stream) {
             });
         });
 
-server.listen(PORT, HOST, function() { //'listening' listener
-        console.log('server bound');
+//server.listen(PORT, HOST, function() { //'listening' listener
+server.listen(PORT, function() { //'listening' listener
+        console.log('server bound on port '+ PORT);
         });

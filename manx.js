@@ -167,5 +167,8 @@ global['sck_io'] = lcsSOCK.io();
  */
 require(ROOTDIR + '/src/controller/mgr/mgragv').main();
 require(ROOTDIR + '/src/controller/seq/seq901').sockMain();
+require(ROOTDIR + '/src/controller/seq/seq902').sockMain();
+require(ROOTDIR + '/src/controller/seq/seq903').sockMain();
+require(ROOTDIR + '/src/controller/seq/seq910').sockMain();
 lcsSOCK.emitError();
 
