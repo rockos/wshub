@@ -1,6 +1,7 @@
 # git に追跡してほしく'ない'ファイル
 # backup file for emacs
 *~
+*swp
 *swo
 *ORG
 *SAV
@@ -13,5 +14,7 @@ log/
 var/
 var/**/*
 
+# stander libralies
+std/
 # modeles for node.js
 node_modules/

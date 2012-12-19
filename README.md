@@ -1,6 +1,6 @@
 ## Abstraction
 
-Snowshoeは倉庫を管理するためのopen WMSです。
+Somaliは倉庫を管理するためのopen WMSです。
 
 ロコス株式会社により保守されています。
 
