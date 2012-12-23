@@ -53,6 +53,29 @@ function setEcho(args, nextDo) {
 
 /**
  * ＊＊＊テーブルリストを取得する
+ * @module postDataDtail
+ * @param  {Object}args, {function}nextDo
+ * @date   24/jul/2012
+ */
+function postDataDtail(args, nextDo) {
+    var req = args.req, res = args.res, posts = args.posts;
+    var step = args.posts.step;
+
+    //**** デモ中 ***********************************************************
+    var __file = ROOTDIR + '/src/ini/data/iqy113_iqy.json';
+    var ddd = JSON.parse(require('fs').readFileSync(__file));
+
+    args.posts.tabDtil = ddd;
+    //console.log(ddd);
+    //console.log(args.posts.tabDtil);
+
+    nextDo( null, args );
+    //***********************************************************************
+}
+
+
+/**
+ * ＊＊＊テーブルリストを取得する
  * @module postData
  * @param  {Object}args, {function}nextDo
  * @date   24/jul/2012
@@ -62,7 +85,7 @@ function postData(args, nextDo) {
     var step = args.posts.step;
 
     //**** デモ中 ***********************************************************
-    var __file = "./ini/data/iqytest113.json";
+    var __file = ROOTDIR + '/src/ini/data/iqytest113.json';
     var ddd = JSON.parse(require('fs').readFileSync(__file));
 
     /*
@@ -91,15 +114,15 @@ function postData(args, nextDo) {
     */
 
     var MAX_ROW=6,MAX_BAY=10,MAX_TIE=5;
-    args.posts.location.row = new Array(MAX_ROW+1);
+    args.posts.location.row = [MAX_ROW+1];
     for( var i=0; i<= MAX_ROW; i++ ) {
-        args.posts.location.row[i] = new Object();
-        args.posts.location.row[i].tie = new Array(MAX_TIE+1);
+        args.posts.location.row[i] = {};
+        args.posts.location.row[i].tie = [MAX_TIE+1];
         for( var j=0; j<= MAX_TIE; j++ ) {
-            args.posts.location.row[i].tie[j] = new Object();
-            args.posts.location.row[i].tie[j].bay = new Array(MAX_BAY+1);
+            args.posts.location.row[i].tie[j] = {};
+            args.posts.location.row[i].tie[j].bay = [MAX_BAY+1];
             for( var k=0; k<= MAX_BAY; k++ ) {
-                args.posts.location.row[i].tie[j].bay[k] = new Object();
+                args.posts.location.row[i].tie[j].bay[k] = {};
                 args.posts.location.row[i].tie[j].bay[k].locid = "";
                 args.posts.location.row[i].tie[j].bay[k].status = "";
             }
@@ -117,6 +140,25 @@ function postData(args, nextDo) {
     nextDo( null, args );
     //***********************************************************************
 
+}
+
+/**
+ * 表示押下時の処理(詳細)
+ * @module iqyPB2
+ * @param  {Object}req, {Object}res, {Object}posts
+ * @date   21/sep/2012
+ */
+function iqyPB2(req, res, posts) {
+
+    var args = {"req": req, "res": res, "posts": posts};
+    args.posts.step = "1";
+
+    lcsAp.series(args,
+                 [setEcho,
+                  postData,
+                  postDataDtail,
+                  dspWin], /* 後処理 */
+                 fin);
 }
 
 /**
@@ -166,7 +208,8 @@ exports.main = function(req, res, frame){
     var ToF = {/* Table of function for each button */
         "GET": initSend,
         "POST":{
-            "send_iqy" : iqyPB
+            "send_iqy" : iqyPB,
+            "send_iqy2" : iqyPB2
         }
     };
 
@@ -220,7 +263,7 @@ exports.main = function(req, res, frame){
 exports.sck_main = function(){
     var lcname = sck_io.of("/scr/113");
     lcname.on("connection", function(socket) {
-            var __file = "./ini/data/iqytest113.json",
+            var __file = ROOTDIR + '/src/ini/data/iqytest113.json',
                 prev_ddd = {};
             console.log( "connect---" + "/scr/113" );
 

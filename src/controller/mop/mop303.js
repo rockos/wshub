@@ -298,7 +298,7 @@ function postData2(args, nextDo) {
     var req = args.req, res = args.res, posts = args.posts;
 
     //**** デモ中 ***********************************************************
-    var __file = "./ini/data/moptest003.json";
+    var __file = ROOTDIR + '/src/ini/data/moptest003.json';
     var ddd = JSON.parse(require('fs').readFileSync(__file));
     args.posts.table.tab2 = ddd.tab2;
     args.posts.table.dsp["tab2"]="1";
@@ -349,7 +349,7 @@ function postData1(args, nextDo) {
     var req = args.req, res = args.res, posts = args.posts;
 
     //**** デモ中 ***********************************************************
-    var __file = "./ini/data/moptest002.json";
+    var __file = ROOTDIR + '/src/ini/data/moptest002.json';
     var ddd = JSON.parse(require('fs').readFileSync(__file));
     args.posts.table.tab1 = ddd.tab1;
     args.posts.table.dsp["tab1"]="1";
@@ -400,7 +400,7 @@ function optionsDsp(args, nextDo) {
     var req = args.req, res = args.res;
 
     //**** デモ中 ***********************************************************
-    var __file = "./ini/data/moptest001.json";
+    var __file = ROOTDIR + '/src/ini/data/moptest001.json';
     args.posts.select = JSON.parse(require('fs').readFileSync(__file));
     nextDo( null, args );
     //***********************************************************************

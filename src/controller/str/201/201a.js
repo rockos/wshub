@@ -380,7 +380,7 @@ function _showResult(req, res, posts, templete) {
 exports.addRsrv = function (req, res, frame) {
 
     var posts = {};
-    var file = './ini/data/str201a.json';
+    var file = ROOTDIR + '/src/ini/data/str201a.json';
 
     var msg = lcsAp.getMsgI18N("0");
     posts.mesg = msg.text;

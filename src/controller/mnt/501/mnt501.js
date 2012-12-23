@@ -12,7 +12,7 @@ var fn501d = require('./501d.js');
 function _showInitial(req, res, frame) {
 
     var posts = {};
-    var inifile = './ini/data/mnt501ini.json';
+    var inifile = ROOTDIR + '/src/ini/data/mnt501ini.json';
     var msg = lcsAp.getMsgI18N('0');
     posts.mesg = msg.text;
     posts.mesg_lavel_color = msg.warn;
@@ -30,7 +30,7 @@ function _showInitial(req, res, frame) {
 function _showScr(req, res, frame) {
 
     var posts = {};
-    var inifile = './ini/data/mnt501ini.json';
+    var inifile = ROOTDIR + '/src/ini/data/mnt501ini.json';
     var msg = lcsAp.getMsgI18N('0');
 
     

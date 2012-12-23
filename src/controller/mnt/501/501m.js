@@ -394,8 +394,8 @@ function showDemo(req, res, posts, templete) {
 exports.modProf = function(req, res, frame) {
 
     var posts = {};
-    var file = './controller/data/mnt501.json',
-    inifile = './controller/data/mnt501ini.json';
+    var file = ROOTDIR + '/src/ini/data/mnt501.json',
+    inifile = ROOTDIR + '/src/ini/data/mnt501ini.json';
 
     /* page情報設定 */
     posts.frameNavi = frame.frameNavi;
@@ -419,8 +419,8 @@ exports.modProf = function(req, res, frame) {
 exports.selUser = function(req, res, frame) {
 
     var posts = {};
-    var file = './controller/data/mnt501.json',
-    inifile = './controller/data/mnt501ini.json';
+    var file = ROOTDIR + '/src/ini/data/mnt501.json',
+    inifile = ROOTDIR + '/src/ini/data/mnt501ini.json';
 
     /* page情報設定 */
     posts.frameNavi = frame.frameNavi;

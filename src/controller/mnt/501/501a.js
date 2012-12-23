@@ -27,7 +27,7 @@ function dspWin(args, callback) {
  * @param {Object} emsg contents of error.
  */
 function shoError(args, emsg) {
-    if (typeof emsg === 'Object') {
+    if (typeof emsg === 'object') {
         args.errors = emsg;
         args.post.mesg = emsg.text;
         args.res.render('scr/error', args.post);

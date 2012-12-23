@@ -1,0 +1,31 @@
+{
+    "panelSize": "M",
+    "xMax": 5,
+    "yMax": 5,
+    "defPanel" : [
+        {"type": "dontMove", "id": "dm033", "x": "2", "y": "2"}
+       ,{"type": "actPanel", "id": "pn011", "x": "0", "y": "0"}
+       ,{"type": "actPanel", "id": "pn012", "x": "1", "y": "0"}
+       ,{"type": "actPanel", "id": "pn013", "x": "2", "y": "0"}
+       ,{"type": "actPanel", "id": "pn014", "x": "3", "y": "0"}
+       ,{"type": "actPanel", "id": "pn015", "x": "4", "y": "0"}
+       ,{"type": "actPanel", "id": "pn021", "x": "0", "y": "1"}
+       ,{"type": "actPanel", "id": "pn022", "x": "1", "y": "1"}
+       ,{"type": "actPanel", "id": "pn023", "x": "2", "y": "1"}
+       ,{"type": "actPanel", "id": "pn024", "x": "3", "y": "1"}
+       ,{"type": "actPanel", "id": "pn025", "x": "4", "y": "1"}
+       ,{"type": "actPanel", "id": "pn031", "x": "0", "y": "2"}
+       ,{"type": "actPanel", "id": "pn032", "x": "1", "y": "2"}
+       ,{"type": "actPanel", "id": "pn034", "x": "3", "y": "2"}
+       ,{"type": "actPanel", "id": "pn035", "x": "4", "y": "2"}
+       ,{"type": "actPanel", "id": "pn041", "x": "0", "y": "3"}
+       ,{"type": "actPanel", "id": "pn042", "x": "1", "y": "3"}
+       ,{"type": "actPanel", "id": "pn043", "x": "2", "y": "3"}
+       ,{"type": "actPanel", "id": "pn044", "x": "3", "y": "3"}
+       ,{"type": "actPanel", "id": "pn045", "x": "4", "y": "3"}
+       ,{"type": "actPanel", "id": "pn051", "x": "0", "y": "4"}
+       ,{"type": "actPanel", "id": "pn052", "x": "1", "y": "4"}
+       ,{"type": "actPanel", "id": "pn053", "x": "2", "y": "4"}
+       ,{"type": "actPanel", "id": "pn054", "x": "3", "y": "4"}
+    ]
+}

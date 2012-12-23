@@ -4,19 +4,19 @@ var fs = require('fs');
 /* デモ用グローバル */
 var DEMO_01 = {};
 var DEMO_02 = {};
-var UP_LIMIT = 10,
-    DOWN_LIMIT = 0,
-    LEFT_LIMIT = -5,
-    RIGHT_LIMIT = 5;
-var UP_MOVE = 1,
-    DOWN_MOVE = 2,
-    LEFT_MOVE = 4,
-    RIGHT_MOVE = 8,
-    NONE_MOVE = 0;
-var FORE_LIMIT = 25,
-    BACK_LIMIT = 0;
-var FORE_MOVE = 1,
-    BACK_MOVE = 2;
+var CR_UP_LIMIT = 10,
+    CR_DOWN_LIMIT = 0,
+    CR_FORE_LIMIT = 10,
+    CR_BACK_LIMIT = -10;
+var CR_UP_MOVE = 1,
+    CR_DOWN_MOVE = 2,
+    CR_FORE_MOVE = 4,
+    CR_BACK_MOVE = 8,
+    CR_NONE_MOVE = 0;
+var CT_FORE_LIMIT = 20,
+    CT_BACK_LIMIT = 0;
+var CT_FORE_MOVE = 1,
+    CT_BACK_MOVE = 2;
 
 /**
  * doSync finally
@@ -71,32 +71,32 @@ function demo02(cart) {
             if (cart.flag) {
                 /* ボタン ON の時 */
 
-                if (cart.move == FORE_MOVE && cart.h >= FORE_LIMIT) {
+                if (cart.move == CT_FORE_MOVE && cart.h >= CT_FORE_LIMIT) {
                     /* 前 限界 */
-                } else if (cart.move == BACK_MOVE && cart.h <= BACK_LIMIT) {
+                } else if (cart.move == CT_BACK_MOVE && cart.h <= CT_BACK_LIMIT) {
                     /* 後 限界 */
-                } else if(cart.move == FORE_MOVE || cart.move == BACK_MOVE) {
-                    if (cart.move == FORE_MOVE) {
-                        if (cart.h <= BACK_LIMIT) {
+                } else if(cart.move == CT_FORE_MOVE || cart.move == CT_BACK_MOVE) {
+                    if (cart.move == CT_FORE_MOVE) {
+                        if (cart.h <= CT_BACK_LIMIT) {
                             /* 後退 限界 解除 */
                             lcsSOCK.io().of('/scr/903').emit("buttonEvent_02", {
                                 "limit": 0
-                                ,"move": BACK_MOVE
+                                ,"move": CT_BACK_MOVE
                             });
                         }
                         cart.h += 1;
                     }
-                    if (cart.move == BACK_MOVE) {
-                        if (cart.h >= FORE_LIMIT) {
+                    if (cart.move == CT_BACK_MOVE) {
+                        if (cart.h >= CT_FORE_LIMIT) {
                             /* 前進 限界 */
                             lcsSOCK.io().of('/scr/903').emit("buttonEvent_02", {
                                 "limit": 0
-                                ,"move": FORE_MOVE
+                                ,"move": CT_FORE_MOVE
                             });
                         }
                         cart.h -= 1;
                     }
-                    if (cart.h <= BACK_LIMIT || cart.h >= FORE_LIMIT) {
+                    if (cart.h <= CT_BACK_LIMIT || cart.h >= CT_FORE_LIMIT) {
                         lcsSOCK.io().of('/scr/903').emit("buttonEvent_02", {
                             "limit": 1
                             ,"move": cart.move
@@ -138,32 +138,32 @@ function demo01(crane) {
             if (crane.flag) {
                 /* ボタン ON の時 */
 
-                if ( crane.move == UP_MOVE && crane.v >= UP_LIMIT) {
+                if ( crane.move == CR_UP_MOVE && crane.v >= CR_UP_LIMIT) {
                     /* 上昇 Limit中 */
-                } else if (crane.move == DOWN_MOVE && crane.v <= DOWN_LIMIT) {
+                } else if (crane.move == CR_DOWN_MOVE && crane.v <= CR_DOWN_LIMIT) {
                     /* 下降 Limit中 */
-                } else if(crane.move == UP_MOVE || crane.move == DOWN_MOVE) {
-                    if (crane.move == UP_MOVE) {
-                        if (crane.v <= DOWN_LIMIT) {
+                } else if(crane.move == CR_UP_MOVE || crane.move == CR_DOWN_MOVE) {
+                    if (crane.move == CR_UP_MOVE) {
+                        if (crane.v <= CR_DOWN_LIMIT) {
                             /* 下降 Limit 解除 */
                             lcsSOCK.io().of('/scr/903').emit("buttonEvent_01", {
                                 "limit": 0
-                                ,"move": DOWN_MOVE
+                                ,"move": CR_DOWN_MOVE
                             });
                         }
                         crane.v += 1;
                     }
-                    if (crane.move == DOWN_MOVE) {
-                        if (crane.v >= UP_LIMIT) {
+                    if (crane.move == CR_DOWN_MOVE) {
+                        if (crane.v >= CR_UP_LIMIT) {
                             /* 上昇 Limit 解除 */
                             lcsSOCK.io().of('/scr/903').emit("buttonEvent_01", {
                                 "limit": 0
-                                ,"move": UP_MOVE
+                                ,"move": CR_UP_MOVE
                             });
                         }
                         crane.v -= 1;
                     }
-                    if (crane.v >= UP_LIMIT || crane.v <= DOWN_LIMIT) {
+                    if (crane.v >= CR_UP_LIMIT || crane.v <= CR_DOWN_LIMIT) {
                         /* 限界 */
                         lcsSOCK.io().of('/scr/903').emit("buttonEvent_01", {
                             "limit": 1
@@ -172,32 +172,32 @@ function demo01(crane) {
                     }
                 }
 
-                if (crane.move == LEFT_MOVE && crane.h <= LEFT_LIMIT) {
-                    /* 左 限界 */
-                } else if (crane.move == RIGHT_MOVE && crane.h >= RIGHT_LIMIT) {
-                    /* 右 限界 */
-                } else if(crane.move == LEFT_MOVE || crane.move == RIGHT_MOVE) {
-                    if (crane.move == LEFT_MOVE) {
-                        if (crane.h >= RIGHT_LIMIT) {
-                            /* 右 限界 解除 */
+                if (crane.move == CR_FORE_MOVE && crane.h >= CR_FORE_LIMIT) {
+                    /* 前 限界 */
+                } else if (crane.move == CR_BACK_MOVE && crane.h <= CR_BACK_LIMIT) {
+                    /* 後ろ 限界 */
+                } else if(crane.move == CR_FORE_MOVE || crane.move == CR_BACK_MOVE) {
+                    if (crane.move == CR_FORE_MOVE) {
+                        if (crane.h <= CR_BACK_LIMIT) {
+                            /* 後ろ 限界 解除 */
                             lcsSOCK.io().of('/scr/903').emit("buttonEvent_01", {
                                 "limit": 0
-                                ,"move": RIGHT_MOVE
-                            });
-                        }
-                        crane.h -= 1;
-                    }
-                    if (crane.move == RIGHT_MOVE) {
-                        if (crane.h <= LEFT_LIMIT) {
-                            /* 左 限界 */
-                            lcsSOCK.io().of('/scr/903').emit("buttonEvent_01", {
-                                "limit": 0
-                                ,"move": LEFT_MOVE
+                                ,"move": CR_BACK_MOVE
                             });
                         }
                         crane.h += 1;
                     }
-                    if (crane.h >= RIGHT_LIMIT || crane.h <= LEFT_LIMIT) {
+                    if (crane.move == CR_BACK_MOVE) {
+                        if (crane.h >= CR_FORE_LIMIT) {
+                            /* 前 限界 解除 */
+                            lcsSOCK.io().of('/scr/903').emit("buttonEvent_01", {
+                                "limit": 0
+                                ,"move": CR_FORE_MOVE
+                            });
+                        }
+                        crane.h -= 1;
+                    }
+                    if (crane.h >= CR_FORE_LIMIT || crane.h <= CR_BACK_LIMIT) {
                         lcsSOCK.io().of('/scr/903').emit("buttonEvent_01", {
                             "limit": 1
                             ,"move": crane.move
@@ -248,9 +248,15 @@ function eventDisplay() {
  */
 function demoInitial(args, nextDo) {
     args.posts.machineView = DEMO_01;
-    args.posts.machineView.limit_def = {"u":UP_LIMIT,"d":DOWN_LIMIT,"l":LEFT_LIMIT,"r":RIGHT_LIMIT};
+    args.posts.machineView.limit_def = {
+        "up":CR_UP_LIMIT,
+        "dw":CR_DOWN_LIMIT,
+        "fr":CR_FORE_LIMIT,
+        "bk":CR_BACK_LIMIT};
     args.posts.machineView2 = DEMO_02;
-    args.posts.machineView2.limit_def = {"f":FORE_LIMIT,"b":BACK_LIMIT};
+    args.posts.machineView2.limit_def = {
+        "fr":CT_FORE_LIMIT,
+        "bk":CT_BACK_LIMIT};
     nextDo(null, args);
 }
 
@@ -376,13 +382,13 @@ exports.sockMain = function(){
                     if (data.event == "ON") {
                         DEMO_01.flag = 1;
                         if (data.action == "UP") {
-                            DEMO_01.move = UP_MOVE;
+                            DEMO_01.move = CR_UP_MOVE;
                         } else if (data.action == "DOWN") {
-                            DEMO_01.move = DOWN_MOVE;
-                        } else if (data.action == "LEFT") {
-                            DEMO_01.move = LEFT_MOVE;
-                        } else if (data.action == "RIGHT") {
-                            DEMO_01.move = RIGHT_MOVE;
+                            DEMO_01.move = CR_DOWN_MOVE;
+                        } else if (data.action == "FORE") {
+                            DEMO_01.move = CR_FORE_MOVE;
+                        } else if (data.action == "BACK") {
+                            DEMO_01.move = CR_BACK_MOVE;
                         }
                     } else {
                         DEMO_01.flag = 0;
@@ -394,9 +400,9 @@ exports.sockMain = function(){
                     if (data.event == "ON") {
                         DEMO_02.flag = 1;
                         if (data.action == "FORE") {
-                            DEMO_02.move = FORE_MOVE;
+                            DEMO_02.move = CT_FORE_MOVE;
                         } else if (data.action == "BACK") {
-                            DEMO_02.move = BACK_MOVE;
+                            DEMO_02.move = CT_BACK_MOVE;
                         }
                     } else {
                         DEMO_02.flag = 0;

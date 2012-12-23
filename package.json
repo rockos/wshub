@@ -1,0 +1,28 @@
+{
+  "subdomain": "rockos.snowshoe",
+  "scripts": {
+    "start": "snowshoe.js"
+  },
+  "version": "0.3.1",
+  "engines": {
+    "node": "0.8.11"
+  },
+  "name": "snowshoe",
+  "dependencies": {
+    "connect": "1.8.x",
+    "express": "3.0.0rc4",
+    "express-resource": "latest",
+    "connect-redis": "1.3.x",
+    "socket.io": "0.9.x",
+    "redis": "0.7.x",
+    "async": "0.1.x",
+    "ejs": "0.7.x",
+    "mongodb": "*",
+    "mongoose": "*",
+    "mysql": "0.9.x",
+    "opts": "1.2.2",
+    "ejs-locals": "0.2.5",
+    "express-validator":"0.2.x",
+    "winston":"0.6.x"
+  }
+}

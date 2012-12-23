@@ -333,7 +333,7 @@ function postData(args, nextDo) {
     var req = args.req, res = args.res, posts = args.posts;
 
     //**** デモ中 ***********************************************************
-    var __file = "./ini/data/moptest005.json";
+    var __file = ROOTDIR + '/src/ini/data/moptest005.json';
     var ddd = JSON.parse(require('fs').readFileSync(__file));
     if( args.posts.step=="2" ) {
         var ddd2 = {"tab1":[]};
@@ -398,7 +398,7 @@ function optionsDsp_m1(args, nextDo) {
     var req = args.req, res = args.res;
 
     //**** デモ中 ***********************************************************
-    var __file = "./ini/data/moptest001.json";
+    var __file = ROOTDIR + '/src/ini/data/moptest001.json';
     var ddd = JSON.parse(require('fs').readFileSync(__file));
     ddd.opt1[6].selected = "selected";
     args.posts.mod.select.opt1 = ddd.opt1; 
@@ -416,7 +416,7 @@ function optionsDsp_m2(args, nextDo) {
     var req = args.req, res = args.res;
 
     //**** デモ中 ***********************************************************
-    var __file = "./ini/data/moptest006.json";
+    var __file = ROOTDIR + '/src/ini/data/moptest006.json';
     var ddd = JSON.parse(require('fs').readFileSync(__file));
     args.posts.mod.select.opt2 = ddd.opt2; 
     nextDo( null, args );
@@ -432,7 +432,7 @@ function optionsDsp(args, nextDo) {
     var req = args.req, res = args.res;
 
     //**** デモ中 ***********************************************************
-    var __file = "./ini/data/moptest001.json";
+    var __file = ROOTDIR + '/src/ini/data/moptest001.json';
     var ddd = JSON.parse(require('fs').readFileSync(__file));
     args.posts.select.opt1 = ddd.opt1; 
     nextDo( null, args );

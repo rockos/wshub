@@ -89,7 +89,7 @@ var demoHeartbeat = function() {
  */
 
 var demoRegchange = function() {
-    var __file = ROOTDIR + '/src//ini/data/seq901-test1.json';
+    var __file = ROOTDIR + '/src/ini/data/seq901-test1.json';
     var prevReg = JSON.parse(require('fs').readFileSync(__file));
 
     require('fs').watchFile(__file, function( curr, prev ) {
@@ -135,7 +135,7 @@ var demoData_recv = function(args, nextDo) {
     mod10;
 
     var dmyData = JSON.parse(require('fs')
-                             .readFileSync(ROOTDIR + '/ini/data/seq901-test1.json'));
+                             .readFileSync(ROOTDIR + '/src/ini/data/seq901-test1.json'));
 
     mod10 = RECV_START_REG % 10;
     start10 = (RECV_START_REG - mod10) / 10;

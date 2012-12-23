@@ -1,4 +1,4 @@
-<% layout('layout_seq') -%>
+<% layout('layout') -%>
 <%- stylesheet('/stylesheets/cstm/901.css') -%>
 
 <script type="text/javascript" src="/javascripts/rcs/libsocket.js"></script>
@@ -136,7 +136,7 @@ var searchDreg = function(func,dreg) {
 
 </script>
 
-<form name="main_form" method="post" action="/scr/901">
+<form name="main_form" method="post" action="/scr/901" autocomplete="off">
   <input type="hidden" name="clientID" id="clientID" value="" />
   <input type="hidden" name="nameSpace" id="nameSpace" value="" />
 
@@ -144,7 +144,8 @@ var searchDreg = function(func,dreg) {
     <input type="submit" name="send_iqy" value="表示" />
 
     <span>ポート番号</span>
-    <input type="text" name="port" id="port" value="<%= text.port %>" maxlength="5"
+    <input type="text" name="port" id="port" value="<%= text.port %>" maxlength="5" 
+         onfocus="setTimeout(function(){$('input[name=port]').select()},0);"
     <% if (step=='1') { %>
     readonly
     <% } %>
@@ -174,7 +175,8 @@ var searchDreg = function(func,dreg) {
         <p>２進:<input type="radio" name="radix" id="radix_bin" value="2" onclick="radixChange(this)"></p>
         <p>１０進:<input type="radio" name="radix" id="radix_dec" value="10" onclick="radixChange(this)"></p>
         <p>１６進:<input type="radio" name="radix" id="radix_hex" value="16" onclick="radixChange(this)"></p>
-        <p><input type="text" name="send_dreg_value" id="send_dreg_value" maxlength="16" value=""></p>
+        <p><input type="text" name="send_dreg_value" id="send_dreg_value" maxlength="16" 
+           value="" onfocus="setTimeout(function(){$('input[name=send_dreg_value]').select()},0);"></p>
         <% if (step=='1') { %>
         <input type="submit" name="send_regset" value="設定" />
         <% } %>
@@ -220,8 +222,8 @@ var searchDreg = function(func,dreg) {
           <tr>
             <th><%= 'D'+('0000'+table.send[i].Dreg10*10).slice(-4) %></th>
             <% for(var j = 0, jmax = table.send[i].Dreg1.length; j < jmax && j < 10; j++) { %>
-            <td id="<%= 'D'+('0000' + (table.send[i].Dreg10 * 10 + j)).slice(-4) %>" onclick="sendOn(this)">
-              <%= ('0000'+table.send[i].Dreg1[j].toString(16).toUpperCase()).slice(-4) %></td>
+            <td id="<%= 'D'+('0000' + (table.send[i].Dreg10 * 10 + j)).slice(-4) %>" onclick="sendOn(this)"
+              ><%= ('0000'+table.send[i].Dreg1[j].toString(16).toUpperCase()).slice(-4) %></td>
             <% } /*D-reg 1 loop */ %>
           </tr>
           <% } /* D-reg loop */ %>

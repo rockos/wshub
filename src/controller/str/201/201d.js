@@ -441,8 +441,8 @@ function _showResult(req, res, posts, templete) {
 exports.delRsrv = function(req, res, frame){
 
     var posts = {};
-    var file = './controller/data/str201.json',
-    inifile = './controller/data/str201ini.json';
+    var file = ROOTDIR + '/src/ini/data/str201.json',
+    inifile = ROOTDIR + '/src/ini/data/str201ini.json';
 
 
     /* page情報設定 */

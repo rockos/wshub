@@ -1,0 +1,204 @@
+@charse "UTF-8";
+
+input[name='send_iqy2'] {
+    display: none;
+}
+
+/**
+ *  SCR113
+ */
+div#main_body div.cond113 {
+
+}
+
+/*
+ *  round about
+ */
+#round_main .roundabout-holder {
+    list-style: none;
+    width: 800px;
+    height: 400px;
+    margin: 20px 0 0 0;
+    
+    left:200px;
+
+    background-color: #000000;
+    border: solid 1px #000;
+    
+}
+#round_main .roundabout-moveable-item {
+    height: 200px;
+    width: 300px;
+    border: 1px dotted #999;
+    background-color: #ddd;
+    font-size: 16px;
+    cursor: pointer;
+}
+#round_main .roundabout-in-focus {
+    cursor: auto;
+}
+
+/**
+ *  棚
+ */
+div#round_main ul li .actv {
+    display: block;
+}
+div#round_main ul li .hide {
+    display: none;
+}
+div#round_main ul li span {
+    font-size:24px;
+}
+div#round_main ul li p {
+    display: block;
+    border: none 1px #999;
+    width: 300px;
+    height: 30px;
+    position: absolute;
+    margin: 0px 0px 0px -1px;
+}
+
+div#round_main ul li p q {
+    display: block;
+    border: none 1px #999;
+    width: 26px;
+    height: 26px;
+    position: absolute;
+    margin: 1px 1px 1px 1px;
+}
+
+div#round_main ul li p q.on {
+    border: solid 1px #000;
+    background-color: #000;
+}
+div#round_main ul li p q.off {
+    border: solid 1px #000;
+}
+div#round_main ul li p q.none {
+    border: none 1px #ddd;
+}
+
+div#round_main ul li p.t01 {
+    top: 170px;
+    left: 0px;
+}
+div#round_main ul li p.t02 {
+    top: 140px;
+    left: 0px;
+}
+div#round_main ul li p.t03 {
+    top: 110px;
+    left: 0px;
+}
+div#round_main ul li p.t04 {
+    top: 80px;
+    left: 0px;
+}
+div#round_main ul li p.t05 {
+    top: 50px;
+    left: 0px;
+}
+
+div#round_main ul li p q.b01 {
+    top: 0px;
+    left: 0px;
+}
+div#round_main ul li p q.b02 {
+    top: 0px;
+    left: 30px;
+}
+div#round_main ul li p q.b03 {
+    top: 0px;
+    left: 60px;
+}
+div#round_main ul li p q.b04 {
+    top: 0px;
+    left: 90px;
+}
+div#round_main ul li p q.b05 {
+    top: 0px;
+    left: 120px;
+}
+div#round_main ul li p q.b06 {
+    top: 0px;
+    left: 150px;
+}
+div#round_main ul li p q.b07 {
+    top: 0px;
+    left: 180px;
+}
+div#round_main ul li p q.b08 {
+    top: 0px;
+    left: 210px;
+}
+div#round_main ul li p q.b09 {
+    top: 0px;
+    left: 240px;
+}
+div#round_main ul li p q.b10 {
+    top: 0px;
+    left: 270px;
+}
+
+table.list113 {
+    border-collapse: collapse;
+    border: solid 1px #999;
+    table-layout: fixed;
+}
+
+table.list113 tr th:nth-child(1) {
+    width: 180px;
+}
+table.list113 tr th:nth-child(2) {
+    width: 80px;
+}
+table.list113 tr th:nth-child(3) {
+    width: 200px;
+}
+table.list113 tr th:nth-child(4) {
+    width: 80px;
+}
+table.list113 tr th:nth-child(5) {
+    width: 110px;
+}
+table.list113 tr th:nth-child(6) {
+    width: 80px;
+}
+table.list113 tr th:nth-child(7) {
+    width: 90px;
+}
+
+table.list113 tr td:nth-child(1) {
+    text-align: left;
+}
+table.list113 tr td:nth-child(2) {
+    text-align: right;
+}
+table.list113 tr td:nth-child(3) {
+    text-align: left;
+}
+table.list113 tr td:nth-child(4) {
+    text-align: center;
+}
+table.list113 tr td:nth-child(5) {
+    text-align: left;
+}
+table.list113 tr td:nth-child(6) {
+    text-align: left;
+}
+table.list113 tr td:nth-child(7) {
+    text-align: left;
+}
+
+table.list113 th,
+table.list113 td {
+    border: solid 1px #999;
+    padding: 4px 6px;
+}
+table.list113 th {
+    background: #E6E6E6;
+    white-space: ;
+    color: #666;
+    font-weight: bold;
+}

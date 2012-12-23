@@ -6,7 +6,7 @@
  */
 exports.main = function(req, res, frame){
     var posts = {};
-    var deffile = './ini/data/def701.json';
+    var deffile = ROOTDIR + '/src/ini/data/def701.json';
     posts.pageNavi = JSON.parse(require('fs').readFileSync(deffile));
 
     if (!lcsAp.isSession(req.session)) {

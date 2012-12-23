@@ -1,5 +1,5 @@
 {"customer":"Web倉庫"
-,"comment":"powerd by somali"
+,"comment":"powerd by snowsho"
 ,"name":"WEBトランクルーム"
 ,"topMenu":[
  {"name":"入庫",
@@ -24,12 +24,6 @@
         ,{"href":"/scr/701","name":"利用明細"}
         ]
  }
-, {"name":"保守",
-        "subMenu":[
-        {"href":"/scr/501","name":"プロファイル"}
-        ,{"href":"/scr/502","name":"在庫修正"}
-        ]
- }
 , {"name":"環境モニタ",
         "subMenu":[
         {"href":"/scr/104","name":"グラフ(Dynamic)"}
@@ -38,11 +32,13 @@
         ,{"href":"/scr/901","name":"シーケンサ"}
         ,{"href":"/scr/902","name":"機械モニタ"}
         ,{"href":"/scr/903","name":"機械 操作"}
+        ,{"href":"/scr/904","name":"パズル"}
         ]
  }
 , {"name":"ユーザー",
         "subMenu":[
         {"href":"/logout","name":"ログアウト"}
+        ,{"href":"/scr/501","name":"プロファイル"}
         ]
  }
 ]

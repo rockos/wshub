@@ -17,6 +17,29 @@ socket.on("changeTana", function (jdata) {
 var sock = function( my ) {
     socket.emit(my.name,{"d1":"test","d2":"空棚","d3":"01-02-03"});
 }
+
+$(function() {
+    $('div#round_main ul li span p q').bind( {
+        "click": function() {
+            /*
+            $('#debug').html(
+                $('#debug').html() +
+                "click!!!<br>");
+            */
+            if ($(this).hasClass('on')) {
+                $('input[name="send_iqy2"]').click();
+            } else {
+                $('input[name="send_iqy"]').click();
+            }
+        }
+    });
+
+
+
+
+
+});
+
 </script>
 
 <script type="text/javascript" src="/javascripts/fredhq-roundabout-c1bcd37/jquery.roundabout.min.js"></script>
@@ -84,6 +107,8 @@ var areaClic = function(row) {
     document.getElementById(activ_id).className = "actv";
     document.getElementById("txt1").value = activ_row;
 
+    $('.list113').html("");
+
     /*---DEBUG---
     document.getElementById('debug').innerHTML += 
     (
@@ -103,16 +128,22 @@ var areaClic = function(row) {
     <p class=""><a href="#"><%= pageTags.caption %></a></p>
     <ul>
       <% if( step=="0" || step=="1" ) { %>
-      <li><input type="submit" name="send_iqy" value="<%= pageTags.send_iqy %>"></li>
+      <li>
+        <input type="submit" name="send_iqy" value="<%= pageTags.send_iqy %>">
+        <input type="submit" name="send_iqy2" value="@@">
+      </li>
       <% } %>
       <% if( step=="99" || step=="99" ) { %>
       <li><input type="button" class="send" name="sock_iqy" value="<%= pageTags.sock_iqy %>" onclick="sock(this)"></li>
       <% } %>
+
+      <% if( step=="99" || step=="99" ) { %>
       <% if( step=="0" || step=="1" ) { %>
       <li><input type="button" class="send" name="move_left" value="<%= pageTags.move_left %>" onclick="move_round(this)"></li>
       <% } %>
       <% if( step=="0" || step=="1" ) { %>
       <li><input type="button" class="send" name="move_right" value="<%= pageTags.move_right %>" onclick="move_round(this)"></li>
+      <% } %>
       <% } %>
     </ul>
   </div>
@@ -127,9 +158,21 @@ var areaClic = function(row) {
         <% if( step=="0" || step=="1" ) { %>
         <li class="l1">
           <label for="txt1"><%= pageTags.cond_location %></label>
-          <input type="text" id="txt1" class="" size="8" maxlength="8" 
+          <input type="hidden" id="txt1" class="" size="8" maxlength="8" 
                  placeholder="" name="txt1" 
                  value="<%= text.txt1 %>" tabindex="-1">
+          <select name='sel1'>
+              <option value=""></option>
+              <% for (var i = 0; i < location.row.length-1; i++) { %>
+                  <option value="<%= i+1 %>"
+                    <% if (i==3) { %>
+                      selected
+                    <% } %>
+                    >
+                    <%= i+1 %>
+                  </option>
+              <% } %>
+          </select>
         </li>
         <% } %>
       </ul>
@@ -169,6 +212,46 @@ var areaClic = function(row) {
         </li>
       <% } %>
     </ul>
+
+
+    <% if (typeof tabDtil == 'object') { %>
+    <table class="list113">
+      <colgroup>
+        <col span="1" class="c1">
+        <col span="1" class="c2">
+        <col span="1" class="c3">
+        <col span="1" class="c4">
+        <col span="1" class="c5">
+        <col span="1" class="c6">
+        <col span="1" class="c7">
+        <thead>
+        <tr>
+          <th>会員番号</th>
+          <th>搬入数量</th>
+          <th>ロッカーNo</th>
+          <th>タグNo</th>
+          <th>預け入れ期間</th>
+          <th>特記事項</th>
+          <th>お客様メモ</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        <% for (var i = 0, max = tabDtil.tab.length; i < max; i++) { %>
+        <tr>
+          <TD><%= tabDtil.tab[i].userid %></TD>
+          <TD><%= tabDtil.tab[i].sqty %></TD>
+          <TD><%= tabDtil.tab[i].pnam %></TD>
+          <TD><%= tabDtil.tab[i].lotn %></TD>
+          <TD><%= tabDtil.tab[i].mem1 %></TD>
+          <TD><%= tabDtil.tab[i].mem2 %></TD>
+          <TD><%= tabDtil.tab[i].mem3 %></TD>
+        </tr>
+        <% } %>
+        </tbody>
+    </table>
+    <% } %>
+
   </div>
 
   <div id="debug"></div>

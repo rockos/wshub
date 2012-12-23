@@ -430,7 +430,7 @@ function showDemo(req, res, posts, templete) {
 function _showResult(req, res, frame) {
 
     var posts = {};
-    var file = './ini/data/str202.json';
+    var file = ROOTDIR + '/src/ini/data/str202.json';
     var msg = lcsAp.getMsgI18N("0");
     posts.mesg = msg.text;
     posts.mesg_lavel_color = msg.warn;
@@ -458,7 +458,7 @@ function _showResult(req, res, frame) {
 function _showInitial(req, res, frame){
 
     var posts = {};
-    var file = './ini/data/str202ini.json';
+    var file = ROOTDIR + '/src/ini/data/str202ini.json';
 
     var msg = lcsAp.getMsgI18N("0");
     posts.mesg = msg.text;

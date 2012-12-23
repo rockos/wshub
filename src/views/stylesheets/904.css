@@ -1,0 +1,40 @@
+@charse "UTF-8";
+
+/**
+ *  
+ */
+div.caption {
+    float: left;
+    width: 200px;
+    padding: 5px 5px 5px 5px;
+    color: rgba(0,0,0,1);
+    border: solid 1px rgba(72,209,204,1);
+    background-color: rgba(72,209,204,1);
+    box-shadow:         2px 2px 0px 0px rgba(0,0,0,0.4) inset;
+    -webkit-box-shadow: 2px 2px 0px 0px rgba(0,0,0,0.4) inset;
+    -moz-box-shadow:    2px 2px 0px 0px rgba(0,0,0,0.4) inset;
+}
+
+div.puzzle {
+   float: left;
+   width: 800px;
+   height: 800px;
+   border: none 1px rgba(0,0,0,1);
+   position: relative;
+}
+
+div.puzzle .dontMove {
+    border: none 1px rgba(72,72,72,1);
+    background-color: rgba(72,72,72,1);
+    color: rgba(72,72,72,1);
+}
+div.puzzle .actPanel {
+    border: none 1px rgba(138,43,226,1);
+    background-color: rgba(138,43,226,1);
+    color: rgba(138,43,226,1);
+}
+
+#debugtxt {
+    clear: both;
+}
+
