@@ -41,7 +41,7 @@ exports.create = function(req, res){
  * GET show.
  */
 
-exports.show = {
+exports.show = function(req, res) {
     res.send('show');
 };
 

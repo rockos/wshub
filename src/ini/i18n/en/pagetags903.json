@@ -1,0 +1,13 @@
+{
+    "mob903":{
+        "caption":       "Machine Mover"
+        ,"vhchange_v":    "Lifter (Mover>>)"
+        ,"vhchange_h":    "(<<Lifter) Mover"
+        ,"back":          "Back"
+        ,"fore":          "Fore"
+        ,"up":            "Up"
+        ,"down":          "Down"
+
+
+    }
+}

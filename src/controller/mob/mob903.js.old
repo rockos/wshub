@@ -40,8 +40,6 @@ function finSync(err_args) {
  */
 function dspWin(args, nextDo) {
     var req = args.req, res = args.res, posts = args.posts;
-    var str = req.url.replace(/\.+/,'').split('/');
-    posts.scrNo = str[1] + '/' + str[1] + str[2];
     res.render(posts.scrNo, posts);
     nextDo(null, args);
 }
@@ -62,7 +60,7 @@ function demo02(cart) {
                         ,"move": cart.move
                     });
                 } else {
-                    lcsSOCK.io().of('/scr/903').emit("buttonEvent_02", {
+                    lcsSOCK.io().of('/mob/903').emit("buttonEvent_02", {
                         "color": 0
                         ,"move": cart.move
                     });
@@ -81,7 +79,7 @@ function demo02(cart) {
                     if (cart.move == CT_FORE_MOVE) {
                         if (cart.h <= CT_BACK_LIMIT) {
                             /* 後退 限界 解除 */
-                            lcsSOCK.io().of('/scr/903').emit("buttonEvent_02", {
+                            lcsSOCK.io().of('/mob/903').emit("buttonEvent_02", {
                                 "limit": 0
                                 ,"move": CT_BACK_MOVE
                             });
@@ -91,7 +89,7 @@ function demo02(cart) {
                     if (cart.move == CT_BACK_MOVE) {
                         if (cart.h >= CT_FORE_LIMIT) {
                             /* 前進 限界 */
-                            lcsSOCK.io().of('/scr/903').emit("buttonEvent_02", {
+                            lcsSOCK.io().of('/mob/903').emit("buttonEvent_02", {
                                 "limit": 0
                                 ,"move": CT_FORE_MOVE
                             });
@@ -99,13 +97,13 @@ function demo02(cart) {
                         cart.h -= 1;
                     }
                     if (cart.h <= CT_BACK_LIMIT || cart.h >= CT_FORE_LIMIT) {
-                        lcsSOCK.io().of('/scr/903').emit("buttonEvent_02", {
+                        lcsSOCK.io().of('/mob/903').emit("buttonEvent_02", {
                             "limit": 1
                             ,"move": cart.move
                         });
                     }
                 }
-                lcsSOCK.io().of('/scr/903').emit("buttonEvent_02", {
+                lcsSOCK.io().of('/mob/903').emit("buttonEvent_02", {
                     "value_h":cart.h
                 });
             }
@@ -124,12 +122,12 @@ function demo01(crane) {
             if (crane.flag != crane.prev) {
                 /* ボタン ON / OFF の切替 */
                 if (crane.flag) {
-                    lcsSOCK.io().of('/scr/903').emit("buttonEvent_01", {
+                    lcsSOCK.io().of('/mob/903').emit("buttonEvent_01", {
                         "color": 1
                         ,"move": crane.move
                     });
                 } else {
-                    lcsSOCK.io().of('/scr/903').emit("buttonEvent_01", {
+                    lcsSOCK.io().of('/mob/903').emit("buttonEvent_01", {
                         "color": 0
                         ,"move": crane.move
                     });
@@ -148,7 +146,7 @@ function demo01(crane) {
                     if (crane.move == CR_UP_MOVE) {
                         if (crane.v <= CR_DOWN_LIMIT) {
                             /* 下降 Limit 解除 */
-                            lcsSOCK.io().of('/scr/903').emit("buttonEvent_01", {
+                            lcsSOCK.io().of('/mob/903').emit("buttonEvent_01", {
                                 "limit": 0
                                 ,"move": CR_DOWN_MOVE
                             });
@@ -158,7 +156,7 @@ function demo01(crane) {
                     if (crane.move == CR_DOWN_MOVE) {
                         if (crane.v >= CR_UP_LIMIT) {
                             /* 上昇 Limit 解除 */
-                            lcsSOCK.io().of('/scr/903').emit("buttonEvent_01", {
+                            lcsSOCK.io().of('/mob/903').emit("buttonEvent_01", {
                                 "limit": 0
                                 ,"move": CR_UP_MOVE
                             });
@@ -167,7 +165,7 @@ function demo01(crane) {
                     }
                     if (crane.v >= CR_UP_LIMIT || crane.v <= CR_DOWN_LIMIT) {
                         /* 限界 */
-                        lcsSOCK.io().of('/scr/903').emit("buttonEvent_01", {
+                        lcsSOCK.io().of('/mob/903').emit("buttonEvent_01", {
                             "limit": 1
                             ,"move": crane.move
                         });
@@ -182,7 +180,7 @@ function demo01(crane) {
                     if (crane.move == CR_FORE_MOVE) {
                         if (crane.h <= CR_BACK_LIMIT) {
                             /* 後ろ 限界 解除 */
-                            lcsSOCK.io().of('/scr/903').emit("buttonEvent_01", {
+                            lcsSOCK.io().of('/mob/903').emit("buttonEvent_01", {
                                 "limit": 0
                                 ,"move": CR_BACK_MOVE
                             });
@@ -192,7 +190,7 @@ function demo01(crane) {
                     if (crane.move == CR_BACK_MOVE) {
                         if (crane.h >= CR_FORE_LIMIT) {
                             /* 前 限界 解除 */
-                            lcsSOCK.io().of('/scr/903').emit("buttonEvent_01", {
+                            lcsSOCK.io().of('/mob/903').emit("buttonEvent_01", {
                                 "limit": 0
                                 ,"move": CR_FORE_MOVE
                             });
@@ -200,13 +198,13 @@ function demo01(crane) {
                         crane.h -= 1;
                     }
                     if (crane.h >= CR_FORE_LIMIT || crane.h <= CR_BACK_LIMIT) {
-                        lcsSOCK.io().of('/scr/903').emit("buttonEvent_01", {
+                        lcsSOCK.io().of('/mob/903').emit("buttonEvent_01", {
                             "limit": 1
                             ,"move": crane.move
                         });
                     }
                 }
-                lcsSOCK.io().of('/scr/903').emit("buttonEvent_01", {
+                lcsSOCK.io().of('/mob/903').emit("buttonEvent_01", {
                     "value_v":crane.v
                     ,"value_h":crane.h
                 });
@@ -376,11 +374,13 @@ exports.main = function(req, res, frame){
  * @date   6/dec/2012
  */
 exports.sockMain = function(){
-    lcsSOCK.io().of('/scr/903').on('connection', function(socket) {
+    lcsSOCK.io().of('/mob/903').on('connection', function(socket) {
             /* socket.io */
+                console.log("conn");
 
             /* ここはデモ用につくった画面からの要求で値をカエル処理です */
             socket.on("buttonEvent_01", function(data) {
+                console.log(data);
                     if (data.event == "ON") {
                         DEMO_01.flag = 1;
                         if (data.action == "UP") {

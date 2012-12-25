@@ -33,6 +33,11 @@ div.puzzle .actPanel {
     background-color: rgba(138,43,226,1);
     color: rgba(138,43,226,1);
 }
+div.puzzle .zaika {
+    border: solid 1px black;
+    background-color: pink;
+    color: pink;
+}
 
 #debugtxt {
     clear: both;

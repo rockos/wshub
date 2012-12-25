@@ -28,6 +28,19 @@ var LIMWIDTH = 0;
 var LIMHEIGHT = 0;
 var PANELSIZE = {};
 
+socket904.on("zaika", function (data) {
+    var objfilter = 'div[panel="' + data.id + '"] p';
+    if (data.act == 'dead') {
+        $(objfilter).fadeOut("slow", function() {
+            $(this).removeClass('zaika');
+        });
+    }
+    if (data.act == 'born') {
+        $(objfilter).fadeIn("slow", function() {
+            $(this).addClass('zaika');
+        });
+    }
+});
 socket904.on("move", function (data) {
     var movey = "+=0px",
         movex = "+=0px",
@@ -121,11 +134,23 @@ $(function() {
         for (var j = 0; j < YMAX; j++) {
             var obj = $('input[x=' + i + '][y=' + j + ']').get(0);
             if (obj) {
-                debugXp(obj.id + ':' + obj.name); 
+                debugXp(obj.id + ':' + obj.name + ':' + obj.value); 
+                var zaika = "";
+                if (obj.value == "1") {
+                    zaika = '<p class="zaika"></p>';
+                } else {
+                    zaika = '<p></p>';
+                }
                 $('#main_body div.puzzle').html(
                     $('#main_body div.puzzle').html() +
                     '<div panel="' + obj.id + '" type="' + obj.name + '" class="' + obj.name + '">' + 
-                    obj.id + '</div>');
+                    zaika + '</div>');
+                $('#main_body div.puzzle p:last').css( {
+                    "width": (PANELSIZE.width/2) + "px",
+                    "height":  (PANELSIZE.width/2) + "px",
+                    "margin-left" : (PANELSIZE.width/4-2) + "px",
+                    "margin-top": (PANELSIZE.width/4-2) + "px"
+                });
                 $('#main_body div.puzzle div:last').css( {
                     "width": (PANELSIZE.width - 3) + "px",
                     "height":  (PANELSIZE.width - 3) + "px",
@@ -159,7 +184,7 @@ $(function() {
   <!--name=[dontMove or actPanel] idはユニーク x,yもユニーク-->
   <% for (var i = 0, imax = defPanel.length; i < imax; i++) { %>
       <input type="hidden" name="<%= defPanel[i].type %>" 
-      id="<%= defPanel[i].id %>" value="" 
+      id="<%= defPanel[i].id %>" value="<%= defPanel[i].zaik %>" 
       x="<%= defPanel[i].x %>" y="<%= defPanel[i].y %>" />
   <% } %>
   <!----    ---->

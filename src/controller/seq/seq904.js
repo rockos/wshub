@@ -31,6 +31,56 @@ function dspWin(args, nextDo) {
 }
 
 /**
+ * クライアントにアクション通知
+ * @module 
+ * @param
+ */ 
+var emitClient = {
+    /**
+     * クライアントにアクション通知
+     * @module emitClient.move 
+     * @param object from:{x,y}
+     * @param object to:{xy}
+     * @param string id
+     */ 
+    "move":function(from, to, id) {
+        var act = "";
+        if (from.x - to.x > 0) {
+            act = "left";
+        } else if (from.x - to.x < 0) {
+            act = "right";
+        } else if (from.y - to.y > 0) {
+            act = "up";
+        } else if (from.y - to.y < 0) {
+            act = "down";
+        }
+
+        lcsSOCK.io().of('/scr/904').emit("move", {
+            "x": from.x
+            ,"y": from.y
+            ,"act": act
+            ,"id": id
+        });
+
+    },
+    /**
+     * クライアントにアクション通知
+     * @module emitClient.zaika 
+     * @param string event ('dead','born')
+     * @param object target{x,y}
+     * @param string id 
+     */ 
+    "zaika":function(event, target, id) {
+        lcsSOCK.io().of('/scr/904').emit("zaika", {
+            "x": target.x
+            ,"y": target.y
+            ,"act": event
+            ,"id": id
+        });
+    }
+};
+
+/**
  * パネル初期化
  * @module demoInitialPanel
  * @param
@@ -54,6 +104,11 @@ function demoInitialPanel() {
                 if ( ps.defPanel[k].x == i && ps.defPanel[k].y == j) {
                     DEMO.pmx[i][j].type = ps.defPanel[k].type;
                     DEMO.pmx[i][j].id = ps.defPanel[k].id;
+                    if (typeof ps.defPanel[k].zaik === 'string') {
+                        DEMO.pmx[i][j].zaik = '1';
+                    } else {
+                        DEMO.pmx[i][j].zaik = '0';
+                    }
                     exst = 1;
                     break;
                 }
@@ -68,6 +123,61 @@ function demoInitialPanel() {
     }
 }
 
+/**
+ * イベントを受けて画面を更新
+ * @module demoDisplay
+ * @param  
+ * @date   6/dec/2012
+ */
+function demoDisplay2() {
+    var __file = ROOTDIR + '/src/ini/data/test904_route.json';
+    var ps = JSON.parse(require('fs').readFileSync(__file));
+    var counter = 0, 
+        end = ps.move.length - 1;
+
+    setTimeout(function() {
+        demoDisplay2Exec(ps, counter, end);
+    }, 5000);
+
+    //setTimeout(function() {
+    //    demoDisplay2();
+    //}, 2000 * ps.move.length);
+}
+function demoDisplay2Exec(ps, counter, end) {
+    var from = ps.move[counter],
+        to = { "x":DEMO.empty[0].x, "y":DEMO.empty[0].y};
+    setTimeout(function() {
+        if (typeof from.event == 'string') {
+            emitClient.zaika(from.event, from, DEMO.pmx[from.x][from.y].id);
+            if (from.event == 'dead') {
+                DEMO.pmx[from.x][from.y].zaik = "";
+            } else if(from.event == 'born') {
+                DEMO.pmx[from.x][from.y].zaik = "1";
+            }
+        } else {
+            emitClient.move(ps.move[counter], 
+                            {"x":DEMO.empty[0].x, "y":DEMO.empty[0].y}, 
+                                DEMO.pmx[ps.move[counter].x][ps.move[counter].y].id); 
+
+            DEMO.pmx[to.x][to.y].type = DEMO.pmx[from.x][from.y].type;
+            DEMO.pmx[to.x][to.y].id = DEMO.pmx[from.x][from.y].id;
+            DEMO.pmx[to.x][to.y].zaik = DEMO.pmx[from.x][from.y].zaik;
+            DEMO.pmx[from.x][from.y].type = "empty";
+            DEMO.pmx[from.x][from.y].id = "";
+            DEMO.pmx[from.x][from.y].zaik = "";
+            DEMO.empty[0].x = from.x;
+            DEMO.empty[0].y = from.y;
+        }
+
+        if (counter < end) {
+            counter++;
+            demoDisplay2Exec(ps, counter, end);
+        } else {
+            counter = 0;
+            demoDisplay2Exec(ps, counter, end);
+        }
+    }, 2500);
+}
 /**
  * イベントを受けて画面を更新
  * @module demoDisplay
@@ -252,7 +362,7 @@ function demoDisplay() {
  */
 function eventDisplay() {
     demoInitialPanel();
-    demoDisplay()
+    demoDisplay2()
 }
 
 /**

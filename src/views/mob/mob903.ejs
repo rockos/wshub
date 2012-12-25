@@ -1,0 +1,73 @@
+<% layout('layout_mob') -%>
+<%- stylesheet('/stylesheets/cstm/mob903.css') -%>
+
+<script type="text/javascript" src="/javascripts/cstm/mob903.js"></script>
+
+<form name="main_form" method="post" action="/mob/903" data-ajax="false">
+
+  <div data-role="content">
+
+    <fieldset data-role="controlgroup" data-type="horizontal" data-role="fieldcontain">
+      <label for="cr01">１</label>
+      <input type="radio" name="craneNo" id="cr01" value="cr01" checked/>
+      <label for="cr02">２</label>
+      <input type="radio" name="craneNo" id="cr02" value="cr02"/>
+      <label for="cr03">３</label>
+      <input type="radio" name="craneNo" id="cr03" value="cr03"/>
+      <input type="submit" name="send_iqy" value="再表示"/>
+    </fieldset>
+
+    <div id="vertical" data-role="controlgroup">
+      <div id="craneUpStr" data-role="button" data-theme="a"
+        <% if (machineView.v >= machineView.limit_def.up) { %>
+          <%= "class='limit'" %>
+        <% } %>
+      ><%= pageTags.up %></div>
+      <div type="button" id="craneUp" name="craneUp"><br><br></div>
+      <div  class="ui-grid-a" data-role="button">
+          <div class="ui-block-a">昇降</div>
+          <div class="ui-block-b" id="v_verticalDistanceStr"><%= machineView.v %></div>
+      </div>
+      <div  class="ui-grid-a" data-role="button">
+          <div class="ui-block-a">走行</div>
+          <div class="ui-block-b" id="v_horizonDistanceStr"><%= machineView.h %></div>
+      </div>
+      <div type="button" id="craneDown" name="craneDown"><br><br></div>
+      <div id="craneDownStr" data-role="button" data-theme="a"
+        <% if (machineView.v <= machineView.limit_def.dw) { %>
+          <%= "class='limit'" %>
+        <% } %>
+      ><%= pageTags.down %></div>
+    </div>
+
+    <div id="horizon" data-role="controlgroup">
+      <div id="craneForeStr" data-role="button" data-theme="a"
+        <% if (machineView.h >= machineView.limit_def.fr) { %>
+          <%= "class='limit'" %>
+        <% } %>
+      ><%= pageTags.fore %></div>
+      <div type="button" id="craneFore" name="craneFore"><br><br></div>
+      <div  class="ui-grid-a" data-role="button">
+          <div class="ui-block-a">昇降</div>
+          <div class="ui-block-b" id="h_verticalDistanceStr"><%= machineView.v %></div>
+      </div>
+      <div  class="ui-grid-a" data-role="button">
+          <div class="ui-block-a">走行</div>
+          <div class="ui-block-b" id="h_horizonDistanceStr"><%= machineView.h %></div>
+      </div>
+      <div type="button" id="craneBack" name="craneBack"><br><br></div>
+      <div id="craneBackStr" data-role="button" data-theme="a"
+        <% if (machineView.h <= machineView.limit_def.bk) { %>
+          <%= "class='limit'" %>
+        <% } %>
+      ><%= pageTags.back %></div>
+    </div>
+
+    <div id="VHchange" data-role="button" data-theme="b"><br><br></div>
+    <div class="hide" id="VHchangeStr_v"><br><%= pageTags.vhchange_v %><br><br></div>
+    <div class="hide" id="VHchangeStr_h"><br><%= pageTags.vhchange_h %><br><br></div>
+
+  </div><!--content-->
+
+</form>
+<div id="debugtxt"></div>

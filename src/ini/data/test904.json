@@ -4,7 +4,7 @@
     "yMax": 5,
     "defPanel" : [
         {"type": "dontMove", "id": "dm033", "x": "2", "y": "2"}
-       ,{"type": "actPanel", "id": "pn011", "x": "0", "y": "0"}
+       ,{"type": "actPanel", "id": "pn011", "x": "0", "y": "0", "zaik": "1"}
        ,{"type": "actPanel", "id": "pn012", "x": "1", "y": "0"}
        ,{"type": "actPanel", "id": "pn013", "x": "2", "y": "0"}
        ,{"type": "actPanel", "id": "pn014", "x": "3", "y": "0"}

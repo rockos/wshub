@@ -1,0 +1,13 @@
+{
+    "scr113":{
+        "caption":       "空棚検索",
+        "send_iqy":      "一覧表示",
+        "sock_iqy":      "Sock表示",
+        "move_left":     "左(←)",
+        "move_right":    "右(→)",
+
+        "cond_location":  "棚番地",
+
+        "end":""
+    }
+}

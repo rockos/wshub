@@ -129,6 +129,10 @@ app.get('/404', lcsUI.notFound);
 app.post('/scr/:id', lcsUI.doAction);
 app.post('/check', lcsUI.checkUser);
 
+// モバイル用
+app.get('/mob/:id', lcsUI.doAction);
+app.post('/mob/:id', lcsUI.doAction);
+
 //REST API 2012-12-20
 var rest = app.resource('rest', require(ROOTDIR + '/src/controller/rest/rest'), {id:'id'});
 //app.get('/rest', require(ROOTDIR + '/src/controller/rest/rest').main);

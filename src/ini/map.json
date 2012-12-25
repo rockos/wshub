@@ -212,6 +212,7 @@
   "path" : "/src/controller/seq/seq903", 
   "msg":{
         "/scr/903" : "main"
+        ,"/mob/903" : "main"
         },
    "ejs":"layout.ejs",
    "parmit":1
@@ -227,9 +228,9 @@
 ,"mob801":{
   "path" : "/src/controller/mob/mob801", 
   "msg":{
-        "/scr/mob811" : "main"
-        ,"/scr/mob821" : "main"
-        ,"/scr/mob831" : "main"
+        "/mob/811" : "main"
+        ,"/mob/821" : "main"
+        ,"/mob/831" : "main"
         },
    "ejs":"layout_mob.ejs",
    "parmit":1
