@@ -2,27 +2,27 @@
  "0" : {"text" : "Process complete.", "kind":"I"}
 ,"2" : {"text" : "This method is out of supposition.", "kind":"F"}
 ,"3" : {"text" : "This button is out of supposition.", "kind":"F"}
-,"4" : {"text" : "IDの取得に失敗しました", "kind":"F"}
-,"98" : {"text" : "システム設定ファイルエラー", "kind":"F"}
+,"4" : {"text" : "Failed to get new ID", "kind":"F"}
+,"98" : {"text" : "Failed to read Configration file", "kind":"F"}
 ,"99" : {"text" : "Database error occured.", "kind":"F"}
 ,"100" : {"text" : "This error is out of supposition.", "kind":"W"}
-,"101" :{"text" : "101 : 正しい会員番号を入力してください", "kind":"f"}
-,"102" :{"text" : "102 : 正しいロッカー番号を入力してください", "kind":"f"}
-,"103" :{"text" : "103 : 正しいロット番号を入力してください", "kind":"f"}
-,"104" :{"text" : "104 : 正しい数量を入力してください", "kind":"f"}
-,"105" :{"text" : "105 : 正しいパスワードを入力してください", "kind":"f"}
-,"106" :{"text" : "106 : 正しいメールアドレスを入力してください", "kind":"f"}
-,"107" :{"text" : "107 : 正しい出庫予定日を入力してください", "kind":"f"}
-,"108" :{"text" : "108 : 出庫予定日は必須入力です", "kind":"f"}
-,"109" :{"text" : "109 : 出庫予定日の日付フォーマットエラー", "kind":"f"}
-,"110" :{"text" : "110 : 正しい備考を入力してください", "kind":"f"}
-,"198" :{"text" : "198 : 選択されていません", "kind":"f"}
-,"199" :{"text" : "199 : 想定外のフィールドです", "kind":"f"}
-,"300" :{"text" : "300 : 不正なIDが指定されました", "kind":"i"}
-,"301" :{"text" : "301 : 会員名は既に登録済です。", "kind":"i"}
-,"30101" :{"text" : "30101 : 在庫が存在しません", "kind":"I"}
-,"30102" :{"text" : "30102 : 在庫は既に出庫予約済です。", "kind":"i"}
-,"30103" :{"text" : "30103 : 在庫は出庫予約されていません。", "kind":"i"}
+,"101" :{"text" : "101 : Please enter the correct MEMBERSHIP NUMBER", "kind":"f"}
+,"102" :{"text" : "102 : Please enter the correct ROCKER NUMBER", "kind":"f"}
+,"103" :{"text" : "103 : Please enter the correct LOT NUMBER", "kind":"f"}
+,"104" :{"text" : "104 : Please enter the correct QUANTITY", "kind":"f"}
+,"105" :{"text" : "105 : Please enter the correct PASSWORD", "kind":"f"}
+,"106" :{"text" : "106 : Please enter the correct E-MAIL ADDRESS", "kind":"f"}
+,"107" :{"text" : "107 : Please enter the correct deposit day", "kind":"f"}
+,"108" :{"text" : "108 : Please enter the ISSUE DATE", "kind":"f"}
+,"109" :{"text" : "109 : Invalid format : ISSUE DATE", "kind":"f"}
+,"110" :{"text" : "110 : Please enter the correct REMARK", "kind":"f"}
+,"198" :{"text" : "198 : Not selected", "kind":"f"}
+,"199" :{"text" : "199 : Unexpected field", "kind":"f"}
+,"300" :{"text" : "300 : Please enter the correct ID", "kind":"i"}
+,"301" :{"text" : "301 : Member name is registered", "kind":"i"}
+,"30101" :{"text" : "30101 : No stock", "kind":"I"}
+,"30102" :{"text" : "30102 : Already reserved", "kind":"i"}
+,"30103" :{"text" : "30103 : Not reserved", "kind":"i"}
 ,"90100" : {"text" : "connection", "kind":"I"}
 ,"90101" : {"text" : "non-connect", "kind":"I"}
 ,"90102" : {"text" : "wait connect", "kind":"I"}

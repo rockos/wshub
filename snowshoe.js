@@ -179,6 +179,6 @@ require(ROOTDIR + '/src/controller/seq/seq901').sockMain();
 require(ROOTDIR + '/src/controller/seq/seq902').sockMain();
 require(ROOTDIR + '/src/controller/seq/seq903').sockMain();
 require(ROOTDIR + '/src/controller/seq/seq904').sockMain();
-require(ROOTDIR + '/src/controller/seq/seq910').sockMain();
+//require(ROOTDIR + '/src/controller/seq/seq910').sockMain();
 lcsSOCK.emitError();
 

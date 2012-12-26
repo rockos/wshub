@@ -1,47 +1,44 @@
-{"customer":"Web倉庫"
-,"comment":"powerd by somali"
-,"name":"WEBトランクルーム"
+{"customer":"Web trunk room"
+,"comment":"powerd by snowsho"
+,"name":"WEB trunk room"
 ,"topMenu":[
- {"name":"入庫",
+ {"name":"Receipt",
         "subMenu":[
-        {"href":"/scr/201","name":"入荷予約"}
-        ,{"href":"/scr/202","name":"入庫"}
+        {"href":"/scr/201","name":"Reservation"}
+        ,{"href":"/scr/202","name":"Receipt"}
         ]
  }
-, {"name":"出庫",
+, {"name":"Delivery",
         "subMenu":[
-        {"href":"/scr/301","name":"計画"}
-        ,{"href":"/scr/302","name":"計画出庫"}
-        ,{"href":"/scr/303","name":"例外出庫"}
-        ,{"href":"/scr/310","name":"棚卸"}
+        {"href":"/scr/301","name":"Plan"}
+        ,{"href":"/scr/302","name":"Delivery(Planned)"}
+        ,{"href":"/scr/303","name":"Delivery(Unplanned)"}
+        ,{"href":"/scr/310","name":"Stocktaking"}
         ]
  }
-, {"name":"検索",
+, {"name":"Query",
         "subMenu":[
-        {"href":"/scr/106","name":"実績照会"}
-        ,{"href":"/scr/113","name":"空棚検索"}
-        ,{"href":"/scr/110","name":"在庫検索"}
-        ,{"href":"/scr/701","name":"利用明細"}
+        {"href":"/scr/106","name":"Results"}
+        ,{"href":"/scr/113","name":"Empty shelves"}
+        ,{"href":"/scr/110","name":"Inventory"}
+        ,{"href":"/scr/701","name":"Usage details"}
         ]
  }
-, {"name":"保守",
+, {"name":"Monitor",
         "subMenu":[
-        {"href":"/scr/501","name":"プロファイル"}
-        ,{"href":"/scr/502","name":"在庫修正"}
+        {"href":"/scr/104","name":"Power meter"}
+        ,{"href":"/scr/105","name":"Torend graph"}
+        ,{"href":"/scr/103","name":"Dynamic map"}
+        ,{"href":"/scr/901","name":"Sequencer"}
+        ,{"href":"/scr/902","name":"Machine status"}
+        ,{"href":"/scr/903","name":"Operating panel"}
+        ,{"href":"/scr/904","name":"Puzzle"}
         ]
  }
-, {"name":"環境モニタ",
+, {"name":"User",
         "subMenu":[
-        {"href":"/scr/104","name":"グラフ(Dynamic)"}
-        ,{"href":"/scr/105","name":"グラフ(static)"}
-        ,{"href":"/scr/103","name":"マップ"}
-        ,{"href":"/scr/901","name":"シーケンサ"}
-        ,{"href":"/scr/902","name":"機械モニタ"}
-        ]
- }
-, {"name":"ユーザー",
-        "subMenu":[
-        {"href":"/logout","name":"ログアウト"}
+        {"href":"/logout","name":"Logout"}
+        ,{"href":"/scr/501","name":"Profile"}
         ]
  }
 ]
