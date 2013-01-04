@@ -176,7 +176,7 @@ function demoDisplay2Exec(ps, counter, end) {
             counter = 0;
             demoDisplay2Exec(ps, counter, end);
         }
-    }, 2500);
+    }, 3500);
 }
 /**
  * イベントを受けて画面を更新

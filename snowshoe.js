@@ -15,7 +15,7 @@ http = require('http');
 
 /* import node external modules */
 var express = require(ROOTDIR + '/std/node_modules/express'),
-resource = require(ROOTDIR + '/std/node_modules/express-resource'),
+//resource = require(ROOTDIR + '/std/node_modules/express-resource'),
 expressValidator = require(ROOTDIR + '/std/node_modules/express-validator'),
 RedisStore = require(ROOTDIR + '/std/node_modules/connect-redis')(express),
 opts = require(ROOTDIR + '/std/node_modules/opts'),
@@ -133,9 +133,15 @@ app.post('/check', lcsUI.checkUser);
 app.get('/mob/:id', lcsUI.doAction);
 app.post('/mob/:id', lcsUI.doAction);
 
-//REST API 2012-12-20
-var rest = app.resource('rest', require(ROOTDIR + '/src/controller/rest/rest'), {id:'id'});
-//app.get('/rest', require(ROOTDIR + '/src/controller/rest/rest').main);
+// Web API REST 2012-12-27
+//app.get('/rest/:id', lcsUI.restAction);
+app.get('/rest/:id?/:ap?', lcsUI.restAction);
+app.post('/rest/:id?/:ap?', lcsUI.restAction);
+app.put('/rest/:id?/:ap?', lcsUI.restAction);
+app.del('/rest/:id?/:ap?', lcsUI.restAction);
+
+//REST web API 2012-12-20 for express-resouce
+//var rest = app.resource('rest', require(ROOTDIR + '/src/controller/rest/rest'), {id:'id'});
 
 
 /* this is for express@v3 */

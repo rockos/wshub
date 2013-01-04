@@ -4,8 +4,8 @@ var fs = require('fs');
 /* デモ用グローバル */
 var DEMO_01 = {};
 var DEMO_02 = {};
-var CR_UP_LIMIT = 10,
-    CR_DOWN_LIMIT = 0,
+var CR_UP_LIMIT = 20,
+    CR_DOWN_LIMIT = -5,
     CR_FORE_LIMIT = 10,
     CR_BACK_LIMIT = -10;
 var CR_UP_MOVE = 1,
