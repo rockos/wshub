@@ -113,6 +113,12 @@ lcsUI.config([
                  {en: ROOTDIR + '/src/ini/i18n/en/framenavi.json'},
                  {ch: ROOTDIR + '/src/ini/i18n/ch/framenavi.json'}
              ]},
+             {smaph: [
+                 {jp: ROOTDIR + '/src/ini/i18n/jp/framesmaph.json'},
+                 {kr: ROOTDIR + '/src/ini/i18n/kr/framesmaph.json'},
+                 {en: ROOTDIR + '/src/ini/i18n/en/framesmaph.json'},
+                 {ch: ROOTDIR + '/src/ini/i18n/ch/framesmaph.json'}
+             ]},
              {tags: [
                  {jp: [ROOTDIR + '/src/ini/i18n/jp/', 'pagetags']},
                  {kr: [ROOTDIR + '/src/ini/i18n/kr/', 'pagetags']},
