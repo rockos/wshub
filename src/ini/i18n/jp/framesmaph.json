@@ -4,35 +4,35 @@
 ,"topMenu":[
  {"name":"入庫",
         "subMenu":[
-        {"href":"/mob/811","name":"入荷予約"}
-        ,{"href":"/mob/811","name":"入庫"}
+        {"href":"/scr/201","name":"入荷予約"}
+        ,{"href":"/scr/202","name":"入庫"}
         ]
  }
 , {"name":"出庫",
         "subMenu":[
         {"href":"/mob/821","name":"計画"}
-        ,{"href":"/mob/821","name":"計画出庫"}
-        ,{"href":"/mob/821","name":"例外出庫"}
-        ,{"href":"/mob/821","name":"棚卸"}
+        ,{"href":"/scr/302","name":"計画出庫"}
+        ,{"href":"/scr/303","name":"例外出庫"}
+        ,{"href":"/scr/310","name":"棚卸"}
         ]
  }
 , {"name":"検索",
         "subMenu":[
-        {"href":"/mob/831","name":"実績照会"}
-        ,{"href":"/mob/831","name":"空棚検索"}
-        ,{"href":"/mob/831","name":"在庫検索"}
-        ,{"href":"/mob/831","name":"利用明細"}
+        {"href":"/scr/106","name":"実績照会"}
+        ,{"href":"/scr/113","name":"空棚検索"}
+        ,{"href":"/scr/110","name":"在庫検索"}
+        ,{"href":"/scr/701","name":"利用明細"}
         ]
  }
 , {"name":"環境モニタ",
         "subMenu":[
-        {"href":"/mob/831","name":"グラフ(Dynamic)"}
-        ,{"href":"/mob/831","name":"グラフ(static)"}
-        ,{"href":"/mob/831","name":"マップ"}
-        ,{"href":"/mob/831","name":"シーケンサ"}
-        ,{"href":"/mob/831","name":"機械モニタ"}
+        {"href":"/scr/104","name":"グラフ(Dynamic)"}
+        ,{"href":"/scr/105","name":"グラフ(static)"}
+        ,{"href":"/scr/103","name":"マップ"}
+        ,{"href":"/scr/901","name":"シーケンサ"}
+        ,{"href":"/scr/902","name":"機械モニタ"}
         ,{"href":"/mob/903","name":"機械 操作"}
-        ,{"href":"/mob/831","name":"パズル"}
+        ,{"href":"/scr/904","name":"パズル"}
         ]
  }
 ]

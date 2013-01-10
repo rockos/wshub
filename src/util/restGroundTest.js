@@ -91,7 +91,7 @@ function test(ctr) {
         test(ctr);
     },5000);
 }
-test(1);
+//test(1);
 
 function test2() {
     postResult();
@@ -99,9 +99,24 @@ function test2() {
         test2();
     },3000);
 }
-test2();
+//test2();
 
+var opts = require('opts');
 
+var options = [
+    { short       : 'g'
+        , long        : 'get'
+        , description : 'Web API method GET'
+        , callback    : function () { test(1); }
+    }
+    ,{ short       : 'p'
+        , long        : 'post'
+        , description : 'Web API method POST'
+        , callback    : function () { test2(); }
+}
+];
+
+opts.parse(options, true);
 
 
 
