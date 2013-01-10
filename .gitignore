@@ -5,6 +5,7 @@
 *swo
 *ORG
 *SAV
+*tmp
 .gitignore
 \#*
 # variable file log..
