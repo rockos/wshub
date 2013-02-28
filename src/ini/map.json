@@ -51,6 +51,7 @@
   "path" : "/src/controller/iqy/iqy110",
    "msg":{
           "/scr/110" : "main"
+          ,"/mob/110" : "main"
          },
    "ejs":"layout.ejs",
    "parmit":0
@@ -79,6 +80,22 @@
    "ejs":"layout.ejs",
    "parmit":0
    },
+"iqy121":{
+  "path" : "/src/controller/iqy/iqy121",
+   "msg":{
+          "/scr/121" : "main"
+         },
+   "ejs":"layout.ejs",
+   "parmit":0
+},
+"iqy122":{
+  "path" : "/src/controller/iqy/iqy122",
+   "msg":{
+          "/scr/122" : "main"
+         },
+   "ejs":"layout.ejs",
+   "parmit":0
+},
 "str201":{
   "path" : "/src/controller/str/201/str201", 
   "msg":{
@@ -99,6 +116,7 @@
   "path" : "/src/controller/mop/mop301", 
   "msg":{
         "/scr/301" : "main"
+        ,"/mob/301" : "main"
         },
    "ejs":"layout.ejs",
    "parmit":1

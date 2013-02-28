@@ -1,0 +1,31 @@
+<% layout('layout') -%>
+<%- stylesheet('/stylesheets/cstm/121.css') -%>
+
+<script type="text/javascript" src="/javascripts/rcs/libsocket.min.js"></script>
+<!--
+<script type="text/javascript" src="/javascripts/cstm/min/scr121.min.js"></script>
+-->
+<script type="text/javascript" src="/javascripts/cstm/scr121.js"></script>
+<script type="text/javascript" src="/javascripts/gauge.min.js"></script>
+<script type="text/javascript" src="/javascripts/jquery.gauge.min.js"></script>
+
+<form name="main_form" method="post" action="/scr/121">
+  <input type="hidden" name="clientID" id="clientID" value="" />
+  <input type="hidden" name="nameSpace" id="nameSpace" value="" />
+
+  <div id="sub_body">
+    <p class=""><a href="#"><%= pageTags.caption %></a></p>
+    <ul>
+      <li><input type="submit" name="send_iqy" value="<%= pageTags.send_iqy %>"></li>
+    </ul>
+  </div>
+
+  <div id="main_body">
+    <div id="mesg_bar" class="mesg_bar <%= mesg_level_color %>"><%= mesg %></div>
+
+    <canvas id="gauge01" width="350" height="350"></canvas>
+
+  </div>
+</form>
+
+<div id="debugtxt"></div>

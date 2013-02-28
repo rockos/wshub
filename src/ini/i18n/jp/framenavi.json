@@ -29,6 +29,8 @@
         {"href":"/scr/104","name":"グラフ(Dynamic)"}
         ,{"href":"/scr/105","name":"グラフ(static)"}
         ,{"href":"/scr/103","name":"マップ"}
+        ,{"href":"/scr/121","name":"照度計"}
+        ,{"href":"/scr/122","name":"メーターゲージ"}
         ,{"href":"/scr/901","name":"シーケンサ"}
         ,{"href":"/scr/902","name":"機械モニタ"}
         ,{"href":"/scr/903","name":"機械 操作"}

@@ -68,7 +68,10 @@ function showDemo(req, res, posts) {
         }
     }
     
-    res.render('scr/scr110', posts);
+    //res.render('scr/scr110', posts);
+    var str = req.url.replace(/\.+/,'').split('/');
+    posts.scrNo = str[1] + '/' + str[1] + str[2];
+    res.render(posts.scrNo, posts);
 };
 
 
@@ -90,6 +93,7 @@ exports.main = function(req, res, frame){
 
     /* page情報設定 */
     posts.frameNavi = frame.frameNavi;
+    posts.frameSmaph = frame.frameSmaph;
     //posts.pageTags = frame.pageTags.scr110;
     debugger;
     if (!lcsAp.isSession(req.session)) {

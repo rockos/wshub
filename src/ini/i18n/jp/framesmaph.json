@@ -20,7 +20,7 @@
         "subMenu":[
         {"href":"/scr/106","name":"実績照会"}
         ,{"href":"/scr/113","name":"空棚検索"}
-        ,{"href":"/scr/110","name":"在庫検索"}
+        ,{"href":"/mob/110","name":"在庫検索"}
         ,{"href":"/scr/701","name":"利用明細"}
         ]
  }
@@ -29,6 +29,8 @@
         {"href":"/scr/104","name":"グラフ(Dynamic)"}
         ,{"href":"/scr/105","name":"グラフ(static)"}
         ,{"href":"/scr/103","name":"マップ"}
+        ,{"href":"/scr/121","name":"照度計"}
+        ,{"href":"/scr/122","name":"メーターゲージ"}
         ,{"href":"/scr/901","name":"シーケンサ"}
         ,{"href":"/scr/902","name":"機械モニタ"}
         ,{"href":"/mob/903","name":"機械 操作"}

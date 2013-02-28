@@ -14,12 +14,12 @@ var fs = require('fs'),
 http = require('http');
 
 /* import node external modules */
-var express = require(ROOTDIR + '/std/node_modules/express'),
-//resource = require(ROOTDIR + '/std/node_modules/express-resource'),
-expressValidator = require(ROOTDIR + '/std/node_modules/express-validator'),
-RedisStore = require(ROOTDIR + '/std/node_modules/connect-redis')(express),
-opts = require(ROOTDIR + '/std/node_modules/opts'),
-engine = require(ROOTDIR + '/std/node_modules/ejs-locals');
+var express = require(ROOTDIR + '/node_modules/express'),
+//resource = require(ROOTDIR + '/node_modules/express-resource'),
+expressValidator = require(ROOTDIR + '/node_modules/express-validator'),
+RedisStore = require(ROOTDIR + '/node_modules/connect-redis')(express),
+opts = require(ROOTDIR + '/node_modules/opts'),
+engine = require(ROOTDIR + '/node_modules/ejs-locals');
 
 /* below is secure server
 var privateKey = fs.readFileSync('etc/rockos.key').toString();
@@ -191,6 +191,8 @@ require(ROOTDIR + '/src/controller/seq/seq901').sockMain();
 require(ROOTDIR + '/src/controller/seq/seq902').sockMain();
 require(ROOTDIR + '/src/controller/seq/seq903').sockMain();
 require(ROOTDIR + '/src/controller/seq/seq904').sockMain();
+require(ROOTDIR + '/src/controller/iqy/iqy121').sockMain();
+require(ROOTDIR + '/src/controller/iqy/iqy122').sockMain();
 //require(ROOTDIR + '/src/controller/seq/seq910').sockMain();
 lcsSOCK.emitError();
 

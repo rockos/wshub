@@ -1,0 +1,77 @@
+<% layout('layout') -%>
+<%- stylesheet('/stylesheets/cstm/122.css') -%>
+<link rel="stylesheet" href="/stylesheets/jquery-ui/jquery-ui-1.9.2.custom.min.css">
+
+<script type="text/javascript" src="/javascripts/gauge.min.js"></script>
+<script type="text/javascript" src="/javascripts/jquery.gauge.min.js"></script>
+<script type="text/javascript" src="/javascripts/jquery-ui-1.9.2.custom.min.js"></script>
+<script type="text/javascript" src="/javascripts/rcs/libsocket.min.js"></script>
+<!--
+<script type="text/javascript" src="/javascripts/cstm/min/scr122.min.js"></script>
+-->
+<script type="text/javascript" src="/javascripts/cstm/scr122.js"></script>
+
+<form name="main_form" method="post" action="/scr/122">
+  <input type="hidden" name="clientID" id="clientID" value="" />
+  <input type="hidden" name="nameSpace" id="nameSpace" value="" />
+
+  <div id="sub_body">
+    <p class=""><a href="#"><%= pageTags.caption %></a></p>
+    <ul>
+      <li><input type="submit" name="send_iqy" value="<%= pageTags.send_iqy %>"></li>
+    </ul>
+  </div>
+
+  <div id="main_body">
+
+    <div id="mesg_bar" class="mesg_bar <%= mesg_level_color %>"><%= mesg %></div>
+
+    <table id="main_table">
+      <tr>
+        <td colspan="2">
+          <canvas id="gauge01" width="350" height="350"></canvas>
+        </td>
+        <td colspan="2">
+          <div id="machineSw">
+            <input type="radio" id="machineSw-auto" name="mcsw" 
+            <% if(status == 1) { %>
+              checked
+            <% } %>
+            /><label for="machineSw-auto">自動</label>
+            <input type="radio" id="machineSw-manu" name="mcsw" 
+            <% if(status != 1 && status != 0) { %>
+              checked
+            <% } %>
+            /><label for="machineSw-manu">手動</label>
+            <input type="radio" id="machineSw-mnte" name="mcsw" 
+            <% if(status == 0) { %>
+              checked
+            <% } %>
+            /><label for="machineSw-mnte">保守</label>
+          </div>
+          <div id="slider01Value"><%= accelerator[0] %></div>
+          <div id="slider01"></div>
+          <div id="slider02Value"><%= accelerator[1] %></div>
+          <div id="slider02"></div>
+          <div id="slider03Value"><%= accelerator[2] %></div>
+          <div id="slider03"></div>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <canvas id="gauge02" width="200" height="200"></canvas>
+        </td>
+        <td>
+          <canvas id="gauge03" width="200" height="200"></canvas>
+        </td>
+        <td>
+          <canvas id="gauge04" width="200" height="200"></canvas>
+        </td>
+        <td>
+        </td>
+      </tr>
+    </table>
+  </div>
+</form>
+
+<div id="debugtxt"></div>
