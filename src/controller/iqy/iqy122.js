@@ -42,7 +42,11 @@ function dspWin(args, nextDo) {
     posts.mesg_lavel_color = msg.warn;
 
     var str = req.url.replace(/\.+/,'').split('/');
-    posts.scrNo = str[1] + '/scr' + str[2];
+    if (str[1] == 'mob') {
+        posts.scrNo = str[1] + '/mob' + str[2];
+    } else {
+        posts.scrNo = str[1] + '/scr' + str[2];
+    }
 
     res.render(posts.scrNo, posts);
     nextDo(null, args);
@@ -228,7 +232,7 @@ var demoGauge01 = function(){
         DEMO.generation[0] = DEMO.generation[1] * DEMO.generation[2] - rand;
     }
     lcsSOCK.io().of('/scr/122').emit("gauge01", {"value": DEMO.generation[0]});
-    setTimeout(demoGauge01,300);
+    setTimeout(demoGauge01,1000);
 }
 var demoGauge02 = function(){
     var rand = Math.floor( Math.random() * 5 );
