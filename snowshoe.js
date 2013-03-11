@@ -193,6 +193,7 @@ require(ROOTDIR + '/src/controller/seq/seq903').sockMain();
 require(ROOTDIR + '/src/controller/seq/seq904').sockMain();
 require(ROOTDIR + '/src/controller/iqy/iqy121').sockMain();
 require(ROOTDIR + '/src/controller/iqy/iqy122').sockMain();
+require(ROOTDIR + '/src/controller/iqy/iqy123').sockMain();
 //require(ROOTDIR + '/src/controller/seq/seq910').sockMain();
 lcsSOCK.emitError();
 

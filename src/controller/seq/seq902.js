@@ -25,6 +25,8 @@ function finSync(err_args) {
  */
 function dspWin(args, nextDo) {
     var req = args.req, res = args.res, posts = args.posts;
+    var str = req.url.replace(/\.+/,'').split('/');
+    posts.scrNo = str[1] + '/' + str[1] + str[2];
     res.render(posts.scrNo, posts);
     nextDo(null, args);
 }

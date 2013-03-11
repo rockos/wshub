@@ -37,17 +37,20 @@ $(function() {
     $("#gauge01")
     .gauge({
         min: 0,
-        max: 1000,
+        max: 5000,
         label: 'TEST',
         unitsLabel: '',
-        majorTicks: 11,
+        majorTicks: 6,
         minorTicks: 9,
         majorTickLabel: true,
         bands: [
+               {color: "#ffffff", from: 0, to: 5000}
+               /*
                {color: "#ffffff", from: 0, to: 200},
                {color: "#aaddee", from: 200, to: 600},
                {color: "#ffaa00", from: 600, to: 800},
                {color: "#ff0000", from: 800, to: 1000}
+               */
                ]
     })
     .gauge('setValue', 0);
@@ -55,14 +58,13 @@ $(function() {
     $("#gauge02")
     .gauge({
         min: 0,
-        max: 100,
+        max: 1000,
         label: 'SUB1',
         unitsLabel: '',
-        majorTicks: 6,
-        minorTicks: 1,
+        majorTicks: 11,
+        minorTicks: 3,
         bands: [
-               {color: "#ffffff", from: 0, to: 80},
-               {color: "#ff0000", from: 80, to: 100}
+               {color: "#ffffff", from: 0, to: 1000}
                ]
     })
     .gauge('setValue', 0);
@@ -70,15 +72,13 @@ $(function() {
     $("#gauge03")
     .gauge({
         min: 0,
-        max: 10,
+        max: 1000,
         label: 'SUB2',
         unitsLabel: '',
-        majorTicks: 6,
-        minorTicks: 1,
+        majorTicks: 11,
+        minorTicks: 3,
         bands: [
-               {color: "#ffffff", from: 0, to: 4},
-               {color: "#aaddee", from: 4, to: 8},
-               {color: "#ff0000", from: 8, to: 10}
+               {color: "#ffffff", from: 0, to: 1000}
                ]
     })
     .gauge('setValue', 0);
@@ -86,14 +86,13 @@ $(function() {
     $("#gauge04")
     .gauge({
         min: 0,
-        max: 300,
+        max: 1000,
         label: 'SUB3',
         unitsLabel: '',
-        majorTicks: 16,
-        minorTicks: 1,
+        majorTicks: 11,
+        minorTicks: 3,
         bands: [
-               {color: "#ffffff", from: 0, to: 250},
-               {color: "#ff0000", from: 250, to: 300}
+               {color: "#ffffff", from: 0, to: 1000}
                ]
     })
     .gauge('setValue', 0);

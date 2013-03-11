@@ -1,0 +1,66 @@
+<% layout('layout') -%>
+<%- stylesheet('/stylesheets/cstm/123.css') -%>
+
+<script type="text/javascript" src="/javascripts/gauge.min.js"></script>
+<script type="text/javascript" src="/javascripts/jquery.gauge.min.js"></script>
+<script type="text/javascript" src="/javascripts/rcs/libsocket.min.js"></script>
+<!--
+<script type="text/javascript" src="/javascripts/cstm/min/scr123.min.js"></script>
+-->
+<script type="text/javascript" src="/javascripts/cstm/scr123.js"></script>
+
+<form name="main_form" method="post" action="/scr/123">
+  <input type="hidden" name="clientID" id="clientID" value="" />
+  <input type="hidden" name="nameSpace" id="nameSpace" value="" />
+
+  <div id="sub_body">
+    <p class=""><a href="#"><%= pageTags.caption %></a></p>
+    <ul>
+      <li><input type="submit" name="send_iqy" value="<%= pageTags.send_iqy %>"></li>
+      <!--
+      <li><input type="button" name="sock_start" id="sock_start" value="モニタ開始"></li>
+      <li><input type="button" name="sock_end" id="sock_end" value="モニタ終了"></li>
+      -->
+    </ul>
+  </div>
+
+  <div id="main_body">
+
+    <div id="mesg_bar" class="mesg_bar <%= mesg_level_color %>"><%= mesg %></div>
+
+    <select name="mobclientID" id="mobclientID">
+        <option value=""></option>
+        <% for (var i=0, imax=mobclientID.length; i<imax; i++) { %>
+            <option value="<%= mobclientID[i] %>"><%= mobclientID[i] %></option>
+        <% } %>
+    </select>
+
+    <table id="main_table">
+      <tr>
+        <td>
+          <canvas id="gg_gvt_x" width="200" height="200"></canvas>
+        </td>
+        <td>
+          <canvas id="gg_gvt_y" width="200" height="200"></canvas>
+        </td>
+        <td>
+          <canvas id="gg_gvt_z" width="200" height="200"></canvas>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <canvas id="gg_rtt_x" width="200" height="200"></canvas>
+        </td>
+        <td>
+          <canvas id="gg_rtt_y" width="200" height="200"></canvas>
+        </td>
+        <td>
+          <canvas id="gg_rtt_z" width="200" height="200"></canvas>
+        </td>
+      </tr>
+    </table>
+
+  </div>
+</form>
+
+<div id="debugtxt"></div>

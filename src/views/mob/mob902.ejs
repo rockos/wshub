@@ -1,0 +1,36 @@
+<% layout('layout_mob') -%>
+<%- stylesheet('/stylesheets/cstm/mob902.css') -%>
+
+<script type="text/javascript" src="/javascripts/cstm/mob902.js"></script>
+
+<form name="main_form" method="post" action="/mob/902" data-ajax="false">
+
+  <div data-role="content">
+
+    <fieldset data-role="controlgroup" data-type="horizontal" data-role="fieldcontain">
+      <label for="cr01">１</label>
+      <input type="radio" name="craneNo" id="cr01" value="cr01" checked/>
+      <label for="cr02">２</label>
+      <input type="radio" name="craneNo" id="cr02" value="cr02"/>
+      <label for="cr03">３</label>
+      <input type="radio" name="craneNo" id="cr03" value="cr03"/>
+      <input type="submit" name="send_iqy" value="再表示"/>
+    </fieldset>
+
+    <div id="vertical" data-role="controlgroup">
+    </div>
+
+    <div id="horizon" data-role="controlgroup">
+      <div  class="ui-grid-a" data-role="button">
+          <div class="ui-block-a">昇降</div>
+          <div class="ui-block-b" id="h_verticalDistanceStr"><%= machineView.v %></div>
+      </div>
+      <div  class="ui-grid-a" data-role="button">
+          <div class="ui-block-a">走行</div>
+          <div class="ui-block-b" id="h_horizonDistanceStr"><%= machineView.h %></div>
+      </div>
+    </div>
+  </div><!--content-->
+
+</form>
+<div id="debugtxt"></div>

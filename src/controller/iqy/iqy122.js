@@ -5,6 +5,7 @@ var fs = require('fs');
  */
 var DEMO = {};
 DEMO.status = 0; /* 0:保守 1:自動 2:手動 */
+DEMO.onlineGw = 0; /* 0:切断 1:通信 */
 DEMO.generation = []; /* メータの値 */
 DEMO.generation[0] = 0;
 DEMO.generation[1] = 0;
@@ -224,6 +225,7 @@ exports.main = function(req, res, frame){
  * @date   2013.2.25
  */
 var demoGauge01 = function(){
+    /*
     var rand = Math.floor( Math.random() * DEMO.generation[3] );
     var rand2 = Math.floor( Math.random() * 2 );
     if (rand2 <= 0) {
@@ -231,8 +233,10 @@ var demoGauge01 = function(){
     } else {
         DEMO.generation[0] = DEMO.generation[1] * DEMO.generation[2] - rand;
     }
+    */
+    DEMO.generation[0] = DEMO.generation[1] + DEMO.generation[2] + DEMO.generation[3];
     lcsSOCK.io().of('/scr/122').emit("gauge01", {"value": DEMO.generation[0]});
-    setTimeout(demoGauge01,1000);
+    setTimeout(demoGauge01,500);
 }
 var demoGauge02 = function(){
     var rand = Math.floor( Math.random() * 5 );
@@ -270,7 +274,79 @@ var demoGauge04 = function(){
     lcsSOCK.io().of('/scr/122').emit("gauge04", {"value": DEMO.generation[3]});
     setTimeout(demoGauge04,300);
 }
+var sendClient = function(){
+    lcsSOCK.io().of('/scr/122').emit("gauge02", {"value": DEMO.generation[1]});
+    lcsSOCK.io().of('/scr/122').emit("gauge03", {"value": DEMO.generation[2]});
+    lcsSOCK.io().of('/scr/122').emit("gauge04", {"value": DEMO.generation[3]});
+    setTimeout(sendClient, 500);
+}
+/**
+ *  加速度センサGWとの通信
+ */
+var accelerGw = function() {
+    var io = require('socket.io-client');
+    var url = "rockos.co.jp";
+    var options = {
+        //'force new connection':true,
+        port:3011
+    };
+    //io.transports = ['xhr-polling']; //接続方式デフォルトはWebsocket
+    socketGW = io.connect(url, options);
+    socketGW.on('connect',function(){
+        // GWとコネクション確立
+        console.log('GWとコネクション確立');
+        DEMO.onlineGw = 1;
+    });
 
+    socketGW.on('disconnect',function(){
+        // GWとコネクション切断
+        console.log('GWとコネクション切断');
+        DEMO.onlineGw = 0;
+    });
+
+    socketGW.on('error',function(){
+        // GWとコネクトできない
+        console.log('GWとコネクトできない');
+        DEMO.onlineGw = 0;
+    });
+
+    socketGW.on('accelerating_sensor',function(data){
+        console.log('加速度センサからデータきた' + data);
+        DEMO.generation[1] = data.KXM_A0;
+        DEMO.generation[2] = data.KXM_A1;
+        DEMO.generation[3] = data.KXM_A2;
+        lcsSOCK.io().of('/scr/122').emit("gauge02", {"value": DEMO.generation[1]});
+        lcsSOCK.io().of('/scr/122').emit("gauge03", {"value": DEMO.generation[2]});
+        lcsSOCK.io().of('/scr/122').emit("gauge04", {"value": DEMO.generation[3]});
+    });
+}
+
+/**
+ *  加速度センサGWとの通信
+ */
+var ACL_PORT = 3011;
+var accelerGw2 = function() {
+    var ws = require('websocket.io').listen(ACL_PORT);
+    ws.on('connection', function(socket){
+        // GWのコネクション待ち
+        DEMO.onlineGw = 1;
+        socket.on('message',function(data){
+            console.log('加速度センサからデータきた' + data);
+            var data2 = {};
+            try {
+                data2 = JSON.parse(data);
+                DEMO.generation[1] = data2.KXM_A0;
+                DEMO.generation[2] = data2.KXM_A1;
+                DEMO.generation[3] = data2.KXM_A2;
+                lcsSOCK.io().of('/scr/122').emit("gauge02", {"value": DEMO.generation[1]});
+                lcsSOCK.io().of('/scr/122').emit("gauge03", {"value": DEMO.generation[2]});
+                lcsSOCK.io().of('/scr/122').emit("gauge04", {"value": DEMO.generation[3]});
+            } catch(err) {
+                lcsAp.syslog("error", {"title":"parse Error","message":err});
+            }
+        });
+    });
+}
 /**
  * Web socket ルート/main routine
  * @module exports.sockMain 
@@ -307,8 +383,13 @@ exports.sockMain = function(){
     });
     // デモ
     demoGauge01();
+    /*
     demoGauge02();
     demoGauge03();
     demoGauge04();
+    */
+    // 加速度センサGW
+    accelerGw2();
+    //sendClient();
 }
 

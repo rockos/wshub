@@ -97,6 +97,15 @@
    "ejs":"layout.ejs",
    "parmit":0
 },
+"iqy123":{
+  "path" : "/src/controller/iqy/iqy123",
+   "msg":{
+          "/scr/123" : "main",
+          "/mob/123" : "main"
+         },
+   "ejs":"layout.ejs",
+   "parmit":0
+},
 "str201":{
   "path" : "/src/controller/str/201/str201", 
   "msg":{

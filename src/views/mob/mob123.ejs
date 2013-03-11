@@ -1,0 +1,35 @@
+<% layout('layout_mob') -%>
+<%- stylesheet('/stylesheets/cstm/mob123.css') -%>
+
+<script type="text/javascript" src="/javascripts/cstm/mob123.js"></script>
+
+<form name="main_form" method="post" action="/mob/123" data-ajax="false">
+  <input type="hidden" name="localclientID" id="localclientID" value="" />
+
+  <div data-role="content">
+    <div id="rtt_x"></div>
+    <div id="rtt_y"></div>
+    <div id="rtt_z"></div>
+
+    <div id="acc_x"></div>
+    <div id="acc_y"></div>
+    <div id="acc_z"></div>
+
+    <div id="acg_x"></div>
+    <div id="acg_y"></div>
+    <div id="acg_z"></div>
+
+    <div id="rtr_x"></div>
+    <div id="rtr_y"></div>
+    <div id="rtr_z"></div>
+
+    <div id="dvm_interval"></div>
+
+    <div id="debugXX"></div>
+
+    <input type="submit" name="send_iqy" data-theme="b" value="表示(モニタリセット)"/>
+    <div data-role="button" name="mob_mon" id="mob_mon" data-theme="b">モニタリング開始</div>
+  </div><!--content-->
+
+
+</form>
