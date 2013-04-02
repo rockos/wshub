@@ -59,7 +59,7 @@ $(function() {
     .gauge({
         min: 0,
         max: 1000,
-        label: 'SUB1',
+        label: 'Yaw',
         unitsLabel: '',
         majorTicks: 11,
         minorTicks: 3,
@@ -73,7 +73,7 @@ $(function() {
     .gauge({
         min: 0,
         max: 1000,
-        label: 'SUB2',
+        label: 'Roll',
         unitsLabel: '',
         majorTicks: 11,
         minorTicks: 3,
@@ -87,7 +87,7 @@ $(function() {
     .gauge({
         min: 0,
         max: 1000,
-        label: 'SUB3',
+        label: 'Pitch',
         unitsLabel: '',
         majorTicks: 11,
         minorTicks: 3,

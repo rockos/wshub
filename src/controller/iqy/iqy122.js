@@ -389,7 +389,7 @@ exports.sockMain = function(){
     demoGauge04();
     */
     // 加速度センサGW
-    accelerGw2();
+    //accelerGw2();
     //sendClient();
 }
 
