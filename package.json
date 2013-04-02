@@ -22,6 +22,9 @@
     "opts": "1.2.2",
     "ejs-locals": "0.2.5",
     "express-validator":"0.2.x",
+    "validator":"0.4.x",
+    "websocket.io":"0.2.x",
+    "socket.io-client":"0.9.x",
     "winston":"0.6.x"
   }
 }
