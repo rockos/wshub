@@ -56,12 +56,12 @@ var auth;
 
 /* snowshoe modules */
 
-var lcsAp = require(ROOTDIR + '/std/ap/lcsap').create('appServer', ROOTDIR, app);
-var lcsUI = require(ROOTDIR + '/std/ap/lcsui').create('appServer');
-var lcsDb = require(ROOTDIR + '/std/db/lcsdb').create('appServer', './etc/db.cf');
-var lcsSOCK = require(ROOTDIR + '/std/ap/lcssock').create('appServer');
+var lcsAp = require(ROOTDIR + '/stdlibs/ap/lcsap').create('appServer', ROOTDIR, app);
+var lcsUI = require(ROOTDIR + '/stdlibs/ap/lcsui').create('appServer');
+var lcsDb = require(ROOTDIR + '/stdlibs/db/lcsdb').create('appServer', './etc/db.cf');
+var lcsSOCK = require(ROOTDIR + '/stdlibs/ap/lcssock').create('appServer');
 /* not use untill Sqlie3
-var lcsRdb = require(ROOTDIR + '/std/db/lcsrdb').create('appServer');
+var lcsRdb = require(ROOTDIR + '/stdlibs/db/lcsrdb').create('appServer');
 */
 /* Gloval Object */
 global['lcsAp'] = lcsAp;
@@ -94,7 +94,7 @@ app.use(express.session({secret: 'secret',
                             cookie: {maxAge: SESS}}));
 /* cookie: {maxAge: 1 * 60 * 1000}})); 1 min */
 app.use(app.router);
-app.use(express.static(ROOTDIR + '/std/public'));
+app.use(express.static(ROOTDIR + '/stdlibs/public'));
 
 app.configure('development', function() {
     app.use(express.errorHandler({ dumpExceptions: true, showStack: true }));
@@ -193,6 +193,7 @@ require(ROOTDIR + '/src/controller/seq/seq903').sockMain();
 require(ROOTDIR + '/src/controller/seq/seq904').sockMain();
 require(ROOTDIR + '/src/controller/iqy/iqy121').sockMain();
 require(ROOTDIR + '/src/controller/iqy/iqy122').sockMain();
+require(ROOTDIR + '/src/controller/iqy/iqy122').serialMain();
 require(ROOTDIR + '/src/controller/iqy/iqy123').sockMain();
 //require(ROOTDIR + '/src/controller/seq/seq910').sockMain();
 lcsSOCK.emitError();

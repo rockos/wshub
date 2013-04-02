@@ -16,6 +16,6 @@ var/
 var/**/*
 
 # stander libralies
-std/
+stdlibs/
 # modeles for node.js
 node_modules/
