@@ -1,0 +1,188 @@
+<html>
+  <head>
+    <title>TEST</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <script type="text/javascript" src="./javascripts/jquery-1.8.3.min.js"></script>
+<script type="text/javascript">
+$(function() {
+  $.ajaxSetup({scriptCharset:'utf-8'});  //charsetの指定(デフォルトの書き換え)
+  $('#get_user001').click(function() {  
+    $.ajax({
+      scriptCharset: 'utf-8',
+      type: 'GET',
+      url: 'http://rockos.co.jp:3008/rest/rtv/reserve',
+      data: {
+        'user' : 'user001',
+        'date' : '201301011'
+      },
+      success: function(json) {
+        if(json.error) {
+          $('#body').html(json.error);
+        } else {
+          var op = "";
+          op += "<table class='tbl'><caption>" + json.user + "</caption>";
+          for (var i = 0, imax = json.part.length; i < imax; i++) {
+            if (i == 0) {
+	          op += "<tr>";
+	          for (key in json.part[i]) {
+	            op += "<th>" + key + "</th>";
+	          }
+	          op += "</tr>";
+            }
+            op += "<tr>";
+            for (key in json.part[i]) {
+              op += "<td>" + json.part[i][key] + "</td>";
+            }
+            op += "</tr>";
+          }
+          $('#body').html(op);
+        }
+      },
+      dataType: 'json'
+    });
+  });
+  $('#get_user002').click(function() {  
+    $.ajax({
+      scriptCharset: 'utf-8',
+      type: 'GET',
+      url: 'http://rockos.co.jp:3008/rest/rtv/reserve',
+      data: {
+        'user' : 'user002',
+        'date' : '201301011'
+      },
+      success: function(json) {
+        if(json.error) {
+          $('#body').html(json.error);
+        } else {
+          var op = "";
+          op += "<table class='tbl'><caption>" + json.user + "</caption>";
+          for (var i = 0, imax = json.part.length; i < imax; i++) {
+            if (i == 0) {
+	          op += "<tr>";
+	          for (key in json.part[i]) {
+	            op += "<th>" + key + "</th>";
+	          }
+	          op += "</tr>";
+            }
+            op += "<tr>";
+            for (key in json.part[i]) {
+              op += "<td>" + json.part[i][key] + "</td>";
+            }
+            op += "</tr>";
+          }
+          $('#body').html(op);
+        }
+      },
+      dataType: 'json'
+    });
+  });
+  $('#get_user003').click(function() {  
+    $.ajax({
+      scriptCharset: 'utf-8',
+      type: 'GET',
+      url: 'http://rockos.co.jp:3008/rest/rtv/reserve',
+      data: {
+        'user' : 'user003',
+        'date' : '201301011'
+      },
+      success: function(json) {
+        if(json.error) {
+          $('#body').html(json.error);
+        } else {
+          var op = "";
+          op += "<table class='tbl'><caption>" + json.user + "</caption>";
+          for (var i = 0, imax = json.part.length; i < imax; i++) {
+            if (i == 0) {
+	          op += "<tr>";
+	          for (key in json.part[i]) {
+	            op += "<th>" + key + "</th>";
+	          }
+	          op += "</tr>";
+            }
+            op += "<tr>";
+            for (key in json.part[i]) {
+              op += "<td>" + json.part[i][key] + "</td>";
+            }
+            op += "</tr>";
+          }
+          $('#body').html(op);
+        }
+      },
+      dataType: 'json'
+    });
+  });
+  $('#get_user004').click(function() {  
+    $.ajax({
+      scriptCharset: 'utf-8',
+      type: 'GET',
+      url: 'http://rockos.co.jp:3008/rest/rtv/reserve',
+      data: {
+        'user' : 'user004',
+        'date' : '201301011'
+      },
+      success: function(json) {
+        if(json.error) {
+          $('#body').html(json.error);
+        } else {
+          var op = "";
+          op += "<table class='tbl'><caption>" + json.user + "</caption>";
+          for (var i = 0, imax = json.part.length; i < imax; i++) {
+            if (i == 0) {
+	          op += "<tr>";
+	          for (key in json.part[i]) {
+	            op += "<th>" + key + "</th>";
+	          }
+	          op += "</tr>";
+            }
+            op += "<tr>";
+            for (key in json.part[i]) {
+              op += "<td>" + json.part[i][key] + "</td>";
+            }
+            op += "</tr>";
+          }
+          $('#body').html(op);
+        }
+      },
+      dataType: 'json'
+    });
+  });
+
+
+/*
+    $.getJSON(
+      //第一引数：JSONのURL
+      'http://rockos.co.jp:3008/rest/rtv/reserve',
+
+      //第二引数：RESTパラメータ
+      {
+        'user' : 'user001',
+        'date' : '201301011'
+      },
+
+      //第三引数：コールバック関数
+      function(json) {
+        //$('#body').html(json.part[0].id);
+      }
+    );
+*/
+});
+</script>
+<style>
+.tbl {
+  border:solid 1px black;
+}
+.tbl td {
+  border:solid 1px black;
+}
+</style>
+  </head>
+
+  <body>
+    <input type="button" name="get_user001" id="get_user001" value="Get user001" />
+    <input type="button" name="get_user002" id="get_user002" value="Get user002" />
+    <input type="button" name="get_user003" id="get_user003" value="Get user003" />
+    <input type="button" name="get_user004" id="get_user004" value="Get user004" />
+    <div id="body"></div>
+  </body>
+</html>
+

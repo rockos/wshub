@@ -95,6 +95,8 @@ app.use(express.session({secret: 'secret',
 /* cookie: {maxAge: 1 * 60 * 1000}})); 1 min */
 app.use(app.router);
 app.use(express.static(ROOTDIR + '/stdlibs/public'));
+//2013.04.08 add sny_takahashi
+app.use(express.static(ROOTDIR + '/src/views/share'));
 
 app.configure('development', function() {
     app.use(express.errorHandler({ dumpExceptions: true, showStack: true }));

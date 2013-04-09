@@ -1,2 +1,57 @@
 @charse "UTF-8";
 
+#graph1 {
+    font: 10px sans-serif;
+}
+
+#graph1 .axis path,
+#graph1 .axis line {
+    fill: none;
+    stroke: #000;
+    shape-rendering: crispEdges;
+}
+
+#graph1 .bar {
+    fill: steelblue;
+    stroke: #fff;
+}
+
+#graph1 .x.axis path,
+#graph1 .y.axis path {
+     display: none;
+}
+
+#graph1 .rule {
+    fill: none;
+    stroke: #000;
+}
+
+
+#graph2 {
+    font: 10px sans-serif;
+}
+
+#graph2 .axis path,
+#graph2 .axis line {
+    fill: none;
+    stroke: #000;
+    shape-rendering: crispEdges;
+}
+
+#graph2 .bar {
+    fill: steelblue;
+    stroke: #fff;
+}
+
+#graph2 .x.axis path,
+#graph2 .y.axis path {
+     display: none;
+}
+
+#graph2 .rule {
+    fill: none;
+    stroke: #000;
+}
+
+
+
