@@ -27,31 +27,5 @@
 }
 
 
-#graph2 {
-    font: 10px sans-serif;
-}
-
-#graph2 .axis path,
-#graph2 .axis line {
-    fill: none;
-    stroke: #000;
-    shape-rendering: crispEdges;
-}
-
-#graph2 .bar {
-    fill: steelblue;
-    stroke: #fff;
-}
-
-#graph2 .x.axis path,
-#graph2 .y.axis path {
-     display: none;
-}
-
-#graph2 .rule {
-    fill: none;
-    stroke: #000;
-}
-
 
 

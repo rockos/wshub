@@ -1,15 +1,15 @@
 <% layout('layout') -%>
-<%- stylesheet('/stylesheets/cstm/131.css') -%>
+<%- stylesheet('/stylesheets/cstm/132.css') -%>
 
 <script type="text/javascript" src="/javascripts/d3.v3.min.js"></script>
-<script type="text/javascript" src="/javascripts/rcs/libgraph.js"></script>
+<script type="text/javascript" src="/javascripts/contour.js"></script>
 <script type="text/javascript" src="/javascripts/rcs/libsocket.min.js"></script>
 <!--
-<script type="text/javascript" src="/javascripts/cstm/min/scr131.min.js"></script>
+<script type="text/javascript" src="/javascripts/cstm/min/scr132.min.js"></script>
 -->
-<script type="text/javascript" src="/javascripts/cstm/scr131.js"></script>
+<script type="text/javascript" src="/javascripts/cstm/scr132.js"></script>
 
-<form name="main_form" method="post" action="/scr/131">
+<form name="main_form" method="post" action="/scr/132">
   <input type="hidden" name="clientID" id="clientID" value="" />
   <input type="hidden" name="nameSpace" id="nameSpace" value="" />
 
@@ -17,17 +17,17 @@
     <p class=""><a href="#"><%= pageTags.caption %></a></p>
     <ul>
       <li><input type="submit" name="send_iqy" value="<%= pageTags.send_iqy %>"></li>
-      <li><input type="button" name="test1" id="test1" value="Test"></li>
+      <!--
+      <li><input type="submit" name="send_add" value="<%= pageTags.send_add %>" /></li>
+      <li><input type="submit" name="send_del" value="<%= pageTags.send_del %>"></li>
+      -->
     </ul>
   </div>
 
   <div id="main_body">
 
     <div id="mesg_bar" class="mesg_bar <%= mesg_level_color %>"><%= mesg %></div>
-
     <div id="graph1"></div>
-    <div id="graph2"></div>
-    <div id="graph3"></div>
 
   </div>
 </form>

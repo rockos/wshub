@@ -3,24 +3,39 @@ sockEventShowError(socket);
 
 var socket122 = io.connect("/scr/122");
 
+var g2 = $.extend(true, {}, lcsBargraph);
+var g3 = $.extend(true, {}, lcsBargraph);
+var g4 = $.extend(true, {}, lcsBargraph);
+
+/*
 socket122.on("gauge01", function (data) {
    //debugXp(data);
    $("#gauge01").gauge('setValue',data.value);
 });
+*/
 
 socket122.on("gauge02", function (data) {
    //debugXp(data);
    $("#gauge02").gauge('setValue',data.value);
+   g2.graphMove(data.value);
 });
 
 socket122.on("gauge03", function (data) {
    //debugXp(data);
    $("#gauge03").gauge('setValue',data.value);
+   g3.graphMove(data.value);
 });
 
 socket122.on("gauge04", function (data) {
    //debugXp(data);
    $("#gauge04").gauge('setValue',data.value);
+   g4.graphMove(data.value);
+});
+
+socket122.on("direction01", function (data) {
+   debugXp(data);
+   $("#direction01").html( 
+        data.str + ":" + data.value );
 });
 
 socket122.on("debugz", function (data) {
@@ -34,6 +49,7 @@ function debugXp(str) {
 
 $(function() {
     /* on loading */
+    /*
     $("#gauge01")
     .gauge({
         min: 0,
@@ -50,10 +66,11 @@ $(function() {
                {color: "#aaddee", from: 200, to: 600},
                {color: "#ffaa00", from: 600, to: 800},
                {color: "#ff0000", from: 800, to: 1000}
-               */
+               *
                ]
     })
     .gauge('setValue', 0);
+    */
 
     $("#gauge02")
     .gauge({
@@ -154,6 +171,59 @@ $(function() {
     $("#machineSw-mnte").bind("click", function(){
         socket122.emit("swChange", {"status": 0});
     });
+
+
+    g2.dataInit(
+        { id: "#bargraph02"
+         ,margin:{
+             top: 10
+            ,right: 10
+            ,bottom: 30
+            ,left: 40
+          }
+         ,WIDTH: 250
+         ,HEIGHT: 150
+         ,yMax: 1000
+         ,yText: ""
+         ,dMax: 31
+        }
+    );
+    g2.graphDraw();
+    
+    g3.dataInit(
+        { id: "#bargraph03"
+         ,margin:{
+             top: 10
+            ,right: 10
+            ,bottom: 30
+            ,left: 40
+          }
+         ,WIDTH: 250
+         ,HEIGHT: 150
+         ,yMax: 1000
+         ,yText: ""
+         ,dMax: 31
+        }
+    );
+    g3.graphDraw();
+
+    g4.dataInit(
+        { id: "#bargraph04"
+         ,margin:{
+             top: 10
+            ,right: 10
+            ,bottom: 30
+            ,left: 40
+          }
+         ,WIDTH: 250
+         ,HEIGHT: 150
+         ,yMax: 1000
+         ,yText: ""
+         ,dMax: 31
+        }
+    );
+    g4.graphDraw();
+
 
 });
 

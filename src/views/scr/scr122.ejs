@@ -5,6 +5,8 @@
 <script type="text/javascript" src="/javascripts/gauge.min.js"></script>
 <script type="text/javascript" src="/javascripts/jquery.gauge.min.js"></script>
 <script type="text/javascript" src="/javascripts/jquery-ui-1.9.2.custom.min.js"></script>
+<script type="text/javascript" src="/javascripts/d3.v3.min.js"></script>
+<script type="text/javascript" src="/javascripts/rcs/libgraph.js"></script>
 <script type="text/javascript" src="/javascripts/rcs/libsocket.min.js"></script>
 <!--
 <script type="text/javascript" src="/javascripts/cstm/min/scr122.min.js"></script>
@@ -28,9 +30,32 @@
 
     <table id="main_table">
       <tr>
-        <td colspan="2">
-          <canvas id="gauge01" width="350" height="350"></canvas>
+        <td>
+          <div id="bargraph02"></div>
         </td>
+        <td>
+          <div id="bargraph03"></div>
+        </td>
+        <td>
+          <div id="bargraph04"></div>
+        </td>
+        <td>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <canvas id="gauge02" width="250" height="200"></canvas>
+        </td>
+        <td>
+          <canvas id="gauge03" width="250" height="200"></canvas>
+        </td>
+        <td>
+          <canvas id="gauge04" width="250" height="200"></canvas>
+        </td>
+        <td>
+        </td>
+      </tr>
+      <tr>
         <td colspan="2">
           <div id="machineSw">
             <input type="radio" id="machineSw-auto" name="mcsw" 
@@ -49,6 +74,8 @@
             <% } %>
             /><label for="machineSw-mnte">保守</label>
           </div>
+        </td>
+        <td colspan="2" rowspan="2">
           <div id="slider01Value"><%= accelerator[0] %></div>
           <div id="slider01"></div>
           <div id="slider02Value"><%= accelerator[1] %></div>
@@ -58,16 +85,8 @@
         </td>
       </tr>
       <tr>
-        <td>
-          <canvas id="gauge02" width="200" height="200"></canvas>
-        </td>
-        <td>
-          <canvas id="gauge03" width="200" height="200"></canvas>
-        </td>
-        <td>
-          <canvas id="gauge04" width="200" height="200"></canvas>
-        </td>
-        <td>
+        <td colspan="2">
+          <label for="">方角</label><div id="direction01"></div>
         </td>
       </tr>
     </table>

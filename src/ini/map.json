@@ -114,6 +114,14 @@
    "ejs":"layout.ejs",
    "parmit":0
 },
+"iqy132":{
+  "path" : "/src/controller/iqy/iqy132",
+   "msg":{
+          "/scr/132" : "main"
+         },
+   "ejs":"layout.ejs",
+   "parmit":0
+},
 "str201":{
   "path" : "/src/controller/str/201/str201", 
   "msg":{

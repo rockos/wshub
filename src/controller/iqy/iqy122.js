@@ -239,37 +239,34 @@ var demoGauge01 = function(){
     setTimeout(demoGauge01,500);
 }
 var demoGauge02 = function(){
-    var rand = Math.floor( Math.random() * 5 );
+    var rand = Math.floor( Math.random() * 100 );
     var rand2 = Math.floor( Math.random() * 2 );
     if (rand2 <= 0) {
-        DEMO.generation[1] = DEMO.accelerator[0] + rand;
+        DEMO.generation[1] = DEMO.accelerator[0]*10 + rand;
     } else {
-        DEMO.generation[1] = DEMO.accelerator[0] - rand;
+        DEMO.generation[1] = DEMO.accelerator[0]*10 - rand;
     }
     lcsSOCK.io().of('/scr/122').emit("gauge02", {"value": DEMO.generation[1]});
     setTimeout(demoGauge02,300);
 }
 var demoGauge03 = function(){
-    var rand = Math.floor( Math.random() * 5 );
-    if (rand > 1) {
-        rand = 0;
-    }
+    var rand = Math.floor( Math.random() * 200 );
     var rand2 = Math.floor( Math.random() * 2 );
     if (rand2 <= 0) {
-        DEMO.generation[2] = DEMO.accelerator[1] + rand;
+        DEMO.generation[2] = DEMO.accelerator[1]*100 + rand;
     } else {
-        DEMO.generation[2] = DEMO.accelerator[1] - rand;
+        DEMO.generation[2] = DEMO.accelerator[1]*100 - rand;
     }
     lcsSOCK.io().of('/scr/122').emit("gauge03", {"value": DEMO.generation[2]});
     setTimeout(demoGauge03,300);
 }
 var demoGauge04 = function(){
-    var rand = Math.floor( Math.random() * 10 );
+    var rand = Math.floor( Math.random() * 100 );
     var rand2 = Math.floor( Math.random() * 2 );
     if (rand2 <= 0) {
-        DEMO.generation[3] = DEMO.accelerator[2] + rand;
+        DEMO.generation[3] = DEMO.accelerator[2]*3 + rand;
     } else {
-        DEMO.generation[3] = DEMO.accelerator[2] - rand;
+        DEMO.generation[3] = DEMO.accelerator[2]*3 - rand;
     }
     lcsSOCK.io().of('/scr/122').emit("gauge04", {"value": DEMO.generation[3]});
     setTimeout(demoGauge04,300);
@@ -279,6 +276,19 @@ var sendClient = function(){
     lcsSOCK.io().of('/scr/122').emit("gauge03", {"value": DEMO.generation[2]});
     lcsSOCK.io().of('/scr/122').emit("gauge04", {"value": DEMO.generation[3]});
     setTimeout(sendClient, 500);
+}
+var demoDirection01 = function() {
+    var rand = Math.floor( Math.random() * 360 );
+    var str = ["北","北東","東","南東","南","南西","西","北東"];
+    var strIdx = 0;
+    var BS = 360/8;
+    strIdx = Math.floor(rand/BS);
+    if (strIdx == 8) {
+        strIdx = 0;
+    }
+
+    lcsSOCK.io().of('/scr/122').emit("direction01", {"value": rand, "str": str[strIdx]});
+    setTimeout(demoDirection01, 1000);
 }
 /**
  *  加速度センサGWとの通信
@@ -388,12 +398,13 @@ exports.sockMain = function(){
         });
     });
     // デモ
-    demoGauge01();
-    /*
+    //demoGauge01();
+    demoDirection01();
+    
     demoGauge02();
     demoGauge03();
     demoGauge04();
-    */
+    
     // 加速度センサGW
     //accelerGw2();
     //sendClient();
