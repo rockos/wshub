@@ -24,6 +24,14 @@ var print2 = function() {
     document.getElementById("send_prn2").name="send_prn2";
     fff.submit();
 }
+var print3 = function() {
+    var fff = document.prnt_form3;
+    fff.target = "print";
+    var wo = window.open("about:blanc",fff.target);
+    wo.focus();
+    document.getElementById("send_prn3").name="send_prn3";
+    fff.submit();
+}
 </script>
 
 <form name="prnt_form" method="post" action="/scr/310" onSubmit="return false;">
@@ -32,6 +40,10 @@ var print2 = function() {
 
 <form name="prnt_form2" method="post" action="/scr/310" onSubmit="return false;">
   <input type="hidden" id="send_prn2" name="" value="帳票">
+</form>
+
+<form name="prnt_form3" method="post" action="/scr/310" onSubmit="return false;">
+  <input type="hidden" id="send_prn3" name="" value="帳票">
 </form>
 
 <form name="main_form" method="post" action="/scr/310">
@@ -60,6 +72,10 @@ var print2 = function() {
 
       <% if( step == "1" ) { %>
       <li><input type="button" class="send" value="帳票" onclick="print2()"></li>
+      <% } %>
+
+      <% if( step == "1" ) { %>
+      <li><input type="button" class="send" value="帳票(BC)" onclick="print3()"></li>
       <% } %>
 
       <% if( step == "999" ) { %>

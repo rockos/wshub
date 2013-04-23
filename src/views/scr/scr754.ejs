@@ -1,0 +1,148 @@
+<% layout('layout_svg') -%>
+
+
+<!--
+ * A4 297*210
+-->
+<% var rowWidth = 130; %> <!--一行の幅(200.0mm)-->
+<% var rowHeight = 130; %> <!--一行の高さ(13.0mm)-->
+
+<% var BR_PAGE = 19; %> <!--改ページの行数-->
+<% var x = table.tab1.length % BR_PAGE; %>
+<% var MAX_PAGE = (table.tab1.length - x) / BR_PAGE; %>
+<% if (x > 0) { MAX_PAGE++; } %>
+
+<% var i=0; %>
+
+<% for (var p = 1; p <= MAX_PAGE; p++) { %>
+<svg width="21cm" height="29.7cm" viewBox="0 0 2100 2970" xmlns="http://www.w3.org/2000/svg">
+
+    <!--埋め込み
+    <image xlink:href="/images/test.svg" x="0" y="0" width="2100" height="2970" opacity="0.3" />
+    -->
+
+    <!-- ヘッダー -->
+    <text x="1050" y="195" font-size="100" fill="black" stroke="none" text-anchor="middle">
+      棚卸　在庫一覧
+    </text>
+    <text x="2000" y="145" font-size="50" fill="black" stroke="none" text-anchor="end">
+      page <%= p %>/<%= MAX_PAGE %>
+    </text>
+    <text x="2000" y="195" font-size="50" fill="black" stroke="none" text-anchor="end">
+      <%= print_date %>
+    </text>
+
+    <!-- 枠 -->
+    <!--rect x="50" y="220" width="2000" height="2600" stroke="black" stroke-width="3" fill="none"/-->
+    <rect x="50" y="220" width="2000" height="130" stroke="black" stroke-width="1" fill="#cccccc"/>
+    <!--### x=50~250 w=200 L=4 ###-->
+    <text x="150" y="275" font-size="50" fill="black" stroke="none" text-anchor="middle">
+      確認印
+    </text>
+    <line x1="250" y1="220" x2="250" y2="350" stroke="black" stroke-width="1"/>
+
+    <!--### x=250~500 w=250 L=5 ###-->
+    <text x="375" y="275" font-size="50" fill="black" stroke="none" text-anchor="middle">
+      番地
+    </text>
+    <line x1="500" y1="220" x2="500" y2="350" stroke="black" stroke-width="1"/>
+
+    <!--### x=500~900 w=400 L=8 ###-->
+    <text x="700" y="275" font-size="50" fill="black" stroke="none" text-anchor="middle">
+      会員番号
+    </text>
+    <text x="700" y="335" font-size="50" fill="black" stroke="none" text-anchor="middle">
+      会員名
+    </text>
+    <line x1="900" y1="220" x2="900" y2="350" stroke="black" stroke-width="1"/>
+
+    <!--### x=900~1300 w=400 L=8 ###-->
+    <text x="1100" y="275" font-size="50" fill="black" stroke="none" text-anchor="middle">
+      品コード
+    </text>
+    <text x="1100" y="335" font-size="50" fill="black" stroke="none" text-anchor="middle">
+      品名
+    </text>
+    <line x1="1300" y1="220" x2="1300" y2="350" stroke="black" stroke-width="1"/>
+
+    <!--### x=1300~1550 w=250 L=5 ###-->
+    <text x="1425" y="275" font-size="50" fill="black" stroke="none" text-anchor="middle">
+      タグNo
+    </text>
+    <line x1="1550" y1="220" x2="1550" y2="285" stroke="black" stroke-width="1"/>
+
+    <!--### x=1550~1700 w=150 L=3 ###-->
+    <text x="1625" y="275" font-size="50" fill="black" stroke="none" text-anchor="middle">
+      数量
+    </text>
+    <line x1="1700" y1="220" x2="1700" y2="285" stroke="black" stroke-width="1"/>
+
+    <!--### x=1700~2050 w=350 L=7 ###-->
+    <text x="1875" y="275" font-size="50" fill="black" stroke="none" text-anchor="middle">
+      預入日
+    </text>
+    <line x1="1300" y1="285" x2="2050" y2="285" stroke="black" stroke-width="1"/>
+
+    <!--### x=1300~2000 w=700 L=14 y-offset=55 ###-->
+    <text x="1650" y="335" font-size="50" fill="black" stroke="none" text-anchor="middle">
+      お客様メモ
+    </text>
+
+    <!-- データ部分 -->
+    <% for (var j = 0, maxi = table.tab1.length; i < BR_PAGE * p && i < maxi; i++, j++) { %>
+      <rect x="50" y="<%= 350+(j*130) %>" width="2000" height="130" stroke="black" stroke-width="1" fill="none"/>
+      <!--### x=50~250 w=200 L=4 V=確認印 ###-->
+      <text x="150" y="<%= 350+55+(j*130) %>" font-size="50" fill="black" stroke="none" text-anchor="middle">
+      </text>
+      <line x1="250" y1="<%= 350+(j*130) %>" x2="250" y2="<%= 350+((j+1)*130) %>" stroke="black" stroke-width="1"/>
+
+      <!--### x=250~500 w=250 L=5 V=番地 y-offset=25 ###-->
+      <text x="375" y="<%= 350+55+25+(j*130) %>" font-size="50" fill="black" stroke="none" text-anchor="middle">
+        <%= table.tab1[i].col1 %>
+      </text>
+      <line x1="500" y1="<%= 350+(j*130) %>" x2="500" y2="<%= 350+((j+1)*130) %>" stroke="black" stroke-width="1"/>
+
+      <!--### x=500~900 w=400 L=8 V=会員番号 x-offset=25 ###-->
+      <text x="525" y="<%= 350+55+(j*130) %>" font-size="50" fill="black" stroke="none" text-anchor="">
+        <%= table.tab1[i].col2 %>
+      </text>
+
+      <!--### x=500~900 w=400 L=8 V=会員名 x-offset=25 y-offset=60 ###-->
+      <text x="525" y="<%= 350+55+60+(j*130) %>" font-size="50" fill="black" stroke="none" text-anchor="">
+        <%= table.tab1[i].col3 %>
+      </text>
+      <line x1="900" y1="<%= 350+(j*130) %>" x2="900" y2="<%= 350+((j+1)*130) %>" 
+       stroke="black" stroke-width="1"/>
+
+      <!--### x=900~1300 w=400 L=8 V=品コード x-offset=25 ###-->
+      <text x="925" y="<%= 350+55+(j*130) %>" font-size="50" fill="black" stroke="none" text-anchor="">
+        <%= table.tab1[i].col4 %>
+      </text>
+      <!--### x=900~1300 w=400 L=8 V=品名 x-offset=25 y-offset=60 ###-->
+      <text x="925" y="<%= 350+55+60+(j*130) %>" font-size="50" fill="black" stroke="none" text-anchor="">
+        <%= table.tab1[i].col5 %>
+      </text>
+      <line x1="1300" y1="<%= 350+(j*130) %>" x2="1300" y2="<%= 350+((j+1)*130) %>" 
+       stroke="black" stroke-width="1"/>
+
+      <!--### x=1300~2000 w=700 L=? V=BC ###-->
+      <path d="M 1325, <%= 350+25+(j*130) %>
+               l <%= table.tab1[i].bc.white %> Z"
+            stroke="none" fill="rgb(255,255,255)" />
+      <path d="M 1325, <%= 350+25+(j*130) %>
+               <% for (var k=0, kmax=table.tab1[i].bc.blackpoints.length; k<kmax; k++) { %>
+                 <% if (k != 0) { %>
+                   m 0,0
+                 <% } %>
+                 l <%= table.tab1[i].bc.blackpoints[k] %> Z
+               <% } %>
+               "
+            stroke="none" fill="rgb(0,0,0)" />
+
+    <% } /*loop of rows*/ %>
+
+
+</svg>
+<% } /*loop of pages*/  %>
+
+

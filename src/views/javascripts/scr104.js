@@ -1,15 +1,100 @@
+var LG1 = $.extend(true, {}, lcsLinegraph);
+var BG1 = $.extend(true, {}, lcsBargraph);
+var temp7seg = $.extend(true, {}, lcs7seg);
+var work7seg = $.extend(true, {}, lcs7seg);
 
-/*グラフの座標データを格納*/
+var socket = io.connect("/scr/104");
+
+socket.on("scr104_tmplog", function (text) { 
+    //document.getElementById("tmplog").innerHTML = text;
+    //$("#tmplog").html(text);
+    temp7seg.draw(text-0);
+
+    LG1.graphMove(text);
+    //bar_draw( text, 0, 0 );
+});
+
+socket.on("scr104_worklog", function (text) { 
+    //document.getElementById("worklog").innerHTML = text;
+    //$("#worklog").html(text);
+    work7seg.draw(text-0);
+
+    BG1.graphMove(text);
+    //bar_draw( text, 1, 0 );
+});
+
+$(function() {
+    LG1.dataInit(
+        { id: "#linegraph01"
+         ,margin:{
+             top: 10
+            ,right: 10
+            ,bottom: 30
+            ,left: 40
+          }
+         ,WIDTH: 750
+         ,HEIGHT: 200
+         ,yMax: 40
+         ,yText: ""
+         ,dMax: 101
+         ,Xaxis: {ticks: 20}
+         ,Yaxis: {ticks: 5}
+         ,Xrule: {draw: true, ticks: 20}
+         ,Yrule: {draw: true, ticks: 5}
+         ,data1: {use: true, color: "#f29", width: 2}
+         ,data2: {use: false, color: "#f29", width: 2}
+         ,data3: {use: false, color: "#3b7", width: 2}
+         ,color: {face: "#000", back: "#fff"}
+        }
+    );
+    LG1.graphDraw();
+
+    BG1.dataInit(
+        { id: "#bargraph01"
+         ,margin:{
+             top: 10
+            ,right: 10
+            ,bottom: 30
+            ,left: 40
+          }
+         ,WIDTH: 750
+         ,HEIGHT: 200
+         ,yMax: 100
+         ,yText: ""
+         ,dMax: 101
+        }
+    );
+    BG1.graphDraw();
+
+    temp7seg.init({
+        "id": "#tmplog",
+        "fig": 2,
+        "ratio": 1.2,
+        "backColor": "#f0f0f0",
+        "color": "#f29"
+    });
+    work7seg.init({
+        "id": "#worklog",
+        "fig": 2,
+        "ratio": 1.2,
+        "backColor": "#f0f0f0",
+        "color": "#4682b4"
+    });
+});
+
+
+function canvas_test() {
+//*グラフの座標データを格納*/
 var drawbar = [[],[]];
 
-/*Canvas node*/
+//*Canvas node*/
 var cvs = [];
-/*Canvas context*/
+//*Canvas context*/
 var ctx = [];
-/*Canvas context property"canvas"*/
+//*Canvas context property"canvas"*/
 var cv = [];
 
-/*グラフ描画の準備が整えば"1"となる*/
+//*グラフ描画の準備が整えば"1"となる*/
 var rdy = [0,0];
 
 /*グラフ描画情報*/
@@ -115,6 +200,7 @@ data = [
 }
 ];
 
+/*
 onload = function() {
     cvs[0] = document.getElementById("glp001");
     cvs[1] = document.getElementById("glp002");
@@ -129,6 +215,7 @@ onload = function() {
     }
 
 };
+*/
 /**
  *  グラフ描画のための初期設定(枠や目盛りをつける)
  *  canvas_draw()
@@ -262,18 +349,6 @@ var bar_draw = function(text,p,type) {
         }
     }
 }
+}
 
-var socket = io.connect("/scr/104");
-
-socket.on("scr104_tmplog", function (text) { 
-    document.getElementById("tmplog").innerHTML = text;
-
-    bar_draw( text, 0, 0 );
-});
-
-socket.on("scr104_worklog", function (text) { 
-    document.getElementById("worklog").innerHTML = text;
-
-    bar_draw( text, 1, 0 );
-});
 

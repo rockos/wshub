@@ -12,9 +12,9 @@ DEMO.generation[1] = 0;
 DEMO.generation[2] = 0;
 DEMO.generation[3] = 0;
 DEMO.accelerator = []; /* スライドバーの値 */
-DEMO.accelerator[0] = 0;
-DEMO.accelerator[1] = 0;
-DEMO.accelerator[2] = 0;
+DEMO.accelerator[0] = 50;
+DEMO.accelerator[1] = 5;
+DEMO.accelerator[2] = 150;
 
 /**
  * doSync finally
@@ -272,10 +272,15 @@ var demoGauge04 = function(){
     setTimeout(demoGauge04,300);
 }
 var sendClient = function(){
-    lcsSOCK.io().of('/scr/122').emit("gauge02", {"value": DEMO.generation[1]});
-    lcsSOCK.io().of('/scr/122').emit("gauge03", {"value": DEMO.generation[2]});
-    lcsSOCK.io().of('/scr/122').emit("gauge04", {"value": DEMO.generation[3]});
-    setTimeout(sendClient, 500);
+    //lcsSOCK.io().of('/scr/122').emit("gauge02", {"value": DEMO.generation[1]});
+    //lcsSOCK.io().of('/scr/122').emit("gauge03", {"value": DEMO.generation[2]});
+    //lcsSOCK.io().of('/scr/122').emit("gauge04", {"value": DEMO.generation[3]});
+    lcsSOCK.io().of('/scr/122').emit("graph01", {
+        "valueX": DEMO.generation[1]
+        ,"valueY": DEMO.generation[2]
+        ,"valueZ": DEMO.generation[3]
+    });
+    setTimeout(sendClient, 300);
 }
 var demoDirection01 = function() {
     var rand = Math.floor( Math.random() * 360 );
@@ -404,6 +409,7 @@ exports.sockMain = function(){
     demoGauge02();
     demoGauge03();
     demoGauge04();
+    sendClient();
     
     // 加速度センサGW
     //accelerGw2();
@@ -450,9 +456,14 @@ exports.serialMain = function() {
                 buf +=",KXM_A1:" + SaveBuf[1];
                 buf +=",KXM_A2:" + SaveBuf[2];
                 buf += "}";
-                    lcsSOCK.io().of('/scr/122').emit("gauge02", {"value": SaveBuf[0]});
-                    lcsSOCK.io().of('/scr/122').emit("gauge03", {"value": SaveBuf[1]});
-                    lcsSOCK.io().of('/scr/122').emit("gauge04", {"value": SaveBuf[2]});
+                lcsSOCK.io().of('/scr/122').emit("gauge02", {"value": SaveBuf[0]});
+                lcsSOCK.io().of('/scr/122').emit("gauge03", {"value": SaveBuf[1]});
+                lcsSOCK.io().of('/scr/122').emit("gauge04", {"value": SaveBuf[2]});
+                lcsSOCK.io().of('/scr/122').emit("graph01", {
+                    "valueX":  SaveBuf[0] 
+                    ,"valueY": SaveBuf[1]
+                    ,"valueZ": SaveBuf[2]
+                });
                 console.log(buf);
                 init();
                 setTimeout(function() {

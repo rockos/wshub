@@ -122,6 +122,14 @@
    "ejs":"layout.ejs",
    "parmit":0
 },
+"iqy133":{
+  "path" : "/src/controller/iqy/iqy133",
+   "msg":{
+          "/scr/133" : "main"
+         },
+   "ejs":"layout.ejs",
+   "parmit":0
+},
 "str201":{
   "path" : "/src/controller/str/201/str201", 
   "msg":{
@@ -248,6 +256,7 @@
   "path" : "/src/controller/seq/seq902", 
   "msg":{
         "/scr/902" : "main"
+        ,"/mob/902" : "main"
         },
    "ejs":"layout.ejs",
    "parmit":1

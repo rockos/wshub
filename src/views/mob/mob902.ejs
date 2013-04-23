@@ -1,35 +1,73 @@
 <% layout('layout_mob') -%>
 <%- stylesheet('/stylesheets/cstm/mob902.css') -%>
+<%- stylesheet('/stylesheets/cstm/mob903.css') -%>
 
+<script type="text/javascript" src="/javascripts/d3.v3.min.js"></script>
+<script type="text/javascript" src="/javascripts/rcs/libgraph.js"></script>
 <script type="text/javascript" src="/javascripts/cstm/mob902.js"></script>
 
 <form name="main_form" method="post" action="/mob/902" data-ajax="false">
 
   <div data-role="content">
+    <div id="graph01"></div>
 
     <fieldset data-role="controlgroup" data-type="horizontal" data-role="fieldcontain">
-      <label for="cr01">１</label>
+      <label for="cr01"><%= table.crane[0].name %></label>
       <input type="radio" name="craneNo" id="cr01" value="cr01" checked/>
-      <label for="cr02">２</label>
+      <label for="cr02"><%= table.crane[1].name %></label>
       <input type="radio" name="craneNo" id="cr02" value="cr02"/>
-      <label for="cr03">３</label>
-      <input type="radio" name="craneNo" id="cr03" value="cr03"/>
       <input type="submit" name="send_iqy" value="再表示"/>
     </fieldset>
 
-    <div id="vertical" data-role="controlgroup">
+    <div id="crane">
+      <ul data-role="listview" data-inset="true" data-theme="a"> 
+        <li class="ui-grid-a">
+          <div class="ui-block-a">スイッチ</div>
+          <div class="ui-block-b" id="craneSw" data-role="controlgroup" data-type="horizontal" data-mini="true">
+            <a href="#" data-role="button" data-theme=
+            <% if (table.crane[0].local_switch.value == "1") { %>
+              "g"
+            <% } else { %>
+              "h"
+            <% } %>
+            >ON </a> 
+            <a href="#" data-role="button" data-theme=
+            <% if (table.crane[0].local_switch.value == "1") { %>
+              "h"
+            <% } else { %>
+              "f"
+            <% } %>
+            >OFF</a> 
+          </div>
+        </li> 
+        <li class="ui-grid-a">
+          <div class="ui-block-a">状態</div>
+          <div class="ui-block-b" id="craneStat" data-role="controlgroup" data-type="horizontal" data-mini="true">
+            <a href="#" data-role="button" data-theme=
+            <% if (table.crane[0].status.value == "1") { %>
+              "g"
+            <% } else { %>
+              "h"
+            <% } %>
+            >動作中</a> 
+            <a href="#" data-role="button" data-theme=
+            <% if (table.crane[0].status.value == "9") { %>
+              "f"
+            <% } else { %>
+              "h"
+            <% } %>
+            >エラー</a> 
+          </div>
+        </li> 
+        <li class="ui-grid-c">
+          <div class="ui-block-a">走行</div>
+          <div class="ui-block-b" id="craneHo"><div id="H7seg"></div></div>
+          <div class="ui-block-c">昇降</div>
+          <div class="ui-block-d" id="craneVt"><div id="V7seg"></div></div>
+        </li> 
+      </ul> 
     </div>
 
-    <div id="horizon" data-role="controlgroup">
-      <div  class="ui-grid-a" data-role="button">
-          <div class="ui-block-a">昇降</div>
-          <div class="ui-block-b" id="h_verticalDistanceStr"><%= machineView.v %></div>
-      </div>
-      <div  class="ui-grid-a" data-role="button">
-          <div class="ui-block-a">走行</div>
-          <div class="ui-block-b" id="h_horizonDistanceStr"><%= machineView.h %></div>
-      </div>
-    </div>
   </div><!--content-->
 
 </form>

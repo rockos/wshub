@@ -103,7 +103,88 @@ function demo3() {
             demo3();
         }, 4000);
 }
-
+function demo4() {
+   lcsSOCK.io().of('/scr/902').emit("graph01",{
+       "value":Math.floor(Math.random() * 80 + 120)
+       ,"value2":Math.floor(Math.random() * 80 + 50)
+       ,"value3":Math.floor(Math.random() * 80)
+   });
+   setTimeout( function() {
+       demo4();
+   },400);
+}
+function demo5_1() {
+   lcsSOCK.io().of('/scr/902').emit("crane_mob01_1",
+                                    {
+                    "head": "m-cr-01"
+                        ,"local_switch" : decodeCrane.local_switch(Math.floor(Math.random() * 2))
+                        ,"online_switch" : decodeCrane.online_switch(Math.floor(Math.random() * 2))
+                        ,"status" : decodeCrane.status(Math.floor(Math.random() * 2))
+                                    });
+   setTimeout( function() {
+       demo5_1();
+   },2000);
+}
+function demo5_2() {
+   lcsSOCK.io().of('/scr/902').emit("crane_mob01_2",
+                                    {
+                    "head": "m-cr-02"
+                        ,"local_switch" : decodeCrane.local_switch(Math.floor(Math.random() * 2))
+                        ,"online_switch" : decodeCrane.online_switch(Math.floor(Math.random() * 2))
+                        ,"status" : decodeCrane.status(Math.floor(Math.random() * 2))
+                                    });
+   setTimeout( function() {
+       demo5_2();
+   },4000);
+}
+function demo6_1(a,b) {
+    if (a == undefined) {
+        a=0;
+    }
+    if (b == undefined) {
+        b=0;
+    }
+    lcsSOCK.io().of('/scr/902').emit("crane_mob02_1", {
+        "head": "m-cr-01"
+        ,"h_range" : a
+        ,"v_range" : b
+    });
+    setTimeout( function() {
+            a++;
+            b++;
+            if (a>=1000) {
+                a=0;
+            }
+            if (b>=100) {
+                b=0;
+            }
+            demo6_1(a,b);
+        }, 500);
+}
+function demo6_2(a,b) {
+    if (a == undefined) {
+        a=500;
+    }
+    if (b == undefined) {
+        b=50;
+    }
+    lcsSOCK.io().of('/scr/902').emit("crane_mob02_2", {
+        "head": "m-cr-02"
+        ,"h_range" : a
+        ,"v_range" : b
+    });
+    setTimeout( function() {
+            a++;
+            b++;
+            if (a>=1000) {
+                a=0;
+            }
+            if (b>=100) {
+                b=0;
+            }
+            demo6_2(a,b);
+        }, 400);
+}
 /**
  * イベントを受けて画面を更新
  * @module eventDisplay
@@ -116,6 +197,11 @@ function eventDisplay() {
     demo1();
     demo2();
     demo3();
+    demo4();
+    demo5_1();
+    demo5_2();
+    demo6_1();
+    demo6_2();
 
     /*** サンプル
     // クレーンデータを書き換える
@@ -292,11 +378,11 @@ var decodeCrane = {
     },
     "local_switch" : function(code) {
         if (code==1) {
-            return {"text":"ON","color":"blue"};
+            return {"text":"ON","color":"blue","value":"1"};
         } else if (code==0) {
-            return {"text":"OFF","color":"red"};
+            return {"text":"OFF","color":"red","value":"0"};
         } else {
-            return {"text":"OFF","color":"red"};
+            return {"text":"OFF","color":"red","value":"0"};
         }
     },
     "online_switch" : function(code) {
@@ -310,11 +396,11 @@ var decodeCrane = {
     },
     "status" : function(code) {
         if (code==1) {
-            return {"text":"動作中","color":"blue"};
+            return {"text":"動作中","color":"blue","value":"1"};
         } else if (code==0) {
-            return {"text":"待機中","color":"gray"};
+            return {"text":"待機中","color":"gray","value":"0"};
         } else {
-            return {"text":"エラー","color":"red"};
+            return {"text":"エラー","color":"red","value":"9"};
         }
     },
     "error" : function(code) {

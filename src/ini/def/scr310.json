@@ -80,7 +80,8 @@
             "col7":"",
             "col8":"",
             "col9":"",
-            "col10":""
+            "col10":"",
+            "bc":{"white":"","blackpoints":[]}
         }]
     },
     "socket_io_conn":"",

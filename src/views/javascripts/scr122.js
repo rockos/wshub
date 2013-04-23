@@ -3,9 +3,10 @@ sockEventShowError(socket);
 
 var socket122 = io.connect("/scr/122");
 
-var g2 = $.extend(true, {}, lcsBargraph);
-var g3 = $.extend(true, {}, lcsBargraph);
-var g4 = $.extend(true, {}, lcsBargraph);
+//var g2 = $.extend(true, {}, lcsBargraph);
+//var g3 = $.extend(true, {}, lcsBargraph);
+//var g4 = $.extend(true, {}, lcsBargraph);
+var LG1 = $.extend(true, {}, lcsLinegraph);
 
 /*
 socket122.on("gauge01", function (data) {
@@ -17,23 +18,28 @@ socket122.on("gauge01", function (data) {
 socket122.on("gauge02", function (data) {
    //debugXp(data);
    $("#gauge02").gauge('setValue',data.value);
-   g2.graphMove(data.value);
+   //g2.graphMove(data.value);
 });
 
 socket122.on("gauge03", function (data) {
    //debugXp(data);
    $("#gauge03").gauge('setValue',data.value);
-   g3.graphMove(data.value);
+   //g3.graphMove(data.value);
 });
 
 socket122.on("gauge04", function (data) {
    //debugXp(data);
    $("#gauge04").gauge('setValue',data.value);
-   g4.graphMove(data.value);
+   //g4.graphMove(data.value);
+});
+
+socket122.on("graph01", function (data) {
+   //debugXp(data);
+   LG1.graphMove(data.valueX,data.valueY,data.valueZ);
 });
 
 socket122.on("direction01", function (data) {
-   debugXp(data);
+   //debugXp(data);
    $("#direction01").html( 
         data.str + ":" + data.value );
 });
@@ -76,7 +82,7 @@ $(function() {
     .gauge({
         min: 0,
         max: 1000,
-        label: 'Yaw',
+        label: 'X',
         unitsLabel: '',
         majorTicks: 11,
         minorTicks: 3,
@@ -90,7 +96,7 @@ $(function() {
     .gauge({
         min: 0,
         max: 1000,
-        label: 'Roll',
+        label: 'Y',
         unitsLabel: '',
         majorTicks: 11,
         minorTicks: 3,
@@ -104,7 +110,7 @@ $(function() {
     .gauge({
         min: 0,
         max: 1000,
-        label: 'Pitch',
+        label: 'Z',
         unitsLabel: '',
         majorTicks: 11,
         minorTicks: 3,
@@ -172,7 +178,31 @@ $(function() {
         socket122.emit("swChange", {"status": 0});
     });
 
-
+    LG1.dataInit(
+        { id: "#linegraph01"
+         ,margin:{
+             top: 10
+            ,right: 10
+            ,bottom: 30
+            ,left: 40
+          }
+         ,WIDTH: 750
+         ,HEIGHT: 150
+         ,yMax: 1000
+         ,yText: ""
+         ,dMax: 101
+         ,Xaxis: {ticks: 20}
+         ,Yaxis: {ticks: 5}
+         ,Xrule: {draw: true, ticks: 20}
+         ,Yrule: {draw: true, ticks: 5}
+         ,data1: {use: true, color: "#00f", width: 2}
+         ,data2: {use: true, color: "#f29", width: 2}
+         ,data3: {use: true, color: "#3b7", width: 2}
+         ,color: {face: "#fff", back: "#333"}
+        }
+    );
+    LG1.graphDraw();
+    /*
     g2.dataInit(
         { id: "#bargraph02"
          ,margin:{
@@ -223,7 +253,7 @@ $(function() {
         }
     );
     g4.graphDraw();
-
+    */
 
 });
 

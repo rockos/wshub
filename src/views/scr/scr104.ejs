@@ -1,9 +1,13 @@
 <% layout('layout') -%>
 
-<% if (socket_io_start == "1") { %>
 <script type="text/javascript" src="/socket.io/socket.io.js"></script>
+<script type="text/javascript" src="/javascripts/d3.v3.min.js"></script>
+<script type="text/javascript" src="/javascripts/rcs/libgraph.js"></script>
+<!--
 <script type="text/javascript" src="/javascripts/cstm/min/scr104.min.js"></script>
-<% } %>
+-->
+<script type="text/javascript" src="/javascripts/cstm/scr104.js"></script>
+
 <script type="text/javascript">
 /*ローカルイベント*/
 var send_iqy_PB = function() {
@@ -39,14 +43,21 @@ var send_iqy_PB = function() {
           </tr>
     </table>
 
+    <div id="linegraph01"></div>
+    <div id="bargraph01"></div>
+
 <!------ Canvas Test for "glp001" ------>
+<!--
     <canvas id="glp001" name="chart" width="800" height="200">
         図形を表示するには、canvasタグをサポートしたブラウザが必要です。
     </canvas>
+-->
 <!------ Canvas Test for "glp002" ------>
+<!--
     <canvas id="glp002" name="chart" width="800" height="200">
         図形を表示するには、canvasタグをサポートしたブラウザが必要です。
     </canvas>
+-->
   </div>
 
 </form>

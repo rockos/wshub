@@ -6,6 +6,155 @@ var fin = function(err){
     }
 }
 
+/**
+ * SVG Make barcode code39
+ */
+function lcsCode39Make(parms, bc) {
+    var opt = {
+        narrow: 4,
+        ratio: 2.5,
+        wide: 10,
+        height: 80,
+        margin: 20,
+        end:""
+    };
+    var bars = [
+        {chara:"*",code:[0,1,0,0,1,0,1,0,0]},
+        {chara:"0",code:[0,0,0,1,1,0,1,0,0]},
+        {chara:"1",code:[1,0,0,1,0,0,0,0,1]},
+        {chara:"2",code:[0,0,1,1,0,0,0,0,1]},
+        {chara:"3",code:[1,0,1,1,0,0,0,0,0]},
+        {chara:"4",code:[0,0,0,1,1,0,0,0,1]},
+        {chara:"5",code:[1,0,0,1,1,0,0,0,0]},
+        {chara:"6",code:[0,0,1,1,1,0,0,0,0]},
+        {chara:"7",code:[0,0,0,1,0,0,1,0,1]},
+        {chara:"8",code:[1,0,0,1,0,0,1,0,0]},
+        {chara:"9",code:[0,0,1,1,0,0,1,0,0]},
+        {chara:"a",code:[1,0,0,0,0,1,0,0,1]},
+        {chara:"b",code:[0,0,1,0,0,1,0,0,1]},
+        {chara:"c",code:[1,0,1,0,0,1,0,0,0]},
+        {chara:"d",code:[0,0,0,0,1,1,0,0,1]},
+        {chara:"e",code:[1,0,0,0,1,1,0,0,0]},
+        {chara:"f",code:[0,0,1,0,1,1,0,0,0]},
+        {chara:"g",code:[0,0,0,0,0,1,1,0,1]},
+        {chara:"h",code:[1,0,0,0,0,1,1,0,0]},
+        {chara:"i",code:[0,0,1,0,0,1,1,0,0]},
+        {chara:"j",code:[0,0,0,0,1,1,1,0,0]},
+        {chara:"k",code:[1,0,0,0,0,0,0,1,1]},
+        {chara:"l",code:[0,0,1,0,0,0,0,1,1]},
+        {chara:"m",code:[1,0,1,0,0,0,0,1,0]},
+        {chara:"n",code:[0,0,0,0,1,0,0,1,1]},
+        {chara:"o",code:[1,0,0,0,1,0,0,1,0]},
+        {chara:"p",code:[0,0,1,0,1,0,0,1,0]},
+        {chara:"q",code:[0,0,0,0,0,0,1,1,1]},
+        {chara:"r",code:[1,0,0,0,0,0,1,1,0]},
+        {chara:"s",code:[0,0,1,0,0,0,1,1,0]},
+        {chara:"t",code:[0,0,0,0,1,0,1,1,0]},
+        {chara:"u",code:[1,1,0,0,0,0,0,0,1]},
+        {chara:"v",code:[0,1,1,0,0,0,0,0,1]},
+        {chara:"w",code:[1,1,1,0,0,0,0,0,0]},
+        {chara:"x",code:[0,1,0,0,1,0,0,0,1]},
+        {chara:"y",code:[1,1,0,0,1,0,0,0,0]},
+        {chara:"z",code:[0,1,1,0,1,0,0,0,0]},
+        {chara:"-",code:[0,1,0,0,0,0,1,0,1]},
+        {chara:".",code:[1,1,0,0,0,0,1,0,0]},
+        {chara:" ",code:[0,1,1,0,0,0,1,0,0]},
+        {chara:"$",code:[0,1,0,1,0,1,0,0,0]},
+        {chara:"/",code:[0,1,0,1,0,0,0,1,0]},
+        {chara:"+",code:[0,1,0,0,0,1,0,1,0]},
+        {chara:"%",code:[0,0,0,1,0,1,0,1,0]}
+    ];
+
+    bc.white = "";
+    bc.blackpoints = [];
+
+    if (typeof bc !== 'object') {
+        return;
+    }
+    if (typeof parms.value !== 'string') {
+        return;
+    }
+    if (parms.value.length <= 0) {
+        return;
+    };
+    if (parms.value.length > 32) {
+        return;
+    };
+
+    var checkdigit = "";
+    var str = '*' + parms.value + checkdigit + '*';
+    var x = 0;
+
+    x += opt.margin;
+    for (var i = 0, imax = str.length; i < imax; i++) {
+        var s = str.substr(i,1);
+        for (var j = 0, jmax = bars.length; j < jmax; j++) {
+            if (bars[j].chara === s || bars[j].chara.toUpperCase() === s) {
+                for (var k = 0, kmax = bars[j].code.length; k < kmax; k++) {
+                    if (k % 2 == 0) {
+                        //black
+                        if (bars[j].code[k] == 0) {
+                            //narrow
+                            var p = ""  + x + "," + 0
+                                  + " " + 0 + "," + opt.height
+                                  + " " + opt.narrow + "," + 0
+                                  + " " + 0 + "," + "-" + opt.height;
+                            /*
+                            var p = ""  + x + "," + 0
+                                  + " " + x + "," + opt.height
+                                  + " " + (x+opt.narrow) + "," + opt.height
+                                  + " " + (x+opt.narrow) + "," + 0;
+                            */
+                            bc.blackpoints.push(p);
+                            x += opt.narrow;
+                        } else {
+                            //wide
+                            var p = ""  + x + "," + 0
+                                  + " " + 0 + "," + opt.height
+                                  + " " + opt.wide + "," + 0
+                                  + " " + 0 + "," + "-" + opt.height;
+                            /*
+                            var p = ""  + x + "," + 0
+                                  + " " + x + "," + opt.height
+                                  + " " + (x+opt.wide) + "," + opt.height
+                                  + " " + (x+opt.wide) + "," + 0;
+                            */
+                            bc.blackpoints.push(p);
+                            x += opt.wide;
+                        }
+                    } else {
+                        //white
+                        if (bars[j].code[k] == 0) {
+                            x += opt.narrow;
+                        } else {
+                            x += opt.wide;
+                        }
+                    }
+                } // for k
+                //gap
+                x += opt.narrow;
+                break;
+            }
+        }// for j
+    }// for i
+    x += opt.margin;
+
+    bc.white = ""  + 0 + "," + 0
+             + " " + 0 + "," + opt.height
+             + " " + x + "," + 0
+             + " " + 0 + "," + "-" + opt.height
+             + "";
+    /*
+    bc.white.x0 = 0;
+    bc.white.y0 = 0;
+    bc.white.x1 = 0;
+    bc.white.y1 = opt.height;
+    bc.white.x2 = x;
+    bc.white.y2 = opt.height;
+    bc.white.x3 = x;
+    bc.white.y3 = 0;
+    */
+}
 
 /**
  * 画面表示
@@ -324,6 +473,24 @@ function setEcho(args, nextDo) {
 }
 
 /**
+ * BCを取得する
+ * @module bcData
+ * @param  {Object}args, {function}nextDo
+ * @date   15/4/2013
+ */
+function bcData(args, nextDo) {
+    var req = args.req, res = args.res, posts = args.posts;
+
+    for (var i = 0, imax = args.posts.table.tab1.length; i < imax; i++) {
+        var parms = {},
+            bc = {};
+        parms.value = args.posts.table.tab1[i].col4;
+        lcsCode39Make(parms,bc);
+        args.posts.table.tab1[i].bc = bc;
+    }
+    nextDo( null, args );
+}
+/**
  * テーブルリストを取得する
  * @module postData
  * @param  {Object}args, {function}nextDo
@@ -553,6 +720,23 @@ function prnPB2(req, res, posts) {
 
 /**
  * 帳票 * 押下時の処理
+ * @module prnPB3
+ * @param  {Object}req, {Object}res, {Object}posts
+ * @date   21/sep/2012
+ */
+function prnPB3(req, res, posts) {
+    var args = {"req": req, "res": res, "posts": posts};
+    args.posts.scrNo="scr/scr754";
+    args.posts.print_date = "2012/11/22";
+
+    lcsAp.series(args,
+                 [postData,
+                  bcData,
+                  dspWin], /* 後処理 */
+                 fin);
+}
+/**
+ * 帳票 * 押下時の処理
  * @module prnPB
  * @param  {Object}req, {Object}res, {Object}posts
  * @date   21/sep/2012
@@ -664,6 +848,8 @@ exports.main = function(req, res, frame){
             prnPB( req, res, posts);
         } else if ( req.body.send_prn2 ) {
             prnPB2( req, res, posts);
+        } else if ( req.body.send_prn3 ) {
+            prnPB3( req, res, posts);
         //} else if ( req.body.send_add ) {
         //    addPB( req, res, posts);
         //} else if ( req.body.send_del ) {

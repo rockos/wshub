@@ -1,0 +1,28 @@
+<% layout('layout') -%>
+<%- stylesheet('/stylesheets/cstm/133.css') -%>
+
+<script type="text/javascript" src="/javascripts/rcs/libsocket.min.js"></script>
+<!--
+<script type="text/javascript" src="/javascripts/cstm/min/scr133.min.js"></script>
+-->
+<script type="text/javascript" src="/javascripts/cstm/scr133.js"></script>
+
+<form name="main_form" method="post" action="/scr/133">
+  <input type="hidden" name="clientID" id="clientID" value="" />
+  <input type="hidden" name="nameSpace" id="nameSpace" value="" />
+
+  <div id="sub_body">
+    <p class=""><a href="#"><%= pageTags.caption %></a></p>
+    <ul>
+      <li><input type="submit" name="send_iqy" value="<%= pageTags.send_iqy %>"></li>
+    </ul>
+  </div>
+
+  <div id="main_body">
+
+    <div id="mesg_bar" class="mesg_bar <%= mesg_level_color %>"><%= mesg %></div>
+
+  </div>
+</form>
+
+<div id="debugtxt"></div>
