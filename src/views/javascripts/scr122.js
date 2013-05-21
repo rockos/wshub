@@ -7,6 +7,12 @@ var socket122 = io.connect("/scr/122");
 //var g3 = $.extend(true, {}, lcsBargraph);
 //var g4 = $.extend(true, {}, lcsBargraph);
 var LG1 = $.extend(true, {}, lcsLinegraph);
+var drc7 = $.extend(true, {}, lcs7seg);
+var run7 = $.extend(true, {}, lcs7seg);
+var vat7 = $.extend(true, {}, lcs7seg);
+var num7 = $.extend(true, {}, lcs7seg);
+var runs7 = $.extend(true, {}, lcs7seg);
+var vats7 = $.extend(true, {}, lcs7seg);
 
 /*
 socket122.on("gauge01", function (data) {
@@ -40,9 +46,37 @@ socket122.on("graph01", function (data) {
 
 socket122.on("direction01", function (data) {
    //debugXp(data);
-   $("#direction01").html( 
-        data.str + ":" + data.value );
+   drc7.draw(data.value-0);
+   $("#machineView span.drcstr").html( 
+        data.str );
 });
+
+socket122.on("machine01", function (data) {
+   //debugXp(data.status +"|"+data.act);
+   if (data.status == 1) {
+       $("#machineOL_ON").attr("checked",true);
+   } else {
+       $("#machineOL_OFF").attr("checked",true);
+   }
+   if (data.act == 1) {
+       $("#machineST_BUSY").attr("checked", true);
+   } else if (data.act == 0) {
+       $("#machineST_IDLE").attr("checked", true);
+   } else {
+       $("#machineST_EROR").attr("checked", true);
+   }
+   $('#machineOL').buttonset();
+   $('#machineST').buttonset();
+});
+
+socket122.on("machine02", function (data) {
+    run7.draw(data.run-0);
+    vat7.draw(data.vat-0);
+    num7.draw(data.num-0);
+    runs7.draw(data.runs-0);
+    vats7.draw(data.vats-0);
+});
+
 
 socket122.on("debugz", function (data) {
     debugXp(data);
@@ -137,7 +171,7 @@ $(function() {
 
     $('#slider02').slider({
         min: 0,
-        max: 10,
+        max: 100,
         animate: "fast",
         range: "min",
         value: $('#slider02Value').html(),
@@ -178,6 +212,14 @@ $(function() {
         socket122.emit("swChange", {"status": 0});
     });
 
+    $('#machineOL').buttonset({
+        disabled: false
+    });
+
+    $('#machineST').buttonset({
+        disabled: false
+    });
+
     LG1.dataInit(
         { id: "#linegraph01"
          ,margin:{
@@ -186,7 +228,7 @@ $(function() {
             ,bottom: 30
             ,left: 40
           }
-         ,WIDTH: 750
+         ,WIDTH: 850
          ,HEIGHT: 150
          ,yMax: 1000
          ,yText: ""
@@ -255,5 +297,58 @@ $(function() {
     g4.graphDraw();
     */
 
+    drc7.init({
+        "id": "#machineView div.drc",
+        "fig": 3,
+        "ratio": 0.6,
+        "backColor": "rgb(51,51,51)",
+        "color": "rgb(255,255,255)"
+    });
+    drc7.draw(0);
+
+    run7.init({
+        "id": "#machineView div.run",
+        "fig": 7,
+        "ratio": 0.6,
+        "backColor": "rgb(51,51,51)",
+        "color": "rgb(255,255,255)"
+    });
+    run7.draw(0);
+
+    vat7.init({
+        "id": "#machineView div.vat",
+        "fig": 7,
+        "ratio": 0.6,
+        "backColor": "rgb(51,51,51)",
+        "color": "rgb(255,255,255)"
+    });
+    vat7.draw(0);
+
+    num7.init({
+        "id": "#machineView div.num",
+        "fig": 7,
+        "ratio": 0.6,
+        "backColor": "rgb(51,51,51)",
+        "color": "rgb(255,255,255)"
+    });
+    num7.draw(0);
+
+    runs7.init({
+        "id": "#machineView div.runs",
+        "fig": 7,
+        "ratio": 0.6,
+        "backColor": "rgb(51,51,51)",
+        "color": "rgb(255,255,255)"
+    });
+    runs7.draw(0);
+
+    vats7.init({
+        "id": "#machineView div.vats",
+        "fig": 7,
+        "ratio": 0.6,
+        "backColor": "rgb(51,51,51)",
+        "color": "rgb(255,255,255)"
+    });
+    vats7.draw(0);
 });
 

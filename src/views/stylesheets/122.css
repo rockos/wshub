@@ -23,35 +23,41 @@ div#main_body table#main_table tr td {
 #    border: 1px solid #999;
     border-style: none;
     vertical-align: top;
+    text-align: center;
 }
 
+#gauge02,
+#gauge03,
+#gauge04 {
+    padding-left: 40px;
+}
 /*
  * Button UI
  */
 #machineSw {
-    margin-top: 15px;
-    margin-bottom: 15px;
+    margin-top: 12px;
+    margin-bottom: 13px;
 }
 #machineSw label {
-    width: 120px;
-    padding-top: 15px;
-    padding-bottom: 15px;
+    width: 160px;
+    padding-top: 20px;
+    padding-bottom: 20px;
 }
 #machineSw label.ui-state-default:nth-of-type(1) {
-    background: rgba(00, 00, 204, 0.7);
-    color: rgba(255, 255, 255, 0.7);
+    background: rgba(00, 00, 204, 0.3);
+    color: rgba(255, 255, 255, 0.3);
     border-style: none;
     font-weight: normal;
 }
 #machineSw label.ui-state-default:nth-of-type(2) {
-    background: rgba(204, 00, 00, 0.7);
-    color: rgba(255, 255, 255, 0.7);
+    background: rgba(204, 00, 00, 0.3);
+    color: rgba(255, 255, 255, 0.3);
     border-style: none;
     font-weight: normal;
 }
 #machineSw label.ui-state-default:nth-of-type(3) {
-    background: rgba(150, 150, 150, 0.7);
-    color: rgba(255, 255, 255, 0.7);
+    background: rgba(110, 110, 110, 0.3);
+    color: rgba(255, 255, 255, 0.3);
     border-style: none;
     font-weight: normal;
 }
@@ -70,7 +76,7 @@ div#main_body table#main_table tr td {
     box-shadow:3px 3px 0px 0px rgba(0,0,0,0.4) inset;
 }
 #machineSw label.ui-state-active:nth-of-type(3) {
-    background: rgba(150, 150, 150, 1);
+    background: rgba(110, 110, 110, 1);
     color: rgba(255, 255, 255, 1);
     border-style: none;
     font-weight: normal;
@@ -83,6 +89,102 @@ div#main_body table#main_table tr td {
     font-weight: normal;
 }
 
+#machineOL {
+    margin-top: 2px;
+    margin-bottom: 2px;
+}
+#machineOL label {
+    width: 135px;
+    padding-top: 2px;
+    padding-bottom: 2px;
+}
+#machineOL label.ui-state-default:nth-of-type(1) {
+    background: rgba(00, 00, 204, 0.3);
+    color: rgba(255, 255, 255, 0.3);
+    border-style: none;
+    font-weight: normal;
+}
+#machineOL label.ui-state-default:nth-of-type(2) {
+    background: rgba(204, 00, 00, 0.3);
+    color: rgba(255, 255, 255, 0.3);
+    border-style: none;
+    font-weight: normal;
+}
+#machineOL label.ui-state-active:nth-of-type(1) {
+    background: rgba(00, 00, 204, 1);
+    color: rgba(255, 255, 255, 1);
+    border-style: none;
+    font-weight: normal;
+    box-shadow:3px 3px 0px 0px rgba(0,0,0,0.4) inset;
+}
+#machineOL label.ui-state-active:nth-of-type(2) {
+    background: rgba(204, 00, 00, 1);
+    color: rgba(255, 255, 255, 1);
+    border-style: none;
+    font-weight: normal;
+    box-shadow:3px 3px 0px 0px rgba(0,0,0,0.4) inset;
+}
+#machineOL label.ui-state-hover {
+    background: rgba(0, 0, 0, 0.5);
+    color: rgba(255, 255, 255, 1);
+    border-style: none;
+    font-weight: normal;
+}
+
+#machineST {
+    margin-top: 2px;
+    margin-bottom: 2px;
+}
+#machineST label {
+    width: 90px;
+    padding-top: 2px;
+    padding-bottom: 2px;
+}
+#machineST label.ui-state-default:nth-of-type(1) {
+    background: rgba(00, 00, 204, 0.3);
+    color: rgba(255, 255, 255, 0.3);
+    border-style: none;
+    font-weight: normal;
+}
+#machineST label.ui-state-default:nth-of-type(2) {
+    background: rgba(110, 110, 110, 0.3);
+    color: rgba(255, 255, 255, 0.3);
+    border-style: none;
+    font-weight: normal;
+}
+#machineST label.ui-state-default:nth-of-type(3) {
+    background: rgba(204, 00, 00, 0.3);
+    color: rgba(255, 255, 255, 0.3);
+    border-style: none;
+    font-weight: normal;
+}
+#machineST label.ui-state-active:nth-of-type(1) {
+    background: rgba(00, 00, 204, 1);
+    color: rgba(255, 255, 255, 1);
+    border-style: none;
+    font-weight: normal;
+    box-shadow:3px 3px 0px 0px rgba(0,0,0,0.4) inset;
+}
+#machineST label.ui-state-active:nth-of-type(2) {
+    background: rgba(110, 110, 110, 1);
+    color: rgba(255, 255, 255, 1);
+    border-style: none;
+    font-weight: normal;
+    box-shadow:3px 3px 0px 0px rgba(0,0,0,0.4) inset;
+}
+#machineST label.ui-state-active:nth-of-type(3) {
+    background: rgba(204, 00, 00, 1);
+    color: rgba(255, 255, 255, 1);
+    border-style: none;
+    font-weight: normal;
+    box-shadow:3px 3px 0px 0px rgba(0,0,0,0.4) inset;
+}
+#machineST label.ui-state-hover {
+    background: rgba(0, 0, 0, 0.5);
+    color: rgba(255, 255, 255, 1);
+    border-style: none;
+    font-weight: normal;
+}
 
 /*
  * Slider UI
@@ -187,6 +289,75 @@ div#main_body table#main_table tr td {
 }
 
 
+#machineView,
+#machineView-2 {
+    table-layout: fixed;
+}
 
+#machineView caption,
+#machineView-2 caption {
+    width: 100px;
+    padding: 5px 5px 5px 5px;
+    color: rgba(0,0,0,1);
+    border: solid 1px rgba(72,209,204,1);
+    background-color: rgba(72,209,204,1);
+    box-shadow:         2px 2px 0px 0px rgba(0,0,0,0.4) inset;
+    -webkit-box-shadow: 2px 2px 0px 0px rgba(0,0,0,0.4) inset;
+    -moz-box-shadow:    2px 2px 0px 0px rgba(0,0,0,0.4) inset;
+}
+
+#machineView thead tr,
+#machineView-2 thead tr {
+    height: ;
+}
+
+/**
+ *  クレーン
+ */
+
+#machineView tbody th,
+#machineView tbody td {
+    border: solid 1px black;
+    padding: 3px 0px 3px 0px;
+    font: normal 12px Arial; 
+    text-align: center;
+    vertical-align: middle;
+}
+
+#machineView tbody th {
+    background-color: #A9A9A9;
+    color: #FFFFFF;
+}
+
+#machineView tbody td {
+    background-color: rgb(51,51,51);
+    color: #000000;
+}
+
+#machineView tbody tr th,
+#machineView tbody tr td {
+    font: normal 20px Arial; 
+    vertical-align: middle;
+}
+
+#machineView tbody tr th {
+    text-align: center;
+    width: 150px;
+}
+
+#machineView tbody tr td {
+    text-align: right;
+    width: 150px;
+}
+
+#machineView tbody tr td div {
+    padding-top: 3px;
+    padding-right: 6px;
+}
+
+#machineView tbody tr td span {
+    float: left;
+    color: #FFF;
+}
 
 

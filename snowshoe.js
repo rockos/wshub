@@ -142,14 +142,14 @@ app.get('/mob/:id', lcsUI.doAction);
 app.post('/mob/:id', lcsUI.doAction);
 
 // Web API REST 2012-12-27
-//app.get('/rest/:id', lcsUI.restAction);
-app.get('/rest/:id?/:ap?', lcsUI.restAction);
-app.post('/rest/:id?/:ap?', lcsUI.restAction);
-app.put('/rest/:id?/:ap?', lcsUI.restAction);
-app.del('/rest/:id?/:ap?', lcsUI.restAction);
+app.get('/rest/:id?/:ap?', lcsUI.restAction__old);
+app.post('/rest/:id?/:ap?', lcsUI.restAction__old);
+app.put('/rest/:id?/:ap?', lcsUI.restAction__old);
+app.del('/rest/:id?/:ap?', lcsUI.restAction__old);
 
-//REST web API 2012-12-20 for express-resouce
-//var rest = app.resource('rest', require(ROOTDIR + '/src/controller/rest/rest'), {id:'id'});
+// Web API REST 8-may-2013
+app.get('/v1/rest/:id/:ap/:ap2?', lcsUI.restAction);
+app.post('/v1/rest/:id/:ap/:ap2?', lcsUI.restAction);
 
 
 /* this is for express@v3 */

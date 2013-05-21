@@ -20,6 +20,8 @@ function insReserve(args, callback) {
     lcsDb.query(insSql, ary, function(err, results) {
 debugger;
             if (err) {
+                console.log("insReserve");
+                console.log(err);
                 args.errmsg = lcsAp.getMsgI18N(99);
                 args.dberr = err;
                 callback(args, args);
@@ -55,6 +57,7 @@ function insRv_stock(args, callback) {
     var rv_stock_ins_callback = function(err, callback) {
 debugger;
         if (err) {
+            console.log("insRv_stock");
             args.errmsg = lcsAp.getMsgI18N(99);
             args.dberr = err;
             callback(args, args);
@@ -164,6 +167,7 @@ function insProof(args, callback) {
             args.errmsg = lcsAp.getMsgI18N(99);
             args.dberr = err;
             callback(args, args);
+            console.log("insProof");
             return;
         }
         callback(null, args);

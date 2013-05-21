@@ -1,0 +1,99 @@
+
+/**
+ * snowshoe-MachineResultError.htm 
+ */
+
+/*** user custom ***
+#resultErrorQueryMachineNo span,
+#resultErrorQueryFromdate span,
+#resultErrorQueryTodate span {
+    font-size: 28px;
+    font-family: monospace;
+    white-space: pre;
+}
+
+#resultErrorQueryMachineNo input {
+    width: 2.5em;
+    font-size: 30px;
+}
+
+#resultErrorQueryFromdate input,
+#resultErrorQueryTodate input {
+    font-size: 30px;
+}
+
+#resultErrorQueryFromdate input:nth-child(1),
+#resultErrorQueryTodate input:nth-child(1) {
+    width: 3.8em;
+}
+
+#resultErrorQueryFromdate input:nth-child(2),
+#resultErrorQueryTodate input:nth-child(2), 
+#resultErrorQueryFromdate input:nth-child(3),
+#resultErrorQueryTodate input:nth-child(3), 
+#resultErrorQueryFromdate input:nth-child(4),
+#resultErrorQueryTodate input:nth-child(4), 
+#resultErrorQueryFromdate input:nth-child(5),
+#resultErrorQueryTodate input:nth-child(5) { 
+    width: 2.5em;
+}
+
+#resultErrorConfirmComment span, 
+#resultErrorConfirmUser span { 
+    font-size: 18px;
+    white-space: pre;
+}
+
+#resultErrorConfirmComment input { 
+    width: 50em;
+    font-size: 18px;
+}
+
+#resultErrorConfirmUser input { 
+    width: 25em;
+    font-size: 18px;
+}
+***/
+
+/**
+ * Tables
+ */
+#MachineResultError-table table * {
+    border: 1px solid #000;
+}
+
+#MachineResultError-table table thead * {
+    background: rgb(150,150,150);
+}
+
+#MachineResultError-table table td, 
+#MachineResultError-table table th{
+    font-size: 18px;
+    white-space: pre;
+    padding: 3px 3px 3px 3px;
+}
+
+#MachineResultError-table table td:nth-child(1) {
+    width: 40px;
+    text-align: center;
+}
+#MachineResultError-table table td:nth-child(2) {
+    width: 9em;
+}
+#MachineResultError-table table td:nth-child(3) {
+    width: 3.5em;
+    text-align: center;
+}
+#MachineResultError-table table td:nth-child(4) {
+    width: 15em;
+}
+#MachineResultError-table table td:nth-child(5) {
+    width: 2.5em;
+    text-align: center;
+}
+#MachineResultError-table table td:nth-child(6) {
+    width: 15em;
+}
+#MachineResultError-table table td:nth-child(7) {
+    width: 5em;
+}

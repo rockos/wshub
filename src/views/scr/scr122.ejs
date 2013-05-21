@@ -30,7 +30,7 @@
 
     <table id="main_table">
       <tr>
-        <td colspan="4">
+        <td colspan="3">
           <div id="linegraph01"></div>
         </td>
       </tr>
@@ -51,52 +51,108 @@
       -->
       <tr>
         <td>
-          <canvas id="gauge02" width="250" height="200"></canvas>
+          <canvas id="gauge02" width="200" height="200"></canvas>
         </td>
         <td>
-          <canvas id="gauge03" width="250" height="200"></canvas>
+          <canvas id="gauge03" width="200" height="200"></canvas>
         </td>
         <td>
-          <canvas id="gauge04" width="250" height="200"></canvas>
-        </td>
-        <td>
+          <canvas id="gauge04" width="200" height="200"></canvas>
         </td>
       </tr>
       <tr>
-        <td colspan="2">
+        <td>
+          <div id="slider01Value"><%= accelerator[0] %></div>
+          <div id="slider01"></div>
+        </td>
+        <td>
+          <div id="slider02Value"><%= accelerator[1] %></div>
+          <div id="slider02"></div>
+        </td>
+        <td>
+          <div id="slider03Value"><%= accelerator[2] %></div>
+          <div id="slider03"></div>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="2" rowspan="2">
           <div id="machineSw">
-            <input type="radio" id="machineSw-auto" name="mcsw" 
+            <input type="radio" id="machineSw-auto" name="machsw" 
             <% if(status == 1) { %>
               checked
             <% } %>
             /><label for="machineSw-auto">自動</label>
-            <input type="radio" id="machineSw-manu" name="mcsw" 
+            <input type="radio" id="machineSw-manu" name="machsw" 
             <% if(status != 1 && status != 0) { %>
               checked
             <% } %>
             /><label for="machineSw-manu">手動</label>
-            <input type="radio" id="machineSw-mnte" name="mcsw" 
+            <input type="radio" id="machineSw-mnte" name="machsw" 
             <% if(status == 0) { %>
               checked
             <% } %>
             /><label for="machineSw-mnte">保守</label>
           </div>
         </td>
-        <td colspan="2" rowspan="2">
-          <div id="slider01Value"><%= accelerator[0] %></div>
-          <div id="slider01"></div>
-          <div id="slider02Value"><%= accelerator[1] %></div>
-          <div id="slider02"></div>
-          <div id="slider03Value"><%= accelerator[2] %></div>
-          <div id="slider03"></div>
+        <td colspan="1">
+          <div id="machineOL">
+            <input type="radio" id="machineOL_ON" name="machol" 
+            <% if(status == 1) { %>
+              checked
+            <% } %>
+            /><label for="machineOL_ON">ON</label>
+            <input type="radio" id="machineOL_OFF" name="machol" 
+            <% if(status != 1 ) { %>
+              checked
+            <% } %>
+            /><label for="machineOL_OFF">OFF</label>
+          </div>
         </td>
       </tr>
       <tr>
-        <td colspan="2">
-          <label for="">方角</label><div id="direction01"></div>
+        <td colspan="1">
+          <div id="machineST">
+            <input type="radio" id="machineST_BUSY" name="machst" 
+            <% if(act == 1) { %>
+              checked
+            <% } %>
+            /><label for="machineST_BUSY">動作中</label>
+            <input type="radio" id="machineST_IDLE" name="machst" 
+            <% if(act == 0) { %>
+              checked
+            <% } %>
+            /><label for="machineST_IDLE">待機中</label>
+            <input type="radio" id="machineST_EROR" name="machst" 
+            <% if(act != 1 && act != 0) { %>
+              checked
+            <% } %>
+            /><label for="machineST_EROR">エラー</label>
+          </div>
         </td>
       </tr>
     </table>
+
+    <table id="machineView">
+      <tr>
+        <th>方角</th>
+        <td><span class="drcstr"></span><div class="drc"></div></td>
+        <th>走行</th>
+        <td><div class="run"></div></td>
+        <th>昇降</th>
+        <td><div class="vat"></div></td>
+      </tr>
+      <tr>
+        <th>故障回数</th>
+        <td><div class="num"></div></td>
+        <th>走行（累計）</th>
+        <td><div class="runs"></div></td>
+        <th>昇降（累計）</th>
+        <td><div class="vats"></div></td>
+      </tr>
+    </table>
+
+
+
   </div>
 </form>
 

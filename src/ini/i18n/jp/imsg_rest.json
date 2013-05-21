@@ -1,0 +1,17 @@
+{
+ "0" : {"text" : "GET正常", "HTTPstatus":"200"}
+,"1" : {"text" : "POST正常", "HTTPstatus":"201"}
+,"2" : {"text" : "規定外のメソッドタイプです", "HTTPstatus":"400"}
+,"3" : {"text" : "規定外のボタンです", "HTTPstatus":"400"}
+,"4" : {"text" : "IDの取得に失敗しました", "HTTPstatus":"401"}
+,"11" : {"text" : "URLが不正です。", "HTTPstatus":"400"}
+,"12" : {"text" : "パラメータが不正です。", "HTTPstatus":"400"}
+,"21" : {"text" : "数値が無効です。", "HTTPstatus":"400"}
+,"22" : {"text" : "日付が無効です。", "HTTPstatus":"400"}
+,"23" : {"text" : "サイズが大きすぎます。", "HTTPstatus":"400"}
+,"98" : {"text" : "システム設定ファイルエラー", "HTTPstatus":"500"}
+,"99" : {"text" : "データベースエラー", "HTTPstatus":"500"}
+,"100" : {"text" : "その他エラー", "HTTPstatus":"500"}
+,"101" :{"text" : "機械Noが存在しません。", "HTTPstatus":"404"}
+,"102" :{"text" : "データが存在しません。", "HTTPstatus":"404"}
+}

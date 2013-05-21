@@ -5,6 +5,13 @@ var fs = require('fs');
  */
 var DEMO = {};
 DEMO.status = 0; /* 0:保守 1:自動 2:手動 */
+DEMO.act = 0; /* 0:idle 1:busy 2:error */
+DEMO.run = 0;
+DEMO.vat = 0;
+DEMO.runs = 387642;
+DEMO.vats = 8612;
+DEMO.num = 0;
+
 DEMO.onlineGw = 0; /* 0:切断 1:通信 */
 DEMO.generation = []; /* メータの値 */
 DEMO.generation[0] = 0;
@@ -12,9 +19,9 @@ DEMO.generation[1] = 0;
 DEMO.generation[2] = 0;
 DEMO.generation[3] = 0;
 DEMO.accelerator = []; /* スライドバーの値 */
-DEMO.accelerator[0] = 50;
-DEMO.accelerator[1] = 5;
-DEMO.accelerator[2] = 150;
+DEMO.accelerator[0] = 30;
+DEMO.accelerator[1] = 50;
+DEMO.accelerator[2] = 170;
 
 /**
  * doSync finally
@@ -63,6 +70,7 @@ function showData(args, nextDo) {
     var req = args.req, res = args.res, posts = args.posts;
 
     args.posts.status = DEMO.status;
+    args.posts.act = DEMO.act;
     args.posts.generation = DEMO.generation;
     args.posts.accelerator = DEMO.accelerator;
     nextDo(null, args);
@@ -253,9 +261,9 @@ var demoGauge03 = function(){
     var rand = Math.floor( Math.random() * 200 );
     var rand2 = Math.floor( Math.random() * 2 );
     if (rand2 <= 0) {
-        DEMO.generation[2] = DEMO.accelerator[1]*100 + rand;
+        DEMO.generation[2] = DEMO.accelerator[1]*10 + rand;
     } else {
-        DEMO.generation[2] = DEMO.accelerator[1]*100 - rand;
+        DEMO.generation[2] = DEMO.accelerator[1]*10 - rand;
     }
     lcsSOCK.io().of('/scr/122').emit("gauge03", {"value": DEMO.generation[2]});
     setTimeout(demoGauge03,300);
@@ -282,18 +290,91 @@ var sendClient = function(){
     });
     setTimeout(sendClient, 300);
 }
-var demoDirection01 = function() {
-    var rand = Math.floor( Math.random() * 360 );
-    var str = ["北","北東","東","南東","南","南西","西","北東"];
+var demoDirection01 = function(x) {
+    if (typeof x == 'undefined') {
+        x = 0;
+    }
+    if (x >= 360) {
+        x = 0;
+    }
+    //var rand = Math.floor( Math.random() * 360 );
+    var str = ["北","北東","北東","東","東","南東","南東","南","南","南西","南西","西","西","北西","北西"];
     var strIdx = 0;
-    var BS = 360/8;
-    strIdx = Math.floor(rand/BS);
-    if (strIdx == 8) {
+    var BS = 360/16;
+    //strIdx = Math.floor(rand/BS);
+    strIdx = Math.floor(x/BS);
+    if (strIdx >= 16) {
         strIdx = 0;
     }
 
-    lcsSOCK.io().of('/scr/122').emit("direction01", {"value": rand, "str": str[strIdx]});
-    setTimeout(demoDirection01, 1000);
+    lcsSOCK.io().of('/scr/122').emit("direction01", {"value": x, "str": str[strIdx]});
+    x++;
+    setTimeout(function(){
+        demoDirection01(x);
+    }, 1000);
+}
+var demoMachine = function() {
+    //DEMO.status = 0; /* 0:保守 1:自動 2:手動 */
+    if (DEMO.status == 1) {
+        if (DEMO.act == 0) {
+            var rand = Math.floor( Math.random() * 10 );
+            if (rand == 1) {
+                DEMO.act = 1;
+            }
+        } else if (DEMO.act == 1) {
+            var rand = Math.floor( Math.random() * 40 );
+            if (rand == 1) {
+                DEMO.act = 0;
+                DEMO.run = 0;
+                DEMO.vat = 0;
+            } else if (rand == 2) {
+                DEMO.act = 2;
+                DEMO.num++;
+                DEMO.run = 0;
+                DEMO.vat = 0;
+            }
+        } else {
+            var rand = Math.floor( Math.random() * 10 );
+            if (rand == 1) {
+                DEMO.act = 0;
+            }
+        }
+        lcsSOCK.io().of('/scr/122').emit("machine01", {"status": 1, "act": DEMO.act});
+    } else {
+        DEMO.act = 0;
+        lcsSOCK.io().of('/scr/122').emit("machine01", {"status": 0, "act": DEMO.act});
+    }
+    setTimeout(function(){
+        demoMachine();
+    }, 500);
+}
+var demoMachine2 = function(x) {
+    if (typeof x == 'undefined') {
+        x = 0;
+    }
+    if (DEMO.act == 1) {
+        DEMO.run++;
+        DEMO.runs++;
+        DEMO.vat++;
+        DEMO.vats++;
+    }
+    if (DEMO.runs >= 1000000) {
+        DEMO.runs = 0;
+    }
+    if (DEMO.vats >= 100000) {
+        DEMO.vats = 0;
+    }
+
+    lcsSOCK.io().of('/scr/122').emit("machine02", {
+        "run": DEMO.run, 
+        "vat": DEMO.vat, 
+        "num": DEMO.num,
+        "runs": DEMO.runs,
+        "vats": DEMO.vats
+    });
+    setTimeout(function(){
+        demoMachine2(x);
+    }, 300);
 }
 /**
  *  加速度センサGWとの通信
@@ -411,6 +492,11 @@ exports.sockMain = function(){
     demoGauge04();
     sendClient();
     
+    // 機械モニタデモ
+    demoMachine();
+    demoMachine2();
+
+
     // 加速度センサGW
     //accelerGw2();
     //sendClient();

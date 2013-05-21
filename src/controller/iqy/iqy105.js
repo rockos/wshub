@@ -201,6 +201,7 @@ function dataJiss(args, callback) {
     td = new Date(y,m-1,nd.getDay());
 
     if( xd.getFullYear() >= td.getFullYear() && xd.getMonth() > td.getMonth() ) {
+
         callback( null, args );
         return;
     }
@@ -234,7 +235,7 @@ jiss_date: Date
 
     var sql = "select count(*) as docs from test_results " + 
         "where jiss_name='法人' " +
-        "  and jiss_date >= ? and jiss_date < ?";
+        "  and jiss_date2 >= ? and jiss_date2 < ?";
     var bind = new Array();
 
     var fmt = function(y,m,d) {
@@ -257,7 +258,7 @@ jiss_date: Date
             
             var sql = "select count(*) as docs from test_results " + 
                 "where jiss_name='個人' " +
-                "  and jiss_date >= ? and jiss_date < ?";
+                "  and jiss_date2 >= ? and jiss_date2 < ?";
             
             lcsDb.query(sql, bind, function(err, results, fields) {
                     if (err) {
@@ -270,7 +271,7 @@ jiss_date: Date
                     
                     var sql = "select count(*) as docs from test_results " + 
                         "where jiss_name='ビジター' " +
-                        "  and jiss_date >= ? and jiss_date < ?";
+                        "  and jiss_date2 >= ? and jiss_date2 < ?";
                     
                     lcsDb.query(sql, bind, function(err, results, fields) {
                             if (err) {

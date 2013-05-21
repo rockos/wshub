@@ -39,6 +39,7 @@ var g1 = $.extend(true, {}, lcsLinegraph);
 
 $(function() {
     /* on loading */
+    /*
     g1.dataInit(
         { id: "#graph2"
          ,margin:{
@@ -57,6 +58,7 @@ $(function() {
         }
     );
     g1.graphDraw();
+    */
     /*
     var g2 = $.extend(true, {}, lcsBargraph);
     g2.id = "#graph3";
@@ -74,6 +76,7 @@ $(function() {
 });
 
 function test2test() {
+    /*
     if(gi >= xWide) {
         dataArr.shift();
     }
@@ -96,6 +99,7 @@ function test2test() {
     setTimeout(function(){
         test2test();
     },500);
+    */
 }
 
 /**
@@ -120,9 +124,90 @@ window.addEventListener("load", function(){
     lcsBargraph.dataInit();
     lcsBargraph.graphDraw();
     */
-    lineGraph();
-    dataTable();
+    //lineGraph();
+    //dataTable();
+    var grp = lcsStaticGraph.create("#graph2");
+    grp
+    .setConfig({
+        margin:{
+            top: 30
+            ,right: 100
+            ,bottom: 40
+            ,left: 40
+        }
+        ,WIDTH: 850
+        ,HEIGHT: 300
+        ,legend: {draw:true, posiX:750, posiY:10}
+        ,yMax: 100
+        ,yText: "稼働率(%)"
+        ,color: {face:"#fff",back:"#000"}
+        ,gCaption: {text: "グラフ　テスト", color: "#fff" }
+        ,xCaption: {text: "Ｘ軸", color: "#fff" }
+        ,yCaption: {text: "Ｙ軸", color: "#fff" }
+    })
+    .setCategorie(['2013/1','2013/2','2013/3','2013/4','2013/5','2013/6','2013/7','2013/8','2013/9','2013/10','2013/11','2013/12'])
+    .setData([43,23,15,67,46,83,13,53,34,96,34,56], "Label-A")
+    .setData([34,67,42,16,89,34,56,12,78,32,66,98], "Label-B")
+    .setData([78,45,67,34,11,21,98,34,16,23,88,11], "Label-C")
+    .draw()
+    ;
+    var grp2 = lcsStaticGraph.create("#graph3");
+    grp2.setConfig({
+        margin:{
+            top: 40
+            ,right: 60
+            ,bottom: 30
+            ,left: 40
+        }
+        ,WIDTH: 400
+        ,HEIGHT: 200
+        ,legend: {posiX:300, posiY:10}
+        ,__height: 300
+        ,yMax: 10
+        ,yText: ""
+        ,dMax: 101
+        ,color: {face:"#000",back:"#fff"}
+        ,caption: "グラフ　テスト"
+        ,xxxx: "xxxx"
+    });
+    grp2.setCategorie(['blue','red','pink','sky','green']);
+    grp2.setData([1,2,3,4,5], "Label-A");
+    grp2.setData([2,3,4,5,6], "Label-B");
+    grp2.draw();
+    ;
+
+    var seg7 = lcs7seg.create("#graph1");
+    seg7.init({
+        fig: 2,
+        span: 6,
+        ratio: 3,
+        color: "#fff",
+        backColor: "#000"
+    });
+    var test7seg = function(v) {
+        seg7.draw(v);
+        if (v==99) {v=0;}
+        setTimeout(function(){
+            v++;
+            test7seg(v);
+        },500);
+    }
+    test7seg(0);
+    
+    setTimeout(function(){
+        grp.clear()
+        .setCategorie(['2013/1','2013/2','2013/3','2013/4','2013/5','2013/6','2013/7','2013/8','2013/9','2013/10','2013/11','2013/12'])
+        .setData([11,27,32,46,58,69,59,43,34,23,19,5], "Label-A")
+        .setData([96,82,79,62,55,49,56,62,78,86,91,98], "Label-B")
+        .draw();
+    },5000);
+    
 },false);
+
+/**
+ *  Static graph
+ */
+
 
 /*
  *  折れ線グラフ

@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>Rockos WEB API Demo Screen</title>
+    <link rel='stylesheet' href='/stylesheets/html5reset.css' />
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <link rel="stylesheet" href="/stylesheets/jquery-ui/jquery-ui-1.9.2.custom.min.css" />
+    <link rel="stylesheet" href="/rockos-rest.css" />
+    <link rel="stylesheet" href="/snowshoe-Machine.css" />
+
+    <script type="text/javascript" src="/javascripts/jquery-1.8.3.min.js"></script>
+    <script type="text/javascript" src="/javascripts/gauge.min.js"></script>
+    <script type="text/javascript" src="/javascripts/jquery.gauge.min.js"></script>
+    <script type="text/javascript" src="/javascripts/jquery-ui-1.9.2.custom.min.js"></script>
+    <script type="text/javascript" src="/javascripts/d3.v3.min.js"></script>
+    <script type="text/javascript" src="/javascripts/hogan-2.0.0.js"></script>
+    <script type="text/javascript" src="/javascripts/rcs/libgraph.min.js"></script>
+    <script type="text/javascript" src="/rockos-rest.js"></script>
+    <script type="text/javascript" src="/snowshoe-Machine.js"></script>
+
+</head>
+
+<body>
+
+<div id="body">
+    <div id="resultErrorQueryMachineNo">(machine no)</div>
+
+    <div id="resultErrorQueryFromdate">(from date)</div>
+
+    <div id="resultErrorQueryTodate">(to date)</div>
+    
+    <div id="resultErrorQuery">
+        <input type="button" id="resultErrorGet" value="表示">
+    </div>
+
+    <div id="resultErrorQueryEmessage" title="エラーメッセージ"></div>
+
+    <div id="MachineResultError-table"></div>
+    <script type="text/template" id="MachineResultError-template">
+    <table>
+        <thead>
+            <tr>
+                <td></td>
+                <td>エラー日時</td>
+                <td>コード</td>
+                <td>エラー内容</td>
+                <td>確認</td>
+                <td>確認内容</td>
+                <td>確認者</td>
+            </tr>
+        </thead>
+        <tbody>
+           {{#recode}}
+            <tr>
+                <td><input type="radio" name="resultError" value="{{id}}"></td>
+                <td>{{fmtdate}}</td>
+                <td>{{code}}</td>
+                <td>{{errorText}}</td>
+                <td>{{decodeConfirm}}</td>
+                <td>{{confirmComment}}</td>
+                <td>{{confirmUser}}</td>
+            </tr>
+           {{/recode}}
+        </tbody>
+    </table>
+    </script>
+
+    <div id="resultErrorConfirmComment">(comment)</div>
+
+    <div id="resultErrorConfirmUser">(user)</div>
+
+    <div id="resultErrorPost">
+        <input type="button" id="resultErrorPostSend" value="実行">
+    </div>
+</div>
+
+
+
+<div id="header">
+    <div class="company"><a href="#">Rockos WEB API Demo Screen</a></div>
+    <p class="comment">powerd by snowshoe</p>
+    <a href="/snowshoe-Machinestatus.htm">機械ステータスへ移動</a>
+</div>
+
+<div id="footer">
+    <h3>Copyright (C) Rockos co.,Ltd. All Rights Reserved.</h3>
+</div>
+
+
+<script type="text/javascript">
+<!--
+$(function() {
+    $("#resultErrorGet").bind("click", function() {
+        MachineResultError_GetSend();
+    });
+    $("#resultErrorPostSend").bind("click", function() {
+        MachineResultError_PostSend();
+    });
+
+    var field = new rockosCreateField();
+    field.machineNo("#resultErrorQueryMachineNo", "機械No：")
+         .dateTimeA("#resultErrorQueryFromdate", "検索開始日時：")
+         .dateTimeA("#resultErrorQueryTodate", "検索終了日時：")
+         .confirmComment("#resultErrorConfirmComment", "コメント：")
+         .confirmUser("#resultErrorConfirmUser", "確認者：")
+         ;
+
+});
+//-->
+</script>
+
+
+</body>
+</html>
+
