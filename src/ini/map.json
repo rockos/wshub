@@ -179,6 +179,14 @@
    "ejs":"layout.ejs",
    "parmit":1
 },
+"upf401":{
+  "path" : "/src/controller/upf/upf401", 
+  "msg":{
+        "/scr/401" : "main"
+        },
+   "ejs":"layout.ejs",
+   "parmit":1
+},
 "mnt501":{
   "path" : "/src/controller/mnt/501/mnt501", 
   "msg":{

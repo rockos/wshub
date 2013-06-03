@@ -1,0 +1,40 @@
+<% layout('layout') -%>
+<%- stylesheet('/stylesheets/cstm/401.css') -%>
+
+<script type="text/javascript" src="/javascripts/rcs/libsocket.js"></script>
+<script type="text/javascript">
+var socket = io.connect("/error");
+sockEventShowError(socket);
+
+socket.on("debugz", function (data) {
+});
+
+</script>
+
+<form name="main_form" method="post" action="/scr/401">
+  <input type="hidden" name="clientID" id="clientID" value="" />
+  <input type="hidden" name="nameSpace" id="nameSpace" value="" />
+
+  <div id="sub_body">
+    <p class=""><a href="#"><%= pageTags.caption %></a></p>
+    <ul>
+      <li><input type="submit" name="send_iqy" value="<%= pageTags.send_iqy %>"></li>
+    </ul>
+  </div>
+
+  <div id="main_body">
+
+    <div id="mesg_bar" class="mesg_bar <%= mesg_level_color %>"><%= mesg %></div>
+    <img src="data:image/png;base64,<%= item[0].image %>" />
+
+  </div>
+
+</form>
+
+<form name="upf_form" method="post" enctype="multipart/form-data" action="/scr/401">
+    <input type="file" name="fileX">
+    <input type="submit" name="send_add" value="<%= pageTags.send_add %>">
+
+</form>
+
+<div id="debugtxt"></div>

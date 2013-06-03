@@ -6,7 +6,7 @@
     <link rel='stylesheet' href='/stylesheets/html5reset.css' />
     <link rel='stylesheet' href='/stylesheets/style.css' />
     <link rel="stylesheet" href="/stylesheets/jquery-ui/jquery-ui-1.9.2.custom.min.css" />
-    <link rel="stylesheet" href="/rockos-rest.css" />
+    <link rel="stylesheet" href="/stylesheets/rockos-rest.css" />
     <link rel="stylesheet" href="/snowshoe-Machine.css" />
 
     <script type="text/javascript" src="/javascripts/jquery-1.8.3.min.js"></script>
@@ -15,8 +15,7 @@
     <script type="text/javascript" src="/javascripts/jquery-ui-1.9.2.custom.min.js"></script>
     <script type="text/javascript" src="/javascripts/d3.v3.min.js"></script>
     <script type="text/javascript" src="/javascripts/hogan-2.0.0.js"></script>
-    <script type="text/javascript" src="/javascripts/rcs/libgraph.min.js"></script>
-    <script type="text/javascript" src="/rockos-rest.js"></script>
+    <script type="text/javascript" src="/javascripts/rcs/rockos-rest.js"></script>
     <script type="text/javascript" src="/snowshoe-Machine.js"></script>
 
 </head>
@@ -53,7 +52,8 @@
         <tbody>
            {{#recode}}
             <tr>
-                <td><input type="radio" name="resultError" value="{{id}}"></td>
+                <td><input type="radio" name="resultError" value="{{id}}" 
+                    onclick="resultErrorClicked({confirmComment:'{{confirmComment}}', confirmUser:'{{confirmUser}}'});"></td>
                 <td>{{fmtdate}}</td>
                 <td>{{code}}</td>
                 <td>{{errorText}}</td>
@@ -81,6 +81,7 @@
     <div class="company"><a href="#">Rockos WEB API Demo Screen</a></div>
     <p class="comment">powerd by snowshoe</p>
     <a href="/snowshoe-Machinestatus.htm">機械ステータスへ移動</a>
+    <a href="/snowshoe-MachineRegister.htm">シーケンサ</a>
 </div>
 
 <div id="footer">
@@ -90,6 +91,11 @@
 
 <script type="text/javascript">
 <!--
+function resultErrorClicked(x) {
+   $("#resultErrorConfirmComment input").val(x.confirmComment);
+   $("#resultErrorConfirmUser input").val(x.confirmUser);
+}
+
 $(function() {
     $("#resultErrorGet").bind("click", function() {
         MachineResultError_GetSend();
@@ -98,14 +104,13 @@ $(function() {
         MachineResultError_PostSend();
     });
 
-    var field = new rockosCreateField();
-    field.machineNo("#resultErrorQueryMachineNo", "機械No：")
-         .dateTimeA("#resultErrorQueryFromdate", "検索開始日時：")
-         .dateTimeA("#resultErrorQueryTodate", "検索終了日時：")
-         .confirmComment("#resultErrorConfirmComment", "コメント：")
-         .confirmUser("#resultErrorConfirmUser", "確認者：")
-         ;
-
+    var field = rcsCreateField.create();
+    field.toText("#resultErrorQueryMachineNo", {length: 2, type: "ascii", caption: "機械No："})
+        .dateTime("#resultErrorQueryFromdate", {format: "YYYY/MM/DD hh:mm",caption: "検索開始日時："})
+        .dateTime("#resultErrorQueryTodate", {format: "YYYY/MM/DD hh:mm",caption: "検索終了日時："})
+        .toText("#resultErrorConfirmComment", {length: 50, type: "multipleByte", caption: "コメント："})
+        .toText("#resultErrorConfirmUser", {length: 25, type: "multipleByte", caption: "確認者："})
+        ;
 });
 //-->
 </script>

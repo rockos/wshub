@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>Rockos WEB API Demo</title>
+    <link rel='stylesheet' href='/stylesheets/html5reset.css' />
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <link rel="stylesheet" href="/stylesheets/rockos-rest.css" />
+    <link rel="stylesheet" href="/stylesheets/cstm/122.css" />
+    <link rel="stylesheet" href="/snowshoe-Machine.css" />
+
+    <script type="text/javascript" src="/javascripts/jquery-1.8.3.min.js"></script>
+    <script type="text/javascript" src="/javascripts/d3.v3.min.js"></script>
+    <script type="text/javascript" src="/javascripts/hogan-2.0.0.js"></script>
+    <script type="text/javascript" src="/javascripts/rcs/libgraph-0.1.1.min.js"></script>
+    <script type="text/javascript" src="/javascripts/rcs/rockos-rest.js"></script>
+    <script type="text/javascript" src="/snowshoe-Machine.js"></script>
+</head>
+
+<body>
+
+<div id="body">
+    <div id="ErrorMessage" title="エラーメッセージ"></div>
+    <table id="machineView">
+        <tr>
+            <th>電力</th>
+            <td><div id="ss1"></div></td>
+            <th>回転数</th>
+            <td><div id="ss2"></div></td>
+        </tr>
+        <tr>
+            <th>温度</th>
+            <td><div id="ss3"></div></td>
+            <th>圧力</th>
+            <td><div id="ss4"></div></td>
+        </tr>
+        <tr>
+            <th>エラー</th>
+            <td colspan="5"><div class=""></div></td>
+        </tr>
+    </table>
+    <div id="MachineRegister-table"></div>
+    <script type="text/template" id="MachineRegister-template">
+    <table>
+        <thead>
+            <tr>
+                <td>Address</td>
+                <td>0</td>
+                <td>1</td>
+                <td>2</td>
+                <td>3</td>
+                <td>4</td>
+                <td>5</td>
+                <td>6</td>
+                <td>7</td>
+                <td>8</td>
+                <td>9</td>
+            </tr>
+        </thead>
+        <tbody>
+           {{#register}}
+            <tr>
+                <td>{{addr}}</td>
+                <td>{{r0}}</td>
+                <td>{{r1}}</td>
+                <td>{{r2}}</td>
+                <td>{{r3}}</td>
+                <td>{{r4}}</td>
+                <td>{{r5}}</td>
+                <td>{{r6}}</td>
+                <td>{{r7}}</td>
+                <td>{{r8}}</td>
+                <td>{{r9}}</td>
+            </tr>
+           {{/register}}
+        </tbody>
+    </table>
+    </script>
+</div>
+<div id="header">
+    <div class="company"><a href="/">Rockos WEB API Demo Screen</a></div>
+    <p class="comment">powerd by snowshoe</p>
+    <a href="/snowshoe-MachineResultError.htm">エラー履歴</a>
+    <a href="/snowshoe-Machinestatus.htm">機械ステータスへ移動</a>
+</div>
+
+<div id="footer">
+    <h3>Copyright (C) Rockos co.,Ltd. All Rights Reserved.</h3>
+</div>
+
+<script>
+$(function() {
+    initRockosMachineRegister();
+});
+</script>
+
+
+</body>
+</html>
+
