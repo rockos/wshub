@@ -97,7 +97,7 @@ function testUpdate(args, nextDo) {
     args.adt.oper = 'ADD';
     args.adt.udat = dt.toLocaleString();
 
-    console.log(args.adt);
+    //console.log(args.adt);
 
     lcsAp.correct(args, [
                   insItem,
@@ -145,12 +145,10 @@ var postData = function (args, nextDo) {
         }
 
         args.posts.item = [];
-        console.log(args.posts);
         for (var i = 0, imax = stock_rows.length; i < imax; i++) {
             args.posts.item[i] = {};
             args.posts.item[i].image = stock_rows[i].image;
         }
-        console.log(args.posts);
         nextDo( null, args );
     });
 };

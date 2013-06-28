@@ -57,6 +57,7 @@ exports.postData = function (args, nextDo) {
     }
     sql += "order by l.address ";
 
+
     lcsDb.query(sql, bind, function(err, results, fields) {
         if (err) {
             args.errmsg = lcsAp.getMsgI18N(99);

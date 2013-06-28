@@ -204,7 +204,6 @@ exports.main = function(req, res, frame){
         "*" : errDisp
     };
 
-
     var posts = {};
     try {
         posts = lcsAp.initPosts(req, frame);

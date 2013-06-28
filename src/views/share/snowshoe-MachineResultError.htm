@@ -17,26 +17,7 @@
     <script type="text/javascript" src="/javascripts/hogan-2.0.0.js"></script>
     <script type="text/javascript" src="/javascripts/rcs/rockos-rest.js"></script>
     <script type="text/javascript" src="/snowshoe-Machine.js"></script>
-
-</head>
-
-<body>
-
-<div id="body">
-    <div id="resultErrorQueryMachineNo">(machine no)</div>
-
-    <div id="resultErrorQueryFromdate">(from date)</div>
-
-    <div id="resultErrorQueryTodate">(to date)</div>
-    
-    <div id="resultErrorQuery">
-        <input type="button" id="resultErrorGet" value="表示">
-    </div>
-
-    <div id="resultErrorQueryEmessage" title="エラーメッセージ"></div>
-
-    <div id="MachineResultError-table"></div>
-    <script type="text/template" id="MachineResultError-template">
+    <script type="text/template" id="MachineResultError-template" src="temple-error.js">
     <table>
         <thead>
             <tr>
@@ -65,6 +46,24 @@
         </tbody>
     </table>
     </script>
+</head>
+
+<body>
+
+<div id="body">
+    <div id="resultErrorQueryMachineNo">(machine no)</div>
+
+    <div id="resultErrorQueryFromdate">(from date)</div>
+
+    <div id="resultErrorQueryTodate">(to date)</div>
+    
+    <div id="resultErrorQuery">
+        <input type="button" id="resultErrorGet" value="表示">
+    </div>
+
+    <div id="resultErrorQueryEmessage" title="エラーメッセージ"></div>
+
+    <div id="MachineResultError-table"></div>
 
     <div id="resultErrorConfirmComment">(comment)</div>
 

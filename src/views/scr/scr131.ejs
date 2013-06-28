@@ -1,13 +1,57 @@
 <% layout('layout') -%>
 <%- stylesheet('/stylesheets/cstm/131.css') -%>
+<%- stylesheet('/stylesheets/rockos-rest.css') -%>
 
 <script type="text/javascript" src="/javascripts/d3.v3.min.js"></script>
+<script type="text/javascript" src="/javascripts/jquery-ui-1.9.2.custom.min.js"></script>
 <script type="text/javascript" src="/javascripts/rcs/libgraph-0.1.1.min.js"></script>
 <script type="text/javascript" src="/javascripts/rcs/libsocket.min.js"></script>
+<script type="text/javascript" src="/javascripts/rcs/rockos-rest2.js"></script>
 <!--
 <script type="text/javascript" src="/javascripts/cstm/min/scr131.min.js"></script>
 -->
 <script type="text/javascript" src="/javascripts/cstm/scr131.js"></script>
+
+<script type="text/javascript">
+$(function() {
+    field = rcsCreateField.create();
+    field.toText("#f1", {width: 250, length: 2, type: "ascii", caption: "フィールド1："});
+    field.toText("#f2", {width: 250, length: 8, type: "ascii", caption: "フィールド2："});
+    field.toText("#f3", {width: 250, length: 6, type: "ascii", caption: "フィールド3："});
+    field.toText("#f4", {width: 250, length: 8, type: "ascii", caption: "フィールド4："});
+    field.toText("#f5", {width: 250, length: 9, type: "ascii", caption: "フィールド5："});
+    field.toText("#f6", {width: 250, length: 8, type: "ascii", caption: "フィールド6："});
+    field.toText("#f7", {length: 8, type: "ascii", caption: "フィールド7："});
+    field.toText("#f8", {length: 20, type: "ascii", caption: "フィールド8："});
+    field.toText("#f9", {length: 20, type: "multipleByte", caption: "フィールド９９："});
+    field.dateTime("#t1", {format: "YYYY/MM/DD hh:mm", caption: "　　日付1："});
+    field.dateTime("#t2", {format: "YYYY/MM/DD", caption: "　　日付2："});
+    var Ldata = [
+        {key:'a',value:'りんご'},
+        {key:'b',value:'みかん'},
+        {key:'c',value:'なし'},
+        {key:'d',value:'いちご'},
+        {key:'e',value:'れもん'},
+        {key:'f',value:'くり'},
+        {key:'g',value:'ぶどう'}
+        ];
+    field.toListbox("#l1", Ldata, {caption: "リストボックス1："});
+    field.toCheckbox("#c1", Ldata, {caption: "チェックボックス1："});
+    field.toRadiobox("#r1", Ldata, {caption: "ラジオボックス1："});
+
+    posi = rcsPositionField.create("#field-parent",
+        [
+         ["#f4","#f5","#f6"],
+         ["#f1","#f2","#f3"],
+         ["#f9", "#l1"],
+         ["#t1", "#t2"],
+         ["#f8", "#f7"],
+         ["#r1"],
+         ["#c1"]
+        ]);
+});
+</script>
+
 
 <form name="main_form" method="post" action="/scr/131">
   <input type="hidden" name="clientID" id="clientID" value="" />
@@ -24,6 +68,23 @@
   <div id="main_body">
 
     <div id="mesg_bar" class="mesg_bar <%= mesg_level_color %>"><%= mesg %></div>
+
+    <fieldset id="field-parent" style="border:1px solid black; width:800px;margin: 5px;">
+        <div id="f1"></div>
+        <div id="f2"></div>
+        <div id="f3"></div>
+        <div id="f4"></div>
+        <div id="f5"></div>
+        <div id="f6"></div>
+        <div id="f7"></div>
+        <div id="f8"></div>
+        <div id="f9"></div>
+        <div id="t1"></div>
+        <div id="t2"></div>
+        <div id="l1"></div>
+        <div id="c1"></div>
+        <div id="r1"></div>
+    </fieldset>
 
     <div id="graph1"></div>
     <div id="graph2"></div>
