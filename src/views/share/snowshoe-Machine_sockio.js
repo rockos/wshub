@@ -1,39 +1,10 @@
 'use strict'
-
-var globalURL = "";
-
-/**
- * URL config reading
- */
-$.getJSON('./snowshoe-config.json', function(conf) {
-    var url = "http://192.168.0.1",
-        port = "";
-
-    if (typeof conf.serverURL === 'string' && conf.serverURL.length ) {
-        url = conf.serverURL;
-    }
-    if (typeof conf.serverPort === 'string') {
-        var nnn = parseInt(conf.serverPort);
-        if (isNaN(nnn)) port = "";
-        else port = "" + conf.serverPort;
-    } else if (typeof conf.serverPort === 'number') {
-        port = conf.serverPort;
-    } else {
-        port = "";
-    }
-    globalURL = url;
-    if (port.length) {
-        globalURL += ":" + port;
-    }
-    //console.log(globalURL);
-});
-
 /**
  *  snowshoe-MachineResultError.htm
  */
 
 var MachineResultError_GetSend = function() {
-    var url = globalURL + '/v1/rest/machine/result/error',
+    var url = 'http://rockos.co.jp:3008/v1/rest/machine/result/error',
         methodType = 'GET',
         args = {};
     var pack = rcsPackedField.create();
@@ -58,7 +29,7 @@ var MachineResultError_GetSend = function() {
 };
 
 var MachineResultError_PostSend = function() {
-    var url = globalURL + '/v1/rest/machine/result/error',
+    var url = 'http://rockos.co.jp:3008/v1/rest/machine/result/error',
         methodType = 'POST',
         args = {};
     var pack = new rcsPackedField();
@@ -120,13 +91,12 @@ var initRockosMachineRegister = function() {
     }
 
     var MachineRegister_GetSend = function() {
-        var url = globalURL + '/v1/rest/machine/register',
+        var url = 'http://rockos.co.jp:3008/v1/rest/machine/register',
             methodType = 'GET',
             args = {
                 channel : 1,
-                address : "0:50,100:60", // bb srvhttp only
-                addrs : "0,100", // rockos.co.jp snowshoe only
-                width : "60,60", // rockos.co.jp snowshoe only
+                address : "0,100",
+                width : "60,60",
             };
         rcsRestSend({url:url, methodType:methodType, args:args}, function(err, data){
             if (err) {
@@ -188,6 +158,7 @@ var initRockosMachineStatus = function() {
     var tempMc = rcs7seg.create('#tempMc');
     var pressMc = rcs7seg.create('#pressMc');
     var LG1 = rcsDynamicLineGraph.create("#linegraph01");
+    var socket122 = io.connect("http://rockos.co.jp:3008/scr/122");
 
     $("#gauge01").gauge({
         min: 0,
@@ -294,7 +265,7 @@ var initRockosMachineStatus = function() {
     // Events
 
     var MachineStatus_GetSend = function() {
-        var url = globalURL + '/v1/rest/machine/status',
+        var url = 'http://rockos.co.jp:3008/v1/rest/machine/status',
             methodType = 'GET',
             args = {
                 'machineNo': 1,
@@ -315,7 +286,7 @@ var initRockosMachineStatus = function() {
             revNum.setDraw(data.revNum-0);
             tempMc.setDraw(data.tempMc-0);
             pressMc.setDraw(data.pressMc-0);
-            LG1.setMovePoint([data.elePow,data.revNum,data.tempMc,data.pressMc]);
+            //LG1.setMovePoint([data.elePow,data.revNum,data.tempMc,data.pressMc]);
             $("#machineView div.errorText").html(data.errorText);
             if (data.switch == true) {
                 $("#machineSW_ON").attr("checked",true);
@@ -344,5 +315,8 @@ var initRockosMachineStatus = function() {
     }
     getData(1);
 
+    socket122.on("graph01", function (data) {
+       LG1.setMovePoint([data.valueX,data.valueY,data.valueZ]);
+    });
 };
 
