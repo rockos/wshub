@@ -1,40 +1,55 @@
 <% layout('layout') -%>
-<%- stylesheet('/stylesheets/cstm/401.css') -%>
+<div class="container-fluid">
+   <div class="row-fluid">
+      <div class="span3">
+      <!--Sidebar content-->
+      <form>
+      <fieldset>
+         <legend><span class="glyphicon glyphicon-cutlery"></span>キッチンアイランド</legend>
+         <span class="help-block">地域を選択できます。</span>
+         <!--
+         <label>Label name</label>
+         <input type="text" placeholder="Type something…">
+         <label class="checkbox">
+            <input type="checkbox"> Check me out
+         </label>
+         <label>エリア指定</label>
+         -->
+         <select multiple="multiple" size="4" name="sel_area">
+         <% for (var i=0, max = pageNavi.area.length; i < max; i++) { %>
+         <option value="<%= pageNavi.area[i].val %>"><%= pageNavi.area[i].name %></option>
+         <% } %>
+         </select>
+         <span class="help-block">種別を選択できます。</span>
+         <select multiple="multiple" size="4" name="sel_area">
+         <% for (var i=0, max = pageNavi.catg.length; i < max; i++) { %>
+         <option value="<%= pageNavi.catg[i].val %>"><%= pageNavi.catg[i].name %></option>
+         <% } %>
+         </select>
+         <button type="button" class="btn btn-primary">選択</button>
 
-<script type="text/javascript" src="/javascripts/rcs/libsocket.js"></script>
-<script type="text/javascript">
-var socket = io.connect("/error");
-sockEventShowError(socket);
-
-socket.on("debugz", function (data) {
-});
-
-</script>
-
-<form name="main_form" method="post" action="/scr/401">
-  <input type="hidden" name="clientID" id="clientID" value="" />
-  <input type="hidden" name="nameSpace" id="nameSpace" value="" />
-
-  <div id="sub_body">
-    <p class=""><a href="#"><%= pageTags.caption %></a></p>
-    <ul>
-      <li><input type="submit" name="send_iqy" value="<%= pageTags.send_iqy %>"></li>
-    </ul>
-  </div>
-
-  <div id="main_body">
-
-    <div id="mesg_bar" class="mesg_bar <%= mesg_level_color %>"><%= mesg %></div>
-    <img src="data:image/png;base64,<%= item[0].image %>" />
-
-  </div>
-
-</form>
-
-<form name="upf_form" method="post" enctype="multipart/form-data" action="/scr/401">
-    <input type="file" name="fileX">
-    <input type="submit" name="send_add" value="<%= pageTags.send_add %>">
-
-</form>
-
-<div id="debugtxt"></div>
+      </fieldset>
+      </form>
+      </div>
+      
+      <div class="span9">
+      <!--Body content-->
+      <table class="table table-striped table-bordered table-condensed">
+      <thead>
+         <tr><th>概要</th><th>紹介文</th><th>場所</th><th>URL</th></tr>
+      </thead>
+      <tbody>
+         <% for (var i=0, max = pageNavi.wslist.length; i < max; i++) { %>
+         <tr>
+            <td><span class="badge badge-success"><%= i+1 %></span>
+            <%= pageNavi.wslist[i].name %></td>
+            <td><%= pageNavi.wslist[i].desc %></td>
+            <td><%= pageNavi.wslist[i].place %></td>
+            <td><a href="<%= pageNavi.wslist[i].href %>">link</a></td>
+         </tr>
+         <% } %>
+      </tbody>
+      </table>
+      </div>
+   </div>
+</div>

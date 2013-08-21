@@ -1,48 +1,55 @@
 <% layout('layout') -%>
-<%- stylesheet('/stylesheets/cstm/500.css') -%>
+<div class="container-fluid">
+   <div class="row-fluid">
+      <div class="span3">
+      <!--Sidebar content-->
+      <form>
+      <fieldset>
+         <legend><span class="glyphicon glyphicon-cutlery"></span>キッチンアイランド</legend>
+         <span class="help-block">地域を選択できます。</span>
+         <!--
+         <label>Label name</label>
+         <input type="text" placeholder="Type something…">
+         <label class="checkbox">
+            <input type="checkbox"> Check me out
+         </label>
+         <label>エリア指定</label>
+         -->
+         <select multiple="multiple" size="4" name="sel_area">
+         <% for (var i=0, max = pageNavi.area.length; i < max; i++) { %>
+         <option value="<%= pageNavi.area[i].val %>"><%= pageNavi.area[i].name %></option>
+         <% } %>
+         </select>
+         <span class="help-block">種別を選択できます。</span>
+         <select multiple="multiple" size="4" name="sel_area">
+         <% for (var i=0, max = pageNavi.catg.length; i < max; i++) { %>
+         <option value="<%= pageNavi.catg[i].val %>"><%= pageNavi.catg[i].name %></option>
+         <% } %>
+         </select>
+         <button type="button" class="btn btn-primary">選択</button>
 
-<form name="main_form" method="post" action="/scr/501">
-
-  <div id="sub_body">
-    <ul>
-      <li><input type="submit" class="send" name="501a" value="登録画面"><li>
-      <li><input type="submit" class="send" name="501m" value="修正画面"><li>
-      <li><input type="submit" class="send" name="501d" value="削除画面"><li>
-    </ul>
-  </div>
-
-  <div id="main_body">
-    <div class="mesg_bar">
-      <span class="= mesg_level_color "><%= mesg %></span>
-    </div>
-<!--
-    <table class="cond201">
-      <colgroup>
-        <col span="5" class="c1">
-        <col span="20" class="c2">
-        <tr>
-          <th>新規登録</th>
-          <td>新規ユーザのプロファイルを登録する画面です。</td>
-        </tr>
-        <tr>
-          <th>プロファイル修正</th>
-          <td>既存ユーザのプロファイルを修正する画面です。</td>
-        </tr>
-        <tr>
-          <th>プロファイル削除</th>
-          <td>既存ユーザのプロファイルを削除する画面です。</td>
-        </tr>
-    </table>
--->
-<dl>
-          <dt>新規登録</dt>
-          <dd>新規ユーザのプロファイルを登録する画面です。</dd>
-
-          <dt>プロファイル修正</dt>
-          <dd>既存ユーザのプロファイルを修正する画面です。</dd>
-
-          <dt>プロファイル削除</dt>
-          <dd>既存ユーザのプロファイルを削除する画面です。</dd>
-</dl>
-  </div>
-</form>
+      </fieldset>
+      </form>
+      </div>
+      
+      <div class="span9">
+      <!--Body content-->
+      <table class="table table-striped table-bordered table-condensed">
+      <thead>
+         <tr><th>概要</th><th>紹介文</th><th>場所</th><th>URL</th></tr>
+      </thead>
+      <tbody>
+         <% for (var i=0, max = pageNavi.wslist.length; i < max; i++) { %>
+         <tr>
+            <td><span class="badge badge-success"><%= i+1 %></span>
+            <%= pageNavi.wslist[i].name %></td>
+            <td><%= pageNavi.wslist[i].desc %></td>
+            <td><%= pageNavi.wslist[i].place %></td>
+            <td><a href="<%= pageNavi.wslist[i].href %>">link</a></td>
+         </tr>
+         <% } %>
+      </tbody>
+      </table>
+      </div>
+   </div>
+</div>

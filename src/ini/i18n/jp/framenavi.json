@@ -1,46 +1,26 @@
-{"customer":"Web倉庫"
+{"customer":"Web workshop HUB"
 ,"comment":"powerd by snowshoe"
-,"name":"WEBトランクルーム"
+,"name":"Workshop Mama"
 ,"topMenu":[
- {"name":"入庫",
-        "subMenu":[
-        {"href":"/scr/201","name":"入荷予約"}
-        ,{"href":"/scr/202","name":"入庫"}
+ {"name":"ILANDS",
+   "href":"#"
+        ,"subMenu":[
+        {"href":"/scr/201","name":"キッチン"}
+        ,{"href":"/scr/202","name":"セラピー"}
+        ,{"href":"/scr/201","name":"Maker"}
         ]
- }
-, {"name":"出庫",
-        "subMenu":[
-        {"href":"/scr/301","name":"計画"}
-        ,{"href":"/scr/302","name":"計画出庫"}
-        ,{"href":"/scr/303","name":"例外出庫"}
-        ,{"href":"/scr/310","name":"棚卸"}
-        ]
- }
-, {"name":"検索",
-        "subMenu":[
-        {"href":"/scr/106","name":"実績照会"}
-        ,{"href":"/scr/113","name":"空棚検索"}
-        ,{"href":"/scr/110","name":"在庫検索"}
-        ,{"href":"/scr/701","name":"利用明細"}
-        ,{"href":"/scr/401","name":"画像"}
-        ]
- }
-, {"name":"環境モニタ",
-        "subMenu":[
-        {"href":"/scr/104","name":"グラフ(Dynamic)"}
-        ,{"href":"/scr/105","name":"グラフ(static)"}
-        ,{"href":"/scr/103","name":"マップ"}
-        ,{"href":"/scr/901","name":"シーケンサ"}
-        ,{"href":"/scr/122","name":"機械モニタ"}
-        ,{"href":"/scr/903","name":"機械 操作"}
-        ,{"href":"/scr/904","name":"パズル"}
-        ]
- }
-, {"name":"ユーザー",
-        "subMenu":[
-        {"href":"/logout","name":"ログアウト"}
-        ,{"href":"/scr/501","name":"プロファイル"}
-        ]
+ },
+ {"name":"SkillMap",
+   "href":"/scr/401"
+        ,"subMenu":{}
+ },
+ {"name":"市民掲示板",
+   "href":"/scr/301"
+        ,"subMenu":{}
+ },
+ {"name":"Shop",
+   "href":"/scr/501"
+        ,"subMenu":{}
  }
 ]
 }
