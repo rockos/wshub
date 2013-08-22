@@ -1,0 +1,26 @@
+{"customer":"Web workshop HUB"
+,"comment":"powerd by snowshoe"
+,"name":"Workshop Mama"
+,"topMenu":[
+ {"name":"ILANDS",
+   "href":"#"
+        ,"subMenu":[
+        {"href":"/scr/201","name":"キッチン"}
+        ,{"href":"/scr/202","name":"セラピー"}
+        ,{"href":"/scr/201","name":"Maker"}
+        ]
+ },
+ {"name":"SkillMap",
+   "href":"/scr/401"
+        ,"subMenu":{}
+ },
+ {"name":"市民掲示板",
+   "href":"/scr/301"
+        ,"subMenu":{}
+ },
+ {"name":"Shop",
+   "href":"/scr/501"
+        ,"subMenu":{}
+ }
+]
+}

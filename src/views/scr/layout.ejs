@@ -5,11 +5,25 @@
 <title><% frameNavi.name %></title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="">
-<meta name="author" content="">
+<meta name="author" content="rockos.co.jp">
 
 <!-- Le styles -->
 <link href="/stylesheets/bootstrap/bootstrap.css" rel="stylesheet">
 <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css" rel="stylesheet">
+<!--
+<link href="/stylesheets/bootstrap/bootstrap-responsive.css" rel="stylesheet">
+-->
+<!-- Fav and touch icons -->
+<link rel="apple-touch-icon-precomposed" sizes="144x144" 
+   href="/images/ico/apple-touch-icon-144-precomposed.png">
+<link rel="apple-touch-icon-precomposed" sizes="114x114" 
+   href="/images/ico/apple-touch-icon-114-precomposed.png">
+<link rel="apple-touch-icon-precomposed" sizes="72x72" 
+   href="/images/ico/apple-touch-icon-72-precomposed.png">
+<link rel="apple-touch-icon-precomposed" 
+   href="/images/ico/apple-touch-icon-57-precomposed.png">
+<link rel="shortcut icon" href="/images/ico/favicon.png">
+
 <style type="text/css">
 body {
     padding-top: 60px;
@@ -28,131 +42,128 @@ float: none;
     }
 }
 </style>
-<link href="/stylesheets/bootstrap/bootstrap-responsive.css" rel="stylesheet">
 
 <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
 <!--[if lt IE 9]>
 <script src="/javascriptsi/bootstrap/gi/html5shiv.js"></script>
 <![endif]-->
 
-<!-- Fav and touch icons -->
-<link rel="apple-touch-icon-precomposed" sizes="144x144" href="/images/ico/apple-touch-icon-144-precomposed.png">
-<link rel="apple-touch-icon-precomposed" sizes="114x114" href="/images/ico/apple-touch-icon-114-precomposed.png">
-<link rel="apple-touch-icon-precomposed" sizes="72x72" href="/images/ico/apple-touch-icon-72-precomposed.png">
-<link rel="apple-touch-icon-precomposed" href="/images/ico/apple-touch-icon-57-precomposed.png">
-<link rel="shortcut icon" href="/images/ico/favicon.png">
 </head>
 
 <body>
-<div class="navbar navbar-inverse navbar-fixed-top">
-<div class="navbar-inner">
-<div class="container-fluid">
-   <button type="button" class="btn btn-navbar" 
-       data-toggle="collapse" data-target=".nav-collapse">
-      <span class="icon-bar"></span>
-      <span class="icon-bar"></span>
-      <span class="icon-bar"></span>
-   </button>
-   <a class="brand" href="/"><%= frameNavi.name %></a>
-   <div class="nav-collapse collapse">
-        <ul class="nav">
-          <% for (var i = 0, max = frameNavi.topMenu.length; i < max; i++) { %>
+<nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggle" 
+            data-toggle="collapse" data-target=".navbar-ex1-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="/"><%= frameNavi.name %></a>
+    </div>
+    <div class="collapse navbar-collapse navbar-ex1-collapse">
+        <ul class="nav navbar-nav">
+            <% for (var i = 0, max = frameNavi.topMenu.length; i < max; i++) { %>
             <li class="dropdown">
-               <% if (frameNavi.topMenu[i].subMenu.length) { %>
-               <a href="<%= frameNavi.topMenu[i].href %>" 
-                   class="dropdown-toggle" data-toggle="dropdown">
-                   <%= frameNavi.topMenu[i].name %><b class="caret"></b></a>
-               <ul class="dropdown-menu">
-                  <% for (var j = 0, 
-                     maxj = frameNavi.topMenu[i].subMenu.length; j < maxj; j++) { %>
-                          <li><a href="<%= frameNavi.topMenu[i].subMenu[j].href %>">
-                       <%= frameNavi.topMenu[i].subMenu[j].name %></a></li>
-                  <% } %>
-               </ul>
-               <% } else { %>
-               <a href="<%= frameNavi.topMenu[i].href %>" 
-                   class="dropdown-toggle" >
-                   <%= frameNavi.topMenu[i].name %></a>
-               <% } %>
+            <% if (frameNavi.topMenu[i].subMenu.length) { %>
+            <a href="<%= frameNavi.topMenu[i].href %>" 
+                class="dropdown-toggle" data-toggle="dropdown">
+                <%= frameNavi.topMenu[i].name %><b class="caret"></b></a>
+            <ul class="dropdown-menu">
+                <% for (var j = 0, 
+                maxj = frameNavi.topMenu[i].subMenu.length; j < maxj; j++) { %>
+                <li><a href="<%= frameNavi.topMenu[i].subMenu[j].href %>">
+                    <%= frameNavi.topMenu[i].subMenu[j].name %></a></li>
+                <% } %>
+            </ul>
+            <% } else { %>
+            <a href="<%= frameNavi.topMenu[i].href %>" 
+                class="dropdown-toggle" >
+                <%= frameNavi.topMenu[i].name %></a>
+            <% } %>
             </li>
-          <% } %>
-          <li class="dropdown">
-          <a href="#" class="dropdown-toggle" 
-              data-toggle="dropdown">About <b class="caret"></b></a>
-          <ul class="dropdown-menu">
-              <li><a href="#">Action</a></li>
-              <li><a href="#">Another action</a></li>
-              <li><a href="#">Something else here</a></li>
-              <li class="divider"></li>
-              <li class="nav-header">Nav header</li>
-              <li><a href="#">Separated link</a></li>
-              <li><a href="#">One more separated link</a></li>
-          </ul>
-          </li>
+            <% } %>
+            <li class="dropdown">
+            <a href="#" class="dropdown-toggle" 
+                data-toggle="dropdown">About <b class="caret"></b></a>
+            <ul class="dropdown-menu">
+                <li><a href="#">Action</a></li>
+                <li><a href="#">Another action</a></li>
+                <li><a href="#">Something else here</a></li>
+                <li class="divider"></li>
+                <li class="nav-header">Nav header</li>
+                <li><a href="#">Separated link</a></li>
+                <li><a href="#">One more separated link</a></li>
+            </ul>
+            </li>
 
-      </ul>
-         <!-- <p class="navbar-text pull-right">
+        </ul>
+        <!-- <p class="navbar-text pull-right">
          <p class="navbar-text">
          こんにちは <a><%= frameNavi.userid %> さん</a>
          </p>
          -->
-      <form class="navbar-form pull-right" method="get" action="/signout">
+        <form class="navbar-form pull-right" method="get" action="/signout">
             <span class="glyphicon glyphicon-user">
                 こんにちは</span> <a><%= frameNavi.userid %> さん</a>
-          <!--
-          <input class="span2" type="text" placeholder="Email">
-          <input class="span2" type="password" placeholder="Password">
-         -->
-         <button type="submit" class="btn btn-info">Sign out</button>
-      </form>
-
+            <button type="submit" class="btn btn-info">Sign out</button>
+        </form>
+     </div>
    </div><!--/.nav-collapse -->
+</nav> <!-- nav -->
+      
+<div class="row">
+    <div class="col-md-4">
+        <script type="text/javascript"><!--
+google_ad_client = "ca-pub-4104980544511181";
+        /* sub_link_md */
+            google_ad_slot = "4896693156";
+        google_ad_width = 468;
+        google_ad_height = 15;
+        //-->
+        </script>
+        <script type="text/javascript"
+src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+        </script>
+    </div>
 </div>
-</div>
-</div>
-      <div class="row">
-      <div class="span12">
-      <script type="text/javascript"><!--
-      google_ad_client = "ca-pub-4104980544511181";
-      /* main_head */
-      google_ad_slot = "9593394754";
-      google_ad_width = 970;
-      google_ad_height = 90;
-      //-->
-      </script>
-      <script type="text/javascript"
-      src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
-      </script>
-      </div>
-      </div>
-   <hr>
+<hr>
+<div class="container">
    <div id="body">
       <%- body %>
    </div>
+</div>
 <hr>
-
+<nav class="navbar navbar-default " role="navigation">
+    <div class="collapse navbar-collapse navbar-ex1-collapse">
+        <ul class="nav navbar-nav">
+            <li><a href="#">会社概要</a></li>
+            <li><a href="#">利用規約</a></li>
+            <li><a href="#">プライバシー</a></li>
+       </ul>
+    </div>
+</nav>
 <footer>
-<p>&copy; 2013 Rockos co.,ltd. All Rights Reserved</p>
+    <p>&copy; 2013 Rockos co.,ltd. All Rights Reserved</p>
 </footer>
-
-</div><!--/.fluid-container-->
-
+<!--
+</div> --><!--/.fluid-container-->
 <!-- Le javascript
 ================================================== -->
 <!-- Placed at the end of the document so the pages load faster -->
-<script src="/javascripts/bootstrap/jquery.js"></script>
-<script src="/javascripts/bootstrap/bootstrap-transition.js"></script>
-<script src="/javascripts/bootstrap/bootstrap-alert.js"></script>
-<script src="/javascripts/bootstrap/bootstrap-modal.js"></script>
-<script src="/javascripts/bootstrap/bootstrap-dropdown.js"></script>
-<script src="/javascripts/bootstrap/bootstrap-scrollspy.js"></script>
-<script src="/javascripts/bootstrap/bootstrap-tab.js"></script>
-<script src="/javascripts/bootstrap/bootstrap-tooltip.js"></script>
-<script src="/javascripts/bootstrap/bootstrap-popover.js"></script>
-<script src="/javascripts/bootstrap/bootstrap-button.js"></script>
-<script src="/javascripts/bootstrap/bootstrap-collapse.js"></script>
-<script src="/javascripts/bootstrap/bootstrap-carousel.js"></script>
-<script src="/javascripts/bootstrap/bootstrap-typeahead.js"></script>
+<script src="/javascripts/bootstrap/bootstrap.min.js"></script>
+<script src="/javascripts/jquery.js"></script>
+<script src="/javascripts/bootstrap/transition.js"></script>
+<script src="/javascripts/bootstrap/alert.js"></script>
+<script src="/javascripts/bootstrap/modal.js"></script>
+<script src="/javascripts/bootstrap/dropdown.js"></script>
+<script src="/javascripts/bootstrap/scrollspy.js"></script>
+<script src="/javascripts/bootstrap/tab.js"></script>
+<script src="/javascripts/bootstrap/tooltip.js"></script>
+<script src="/javascripts/bootstrap/popover.js"></script>
+<script src="/javascripts/bootstrap/button.js"></script>
+<script src="/javascripts/bootstrap/collapse.js"></script>
+<script src="/javascripts/bootstrap/carousel.js"></script>
 
 </body>
 </html>

@@ -166,10 +166,11 @@ process.on('uncaughtException', function(error) {
     lcsAp.syslog('error', 'uncaughtException trace: ' + error.stack);
    console.log('error '+error.stack);
 });
-
+/*
 lcsSOCK.config(
              {map: ROOTDIR + '/src/ini/sockmap.json'}
 );
+*/
 /**
   socket.io create
   this is for express@v3 

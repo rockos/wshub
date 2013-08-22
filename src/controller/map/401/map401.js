@@ -1,6 +1,5 @@
 'use strict';
 /* common file include */
-
 /* local file */
 
 
@@ -366,7 +365,7 @@ function modStr(req, res, posts) {
 function _showResult(req, res, frame) {
 
     var posts = {};
-    var file = ROOTDIR + '/src/ini/data/brd301ini.json';
+    var file = ROOTDIR + '/src/ini/data/map401ini.json';
     var msg = lcsAp.getMsgI18N("0");
     posts.mesg = msg.text;
     posts.mesg_lavel_color = msg.warn;
@@ -382,7 +381,7 @@ function _showResult(req, res, frame) {
     posts.pageNavi = JSON.parse(require('fs').readFileSync(file));
     posts.pageNavi.userid = req.session.userid ? req.session.userid: 'undefined'; 
 
-    res.render('scr/scr301', posts);
+    res.render('scr/scr401', posts);
 
 
 };
@@ -396,7 +395,7 @@ function _showResult(req, res, frame) {
  */
 function _showInitial(req, res, frame){
     var posts = {};
-    var file = ROOTDIR + '/src/ini/data/brd301ini.json';
+    var file = ROOTDIR + '/src/ini/data/map401ini.json';
 
     var msg = lcsAp.getMsgI18N("0");
     posts.mesg = msg.text;
@@ -414,7 +413,7 @@ function _showInitial(req, res, frame){
     posts.pageNavi.userid = req.session.userid ? req.session.userid: 'undefined'; 
 
 
-    res.render("scr/scr301", posts);
+    res.render("scr/scr401", posts);
 };
 
 
@@ -424,27 +423,37 @@ function _showInitial(req, res, frame){
  *
  */
 exports.main = function(req, res, frame){
+   var url = require('url')
     
     var tof = {/* Table of function for each button */
         "201_QRY" : _showResult,
         "201d_RTN" : _showInitial
     };
 
-
+   var param = {};
     /*
-lcsAp.syslog('info', '懸念を表明する');
-lcsAp.syslog('notice', '強い懸念を表明する');
-lcsAp.syslog('error', '強い遺憾の意を示す');
-    */
-    for (var key in tof) {
-        if (req.body[key]) {
-            //    lcsAp.syslog('error', 'error from str', {'key':key});
-            if (typeof tof[key] === "function") {
-                tof[key](req, res, frame);
-                return;
-            }
-        }
-    }
+     * lcsAp.syslog('info', '懸念を表明する');
+     * lcsAp.syslog('notice', '強い懸念を表明する');
+     * lcsAp.syslog('error', '強い遺憾の意を示す');
+     */
+   debugger;
+   if (req.method == 'GET') {
+      param =  url.parse(req.url, true)
+      if (param.query.profile) {
+         _showInitial(req, res, frame);
+      }
+   } else {
+   
+       for (var key in tof) {
+           if (req.body[key]) {
+               //    lcsAp.syslog('error', 'error from str', {'key':key});
+               if (typeof tof[key] === "function") {
+                   tof[key](req, res, frame);
+                   return;
+               }
+           }
+       }
+   }
     _showInitial(req, res, frame);
 
 };
