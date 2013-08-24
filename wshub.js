@@ -129,7 +129,10 @@ lcsUI.config([
 ]);
 
 /* ルーティング処理 */
-app.get('/', lcsUI.signin);
+/* app.get('/', lcsUI.signin);
+*/
+app.get('/', lcsUI.doAction);
+app.get('/signin', lcsUI.signin);
 app.get('/signout', lcsUI.signout);
 app.get('/scr/:id', lcsUI.doAction);
 app.get('/404', lcsUI.notFound);

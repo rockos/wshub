@@ -5,26 +5,23 @@
       <!--Sidebar content-->
       <form>
       <fieldset>
-         <legend><span class="glyphicon glyphicon-cutlery"></span>キッチンアイランド</legend>
+         <legend><span class="glyphicon glyphicon-cutlery">
+         </span>キッチンアイランド</legend>
          <span class="help-block">地域を選択できます。</span>
-         <!--
-         <label>Label name</label>
-         <input type="text" placeholder="Type something…">
-         <label class="checkbox">
-            <input type="checkbox"> Check me out
-         </label>
-         <label>エリア指定</label>
-         -->
-         <select multiple="multiple" size="4" name="sel_area">
-         <% for (var i=0, max = pageNavi.area.length; i < max; i++) { %>
-         <option value="<%= pageNavi.area[i].val %>"><%= pageNavi.area[i].name %></option>
+         <select class="form-control" name="sel_area">
+            <% for (var i=0, max = pageNavi.area.length; i < max; i++) { %>
+               <option value="<%= pageNavi.area[i].val %>">
+               <%= pageNavi.area[i].name %>
+               </option>
          <% } %>
          </select>
          <span class="help-block">種別を選択できます。</span>
-         <select multiple="multiple" size="4" name="sel_area">
-         <% for (var i=0, max = pageNavi.catg.length; i < max; i++) { %>
-         <option value="<%= pageNavi.catg[i].val %>"><%= pageNavi.catg[i].name %></option>
-         <% } %>
+         <select class="form-control" name="sel_area">
+            <% for (var i=0, max = pageNavi.catg.length; i < max; i++) { %>
+            <option value="<%= pageNavi.catg[i].val %>">
+               <%= pageNavi.catg[i].name %>
+            </option>
+            <% } %>
          </select>
          <button type="button" class="btn btn-primary">選択</button>
 

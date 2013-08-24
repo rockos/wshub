@@ -1,5 +1,29 @@
 {
-"brd301":{
+"mgr":{
+  "path" : "/src/controller/mgr/mgr",
+   "msg":{
+          "/" : "main"
+         },
+   "ejs":"layout.ejs",
+   "parmit":0
+   }
+,"mgr601":{
+  "path" : "/src/controller/mgr/600/mgr600",
+   "msg":{
+          "/scr/601" : "main"
+         },
+   "ejs":"layout.ejs",
+   "parmit":0
+   }
+,"mgr651":{
+  "path" : "/src/controller/mgr/600/mgr600",
+   "msg":{
+          "/scr/651" : "main"
+         },
+   "ejs":"layout.ejs",
+   "parmit":0
+   }
+,"brd301":{
   "path" : "/src/controller/brd/301/brd301",
    "msg":{
           "/scr/301" : "main"

@@ -5,31 +5,26 @@
       <!--Sidebar content-->
       <form role="form">
       <fieldset>
-         <legend><span class="glyphicon glyphicon-pushpin"></span>市民掲示板</legend>
+         <legend><span class="glyphicon glyphicon-pushpin">
+            </span>市民掲示板</legend>
          <span class="help-block">地域を選択できます。</span>
-         <select multiple="multiple" size="4" name="sel_area">
-         <% for (var i=0, max = pageNavi.area.length; i < max; i++) { %>
-         <option value="<%= pageNavi.area[i].val %>"><%= pageNavi.area[i].name %></option>
-         <% } %>
+         <select class="form-control" name="sel_area">
+            <% for (var i=0, max = pageNavi.area.length;
+               i < max; i++) { %>
+            <option value="<%= pageNavi.area[i].val %>">
+               <%= pageNavi.area[i].name %></option>
+            <% } %>
          </select>
          <span class="help-block">種別を選択できます。</span>
-         <select multiple="multiple" size="4" name="sel_area">
-         <% for (var i=0, max = pageNavi.catg.length; i < max; i++) { %>
-         <option value="<%= pageNavi.catg[i].val %>"><%= pageNavi.catg[i].name %></option>
+         <select class="form-control" name="sel_area">
+         <% for (var i=0, max = pageNavi.catg.length;
+            i < max; i++) { %>
+            <option value="<%= pageNavi.catg[i].val %>">
+               <%= pageNavi.catg[i].name %></option>
          <% } %>
          </select>
          <button type="button" class="btn btn-primary">選択</button>
 
-         <div class="dropdown">
-         <!-- Link or button to toggle dropdown -->
-         <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
-         <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Action</a></li>
-         <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Another action</a></li>
-         <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Something else here</a></li>
-         <li role="presentation" class="divider"></li>
-         <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Separated link</a></li>
-         </ul>
-         </div>
 
       </fieldset>
       </form>

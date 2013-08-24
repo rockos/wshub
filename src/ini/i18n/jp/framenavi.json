@@ -1,8 +1,9 @@
 {"customer":"Web workshop HUB"
 ,"comment":"powerd by snowshoe"
 ,"name":"Workshop Mama"
+,"signin":"false"
 ,"topMenu":[
- {"name":"ILANDS",
+ {"name":"アイランド",
    "href":"#"
         ,"subMenu":[
         {"href":"/scr/201","name":"キッチン"}
@@ -18,9 +19,12 @@
    "href":"/scr/301"
         ,"subMenu":{}
  },
- {"name":"Shop",
-   "href":"/scr/501"
-        ,"subMenu":{}
+ {"name":"会員メニュー",
+   "href":"#"
+        ,"subMenu":[
+        {"href":"/scr/601","name":"Wrokshop 管理"}
+        ,{"href":"/scr/651","name":"個人設定"}
+        ]
  }
 ]
 }

@@ -3,102 +3,9 @@
 
 /* local file */
 
-
-/*
- * Mar-25-2012
- */
-function showPart(req, res, posts) {
-
-
-    var sql ='select * from part order by pcode';
-    var results, fields;
-    
-    
-    lcsDb.query(sql, function(err, results, fields) {
-            if (err){
-                console.log('err: ' + err);
-            };
-
-
-            posts.tab = results;
-            for( var i=0,max=posts.tab.length; i<max; i++ ) {
-                posts.tab[i].radiodata = 
-                    posts.tab[i].pcode + "," +
-                    posts.tab[i].sqty + "," +
-                    posts.tab[i].pnam + "," +
-                    posts.tab[i].lotn + "," +
-                    posts.tab[i].mem1 + "," +
-                    posts.tab[i].mem2 + "," +
-                    posts.tab[i].mem3;
-            }
-
-            posts.frameNavi.userid = (req.session.userid)? req.session.userid:'undefined';
-            //            lcsAp.getScrInfI18N(scrinf);
-
-
-            var msg = lcsAp.getMsgI18N("0");
-            posts.mesg = msg.text;
-            posts.mesg_lavel_color = msg.warn;
-
-            /*
-            [posts.mesg, posts.mesg_lavel_color] = lcsAp.getMsgI18N(String(err));
-            */
-            posts.dspcstm = new Array;
-            posts.dspcstm["corp"] = "hidden";
-            posts.dspcstm["priv"] = "hidden";
-            posts.dspcstm["vist"] = "hidden";
-            if( req.method=="POST" ) {
-                switch( req.body.dspcstm ) {
-                case "corp":
-                    posts.dspcstm["corp"] = "";
-                    posts.dspcstm_val = "corp";
-                    break;
-                case "priv":
-                    posts.dspcstm["priv"] = "";
-                    posts.dspcstm_val = "priv";
-                    break;
-                case "vist":
-                    posts.dspcstm["vist"] = "";
-                    posts.dspcstm_val = "vist";
-                    break;
-                case "default":
-                    posts.dspcstm["corp"] = "";
-                    posts.dspcstm_val = "corp";
-                    break;
-                }
-            } else {
-                var str = req.url.replace(/\.+/,'').split('/');
-                switch( str[2] ) {
-                case "201":
-                    posts.dspcstm["corp"] = "";
-                    posts.dspcstm_val = "corp";
-                    break;
-                case "202":
-                    posts.dspcstm["priv"] = "";
-                    posts.dspcstm_val = "priv";
-                    break;
-                case "203":
-                    posts.dspcstm["vist"] = "";
-                    posts.dspcstm_val = "vist";
-                    break;
-                default:
-                    posts.dspcstm["corp"] = "";
-                    posts.dspcstm_val = "corp";
-                    break;
-                }
-            }
-
-            res.render('scr/scr201', posts);
-
-
-        });
-};
-
-
 /*
  *  暫定
  */
-//function dspWin(err, args) {
 function dspWin(args, callback) {
 
     //Login user用
@@ -135,7 +42,7 @@ function dspWin(args, callback) {
         break;
     }
 
-    args.res.render('scr/scr201', args.post);
+    args.res.render('scr/scr601', args.post);
     callback(null, callback);
 }
 /*
@@ -190,13 +97,6 @@ function shoError(args, emsg) {
     args.post.mesg = emsg.text;
     args.res.render('scr/error', args.post);
 };
-/*
-function shoError(args, emsg) {
-    var msgobj = lcsAp.getMsgI18N(emsg);
-    args.post.mesg = msgobj.text;
-    args.res.render('scr/error', args.post);
-};
-*/
 
 var validCheck = {
     err : 0,
@@ -267,106 +167,13 @@ var fin = function(err){
         return;
     }
 }
-/**
- *
- *
- */
-function parseData_add(args, nextExec) {
-    //        var pl = plist;
-    //args.plist = {"pcode","p"};
-    lcsAp.series(args, [validCheck.checkParams, validCheck.checkDb, validCheck.filter], finParse);
-
-    if (args.errors) {
-        nextExec(args.errors, args);
-        return;
-    }
-
-    nextExec( null, args);
-}
-/**
- *
- *
- */
-function parseData_del(args, nextExec) {
-
-    lcsAp.series(args, [validCheck.checkParams_del, validCheck.checkDb], finParse);
-
-    if (args.errors) {
-        nextExec(args.errors, args);
-        return;
-    }
-
-    nextExec( null, args);
-}
-/*
- *
- *
- */
-function addStr(req, res, posts) {
-    
-    /*ex.*/
-    var post = {};
-    var args = {};
-    args.req = req;
-    args.res = res;
-    args.post = posts;
-    args.post.frameNavi.userid =  (req.session.userid)? req.session.userid:'undefined';
-    lcsAp.series(args,
-               [parseData_add, /* 入力チェック*/
-                UPSTR._upAddStr, /* データベース登録 upstr.js */
-                postData,
-                dspWin], /* 後処理 */
-               fin);
-
-}
-
-/*
- * delete inventry
- *
- */
-function delStr(req, res, posts) {
-
-    var args = {};
-    args.req = req;
-    args.res = res;
-    args.post = posts;
-    args.post.frameNavi.userid =  (req.session.userid)? req.session.userid:'undefined';
-
-    lcsAp.series(args,
-               [parseData_del, /* 入力チェック*/
-                UPSTR._upDelStr,
-                postData,
-                dspWin], /* 後処理 */
-               fin);
-
-}
-/*
- * modification of inventry
- *
- */
-function modStr(req, res, posts) {
-
-    var args = {};
-
-    args.req = req;
-    args.res = res;
-    args.post = posts;
-    args.post.frameNavi.userid =  (req.session.userid)? req.session.userid:'undefined';
-
-    lcsAp.sync(args,
-               [parseData, /* 入力チェック*/
-                UPSTR._upModStr,
-                postData], /* 後処理 */
-               dspWin );
-
-}
 /*
  * sep-25-2012
  */
 function _showResult(req, res, frame) {
 
     var posts = {};
-    var file = ROOTDIR + '/src/ini/data/brd301ini.json';
+    var file = ROOTDIR + '/src/ini/data/mgr601ini.json';
     var msg = lcsAp.getMsgI18N("0");
     posts.mesg = msg.text;
     posts.mesg_lavel_color = msg.warn;
@@ -374,15 +181,15 @@ function _showResult(req, res, frame) {
     /* page情報設定 */
     posts.frameNavi = frame.frameNavi;
 
-/*
+
     if (!lcsAp.isSession(req.session)) {
              res.redirect('/');
     }
-   */ 
+    
     posts.pageNavi = JSON.parse(require('fs').readFileSync(file));
     posts.pageNavi.userid = req.session.userid ? req.session.userid: 'undefined'; 
 
-    res.render('scr/scr301', posts);
+    res.render('scr/scr601', posts);
 
 
 };
@@ -396,7 +203,7 @@ function _showResult(req, res, frame) {
  */
 function _showInitial(req, res, frame){
     var posts = {};
-    var file = ROOTDIR + '/src/ini/data/brd301ini.json';
+    var file = ROOTDIR + '/src/ini/data/mgr601ini.json';
 
     var msg = lcsAp.getMsgI18N("0");
     posts.mesg = msg.text;
@@ -405,16 +212,15 @@ function _showInitial(req, res, frame){
     /* page情報設定 */
     posts.frameNavi = frame.frameNavi;
 
-/*
     if (!lcsAp.isSession(req.session)) {
              res.redirect('/');
     }
-    */
+    
     posts.pageNavi = JSON.parse(require('fs').readFileSync(file));
     posts.pageNavi.userid = req.session.userid ? req.session.userid: 'undefined'; 
 
 
-    res.render("scr/scr301", posts);
+    res.render("scr/scr601", posts);
 };
 
 
@@ -426,16 +232,13 @@ function _showInitial(req, res, frame){
 exports.main = function(req, res, frame){
     
     var tof = {/* Table of function for each button */
-        "201_QRY" : _showResult,
+        "201a_RTN" : _showInitial,
+
+        /* message for delete */
         "201d_RTN" : _showInitial
     };
 
 
-    /*
-lcsAp.syslog('info', '懸念を表明する');
-lcsAp.syslog('notice', '強い懸念を表明する');
-lcsAp.syslog('error', '強い遺憾の意を示す');
-    */
     for (var key in tof) {
         if (req.body[key]) {
             //    lcsAp.syslog('error', 'error from str', {'key':key});

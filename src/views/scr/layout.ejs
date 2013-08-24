@@ -83,51 +83,41 @@ float: none;
             <% } %>
             </li>
             <% } %>
+            <!--
             <li class="dropdown">
             <a href="#" class="dropdown-toggle" 
-                data-toggle="dropdown">About <b class="caret"></b></a>
+                data-toggle="dropdown">会員メニュー <b class="caret"></b></a>
             <ul class="dropdown-menu">
-                <li><a href="#">Action</a></li>
+                <li><a href="#">Workshop 管理</a></li>
                 <li><a href="#">Another action</a></li>
                 <li><a href="#">Something else here</a></li>
                 <li class="divider"></li>
-                <li class="nav-header">Nav header</li>
+                <li class="nav-header">個人プロファイル</li>
                 <li><a href="#">Separated link</a></li>
                 <li><a href="#">One more separated link</a></li>
             </ul>
             </li>
+         -->
 
         </ul>
-        <!-- <p class="navbar-text pull-right">
-         <p class="navbar-text">
-         こんにちは <a><%= frameNavi.userid %> さん</a>
-         </p>
-         -->
+        <% if (frameNavi.signin == "false") { %>
+        <form class="navbar-form pull-right" method="get" action="/signin">
+            <span class="glyphicon glyphicon-user">
+                こんにちはゲストさん</span> 
+            <button type="submit" class="btn btn-info">Sign in</button>
+        </form>
+        <% } else { %>
         <form class="navbar-form pull-right" method="get" action="/signout">
             <span class="glyphicon glyphicon-user">
                 こんにちは</span> <a><%= frameNavi.userid %> さん</a>
             <button type="submit" class="btn btn-info">Sign out</button>
         </form>
+
+        <% } %>
      </div>
    </div><!--/.nav-collapse -->
 </nav> <!-- nav -->
       
-<div class="row">
-    <div class="col-md-4">
-        <script type="text/javascript"><!--
-google_ad_client = "ca-pub-4104980544511181";
-        /* sub_link_md */
-            google_ad_slot = "4896693156";
-        google_ad_width = 468;
-        google_ad_height = 15;
-        //-->
-        </script>
-        <script type="text/javascript"
-src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
-        </script>
-    </div>
-</div>
-<hr>
 <div class="container">
    <div id="body">
       <%- body %>

@@ -373,10 +373,11 @@ function _showResult(req, res, frame) {
     /* page情報設定 */
     posts.frameNavi = frame.frameNavi;
 
-
+/*
     if (!lcsAp.isSession(req.session)) {
              res.redirect('/');
     }
+    */
     
     posts.pageNavi = JSON.parse(require('fs').readFileSync(file));
     posts.pageNavi.userid = req.session.userid ? req.session.userid: 'undefined'; 
@@ -404,10 +405,11 @@ function _showInitial(req, res, frame){
     /* page情報設定 */
     posts.frameNavi = frame.frameNavi;
 
-
+/*
     if (!lcsAp.isSession(req.session)) {
              res.redirect('/');
     }
+    */
     
     posts.pageNavi = JSON.parse(require('fs').readFileSync(file));
     posts.pageNavi.userid = req.session.userid ? req.session.userid: 'undefined'; 
