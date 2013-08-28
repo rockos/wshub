@@ -26,6 +26,7 @@
     "websocket.io":"0.2.x",
     "socket.io-client":"0.9.x",
     "winston":"0.6.x",
-    "serialport":"1.1.0"
+    "serialport":"1.1.0",
+    "aws-sdk":"1.5.x"
   }
 }

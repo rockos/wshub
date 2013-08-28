@@ -25,6 +25,10 @@
         {"href":"/scr/601","name":"Wrokshop 管理"}
         ,{"href":"/scr/651","name":"個人設定"}
         ]
+ },
+ {"name":"お問い合せ",
+   "href":"/scr/620"
+        ,"subMenu":{}
  }
 ]
 }

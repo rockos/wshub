@@ -7,18 +7,12 @@
    "ejs":"layout.ejs",
    "parmit":0
    }
-,"mgr601":{
+,"mgr600":{
   "path" : "/src/controller/mgr/600/mgr600",
    "msg":{
           "/scr/601" : "main"
-         },
-   "ejs":"layout.ejs",
-   "parmit":0
-   }
-,"mgr651":{
-  "path" : "/src/controller/mgr/600/mgr600",
-   "msg":{
-          "/scr/651" : "main"
+         , "/scr/620" : "main"
+          ,"/scr/651" : "main"
          },
    "ejs":"layout.ejs",
    "parmit":0

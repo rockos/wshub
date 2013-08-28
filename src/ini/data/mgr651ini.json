@@ -1,0 +1,24 @@
+{"dummy": "hoge"
+,"title": "スキルマップ"
+,"scrhead": "This screen is for form test."
+,"comment":"個人のスキル紹介ページ"
+,"sklist":[
+ {"name": "ABC","desc":"活動内容","skill":["セラピー2級","保育士"],"href":"abc@sample.com"}
+ ,{"name": "ABC","desc":"活動内容","skill":["セラピー2級","保育士"],"href":"abc@sample.com"}
+ ,{"name": "ABC","desc":"活動内容","skill":["セラピー2級","保育士"],"href":"abc@sample.com"}
+ ,{"name": "ABC","desc":"活動内容","skill":["セラピー2級","保育士"],"href":"abc@sample.com"}
+]
+,"area":[
+ {"val":"koga","name":"小金井"}
+,{"val":"koku","name":"国分寺"}
+,{"val":"koda","name":"小平"}
+,{"val":"fuchu","name":"府中"}
+]
+,"catg":[
+ {"val":"baby","name":"ベビーマッサージ"}
+,{"val":"sports","name":"スポーツ"}
+,{"val":"food","name":"料理"}
+]
+,"tab":[
+]
+}

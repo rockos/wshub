@@ -104,7 +104,7 @@ var validCheck = {
     checkParams : function (args ,/* next function */ callback) {
         var rtn = lcsUI.checkVal(args.req, ['pcode', 'pnam', 'sqty', 'lotn']);
         if (rtn) {
-            shoError(args, rtn);
+            lcsUI.shoError(args, rtn);
             return callback(rtn, args, callback);
         }
         
@@ -167,53 +167,29 @@ var fin = function(err){
         return;
     }
 }
-/*
- * sep-25-2012
- */
-function _showResult(req, res, frame) {
-
-    var posts = {};
-    var file = ROOTDIR + '/src/ini/data/mgr601ini.json';
-    var msg = lcsAp.getMsgI18N("0");
-    posts.mesg = msg.text;
-    posts.mesg_lavel_color = msg.warn;
-
-    /* page情報設定 */
-    posts.frameNavi = frame.frameNavi;
-
-
-    if (!lcsAp.isSession(req.session)) {
-             res.redirect('/');
-    }
-    
-    posts.pageNavi = JSON.parse(require('fs').readFileSync(file));
-    posts.pageNavi.userid = req.session.userid ? req.session.userid: 'undefined'; 
-
-    res.render('scr/scr601', posts);
-
-
-};
-
 /**
- * main routine
- * @date 20.aug.2013
+ * show initial data of scr601
+ * @date 24.aug.2013
  * @param req
  * @param res
  * @param frame
  */
-function _showInitial(req, res, frame){
+function _show601(req, res, frame){
     var posts = {};
+    var args = {};
     var file = ROOTDIR + '/src/ini/data/mgr601ini.json';
-
     var msg = lcsAp.getMsgI18N("0");
     posts.mesg = msg.text;
     posts.mesg_lavel_color = msg.warn;
+    args.res = res;
+    args.post = posts;
 
     /* page情報設定 */
     posts.frameNavi = frame.frameNavi;
 
     if (!lcsAp.isSession(req.session)) {
-             res.redirect('/');
+        return lcsUI.shoError(args, '90'); /* not signin */
+
     }
     
     posts.pageNavi = JSON.parse(require('fs').readFileSync(file));
@@ -221,6 +197,126 @@ function _showInitial(req, res, frame){
 
 
     res.render("scr/scr601", posts);
+};
+/**
+ * show initial data of scr651
+ * @date 27.aug.2013
+ * @param req
+ * @param res
+ * @param frame
+ */
+function _show620(req, res, frame){
+    var posts = {};
+    var args = {};
+    var file = ROOTDIR + '/src/ini/data/mgr620ini.json';
+    var msg = lcsAp.getMsgI18N("0");
+    posts.mesg = msg.text;
+    posts.mesg_lavel_color = msg.warn;
+    args.res = res;
+    args.post = posts;
+    /* page情報設定 */
+    posts.frameNavi = frame.frameNavi;
+
+   /* 
+    if (!lcsAp.isSession(req.session)) {
+        return lcsUI.shoError(args, '90');
+    }
+    posts.pageNavi = JSON.parse(require('fs').readFileSync(file));
+    posts.pageNavi.userid = req.session.userid ? req.session.userid: 'undefined'; 
+   */
+
+    res.render("scr/scr620", posts);
+};
+/**
+ * show initial data of scr651
+ * @date 24.aug.2013
+ * @param req
+ * @param res
+ * @param frame
+ */
+function _show651(req, res, frame){
+    var posts = {};
+    var args = {};
+    var file = ROOTDIR + '/src/ini/data/mgr651ini.json';
+    var msg = lcsAp.getMsgI18N("0");
+    posts.mesg = msg.text;
+    posts.mesg_lavel_color = msg.warn;
+    args.res = res;
+    args.post = posts;
+
+    /* page情報設定 */
+    posts.frameNavi = frame.frameNavi;
+
+    if (!lcsAp.isSession(req.session)) {
+        return lcsUI.shoError(args, '90'); /* not signin */
+    }
+    
+    posts.pageNavi = JSON.parse(require('fs').readFileSync(file));
+    posts.pageNavi.userid = req.session.userid ? req.session.userid: 'undefined'; 
+
+
+    res.render("scr/scr651", posts);
+};
+/**
+ * Send e-mail via AWS SES 
+ * @date 27.aug.2013
+ * @param req
+ * @param res
+ * @param frame
+ */
+function _sendMail(req, res, frame){
+    var posts = {};
+    var args = {};
+    var msg = lcsAp.getMsgI18N("0");
+    posts.mesg = msg.text;
+    posts.mesg_lavel_color = msg.warn;
+    args.res = res;
+    args.post = posts;
+
+    /* page情報設定 */
+    posts.frameNavi = frame.frameNavi;
+
+/*
+    if (!lcsAp.isSession(req.session)) {
+        return lcsUI.shoError(args, '90');
+    }
+    */
+    
+    var AWS = require('aws-sdk');
+    AWS.config.loadFromPath(ROOTDIR + '/etc/conf/credentials.json');
+    var emsg = {};
+    var text = req.body.id_text;
+    var ses = new AWS.SES({sslEnabled: true});
+    var params = {
+        Source: 'sin0414@gmail.com',
+        Destination: {
+            ToAddresses: ['sin0414@gmail.com'],
+        },
+        Message: {
+            Subject: {
+                Data: '【Feedback】'
+            },
+            Body: {
+                Text: {
+                    Data: text,
+                    Charset:'UTF-8'
+                }
+            }
+            }
+        }
+    };
+
+    ses.client.sendEmail(params, function (err, data) {
+        if (err) {
+            emsg.text = err.name + ':' + err.message;
+            return lcsUI.shoError(args,emsg) ; 
+            /* return lcsUI.shoError(args, '6'); */
+        } else {
+            return lcsUI.shoError(args, '5'); /* complete to send email */
+        }
+    });
+
+
 };
 
 
@@ -230,24 +326,39 @@ function _showInitial(req, res, frame){
  *
  */
 exports.main = function(req, res, frame){
+    var url = require('url')
     
+    var get_tof = {/* Table of function for each button */
+        "/scr/601" : _show601,
+        "/scr/620" : _show620,
+        "/scr/651" : _show651
+    };
     var tof = {/* Table of function for each button */
-        "201a_RTN" : _showInitial,
+        "620_mail" : _sendMail,
 
         /* message for delete */
-        "201d_RTN" : _showInitial
+        "201d_RTN" : _show601
     };
-
-
-    for (var key in tof) {
-        if (req.body[key]) {
-            //    lcsAp.syslog('error', 'error from str', {'key':key});
-            if (typeof tof[key] === "function") {
-                tof[key](req, res, frame);
-                return;
-            }
-        }
-    }
-    _showInitial(req, res, frame);
+   var param = {};
+   if (req.method == 'GET') {
+      param =  url.parse(req.url, true)
+      if (typeof get_tof[param.path] === 'function') {
+         get_tof[param.path](req, res, frame);
+         return;
+      } else {
+          shoError(args, '99'); /* db error */
+          return;
+      }
+   } else {
+       for (var key in tof) {
+           if (req.body[key]) {
+               if (typeof tof[key] === "function") {
+                   tof[key](req, res, frame);
+                   return;
+               }
+           }
+       }
+   }
+    _show601(req, res, frame);
 
 };
