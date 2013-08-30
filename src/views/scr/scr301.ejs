@@ -33,11 +33,15 @@
       <div class="col-md-9">
       <div class="row">
          <% for (var i=0, max = pageNavi.board.length; i < max; i++) { %>
-            <div class="col-md-3">
-               <h3><%= pageNavi.board[i].title %></h3>
+            <div class="col-md-4">
+               <div class="panel panel-info">
+               <div class="panel-heading"><%= pageNavi.board[i].title %></div>
+               <div class="panel-body">
                <p>掲示期限: <%= pageNavi.board[i].limit %></p>
                <p><%= pageNavi.board[i].cont %></p>
                <p><a class="btn" href="<%= pageNavi.board[i].href %>">詳細 &raquo;</a></p>
+               </div><!--/panel-body-->
+               </div><!--/panel-info-->
             </div>
          <% } %>
       

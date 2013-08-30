@@ -4,48 +4,6 @@
 /* local file */
 
 /*
- *  暫定
- */
-function dspWin(args, callback) {
-
-    //Login user用
-    args.post.userid = (args.req.session.userid) ? args.req.session.userid:'undefined';
-
-    var msg = lcsAp.getMsgI18N('0');
-    args.post.mesg = msg.text;
-    args.post.mesg_lavel_color = msg.warn;
-
-    /*
-    [args.post.mesg, args.post.mesg_lavel_color] = lcsAp.getMsgI18N(String(err));
-    */
-
-    args.post.dspcstm = new Array;
-    args.post.dspcstm["corp"] = "hidden";
-    args.post.dspcstm["priv"] = "hidden";
-    args.post.dspcstm["vist"] = "hidden";
-    switch( args.req.body.dspcstm ) {
-    case "corp":
-        args.post.dspcstm["corp"] = "";
-        args.post.dspcstm_val = "corp";
-        break;
-    case "priv":
-        args.post.dspcstm["priv"] = "";
-        args.post.dspcstm_val = "priv";
-        break;
-    case "vist":
-        args.post.dspcstm["vist"] = "";
-        args.post.dspcstm_val = "vist";
-        break;
-    default:
-        args.post.dspcstm["corp"] = "";
-        args.post.dspcstm_val = "corp";
-        break;
-    }
-
-    args.res.render('scr/scr201', args.post);
-    callback(null, callback);
-}
-/*
  * 後処理関数
  */
 function postData(args, nextExec) {
@@ -193,7 +151,85 @@ function _showResult(req, res, frame) {
 
 
 };
+/**
+ * main routine
+ * @date 20.aug.2013
+ * @param req
+ * @param res
+ * @param frame
+ */
+function _checkUser(req, res, frame) {
+    if (req.body['signin_cancel']) {
+        return res.redirect('/');
+    }
+    var posts = {};
 
+    var file = ROOTDIR + '/src/ini/data/indexini.json';
+    var sql ='select id_user as "userid",password,permit from m_users where id_user=?';
+    var posts = {};
+    if (process.env.DATABASE == 'MySql') {
+        lcsDb.query(sql, [req.body.userid],function(err, results, fields) {
+            if (err){
+               lcsAp.syslog('error', err);
+               lcsUI.shoError(args, '99'); /* database error */
+               return;
+            }
+
+            if (results.length == 0) {
+               lcsUI.shoError(args, '106'); /* invalid mail address */
+               return;
+            }
+            if (results[0].userid !== req.body.userid || 
+                results[0].password !== req.body.password) {
+               lcsUI.shoError(args, '106'); /* invalid mail address */
+               return;
+            }
+            req.session.permit = results[0].permit;
+            req.session.userid = req.body.userid; 
+        });
+    } else {
+        req.session.permit = 1; 
+    }
+    /* ユーザー認証 ＯＫ */
+    req.session.views = 1;
+    req.session.userid = req.body.userid;
+    req.session.password = req.body.password;
+    req.session.lang = req.body.lang;
+
+    lcsAp.setLangI18N(req.session.lang);
+
+
+    /* page情報設定 */
+    posts.frameNavi = frame.frameNavi;
+    posts.frameNavi.signin ="true";
+    posts.frameNavi.userid = req.session.userid ? req.session.userid: 'undefined'; 
+    posts.pageNavi = JSON.parse(require('fs').readFileSync(file));
+    return res.redirect('/');
+}
+/**
+ * main routine
+ * @date 20.aug.2013
+ * @param req
+ * @param res
+ * @param frame
+ */
+function _signin(req, res, frame){
+    var posts = {};
+    var file = ROOTDIR + '/src/ini/data/indexini.json';
+
+    var msg = lcsAp.getMsgI18N("0");
+    posts.mesg = msg.text;
+    posts.mesg_lavel_color = msg.warn;
+
+    /* page情報設定 */
+    posts.frameNavi = frame.frameNavi;
+
+    posts.pageNavi = JSON.parse(require('fs').readFileSync(file));
+    posts.pageNavi.userid = req.session.userid ? req.session.userid: 'undefined'; 
+
+
+    res.render("scr/signin", posts);
+};
 /**
  * main routine
  * @date 20.aug.2013
@@ -226,29 +262,71 @@ function _showInitial(req, res, frame){
 
 
 /**
+ * show initial data of scr651
+ * @date 27.aug.2013
+ * @param req
+ * @param res
+ * @param frame
+ */
+function _regist(req, res, frame){
+    debugger;
+    var posts = {};
+    var args = {};
+    var file = ROOTDIR + '/src/ini/data/mgr620ini.json';
+    var msg = lcsAp.getMsgI18N("0");
+    posts.mesg = msg.text;
+    posts.mesg_lavel_color = msg.warn;
+    args.res = res;
+    args.post = posts;
+    /* page情報設定 */
+    posts.frameNavi = frame.frameNavi;
+
+    res.render("scr/regist", posts);
+};
+/**
  * Main routine of profile editor
  * date 26.sep.2012 first edition.
  *
  */
 exports.main = function(req, res, frame){
-    
-    var tof = {/* Table of function for each button */
-        "201a_RTN" : _showInitial,
-
-        /* message for delete */
-        "201d_RTN" : _showInitial
+    var url = require('url')
+   debugger; 
+    var get_tof = {/* Table of functions */
+        "/" : _showInitial,
+    };
+    var tof = {/* Table of functions */
+        "signin" : _signin,
+        "regist" : _regist,
+        "signin_on" : _checkUser,
+        "signin_cancel" : _checkUser
     };
 
-
-    for (var key in tof) {
-        if (req.body[key]) {
-            //    lcsAp.syslog('error', 'error from str', {'key':key});
-            if (typeof tof[key] === "function") {
-                tof[key](req, res, frame);
-                return;
-            }
-        }
-    }
-    _showInitial(req, res, frame);
+   var posts = {};
+    var args = {};
+    var param = {};
+    args.res = res;
+    args.post = posts;
+    debugger;
+   if (req.method == 'GET') {
+      param =  url.parse(req.url, true)
+      if (typeof get_tof[param.pathname] === 'function') {
+         get_tof[param.pathname](req, res, frame);
+         return;
+      } else {
+          lcsUI.shoError(args, '7'); /* page not found */
+          return;
+      }
+   } else {
+       for (var key in tof) {
+           if (req.body[key]) {
+               //    lcsAp.syslog('error', 'error from str', {'key':key});
+               if (typeof tof[key] === "function") {
+                   tof[key](req, res, frame);
+                   return;
+               }
+           }
+       }
+   }
+    lcsUI.shoError(args, '7'); /* page not found */
 
 };

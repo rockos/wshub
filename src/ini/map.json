@@ -2,7 +2,10 @@
 "mgr":{
   "path" : "/src/controller/mgr/mgr",
    "msg":{
-          "/" : "main"
+          "/" : "main",
+          "/signin" : "main",
+          "/regist" : "main",
+          "/check" : "main"
          },
    "ejs":"layout.ejs",
    "parmit":0

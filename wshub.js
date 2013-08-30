@@ -132,12 +132,12 @@ lcsUI.config([
 /* app.get('/', lcsUI.signin);
 */
 app.get('/', lcsUI.doAction);
-app.get('/signin', lcsUI.signin);
-app.get('/signout', lcsUI.signout);
+app.post('/signin', lcsUI.doAction);
+app.post('/signout', lcsUI.signout);
 app.get('/scr/:id', lcsUI.doAction);
 app.get('/404', lcsUI.notFound);
 app.post('/scr/:id', lcsUI.doAction);
-app.post('/check', lcsUI.checkUser);
+app.post('/check', lcsUI.doAction);
 
 // モバイル用
 app.get('/mob/:id', lcsUI.doAction);

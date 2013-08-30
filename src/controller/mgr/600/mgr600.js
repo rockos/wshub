@@ -4,48 +4,6 @@
 /* local file */
 
 /*
- *  暫定
- */
-function dspWin(args, callback) {
-
-    //Login user用
-    args.post.userid = (args.req.session.userid) ? args.req.session.userid:'undefined';
-
-    var msg = lcsAp.getMsgI18N('0');
-    args.post.mesg = msg.text;
-    args.post.mesg_lavel_color = msg.warn;
-
-    /*
-    [args.post.mesg, args.post.mesg_lavel_color] = lcsAp.getMsgI18N(String(err));
-    */
-
-    args.post.dspcstm = new Array;
-    args.post.dspcstm["corp"] = "hidden";
-    args.post.dspcstm["priv"] = "hidden";
-    args.post.dspcstm["vist"] = "hidden";
-    switch( args.req.body.dspcstm ) {
-    case "corp":
-        args.post.dspcstm["corp"] = "";
-        args.post.dspcstm_val = "corp";
-        break;
-    case "priv":
-        args.post.dspcstm["priv"] = "";
-        args.post.dspcstm_val = "priv";
-        break;
-    case "vist":
-        args.post.dspcstm["vist"] = "";
-        args.post.dspcstm_val = "vist";
-        break;
-    default:
-        args.post.dspcstm["corp"] = "";
-        args.post.dspcstm_val = "corp";
-        break;
-    }
-
-    args.res.render('scr/scr601', args.post);
-    callback(null, callback);
-}
-/*
  * 後処理関数
  */
 function postData(args, nextExec) {
@@ -264,7 +222,7 @@ function _show651(req, res, frame){
  * @param res
  * @param frame
  */
-function _sendMail(req, res, frame){
+function _sendMail(req, res, frame) {
     var posts = {};
     var args = {};
     var msg = lcsAp.getMsgI18N("0");
@@ -301,7 +259,6 @@ function _sendMail(req, res, frame){
                     Data: text,
                     Charset:'UTF-8'
                 }
-            }
             }
         }
     };
@@ -342,8 +299,8 @@ exports.main = function(req, res, frame){
    var param = {};
    if (req.method == 'GET') {
       param =  url.parse(req.url, true)
-      if (typeof get_tof[param.path] === 'function') {
-         get_tof[param.path](req, res, frame);
+      if (typeof get_tof[param.pathname] === 'function') {
+         get_tof[param.pathname](req, res, frame);
          return;
       } else {
           shoError(args, '99'); /* db error */
