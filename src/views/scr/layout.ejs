@@ -25,6 +25,7 @@
 <style type="text/css">
 body {
     padding-top: 60px;
+    padding-left: 50px;
     padding-bottom: 40px;
 }
 .sidebar-nav {
@@ -45,7 +46,25 @@ body {
 <!--[if lt IE 9]>
 <script src="/javascriptsi/bootstrap/gi/html5shiv.js"></script>
 <![endif]-->
-
+<!-- AddThis Smart Layers BEGIN -->
+<!-- Go to http://www.addthis.com/get/smart-layers to customize -->
+<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-51fe493604d6a32f"></script>
+<script type="text/javascript">
+addthis.layers({
+    'theme' : 'transparent',
+    'share' : {
+        'position' : 'left',
+        'numPreferredServices' : 5
+    }, 
+    'follow' : {
+        'services' : [
+            {'service': 'facebook', 'id': 'msyaono'},
+            {'service': 'twitter', 'id': 'mirokunokokoro'}
+        ]
+    }  
+});
+</script>
+<!-- AddThis Smart Layers END -->
 </head>
 
 <body>
@@ -59,11 +78,11 @@ body {
     </div><!--/col-->
     <div class="col-md-6">
         <% if (frameNavi.signin == "false") { %>
-        <form class="navbar-form pull-right" method="post" action="/signin">
+        <form class="navbar-form pull-right" method="get" action="/signin">
             <span class="glyphicon glyphicon-user">
                 こんにちはゲストさん</span> 
-            <button type="submit" class="btn btn-info" name="signin" value="signin">Sign in</button>
-            <button type="submit" class="btn btn-success" name="regist" value="regist">新規登録</button>
+            <button type="submit" class="btn btn-info" name="kind" value="signin">Sign in</button>
+            <button type="submit" class="btn btn-success" name="kind" value="regist">新規登録</button>
         </form>
         <% } else { %>
         <form class="navbar-form pull-right" method="post" action="/signout">
@@ -77,10 +96,31 @@ body {
     </div><!--/col-->
 </div><!--/logo-->
 </div><!--/row-->
+<div class="row">
+   <div class="adwords">
+      <script type="text/javascript"><!--
+      google_ad_client = "ca-pub-4104980544511181";
+      /* sub_link_md */
+      google_ad_slot = "4896693156";
+      google_ad_width = 468;
+      google_ad_height = 15; 
+      //-->
+      </script>
+      <script type="text/javascript"
+      src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+      </script>
+   </div><!--/adwords-->
+</div><!--/row-->
+<!--
 <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+-->
+<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+    <!--
     <div class="navbar-header">
+    -->
+    <div class="navbar-inner">
         <button type="button" class="navbar-toggle" 
-            data-toggle="collapse" data-target=".navbar-ex1-collapse">
+            data-toggle="collapse" data-target=".navbar-collapse">
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>

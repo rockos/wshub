@@ -62,7 +62,7 @@ var validCheck = {
     checkParams : function (args ,/* next function */ callback) {
         var rtn = lcsUI.checkVal(args.req, ['pcode', 'pnam', 'sqty', 'lotn']);
         if (rtn) {
-            shoError(args, rtn);
+            lcsUI.shoMsg(res, rtn);
             return callback(rtn, args, callback);
         }
         
@@ -76,7 +76,7 @@ var validCheck = {
     checkParams_del : function (args ,/* next function */ callback) {
         var rtn = lcsUI.checkVal(args.req, ['pcode']);
         if (rtn) {
-            shoError(args, rtn);
+            lcsUI.shoMsg(args.res, rtn);
             return callback(rtn, args, callback);
         }
         
@@ -125,32 +125,6 @@ var fin = function(err){
         return;
     }
 }
-/*
- * sep-25-2012
- */
-function _showResult(req, res, frame) {
-
-    var posts = {};
-    var file = ROOTDIR + '/src/ini/data/indexini.json';
-    var msg = lcsAp.getMsgI18N("0");
-    posts.mesg = msg.text;
-    posts.mesg_lavel_color = msg.warn;
-
-    /* page情報設定 */
-    posts.frameNavi = frame.frameNavi;
-
-
-    if (!lcsAp.isSession(req.session)) {
-             res.redirect('/');
-    }
-    
-    posts.pageNavi = JSON.parse(require('fs').readFileSync(file));
-    posts.pageNavi.userid = req.session.userid ? req.session.userid: 'undefined'; 
-
-    res.render('scr/index', posts);
-
-
-};
 /**
  * main routine
  * @date 20.aug.2013
@@ -159,9 +133,6 @@ function _showResult(req, res, frame) {
  * @param frame
  */
 function _checkUser(req, res, frame) {
-    if (req.body['signin_cancel']) {
-        return res.redirect('/');
-    }
     var posts = {};
 
     var file = ROOTDIR + '/src/ini/data/indexini.json';
@@ -171,17 +142,17 @@ function _checkUser(req, res, frame) {
         lcsDb.query(sql, [req.body.userid],function(err, results, fields) {
             if (err){
                lcsAp.syslog('error', err);
-               lcsUI.shoError(args, '99'); /* database error */
+               lcsUI.shoMsg(res, 99); /* database error */
                return;
             }
 
             if (results.length == 0) {
-               lcsUI.shoError(args, '106'); /* invalid mail address */
+               lcsUI.shoMsg(res, 106); /* invalid mail address */
                return;
             }
             if (results[0].userid !== req.body.userid || 
                 results[0].password !== req.body.password) {
-               lcsUI.shoError(args, '106'); /* invalid mail address */
+               lcsUI.shoMsg(res, 106); /* invalid mail address */
                return;
             }
             req.session.permit = results[0].permit;
@@ -215,20 +186,20 @@ function _checkUser(req, res, frame) {
  */
 function _signin(req, res, frame){
     var posts = {};
-    var file = ROOTDIR + '/src/ini/data/indexini.json';
-
     var msg = lcsAp.getMsgI18N("0");
+
     posts.mesg = msg.text;
     posts.mesg_lavel_color = msg.warn;
-
-    /* page情報設定 */
     posts.frameNavi = frame.frameNavi;
 
-    posts.pageNavi = JSON.parse(require('fs').readFileSync(file));
-    posts.pageNavi.userid = req.session.userid ? req.session.userid: 'undefined'; 
-
-
-    res.render("scr/signin", posts);
+    if (req.body['610_cancel']) {
+        return lcsUI.shoMsg(res, 'キャンセルされました。');
+    } else if (req.body['610_signin']) {
+        _checkUser(req, res, frame);
+        return;
+    } else {
+        return res.redirect('/');
+    }
 };
 /**
  * main routine
@@ -269,19 +240,51 @@ function _showInitial(req, res, frame){
  * @param frame
  */
 function _regist(req, res, frame){
-    debugger;
     var posts = {};
-    var args = {};
-    var file = ROOTDIR + '/src/ini/data/mgr620ini.json';
+    var msg = lcsAp.getMsgI18N("0");
+
+    posts.mesg = msg.text;
+    posts.mesg_lavel_color = msg.warn;
+    posts.frameNavi = frame.frameNavi;
+
+    if (req.body['620_cancel']) {
+        return lcsUI.shoMsg(res, 'キャンセルされました。');
+    } else if (req.body['620_regist']) {
+        return lcsUI.shoMsg(res, 0);
+    } else {
+        return res.redirect('/');
+    }
+};
+/**
+ * show initial data of scr651
+ * @date 27.aug.2013
+ * @param req
+ * @param res
+ * @param frame
+ */
+exports.showScreen = function(req, res, frame){
+    var url = require('url')
+    var posts = {};
+    var param = {};
+    var file = ROOTDIR + '/src/ini/data/indexini.json';
+
     var msg = lcsAp.getMsgI18N("0");
     posts.mesg = msg.text;
     posts.mesg_lavel_color = msg.warn;
-    args.res = res;
-    args.post = posts;
+
     /* page情報設定 */
     posts.frameNavi = frame.frameNavi;
 
-    res.render("scr/regist", posts);
+    posts.pageNavi = JSON.parse(require('fs').readFileSync(file));
+    posts.pageNavi.userid = req.session.userid ? req.session.userid: 'undefined'; 
+    param =  url.parse(req.url, true);
+    if (param.query.kind === 'signin') {
+        res.render("scr/scr610", posts);
+    } else if (param.query.kind === 'regist') {
+        res.render("scr/scr620", posts);
+    } else {
+        lcsUI.shoMsg(res, 7); /* page not found */
+    }
 };
 /**
  * Main routine of profile editor
@@ -290,43 +293,39 @@ function _regist(req, res, frame){
  */
 exports.main = function(req, res, frame){
     var url = require('url')
-   debugger; 
     var get_tof = {/* Table of functions */
         "/" : _showInitial,
     };
     var tof = {/* Table of functions */
-        "signin" : _signin,
-        "regist" : _regist,
-        "signin_on" : _checkUser,
-        "signin_cancel" : _checkUser
+        "610_signin" : _signin,
+        "610_cancel" : _signin,
+        "620_regist" : _regist,
+        "620_cancel" : _regist
     };
 
-   var posts = {};
-    var args = {};
+    var posts = {};
     var param = {};
-    args.res = res;
-    args.post = posts;
-    debugger;
-   if (req.method == 'GET') {
-      param =  url.parse(req.url, true)
-      if (typeof get_tof[param.pathname] === 'function') {
-         get_tof[param.pathname](req, res, frame);
-         return;
-      } else {
-          lcsUI.shoError(args, '7'); /* page not found */
-          return;
-      }
-   } else {
-       for (var key in tof) {
-           if (req.body[key]) {
-               //    lcsAp.syslog('error', 'error from str', {'key':key});
-               if (typeof tof[key] === "function") {
-                   tof[key](req, res, frame);
-                   return;
-               }
-           }
-       }
-   }
-    lcsUI.shoError(args, '7'); /* page not found */
+
+    if (req.method == 'GET') {
+        param =  url.parse(req.url, true)
+        if (typeof get_tof[param.pathname] === 'function') {
+            get_tof[param.pathname](req, res, frame);
+            return;
+        } else {
+            lcsUI.shoMsg(res, 7); /* page not found */
+            return;
+        }
+    } else {
+        for (var key in tof) {
+            if (req.body[key]) {
+                //    lcsAp.syslog('error', 'error from str', {'key':key});
+                if (typeof tof[key] === "function") {
+                    tof[key](req, res, frame);
+                    return;
+                }
+            }
+        }
+    }
+    lcsUI.shoMsg(res, 7); /* page not found */
 
 };

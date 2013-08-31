@@ -359,44 +359,56 @@ function modStr(req, res, posts) {
                dspWin );
 
 }
-/*
- * sep-25-2012
- */
-function _showResult(req, res, frame) {
-
-    var posts = {};
-    var file = ROOTDIR + '/src/ini/data/map401ini.json';
-    var msg = lcsAp.getMsgI18N("0");
-    posts.mesg = msg.text;
-    posts.mesg_lavel_color = msg.warn;
-
-    /* page情報設定 */
-    posts.frameNavi = frame.frameNavi;
-
-/*
-    if (!lcsAp.isSession(req.session)) {
-             res.redirect('/');
-    }
-    */
-    
-    posts.pageNavi = JSON.parse(require('fs').readFileSync(file));
-    posts.pageNavi.userid = req.session.userid ? req.session.userid: 'undefined'; 
-
-    res.render('scr/scr401', posts);
-
-
-};
-
 /**
- * main routine
- * @date 20.aug.2013
+ * change Tab 
+ * @date 31.aug.2013
  * @param req
  * @param res
  * @param frame
  */
-function _showInitial(req, res, frame){
+exports.changeTab = function(req, res, frame){
+    var url = require('url')
     var posts = {};
     var file = ROOTDIR + '/src/ini/data/map401ini.json';
+
+    var msg = lcsAp.getMsgI18N("0");
+    var param =  url.parse(req.url, true);
+    posts.mesg = msg.text;
+    posts.mesg_lavel_color = msg.warn;
+
+    /* page情報設定 */
+    posts.frameNavi = frame.frameNavi;
+    posts.pageNavi = JSON.parse(require('fs').readFileSync(file));
+    posts.pageNavi.userid = req.session.userid ? req.session.userid: 'undefined'; 
+
+    if (param.query.home === 'yes') {
+        posts.pageNavi.tab.home = 'active';
+        posts.pageNavi.tab.profile = '';
+        posts.pageNavi.tab.message = '';
+    } else if (param.query.profile === 'yes') {
+        posts.pageNavi.tab.home = '';
+        posts.pageNavi.tab.profile = 'active';
+        posts.pageNavi.tab.message = '';
+    } else if (param.query.message === 'yes') {
+        posts.pageNavi.tab.home = '';
+        posts.pageNavi.tab.profile = '';
+        posts.pageNavi.tab.message = 'active';
+    }
+    res.render("scr/scr401", posts);
+};
+/**
+ * select skill and area
+ * @date 31.aug.2013
+ * @param req
+ * @param res
+ * @param frame
+ */
+exports.selectSkill = function(req, res, frame){
+    var url = require('url')
+    var posts = {};
+    var param = {};
+    var file = ROOTDIR + '/src/ini/data/map401ini.json';
+    var file2 = ROOTDIR + '/src/ini/data/map401sel.json';
 
     var msg = lcsAp.getMsgI18N("0");
     posts.mesg = msg.text;
@@ -405,57 +417,39 @@ function _showInitial(req, res, frame){
     /* page情報設定 */
     posts.frameNavi = frame.frameNavi;
 
-/*
-    if (!lcsAp.isSession(req.session)) {
-             res.redirect('/');
+    param =  url.parse(req.url, true);
+    if (req.body["401_area"] === 'all') {
+        posts.pageNavi = JSON.parse(require('fs').readFileSync(file));
+        posts.pageNavi.userid = req.session.userid ? req.session.userid: 'undefined'; 
+        res.render("scr/scr401", posts);
+    } else  {
+        posts.pageNavi = JSON.parse(require('fs').readFileSync(file2));
+        posts.pageNavi.userid = req.session.userid ? req.session.userid: 'undefined'; 
+        res.render("scr/scr401", posts);
     }
-    */
-    
+};
+/**
+ * Show screen
+ * @date 30.aug.2013
+ * @param req
+ * @param res
+ * @param frame
+ */
+exports.showScreen = function (req, res, frame){
+    var posts = {};
+    var file = ROOTDIR + '/src/ini/data/map401ini.json';
+
+    var msg = lcsAp.getMsgI18N("0");
+    posts.mesg = msg.text;
+    posts.mesg_lavel_color = msg.warn;
+    /* page情報設定 */
+    posts.frameNavi = frame.frameNavi;
+
     posts.pageNavi = JSON.parse(require('fs').readFileSync(file));
     posts.pageNavi.userid = req.session.userid ? req.session.userid: 'undefined'; 
 
+    posts.pageNavi.tab.home = 'active';
 
     res.render("scr/scr401", posts);
 };
 
-
-/**
- * Main routine of profile editor
- * date 26.sep.2012 first edition.
- *
- */
-exports.main = function(req, res, frame){
-   var url = require('url')
-    
-    var tof = {/* Table of function for each button */
-        "201_QRY" : _showResult,
-        "201d_RTN" : _showInitial
-    };
-
-   var param = {};
-    /*
-     * lcsAp.syslog('info', '懸念を表明する');
-     * lcsAp.syslog('notice', '強い懸念を表明する');
-     * lcsAp.syslog('error', '強い遺憾の意を示す');
-     */
-   debugger;
-   if (req.method == 'GET') {
-      param =  url.parse(req.url, true)
-      if (param.query.profile) {
-         _showInitial(req, res, frame);
-      }
-   } else {
-   
-       for (var key in tof) {
-           if (req.body[key]) {
-               //    lcsAp.syslog('error', 'error from str', {'key':key});
-               if (typeof tof[key] === "function") {
-                   tof[key](req, res, frame);
-                   return;
-               }
-           }
-       }
-   }
-    _showInitial(req, res, frame);
-
-};

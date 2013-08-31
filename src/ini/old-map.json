@@ -1,0 +1,50 @@
+{
+"mgr1":{
+  "path" : "/src/controller/mgr/610/mgr610",
+   "msg":{
+          "/" : "main",
+          "/index" : "main",
+          "/signin" : "showScreen",
+          "/regist" : "showScreen",
+          "/check" : "main",
+          "/scr/610" : "main",
+          "/scr/620" : "main"
+         },
+   "ejs":"layout.ejs",
+   "parmit":0
+   }
+,"mgr2":{
+  "path" : "/src/controller/mgr/600/mgr600",
+   "msg":{
+         "/scr/601" : "main",
+         "/scr/630" : "main",
+         "/scr/651" : "main"
+         },
+   "ejs":"layout.ejs",
+   "parmit":0
+   }
+,"brd301":{
+  "path" : "/src/controller/brd/301/brd301",
+   "msg":{
+          "/scr/301" : "main"
+         },
+   "ejs":"layout.ejs",
+   "parmit":0
+   }
+,"ild201":{
+  "path" : "/src/controller/ild/201/ild201", 
+  "msg":{
+        "/scr/201" : "main"
+        },
+   "ejs":"layout.ejs",
+   "parmit":1
+}
+,"map401":{
+  "path" : "/src/controller/map/401/map401", 
+  "msg":{
+        "/scr/401" : "main"
+        },
+   "ejs":"layout.ejs",
+   "parmit":1
+}
+}

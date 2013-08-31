@@ -163,10 +163,10 @@ function _show601(req, res, frame){
  * @param res
  * @param frame
  */
-function _show620(req, res, frame){
+function _show630(req, res, frame){
     var posts = {};
     var args = {};
-    var file = ROOTDIR + '/src/ini/data/mgr620ini.json';
+    var file = ROOTDIR + '/src/ini/data/mgr630ini.json';
     var msg = lcsAp.getMsgI18N("0");
     posts.mesg = msg.text;
     posts.mesg_lavel_color = msg.warn;
@@ -183,7 +183,7 @@ function _show620(req, res, frame){
     posts.pageNavi.userid = req.session.userid ? req.session.userid: 'undefined'; 
    */
 
-    res.render("scr/scr620", posts);
+    res.render("scr/scr630", posts);
 };
 /**
  * show initial data of scr651
@@ -287,14 +287,11 @@ exports.main = function(req, res, frame){
     
     var get_tof = {/* Table of function for each button */
         "/scr/601" : _show601,
-        "/scr/620" : _show620,
+        "/scr/630" : _show630,
         "/scr/651" : _show651
     };
     var tof = {/* Table of function for each button */
-        "620_mail" : _sendMail,
-
-        /* message for delete */
-        "201d_RTN" : _show601
+        "620_mail" : _sendMail
     };
    var param = {};
    if (req.method == 'GET') {

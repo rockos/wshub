@@ -3,10 +3,10 @@
 ,"scrhead": "This screen is for form test."
 ,"comment":"個人のスキル紹介ページ"
 ,"sklist":[
- {"name": "ABC","desc":"活動内容","skill":["セラピー2級","保育士"],"href":"abc@sample.com"}
- ,{"name": "ABC","desc":"活動内容","skill":["セラピー2級","保育士"],"href":"abc@sample.com"}
- ,{"name": "ABC","desc":"活動内容","skill":["セラピー2級","保育士"],"href":"abc@sample.com"}
- ,{"name": "ABC","desc":"活動内容","skill":["セラピー2級","保育士"],"href":"abc@sample.com"}
+ {"name": "小金井花子","desc":"活動内容","skill":["セラピー2級","保育士"],"href":"abc@sample.com"}
+ ,{"name": "国分寺","desc":"活動内容","skill":["セラピー2級","保育士"],"href":"abc@sample.com"}
+ ,{"name": "小平","desc":"活動内容","skill":["セラピー2級","保育士"],"href":"abc@sample.com"}
+ ,{"name": "府中","desc":"活動内容","skill":["セラピー2級","保育士"],"href":"abc@sample.com"}
 ]
 ,"area":[
  {"val":"all","name":"全て"}
@@ -25,7 +25,7 @@
 ]
 ,"faq":[
  {"title":"なぜスキルの登録が必要なのですか?","desc":"自分の個性を生かすために、持てる技を公表することが近道だからです。"}
-,{"title":"登録はどのようにすればよいのでしょう?","desc":"会員登録ページから登録できます。個人情報は不要です。"}
+,{"title":"登録はどのようにすればよういのでしょう?","desc":"会員登録ページから登録できます。個人情報は不要です。"}
 ,{"title":"登録されたスキルを活用するには?","desc":"登録リストからリクエストをかけてください。"}
 ]
 }

@@ -128,26 +128,21 @@ lcsUI.config([
              ]}
 ]);
 
-/* ルーティング処理 */
-/* app.get('/', lcsUI.signin);
-*/
+/* routing for desktop or tablet device */
 app.get('/', lcsUI.doAction);
-app.post('/signin', lcsUI.doAction);
+app.get('/index', lcsUI.doAction);
+app.get('/signin', lcsUI.doAction);
 app.post('/signout', lcsUI.signout);
 app.get('/scr/:id', lcsUI.doAction);
+app.get('/scr/:id/:sub', lcsUI.doAction);
 app.get('/404', lcsUI.notFound);
 app.post('/scr/:id', lcsUI.doAction);
 app.post('/check', lcsUI.doAction);
 
-// モバイル用
+/* routing for mobile device */
 app.get('/mob/:id', lcsUI.doAction);
 app.post('/mob/:id', lcsUI.doAction);
 
-// Web API REST 2012-12-27
-app.get('/rest/:id?/:ap?', lcsUI.restAction__old);
-app.post('/rest/:id?/:ap?', lcsUI.restAction__old);
-app.put('/rest/:id?/:ap?', lcsUI.restAction__old);
-app.del('/rest/:id?/:ap?', lcsUI.restAction__old);
 
 // Web API REST 8-may-2013
 app.get('/v1/rest/:id/:ap/:ap2?', lcsUI.restAction);

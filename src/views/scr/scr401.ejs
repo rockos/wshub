@@ -1,73 +1,107 @@
 <% layout('layout') -%>
+<!--
 <div class="container">
-   <div class="row">
-      <div class="col-md-3">
+-->
+<div class="row">
+    <div class="col-md-3">
       <ol class="breadcrumb">
-      <li><a href="#">Home</a></li>
-      <li><a href="#">Library</a></li>
-      <li class="active">Data</li>
+         <li><a href="#">Home</a></li>
+         <li><a href="#">Library</a></li>
+         <li class="active">Data</li>
       </ol>
 
       <!--Sidebar content-->
-      <form role="form">
+      <form role="form" method="POST" action="/scr/401">
       <fieldset>
          <legend><span class="glyphicon glyphicon-user">
             </span>スキルマップ</legend>
             <span class="help-block">地域を選択できます。</span>
-            <select class="form-control" name="sel_area">
+            <select class="form-control" name="401_area">
             <% for (var i=0, max = pageNavi.area.length; i < max; i++) { %>
                 <option value="<%= pageNavi.area[i].val %>">
                   <%= pageNavi.area[i].name %></option>
             <% } %>
             </select>
             <span class="help-block">スキルを選択できます。</span>
-            <select class="form-control" name="sel_area">
+            <select class="form-control" name="401_skil">
             <% for (var i=0, max = pageNavi.catg.length; i < max; i++) { %>
                 <option value="<%= pageNavi.catg[i].val %>">
                   <%= pageNavi.catg[i].name %></option>
             <% } %>
             </select>
-         <button type="button" class="btn btn-primary">選択</button>
+         <button type="submit" class="btn btn-primary" 
+            name="401_SEL" value="true">選択</button>
 
 
       </fieldset>
       </form>
-      </div>
-      <div class="col-md-9">
+   </div><!--/col-md-3-->
+   <div class="col-md-9">
       <div class="row">
          <ul class="nav nav-tabs">
-            <li class="active"><a href="/">Home</a></li>
-            <li><a href="/scr/401?profile=yes">Profile</a></li>
-            <li><a href="/scr/401?message=yes">Messages</a></li>
+            <li class="<%= pageNavi.tab.home %>"><a href="/scr/401/tab?home=yes">Home</a></li>
+            <li class="<%= pageNavi.tab.profile %>"><a href="/scr/401/tab?profile=yes">Profile</a></li>
+            <li class="<%= pageNavi.tab.message %>"><a href="/scr/401/tab?message=yes">Messages</a></li>
          </ul>
-      </div>
-      </div>
-      <div class="col-md-9">
+      </div><!--/row-->
+   </div><!--/col-md-9-->
+   <div class="col-md-9">
       <div class="row">
 
-      <table class="table table-striped table-bordered table-condensed">
-         <thead>
-            <tr><th>名前</th><th>紹介文</th><th>スキル</th><th>URL</th></tr>
-         </thead>
-         <tbody>
-            <% for (var i=0, max = pageNavi.sklist.length; i < max; i++) { %>
-            <tr>
-                <td><span class="badge badge-success"><%= i+1 %></span>
-                <%= pageNavi.sklist[i].name %></td>
-                <td><%= pageNavi.sklist[i].desc %></td>
-                <td>
-                  <% for (var j=0,jmax = pageNavi.sklist[i].skill.length;
-                     j <jmax; j++) { %>
-                     <%= pageNavi.sklist[i].skill[j] %>
-                  <% } %>
-                </td>
-                <td><a href="<%= pageNavi.sklist[i].href %>">link</a></td>
-            </tr>
-            <% } %>
-        </tbody>
-      </table>
-      </div><!-- row -->
-      </div><!-- span9 -->
-      </div>
-   </div>
-</div>
+         <div class="panel panel-default">
+         <!-- Default panel contents -->
+            <div class="panel-heading">Panel heading</div>
+            <div class="panel-body">
+               <p>ここにはさまざまな技能や特技を持つ女性が登録されています。彼女たちと一緒になにかしてみませんか?</p>
+            </div><!--/panel-body-->
+
+            <!-- Table -->
+            <table class="table table-striped table-condensed">
+               <thead>
+                  <tr><th>名前</th><th>紹介文</th><th>スキル</th><th>URL</th></tr>
+               </thead>
+               <tbody>
+               <% for (var i=0, max = pageNavi.sklist.length; i < max; i++) { %>
+                  <tr>
+                     <td><span class="badge badge-success"><%= i+1 %></span>
+                     <%= pageNavi.sklist[i].name %></td>
+                     <td><%= pageNavi.sklist[i].desc %></td>
+                     <td>
+                     <% for (var j=0,jmax = pageNavi.sklist[i].skill.length;
+                        j <jmax; j++) { %>
+                        <span class="badge">
+                          <%= pageNavi.sklist[i].skill[j] %>
+                        </span>
+                     <% } %>
+                     </td>
+                     <td><a href="<%= pageNavi.sklist[i].href %>">link</a></td>
+                  </tr>
+               <% } %>
+               </tbody>
+            </table>
+         </div><!--/panel-->
+
+         <div class="col-md-9">
+            <h3>FAQ</h3>
+            <div class="accordion" id="accordion2">
+               <% for (var i=0, max = pageNavi.faq.length; i < max; i++) { %>
+               <div class="accordion-group">
+                  <div class="accordion-heading">
+                     <a class="accordion-toggle" data-toggle="collapse"
+                        data-parent="#accordion2" href="#ref<%= i%>">
+                     <%= pageNavi.faq[i].title %> 
+                     </a>
+                  </div><!--accordion-heading-->
+                  <div id="ref<%= i%>" class="accordion-body collapse">
+                     <div class="accordion-inner">
+                        <%= pageNavi.faq[i].desc %>
+                     </div><!--/accodion-inner-->
+                  </div><!--/accodion-body-->
+               </div><!--/accordion-group-->
+               <% } %> 
+            </div><!--/accodion-->
+         </div><!--/col-md-9-->
+
+      </div><!--/row-->
+   </div><!--/col-md-9-->
+</div><!--/row-->
