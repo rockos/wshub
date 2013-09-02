@@ -140,6 +140,7 @@ function _checkUser(req, res, frame) {
     var posts = {};
     if (process.env.DATABASE == 'MySql') {
         lcsDb.query(sql, [req.body.userid],function(err, results, fields) {
+            debugger;
             if (err){
                lcsAp.syslog('error', err);
                lcsUI.shoMsg(res, 99); /* database error */
@@ -191,7 +192,7 @@ function _signin(req, res, frame){
     posts.mesg = msg.text;
     posts.mesg_lavel_color = msg.warn;
     posts.frameNavi = frame.frameNavi;
-
+debugger;
     if (req.body['610_cancel']) {
         return lcsUI.shoMsg(res, 'キャンセルされました。');
     } else if (req.body['610_signin']) {

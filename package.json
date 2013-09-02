@@ -18,7 +18,7 @@
     "ejs": "0.7.x",
     "mongodb": "*",
     "mongoose": "*",
-    "mysql": "0.9.x",
+    "mysql": "2.0.x",
     "opts": "1.2.2",
     "ejs-locals": "0.2.5",
     "express-validator":"0.2.x",

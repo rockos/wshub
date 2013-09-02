@@ -413,7 +413,7 @@ exports.selectSkill = function(req, res, frame){
     var msg = lcsAp.getMsgI18N("0");
     posts.mesg = msg.text;
     posts.mesg_lavel_color = msg.warn;
-
+debugger;
     /* page情報設定 */
     posts.frameNavi = frame.frameNavi;
 

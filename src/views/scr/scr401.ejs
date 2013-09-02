@@ -11,7 +11,7 @@
       </ol>
 
       <!--Sidebar content-->
-      <form role="form" method="POST" action="/scr/401">
+      <form role="form" method="POST" action="/scr/401/sel">
       <fieldset>
          <legend><span class="glyphicon glyphicon-user">
             </span>スキルマップ</legend>
@@ -39,9 +39,12 @@
    <div class="col-md-9">
       <div class="row">
          <ul class="nav nav-tabs">
-            <li class="<%= pageNavi.tab.home %>"><a href="/scr/401/tab?home=yes">Home</a></li>
-            <li class="<%= pageNavi.tab.profile %>"><a href="/scr/401/tab?profile=yes">Profile</a></li>
-            <li class="<%= pageNavi.tab.message %>"><a href="/scr/401/tab?message=yes">Messages</a></li>
+            <li class="<%= pageNavi.tab.home %>">
+               <a href="/scr/401/tab?home=yes">Home</a></li>
+            <li class="<%= pageNavi.tab.profile %>">
+               <a href="/scr/401/tab?profile=yes">Profile</a></li>
+            <li class="<%= pageNavi.tab.message %>">
+               <a href="/scr/401/tab?message=yes">Messages</a></li>
          </ul>
       </div><!--/row-->
    </div><!--/col-md-9-->

@@ -57,7 +57,7 @@ var auth;
 
 var lcsAp = require(ROOTDIR + '/stdlibs/ap/lcsap').create('appServer', ROOTDIR, app);
 var lcsUI = require(ROOTDIR + '/stdlibs/ap/lcsui').create('appServer');
-var lcsDb = require(ROOTDIR + '/stdlibs/db/lcsdb').create('appServer', './etc/db.cf');
+var lcsDb = require(ROOTDIR + '/stdlibs/db/rcsdb').create('appServer', './etc/db.cf');
 var lcsSOCK = require(ROOTDIR + '/stdlibs/ap/lcssock').create('appServer');
 /* not use untill Sqlie3
 var lcsRdb = require(ROOTDIR + '/stdlibs/db/lcsrdb').create('appServer');
@@ -135,6 +135,7 @@ app.get('/signin', lcsUI.doAction);
 app.post('/signout', lcsUI.signout);
 app.get('/scr/:id', lcsUI.doAction);
 app.get('/scr/:id/:sub', lcsUI.doAction);
+app.post('/scr/:id/:sub', lcsUI.doAction);
 app.get('/404', lcsUI.notFound);
 app.post('/scr/:id', lcsUI.doAction);
 app.post('/check', lcsUI.doAction);
