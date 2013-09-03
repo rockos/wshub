@@ -394,7 +394,7 @@ function _showResult(req, res, frame) {
  * @param res
  * @param frame
  */
-function _showInitial(req, res, frame){
+exports.showScreen = function(req, res, frame) {
     var posts = {};
     var file = ROOTDIR + '/src/ini/data/brd301ini.json';
 

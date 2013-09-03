@@ -140,7 +140,6 @@ function _checkUser(req, res, frame) {
     var posts = {};
     if (process.env.DATABASE == 'MySql') {
         lcsDb.query(sql, [req.body.userid],function(err, results, fields) {
-            debugger;
             if (err){
                lcsAp.syslog('error', err);
                lcsUI.shoMsg(res, 99); /* database error */
@@ -185,14 +184,13 @@ function _checkUser(req, res, frame) {
  * @param res
  * @param frame
  */
-function _signin(req, res, frame){
+exports.signinUser = function(req, res, frame){
     var posts = {};
     var msg = lcsAp.getMsgI18N("0");
 
     posts.mesg = msg.text;
     posts.mesg_lavel_color = msg.warn;
     posts.frameNavi = frame.frameNavi;
-debugger;
     if (req.body['610_cancel']) {
         return lcsUI.shoMsg(res, 'キャンセルされました。');
     } else if (req.body['610_signin']) {
@@ -240,10 +238,9 @@ function _showInitial(req, res, frame){
  * @param res
  * @param frame
  */
-function _regist(req, res, frame){
+exports.registUser = function(req, res, frame){
     var posts = {};
     var msg = lcsAp.getMsgI18N("0");
-
     posts.mesg = msg.text;
     posts.mesg_lavel_color = msg.warn;
     posts.frameNavi = frame.frameNavi;
@@ -275,11 +272,14 @@ exports.showScreen = function(req, res, frame){
 
     /* page情報設定 */
     posts.frameNavi = frame.frameNavi;
-
     posts.pageNavi = JSON.parse(require('fs').readFileSync(file));
     posts.pageNavi.userid = req.session.userid ? req.session.userid: 'undefined'; 
     param =  url.parse(req.url, true);
-    if (param.query.kind === 'signin') {
+    if (req.url === '/') {
+        _showInitial(req, res, frame);
+    } else if (req.url === '/index') {
+        _showInitial(req, res, frame);
+    } else if (param.query.kind === 'signin') {
         res.render("scr/scr610", posts);
     } else if (param.query.kind === 'regist') {
         res.render("scr/scr620", posts);
@@ -295,7 +295,7 @@ exports.showScreen = function(req, res, frame){
 exports.main = function(req, res, frame){
     var url = require('url')
     var get_tof = {/* Table of functions */
-        "/" : _showInitial,
+        "/" : _showInitial
     };
     var tof = {/* Table of functions */
         "610_signin" : _signin,
@@ -306,7 +306,6 @@ exports.main = function(req, res, frame){
 
     var posts = {};
     var param = {};
-
     if (req.method == 'GET') {
         param =  url.parse(req.url, true)
         if (typeof get_tof[param.pathname] === 'function') {

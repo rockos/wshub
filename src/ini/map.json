@@ -2,12 +2,12 @@
 {
 "path" : "/src/controller/mgr/610/mgr610",
    "msg":{
-            "/" : "main",
-            "/index" : "main",
+            "/" : "showScreen",
+            "/index" : "showScreen",
             "/signin" : "showScreen",
             "/regist" : "showScreen",
-            "/scr/610" : "main",
-            "/scr/620" : "main"
+            "/scr/610/sign" : "signinUser",
+            "/scr/620/reg" : "registUser"
         },
    "ejs":"layout.ejs",
    "parmit":0
@@ -25,7 +25,7 @@
 ,{
 "path" : "/src/controller/brd/301/brd301",
     "msg":{
-            "/scr/301" : "main"
+            "/scr/301" : "showScreen"
         },
     "ejs":"layout.ejs",
     "parmit":0
