@@ -126,6 +126,32 @@ var fin = function(err){
     }
 }
 /**
+ * Authenticationi is successful.set sesseion info.
+ *
+ */
+function _setSession(req, res, frame, file) {
+    var posts = {};
+
+    /* set session information */
+    req.session.views = 1;
+    req.session.userid = req.body.userid;
+    req.session.password = req.body.password;
+    req.session.lang = req.body.lang;
+
+    lcsAp.setLangI18N(req.session.lang);
+
+    /* set page information */
+    posts.frameNavi = frame.frameNavi;
+    posts.frameNavi.signin ="true";
+    posts.frameNavi.nickname = 
+        req.session.nickname ? req.session.nickname: 'undefined'; 
+    posts.frameNavi.userid = 
+        req.session.userid ? req.session.userid: 'undefined'; 
+    posts.pageNavi = JSON.parse(require('fs').readFileSync(file));
+
+    return res.redirect('/');
+}
+/**
  * main routine
  * @date 20.aug.2013
  * @param req
@@ -136,12 +162,14 @@ function _checkUser(req, res, frame) {
     var posts = {};
 
     var file = ROOTDIR + '/src/ini/data/indexini.json';
-    var sql ='select id_user as "userid",password,permit from m_users where id_user=?';
+    var sql ='select nickname, mail_address as "email",password,permit ' + 
+      ' from m_users where mail_address=? and password=?';
     var posts = {};
     if (process.env.DATABASE == 'MySql') {
-        lcsDb.query(sql, [req.body.userid],function(err, results, fields) {
+        var args = [req.body.userid, req.body.password];
+        lcsDb.query(sql, args, function(err, results, fields) {
             if (err){
-               lcsAp.syslog('error', err);
+               lcsAp.syslog('info', err);
                lcsUI.shoMsg(res, 99); /* database error */
                return;
             }
@@ -150,32 +178,22 @@ function _checkUser(req, res, frame) {
                lcsUI.shoMsg(res, 106); /* invalid mail address */
                return;
             }
-            if (results[0].userid !== req.body.userid || 
+            /*
+            if (results[0].email !== req.body.userid || 
                 results[0].password !== req.body.password) {
-               lcsUI.shoMsg(res, 106); /* invalid mail address */
+               lcsUI.shoMsg(res, 106);
                return;
             }
+            */
             req.session.permit = results[0].permit;
+            req.session.nickname = results[0].nickname; 
             req.session.userid = req.body.userid; 
+            return _setSession(req, res, frame, file);
         });
     } else {
         req.session.permit = 1; 
+        return _setSession(req, res, frame);
     }
-    /* ユーザー認証 ＯＫ */
-    req.session.views = 1;
-    req.session.userid = req.body.userid;
-    req.session.password = req.body.password;
-    req.session.lang = req.body.lang;
-
-    lcsAp.setLangI18N(req.session.lang);
-
-
-    /* page情報設定 */
-    posts.frameNavi = frame.frameNavi;
-    posts.frameNavi.signin ="true";
-    posts.frameNavi.userid = req.session.userid ? req.session.userid: 'undefined'; 
-    posts.pageNavi = JSON.parse(require('fs').readFileSync(file));
-    return res.redirect('/');
 }
 /**
  * main routine
@@ -187,7 +205,6 @@ function _checkUser(req, res, frame) {
 exports.signinUser = function(req, res, frame){
     var posts = {};
     var msg = lcsAp.getMsgI18N("0");
-
     posts.mesg = msg.text;
     posts.mesg_lavel_color = msg.warn;
     posts.frameNavi = frame.frameNavi;
